@@ -10,7 +10,7 @@ To try out OpenShift Pipelines, obtain an OCP cluster by visiting [cloud.redhat.
 
 ----------------------------------------
 
-## View published documentation
+## View Published Documentation
 
 View Pipelines documentation and walk-through tutorials on our documentation 
 [website](https://openshift.github.io/pipelines-docs/).
