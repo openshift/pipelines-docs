@@ -1,0 +1,13 @@
+/build/
+/node_modules/
+/.cache/
+*rantora.adoc
+
+/.vscode/
+.ts/
+.idea
+/public/
+/TODO/
+.idea.
+
+**/.DS_Store

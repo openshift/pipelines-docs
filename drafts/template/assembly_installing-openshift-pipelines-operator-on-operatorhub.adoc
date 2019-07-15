@@ -1,0 +1,14 @@
+// This assemnbly is included in the following:
+//
+// 
+
+[id='assembly_installing-openshift-pipelines-operator-on-operatorhub_{context}']
+= Installing OpenShift pipelines operator on OperatorHub
+
+
+// Installing the OpenShift Pipelines Operator on Operatorhub
+include::proc_installing-openshift-pipelines-operator-on-operatorhub.adoc
+
+
+// Uninstalling the OpenShift Pipelines Operator on Operatorhub
+include::proc_uninstalling-openshift-pipelines-operator-on-operatorhub.adoc

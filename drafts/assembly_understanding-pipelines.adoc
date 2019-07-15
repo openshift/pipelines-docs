@@ -1,0 +1,15 @@
+:parent-context-of-understanding-pipelines: {context}
+
+[id='understanding-openshift-pipelines_{context}']
+= Understanding Pipelines
+
+:context: understanding-openshift-pipelines
+
+// Pipelines Introduction
+include::con_openshift-pipelines.adoc[leveloffset=+1]
+
+// Pipelines Concepts
+include::con_openshift-pipelines-concepts.adoc[leveloffset=+1]
+
+
+:context: {parent-context-of-understanding-openshift-pipelines}
