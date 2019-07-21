@@ -1,0 +1,32 @@
+// This module is included in the following assembly:
+// assembly_installing-pipelines.adoc
+
+
+[id="installing-the-pipelines-operator_{context}"]
+= Installing the Pipelines Operator
+
+=== Prerequisites
+
+* An OpenShift 4 cluster is required for installation. Visit link:try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
+
+=== Procedure
+
+. In the OpenShift Web Console, navigate to *Home* -> *Projects*. Click *Create Project*.
+
+. In the *Create Project* dialog box, type `pipelines` as the name of the project and click *Create*.
++
+image::openshift_pipelines_create_name_project.png[]
+
+. Navigate to *Operators* -> *OperatorHub*.
+
+. Use the *Filter by keyword* box to search for OpenShift Pipelines Operator in the catalog. Click on the *OpenShift Pipelines Operator* tile.
++
+image::openshift_pipelines_operator_tiles.png[]
+
+. The *OpenShift Pipelines Operator* screen providing a brief description of the operator is displayed. Click *Install*.
++
+image::openshift_pipelines_install_subscription.png[]
+
+. On the *Create Operator Subscription* screen, retain the default entries, and click *Subscribe*.
+
+. In the *Subscription Overview* screen, verify the installation of the operator by confirming that the *UPGRADE STATUS* is `1 installed`.
