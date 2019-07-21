@@ -1,20 +1,16 @@
-= OpenShift Pipelines
+:parent-context-of-understanding-openshift-pipelines: {context}
 
-OpenShift Pipelines is a cloud-native continuous integration and delivery (CI/CD) solution for building pipelines using link:https://tekton.dev[Tekton]. Tekton is a flexible Kubernetes-native open-source CI/CD framework which enables automating deployments across multiple platforms (Kubernetes, serverless, VMs, etc) by abstracting away the underlying details. 
+[id='understanding-openshift-pipelines_{context}']
+= Understanding OpenShift Pipelines
 
-OpenShift Pipelines features:
-
-  * Standard CI/CD pipelines definition based on Tekton
-  * Build images with Kubernetes tools such as S2I, Buildah, Buildpacks, Kaniko, etc
-  * Deploy applications to multiple platforms such as Kubernetes, serverless and VMs
-  * Easy to extend and integrate with existing tools
-  * Scale pipelines on-demand
-  * Portable across any Kubernetes platform
-  * Designed for microservices and decentralised team
-  * Integrated with OpenShift Developer Console
+:context: understanding-openshift-pipelines
 
 
+// Pipelines Introduction
+include::con_openshift-pipelines.adoc[leveloffset=+1]
+
+// Pipelines Concepts
+include::con_pipelines-concepts.adoc[leveloffset=+1]
 
 
-== Resources
-* link:https://github.com/openshift/pipelines-tutorial[OpenShift Pipelines Tutorial]
+:context: {parent-context-of-understanding-openshift-pipelines}

@@ -1,7 +1,7 @@
-:parent-context-of-using-openshift-pipelines: {context}
+:parent-context-of-using-pipelines: {context}
 
-[id='using-openshift-pipelines_{context}']
-= Using OpenShift Pipelines
+[id='using-pipelines_{context}']
+= Using Pipelines
 
 :context: using-openshift-pipelines
 
@@ -21,4 +21,4 @@ include::proc_checking-pipeline-and-application-status.adoc[leveloffset=+1]
 
 
 
-:context: {parent-context-of-using-openshift-pipelines}
+:context: {parent-context-of-using-pipelines}
