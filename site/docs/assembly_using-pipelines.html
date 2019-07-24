@@ -1,159 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-8+rznmq/k0KZkJlZhnuPEVkbRD7tA0wcFEjY48dajGWn3Xc1MasJwS8/tJ7OEsKW" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-1.9.1.min.js" integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" integrity="sha384-Nud2SriDt2fZ+u85IBC48Yn9p+l4AGlapnX1EGA2KrnZjYJx8sxKnw/CIxc1wU1B" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-url/2.5.3/url.js"></script>
-<script>
-function addBlockSwitches() {
-	$('.primary').each(function() {
-		primary = $(this);
-		createSwitchItem(primary, createBlockSwitch(primary)).item.addClass("selected");
-		primary.children('.title').remove();
-	});
-	$('.secondary').each(function(idx, node) {
-		secondary = $(node);
-		primary = findPrimary(secondary);
-		switchItem = createSwitchItem(secondary, primary.children('.switch'));
-		switchItem.content.addClass('hidden');
-		findPrimary(secondary).append(switchItem.content);
-		secondary.remove();
-	});
-}
-
-function createBlockSwitch(primary) {
-	blockSwitch = $('<div class="switch"></div>');
-	primary.prepend(blockSwitch);
-	return blockSwitch;
-}
-
-function findPrimary(secondary) {
-	candidate = secondary.prev();
-	while (!candidate.is('.primary')) {
-		candidate = candidate.prev();
-	}
-	return candidate;
-}
-
-function createSwitchItem(block, blockSwitch) {
-	blockName = block.children('.title').text();
-	content = block.children('.content').first().append(block.next('.colist'));
-	item = $('<div class="switch--item">' + blockName + '</div>');
-	item.on('click', '', content, function(e) {
-		$(this).addClass('selected');
-		$(this).siblings().removeClass('selected');
-		e.data.siblings('.content').addClass('hidden');
-		e.data.removeClass('hidden');
-	});
-	blockSwitch.append(item);
-	return {'item': item, 'content': content};
-}
-
-$(addBlockSwitches);
-
-Zepto(function($){
-	if (url('?header') === 'false') {
-		// Hide the navbar for showcase apps (#nochrome)
-		$('body').addClass('nochrome');
-	}
-})
-</script>
-
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Using Pipelines :: OpenShift Pipelines</title>
     <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_using-pipelines.html">
     <meta name="generator" content="Antora 1.0.3">
     <link rel="stylesheet" href="../_/css/site.css">
-<link rel="icon" href="../_/img/favicon.png" type="image/x-icon">
   </head>
   <body class="article">
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-      <a class="navbar-brand" href="/index.html">AeroGear</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        
-        <li>
-          <a href="https://aerogear.org">Home</a>
-        </li>
-
-        <li>
-          <a href="https://aerogear.org/getting-started/">Getting Started</a>
-        </li>
-
-        <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile Services<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="https://aerogear.org/services/identity-management/">
-                  <i class="material-icons" aria-hidden="true">account_circle</i> Identity Management
-                </a>
-              </li>
-              <li>
-                <a href="https://aerogear.org/services/push/">
-                  <i class="material-icons" aria-hidden="true">notifications_active</i> Push Notifications
-                </a>
-              </li>
-              <li>
-                <a href="https://aerogear.org/services/metrics/">
-                  <i class="material-icons" aria-hidden="true">insert_chart</i> Mobile Metrics
-                </a>
-              </li>
-              <li>
-                <a href="https://aerogear.org/services/mobile-ci-cd/">
-                  <i class="material-icons" aria-hidden="true">build</i> Mobile CI/CD
-                </a>
-              </li>
-              <li>
-                <a href="https://aerogear.org/services/device-security/">
-                  <i class="material-icons" aria-hidden="true">security</i> Device Security
-                </a>
-              </li>
-            </ul>
-        </li>
-
-        <li>
-          <a href="https://aerogear.org/sdks">Mobile SDKs</a>
-        </li>
-
-        <li>
-         <a href="https://docs.aerogear.org/">Docs</a>
-        </li>
-   
-        <li>
-          <a href="https://aerogear.org/community">Community</a>
-        </li>
-        
-
-        <li>
-          <a href="https://aerogear.org/news">News</a>
-        </li>
-        
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav><div class="main-wrapper">
-<div class="navigation-container" data-component="docs" data-version="master">
-  <aside class="navigation" role="navigation">
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
     <div class="panels">
-<div class="navigation-menu is-active" data-panel="menu">
+<div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
 <ul class="nav-list">
@@ -163,7 +69,7 @@ Zepto(function($){
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-toggle"></button>
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_installing-pipelines.html">2. Installation</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
@@ -175,7 +81,7 @@ Zepto(function($){
 </ul>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <button class="nav-toggle"></button>
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_using-pipelines.html">3. Using pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
@@ -203,17 +109,17 @@ Zepto(function($){
 </ul>
   </nav>
 </div>
-<div class="navigation-explore" data-panel="explore">
+<div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version"></span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html"></a>
         </li>
       </ul>
     </li>
@@ -222,20 +128,20 @@ Zepto(function($){
     </div>
   </aside>
 </div>
-  <main class="main" role="main">
+<main role="main">
 <div class="toolbar" role="navigation">
-  <button class="navigation-toggle"></button>
+<button class="nav-toggle"></button>
   <a href="index.html" class="home-link"></a>
-<nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+<nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li class="crumb"><a href="index.html">OpenShift Pipelines</a></li>
-    <li class="crumb"><a href="assembly_using-pipelines.html">3. Using pipelines</a></li>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="assembly_using-pipelines.html">3. Using pipelines</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/assembly_using-pipelines.adoc"></a></div>
+  <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/assembly_using-pipelines.adoc">Edit this Page</a></div>
 </div>
 <article class="doc">
-<h1>Using Pipelines</h1>
+<h1 class="page">Using Pipelines</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -659,73 +565,13 @@ petclinic-deploy-pipelinerun-lkq7d   7 minutes ago   3 minutes   Succeeded</pre>
 </div>
 </div>
 </article>
-  </main>
+</main>
 </div>
 <footer class="footer">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-sm-4">
-        <h5>Mobile Services</h5>
-        <ul class="list-unstyled">
-         <li><a href="https://aerogear.org/services/identity-management/">Identity Management</a></li>
-         <li><a href="https://aerogear.org/services/push/">Push Notifications</a></li>
-         <li><a href="https://aerogear.org/services/metrics/">Mobile Metrics</a></li>
-         <li><a href="https://aerogear.org/services/mobile-ci-cd/">Mobile CI/CD</a></li>
-         <li><a href="https://aerogear.org/services/device-security/">Device Security</a></li>
-        </ul>
-      </div><!-- col -->
-
-      <div class="col-sm-4">
-        <h5>Mobile SDKs</h5>
-        <ul class="list-unstyled">
-         <li><a href="https://aerogear.org/sdks/android/">Android</a></li>
-         <li><a href="https://aerogear.org/sdks/cordova/">Cordova</li>
-         <li><a href="https://aerogear.org/sdks/ios/">iOS</a></li>
-         <li><a href="https://aerogear.org/sdks/xamarin/">Xamarin</a></li>
-        </ul>
-      </div><!-- col -->
-      
-      <div class="col-sm-4">
-        <h5>COMMUNITY</h5>
-        <ul class="list-unstyled">
-          <li><a target="_blank" href="https://github.com/aerogear/">GitHub - Aerogear</a></li>
-          <li><a target="_blank" href="https://github.com/aerogearcatalog/">GitHub - Aerogear Catalog</a></li>
-          <li><a target="_blank" href="https://issues.jboss.org/browse/AEROGEAR">Jira Repo Issues</a></li>
-          <li><a  href="https://aerogear.org/community/contribution-guide/">Contribution Guide</a></li>
-          <li><a target="_blank" href="https://groups.google.com/forum/#!forum/aerogear">Google Group</a></li>
-          <li><a href="irc://irc.freenode.net/aerogear">IRC</a></li>
-        </ul>
-      </div><!-- col -->
-
-      <div class="col-sm-12 follow">
-        <h5>FOLLOW US</h5>
-        <ul class="list-inline">
-          <li><a target="_blank" href="https://www.twitter.com/aerogears"><i class="fa fa-twitter-square"></i> Twitter</a></li>
-          <li><a target="_blank" href="https://www.youtube.com/channel/UCgDcDoN2b7cEI63fgpxACBA"><i class="fa fa-youtube"></i> YouTube</a></li>
-          <li><a target="_blank" href="https://aerogear.org/news"><i class="fa fa-rss-square"></i> Feed</a></li>
-        </ul>
-        
-        <p>The AeroGear project is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>, and is subject to the <a href="https://aerogear.org/legal/export.html">Export Policy</a>.</p>
-      </div><!-- col -->
-    
-    </div><!-- row -->
-
-  </div><!-- container -->
-
-</footer><!-- footer -->
-
-<section class="redhat">
-  <div class="container">
-    <p class="text-center">
-      <a href="http://www.redhat.com/">
-        <img src="/_/img/redhatlogo-wite.png" alt="redhatlogo-wite" width="130">
-      </a>
-    </p>       
-  </div><!-- container -->
-</section>
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
 <script src="../_/js/site.js"></script>
-<script src="../_/js/vendor/highlight.js"></script>
-<script>hljs.initHighlighting()</script>
+<script async src="../_/js/vendor/highlight.js"></script>
   </body>
 </html>
