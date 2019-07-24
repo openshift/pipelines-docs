@@ -2,7 +2,7 @@
 
 == Deleting the Project
 
-== Procedure
+.Procedure
 
 . In the OpenShift Web Console, navigate to **Home > Projects** .
 
@@ -23,7 +23,7 @@
 
 == Uninstalling the pipelines operator
 
-== Procedure
+.Procedure
 
 . Go to **Catalog > OperatorHub** in the Web Console.
 

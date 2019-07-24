@@ -9,7 +9,7 @@
 `PipelineRuns` are used to manually trigger a `Pipeline` and tie it to the Git and image resources that should be used for the specific invocation.
 
 [discrete]
-== Procedure
+.Procedure
 
 . Copy the contents of the following sample `PipelineRun` YAML file and save it.
 +

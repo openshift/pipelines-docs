@@ -6,13 +6,13 @@
 = Deploying an application to OpenShift
 
 [discrete]
-== Prerequisites
+.Prerequisites
 
 * You have installed link:proc_installing-openshift-pipelines-operator.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
 * You have installed the link:https://github.com/tektoncd/cli[Tekton CLI]
 
 [discrete]
-== Procedure
+.Procedure
 
 . Create a project for the sample application:
 +

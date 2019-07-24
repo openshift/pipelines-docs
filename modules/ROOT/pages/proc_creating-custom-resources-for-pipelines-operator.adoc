@@ -5,11 +5,11 @@
 = Creating Custom Resources for the Pipelines Operator
 
 
-== Prerequisites
+.Prerequisites
 * Ensure that the OpenShift Pipelines Operator is installed. For more information, see link:proc_installing-openshift-pipelines-operator.html[Installing the OpenShift Pipelines Operator].
 
 
-== Procedure
+.Procedure
 . In the OpenShift Pipelines Operator *Subscription Overview* screen, click the *1 installed* link.
 +
 image::openshift_pipelines_installed.png[]
