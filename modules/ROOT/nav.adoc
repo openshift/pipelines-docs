@@ -1,6 +1,4 @@
-* xref:assembly_understanding-openshift-pipelines.adoc[1. Understanding OpenShift Pipelines]
-** xref:con_openshift-pipelines.adoc[1.1 OpenShift Pipelines]
-** xref:con_openshift-pipeline-concepts.adoc[1.2 Pipelines Concepts]
+* xref:con_openshift-pipeline-concepts.adoc[1. Pipelines Concepts]
 * xref:assembly_installing-openshift-pipelines.adoc[2. Installation]
 ** xref:proc_installing-openshift-pipelines-operator.adoc[2.1 Operator Installation]
 ** xref:proc_creating-custom-resources-for-openshift-pipelines-operator.adoc[2.2 Creating Custom Resources]
