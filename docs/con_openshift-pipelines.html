@@ -68,50 +68,41 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#">con_openshift-pipeline-concepts.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_understanding-openshift-pipelines.html">1. Understanding OpenShift Pipelines</a>
+    <a class="nav-link" href="#">assembly_installing-openshift-pipelines.adoc</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="con_openshift-pipelines.html">What is OpenShift Pipelines?</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#">proc_installing-openshift-pipelines-operator.adoc</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="con_openshift-pipeline-concepts.html">Operator Concepts</a>
+    <a class="nav-link" href="#">proc_creating-custom-resources-for-openshift-pipelines-operator.adoc</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_installing-openshift-pipelines.html">2. Installation</a>
+    <a class="nav-link" href="#">assembly_using-openshift-pipelines.adoc</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing-openshift-pipelines-operator.html">Operator Installation</a>
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an Application to OpenShift</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_creating-custom-resources-for-openshift-pipelines-operator.html">Creating Custom Resources</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_using-openshift-pipelines.html">3. Using Pipelines</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">Deploying an Application to OpenShift</a>
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and Creating Pipeline Tasks</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">Defining and Creating Pipeline Tasks</a>
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and Creating Pipeline Resources</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">Defining and Creating Pipeline Resources</a>
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a Pipeline</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_assembling-a-pipeline.html">Assembling a Pipeline</a>
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and Running a Pipeline</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">Triggering and Running a Pipeline</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">Checking Pipeline and Application Status</a>
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking Pipeline and Application Status</a>
   </li>
 </ul>
   </li>
@@ -145,9 +136,7 @@
   <a href="index.html" class="home-link"></a>
 <nav class="crumbs" aria-label="breadcrumbs">
   <ul>
-    <li class="crumb"><a href="index.html">OpenShift Pipelines</a></li>
-    <li class="crumb"><a href="assembly_understanding-openshift-pipelines.html">1. Understanding OpenShift Pipelines</a></li>
-    <li class="crumb"><a href="con_openshift-pipelines.html">What is OpenShift Pipelines?</a></li>
+    <li class="crumb"><a href="con_openshift-pipelines.html">OpenShift Pipelines</a></li>
   </ul>
 </nav>
   <!--
@@ -159,24 +148,24 @@
           <article class="doc">
 <h1>OpenShift Pipelines</h1>
 <div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses Tekton Pipelines to automate deployments across multiple platforms. Tekton introduces a number of standard Custom Resource Definitions (CRDs) for defining pipelines that are portable across Kubernetes distributions.</p>
-</div>
-<div class="paragraph">
-<p><strong>Key Features:</strong></p>
+<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard Custom Resource Definitions (CRDs) for defining pipelines that are portable across Kubernetes distributions.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Designed for microservices and decentralized teams</p>
+<p>OpenShift Pipelines are designed for microservices and decentralized teams</p>
 </li>
 <li>
-<p>Standard CI/CD pipelines definition that is easy to extend and integrate with existing tools, enabling you to scale on-demand</p>
+<p>They are standard CI/CD pipeline definitions that are easy to extend and integrate with existing tools, enabling you to scale on-demand</p>
 </li>
 <li>
-<p>Build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks and Kaniko</p>
+<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform</p>
 </li>
 <li>
-<p>Deploy applications to multiple platforms such as Kubernetes, Serverless, and Virtual Machines (VMs) and are portable across any Kubernetes platform</p>
+<p>You can deploy applications to multiple platforms such as Kubernetes, Serverless, and Virtual Machines (VMs) and are portable across any Kubernetes platform</p>
+</li>
+<li>
+<p>You can use the OpenShift Developer Console to see your Pipelines and integrate with them.</p>
 </li>
 </ul>
 </div>
