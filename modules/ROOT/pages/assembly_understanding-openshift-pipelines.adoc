@@ -5,6 +5,9 @@
 
 :context: understanding-openshift-pipelines
 
+// Pipelines Introductoion (used for index.adoc)
+include::con_openshift-pipelines.adoc
+
 
 // Pipelines Concepts
 include::con_pipelines-concepts.adoc[leveloffset=+1]
