@@ -6,9 +6,6 @@
 :context: understanding-openshift-pipelines
 
 
-// Pipelines Introduction
-include::con_openshift-pipelines.adoc[leveloffset=+1]
-
 // Pipelines Concepts
 include::con_pipelines-concepts.adoc[leveloffset=+1]
 
