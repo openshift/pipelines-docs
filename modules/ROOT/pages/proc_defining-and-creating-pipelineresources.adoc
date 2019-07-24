@@ -9,6 +9,7 @@
 
 [discrete]
 .Procedure
+
 After you create `Task` s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
 
 . Copy the content of the following sample `PipelineResource` YAML file that defines the Git repository and reference for the PetClinic application and save it.
