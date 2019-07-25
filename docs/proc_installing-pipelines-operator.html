@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installing the Pipelines Operator :: OpenShift Pipelines</title>
     <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_installing-pipelines-operator.html">
     <meta name="generator" content="Antora 1.0.3">
@@ -19,6 +19,7 @@
         <span></span>
       </button>
     </div>
+<!--
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <a class="navbar-item" href="#">Home</a>
@@ -52,14 +53,15 @@
           </span>
         </div>
       </div>
+-->
     </div>
   </nav>
 </header>
-<div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
-  <aside class="nav">
+<div class="main-wrapper">
+  <div class="navigation-container" data-component="docs" data-version="master">
+  <aside class="navigation">
     <div class="panels">
-<div class="nav-panel-menu is-active" data-panel="menu">
+<div class="navigation-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
 <ul class="nav-list">
@@ -69,7 +71,7 @@
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
+    <button class="nav-toggle"></button>
     <a class="nav-link" href="assembly_installing-pipelines.html">2. Installation</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
@@ -81,7 +83,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
+    <button class="nav-toggle"></button>
     <a class="nav-link" href="assembly_using-pipelines.html">3. Using pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
@@ -109,7 +111,7 @@
 </ul>
   </nav>
 </div>
-<div class="nav-panel-explore" data-panel="explore">
+<div class="navigation-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
     <span class="version"></span>
@@ -128,21 +130,25 @@
     </div>
   </aside>
 </div>
-<main role="main">
-<div class="toolbar" role="navigation">
-<button class="nav-toggle"></button>
+  <div class="main-view-and-toolbar">
+    <div class="toolbar" role="navigation">
+  <button class="navigation-toggle"></button>
   <a href="index.html" class="home-link"></a>
-<nav class="breadcrumbs" aria-label="breadcrumbs">
+<nav class="crumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_installing-pipelines.html">2. Installation</a></li>
-    <li><a href="proc_installing-pipelines-operator.html">2.1 Operator installation</a></li>
+    <li class="crumb"><a href="index.html">OpenShift Pipelines</a></li>
+    <li class="crumb"><a href="assembly_installing-pipelines.html">2. Installation</a></li>
+    <li class="crumb"><a href="proc_installing-pipelines-operator.html">2.1 Operator installation</a></li>
   </ul>
 </nav>
+  <!--
   <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/proc_installing-pipelines-operator.adoc">Edit this Page</a></div>
+  -->
 </div>
-<article class="doc">
-<h1 class="page">Installing the Pipelines Operator</h1>
+    <div class="main-view-and-toc">
+        <main class="main">
+          <article class="doc">
+<h1>Installing the Pipelines Operator</h1>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
@@ -193,13 +199,14 @@
 </ol>
 </div>
 </article>
-</main>
-</div>
-<footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+        </main>
+            </div>
+  </div>
+</div><footer class="footer">
+  <p>Adapted from Antora default UI, (c) 2019</p>
 </footer>
 <script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/highlight.js"></script>
+<script>hljs.initHighlighting()</script>
   </body>
 </html>
