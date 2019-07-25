@@ -12,7 +12,7 @@ Every `Task` runs as a pod and each `step` runs in its own container within the 
 `Tasks` are reusable and can be used in multiple `Pipeline` s. For this tutorial, you create a Maven `Task` with a single step to build a Maven based application, and then add two reusable `Tasks` from the link:https://github.com/tektoncd/catalog[catalog] repository.
 
 [discrete]
-.Procedure
+=== Procedure
 
 . To create the Maven `Task`:
 
