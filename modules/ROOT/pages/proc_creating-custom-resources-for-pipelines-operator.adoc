@@ -6,7 +6,7 @@
 
 
 === Prerequisites
-* Ensure that the OpenShift Pipelines Operator is installed. For more information, see link:proc_installing-openshift-pipelines-operator.html[Installing the OpenShift Pipelines Operator].
+* Ensure that the OpenShift Pipelines Operator is installed. For more information, see link:proc_installing-pipelines-operator.html[Installing the Pipelines Operator].
 
 
 === Procedure
