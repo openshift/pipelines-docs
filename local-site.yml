@@ -6,17 +6,3 @@ content:
   sources:
     - url: .
       branches: HEAD     
-ui:
-  bundle:
-    url: https://github.com/aerogear/antora-ui/raw/master/build/ui-bundle.zip
-snapshot: true
-
-asciidoc:
-  extensions:
-  - ./lib/tab-block.js
-  - ./lib/remote-include-processor
-  attributes:
-    experimental: ''
-    idprefix: ''
-    idseparator: '-'
-linkattrs: ''
