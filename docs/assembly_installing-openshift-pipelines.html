@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installing Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_installing-pipelines.html">
-    <meta name="generator" content="Antora 1.0.3">
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_installing-openshift-pipelines.html">
+    <meta name="generator" content="Antora 2.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -68,41 +68,50 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+    <button class="nav-toggle"></button>
+    <a class="nav-link" href="assembly_understanding-openshift-pipelines.html">1. Understanding OpenShift Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_openshift-pipelines.html">What is OpenShift Pipelines?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_openshift-pipeline-concepts.html">Operator Concepts</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installation</a>
+    <a class="nav-link" href="assembly_installing-openshift-pipelines.html">2. Installation</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing the Pipelines Operator</a>
+    <a class="nav-link" href="proc_installing-openshift-pipelines-operator.html">Operator Installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_creating-custom-resources-for-pipelines-operator.html">2.2 Creating Custom Resources</a>
+    <a class="nav-link" href="proc_creating-custom-resources-for-openshift-pipelines-operator.html">Creating Custom Resources</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_using-pipelines.html">3. Using pipelines</a>
+    <a class="nav-link" href="assembly_using-openshift-pipelines.html">3. Using Pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">Deploying an Application to OpenShift</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">Defining and Creating Pipeline Tasks</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">Defining and Creating Pipeline Resources</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">Assembling a Pipeline</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">Triggering and Running a Pipeline</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">Checking Pipeline and Application Status</a>
   </li>
 </ul>
   </li>
@@ -114,14 +123,14 @@
 <div class="navigation-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version"></span>
+    <span class="version">master</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html"></a>
+          <a href="index.html">master</a>
         </li>
       </ul>
     </li>
@@ -137,11 +146,11 @@
 <nav class="crumbs" aria-label="breadcrumbs">
   <ul>
     <li class="crumb"><a href="index.html">OpenShift Pipelines</a></li>
-    <li class="crumb"><a href="assembly_installing-pipelines.html">2. Installation</a></li>
+    <li class="crumb"><a href="assembly_installing-openshift-pipelines.html">2. Installation</a></li>
   </ul>
 </nav>
   <!--
-  <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/assembly_installing-pipelines.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/assembly_installing-openshift-pipelines.adoc">Edit this Page</a></div>
   -->
 </div>
     <div class="main-view-and-toc">
@@ -151,13 +160,16 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub. To install the OpenShift Pipelines Operator you need to create a subscription and then create the relevant Custom Resources and Custom Resource Definitions (CRDs).</p>
+<p>OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub. The procedure for installing the OpenShift Pipelines Operator entails first creating a subscription and then creating the relevant Custom Resources and Custom Resoure Definitions (CRDs).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="installing-the-pipelines-operator_{context}"><a class="anchor" href="#installing-the-pipelines-operator_{context}"></a>Installing the Pipelines Operator</h2>
+<h2 id="installing-the-openshift-pipelines-operator_{context}"><a class="anchor" href="#installing-the-openshift-pipelines-operator_{context}"></a>Installing the OpenShift Pipelines Operator</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub. The procedure for installing the OpenShift Pipelines Operator entails first creating a subscription and then creating the relevant Custom Resources and Custom Resoure Definitions (CRDs).</p>
+</div>
 <div class="sect3">
 <h4 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h4>
 <div class="ulist">
@@ -168,6 +180,8 @@
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_installing_the_pipelines_operator_subscription"><a class="anchor" href="#_installing_the_pipelines_operator_subscription"></a>Installing the Pipelines Operator Subscription</h3>
 <div class="sect3">
 <h4 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h4>
 <div class="olist arabic">
@@ -184,10 +198,10 @@
 </div>
 </li>
 <li>
-<p>Navigate to <strong>Operators</strong> &#8594; <strong>OperatorHub</strong>.</p>
+<p>Navigate to <strong>Catalog</strong> &#8594; <strong>OperatorHub</strong>.</p>
 </li>
 <li>
-<p>Use the <strong>Filter by keyword</strong> box to search for OpenShift Pipelines Operator in the catalog. Click on the <strong>OpenShift Pipelines Operator</strong> tile.</p>
+<p>Use the <strong>Filter by Keyword</strong> box to facilitate the search of the OpenShift Pipelines Operator in the catalog. Click on the OpenShift Pipelines Operator tile.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_operator_tiles.png" alt="openshift pipelines operator tiles">
@@ -203,35 +217,49 @@
 </div>
 </li>
 <li>
-<p>On the <strong>Create Operator Subscription</strong> screen, retain the default entries, and click <strong>Subscribe</strong>.</p>
+<p>On the <strong>Create the Operator Subscription</strong> screen:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select a <strong>Specific namespace on the cluster</strong>, in the <strong>Installation Mode</strong> section,</p>
 </li>
 <li>
-<p>In the <strong>Subscription Overview</strong> screen, verify the installation of the operator by confirming that the <strong>UPGRADE STATUS</strong> is <code>1 installed</code>.</p>
+<p>Select <code>pipelines</code> from the namespace drop-down list.</p>
+</li>
+<li>
+<p>Click Subscribe.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Confirm the subscription for the installation operator, by viewing the <strong>Subscription Overview</strong>. Observe as the <strong>UPGRADE STATUS</strong> goes from <code>0 installing</code> to <code>1 installed</code>.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="creating-custom-resources-for-the-pipelines-operator_{context}"><a class="anchor" href="#creating-custom-resources-for-the-pipelines-operator_{context}"></a>Creating Custom Resources for the Pipelines Operator</h2>
+<h2 id="creating-custom-resources-for-the-openshift-pipelines-opertaor_{context}"><a class="anchor" href="#creating-custom-resources-for-the-openshift-pipelines-opertaor_{context}"></a>Creating Custom Resources for the OpenShift Pipelines Operator</h2>
 <div class="sectionbody">
-<div class="sect3">
-<h4 id="_prerequisites_2"><a class="anchor" href="#_prerequisites_2"></a>Prerequisites</h4>
+<div class="sect2">
+<h3 id="_prerequisites_2"><a class="anchor" href="#_prerequisites_2"></a>Prerequisites</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Ensure that the OpenShift Pipelines Operator is installed. For more information, see <a href="proc_installing-pipelines-operator.html">Installing the Pipelines Operator</a>.</p>
+<p>A subscription to the OpenShift Pipelines Operator is required. For more information, see <a href="proc_installing-openshift-pipelines-operator.html">Installing the OpenShift Pipelines Operator</a>.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_procedure_2"><a class="anchor" href="#_procedure_2"></a>Procedure</h4>
+<div class="sect2">
+<h3 id="_procedure_2"><a class="anchor" href="#_procedure_2"></a>Procedure</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In the OpenShift Pipelines Operator <strong>Subscription Overview</strong> screen, click the <strong>1 installed</strong> link.</p>
+<p>Click the <strong>1 installed</strong> link.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_installed.png" alt="openshift pipelines installed">
@@ -239,7 +267,7 @@
 </div>
 </li>
 <li>
-<p>In the OpenShift Pipelines Operator <strong>Overview</strong> tab, click <strong>Create New</strong> in the <strong>Provided APIs</strong> section to create an instance of the Openshift Pipelines install CRD. Note that you may need to refresh the screen, in case you do not see the section.</p>
+<p>Click <strong>Create New</strong> to create an instance of the Openshift Pipelines install CRD.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_create_new.png" alt="openshift pipelines create new">
@@ -247,7 +275,7 @@
 </div>
 </li>
 <li>
-<p>In the <strong>Create Install</strong> custom resources editor screen, ensure that the namespace displayed is <strong>pipelines</strong> and click <strong>Create</strong>.</p>
+<p>On the <strong>OpenShift Pipelines Install</strong> Custom Resources editor screen, ensure that the displayed namespace is <strong>pipelines</strong>. Click <strong>Create</strong>.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_operator_crd_editor.png" alt="openshift pipelines operator crd editor">
@@ -260,14 +288,22 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The editor is pre-populated with definitions. You can configure the file by manually entering YAML or JSON definitions into the editor.
+The editor is pre-populated with definitions. Configure the file by manually entering YAML or JSON definitions into the editor.
 </td>
 </tr>
 </table>
 </div>
 </li>
 <li>
-<p>The pipeline resources are now installed. In the <strong>OpenShift Pipelines Install</strong> tab, click on <strong>example-install</strong> to view the Openshift Pipeline resources installed by the operator.</p>
+<p>OpenShift Pipelines is now installed. In the <strong>OpenShift Pipelines Install</strong> tab, click on <strong>pipelines-install</strong> to view the install status.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift_pipelines_installed_operator.png" alt="openshift pipelines installed operator">
+</div>
+</div>
+</li>
+<li>
+<p>On the <strong>pipelines-install</strong> screen, select the <strong>Overview</strong> tab to view the Openshift Pipelines resources installed by the operator.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_install_overview.png" alt="openshift pipelines install overview">
@@ -275,7 +311,7 @@ The editor is pre-populated with definitions. You can configure the file by manu
 </div>
 </li>
 <li>
-<p>Check on OpenShift Pipelines Operator and resources status by navigating to <strong>Workloads</strong> &#8594; <strong>Pods</strong>.</p>
+<p>Check on OpenShift Pipelines Operator by navigating to <strong>Workloads</strong> &#8594; <strong>Pods</strong>.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/openshift_pipelines_workloads_pods.png" alt="openshift pipelines workloads pods">
