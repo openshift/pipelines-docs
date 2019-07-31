@@ -27,6 +27,8 @@ image::openshift_pipelines_operator_tiles.png[]
 +
 image::openshift_pipelines_install_subscription.png[]
 
-. On the *Create Operator Subscription* screen, retain the default entries, and click *Subscribe*.
+. On the *Create Operator Subscription* screen, ensure the installation mode selected is *All namespaces on the cluster (default)*, then click *Subscribe*.
+
+NOTE: The option to install in *A specific namespace on the cluster* should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
 
 . In the *Subscription Overview* screen, verify the installation of the operator by confirming that the *UPGRADE STATUS* is `1 installed`.
