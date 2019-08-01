@@ -7,7 +7,7 @@
 
 A `Pipeline` represents a CI/CD flow and is defined by the `Tasks` to be executed.  It specifies how the `Tasks` interact with each other and their order of execution using the `inputs` , `outputs`, and the `run-After` parameters. It is designed to be generic and reusable in multiple applications and environments.
 
-For this tutorial, create a `Pipeline` that takes the source code of the Spring PetClinic application from GitHub, builds the application, and deploys it on OpenShift as outlined below:
+For this tutorial, we create a `Pipeline` that takes the source code of the Spring PetClinic application from GitHub, builds the application, and deploys it on OpenShift as outlined below:
 
 image::pipeline.png[Pipeline]
 
@@ -21,7 +21,7 @@ image::pipeline.png[Pipeline]
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: deploy-pipeline
+  name: petclinic-deploy-pipeline
 spec:
   resources:
   - name: app-git
@@ -63,20 +63,21 @@ Note that, the `Pipeline` YAML file contains no references to the PetClinic Git 
 +
 `Pipeline` s in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during `Pipeline` execution.
 +
-The tasks execution order is determined based on the dependencies that are defined between the tasks using the  `inputs` and `outputs` parameters, and the explicit orders that are defined using `runAfter`.
+The execution order of the tasks is determined by the dependencies defined between the tasks using the  `inputs` and `outputs` parameters, and the explicit orders that are defined using `runAfter`.
 
 . Create the `Pipeline`:
 +
 ----
-oc create -f deploy-pipeline.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-deploy-pipeline.yaml
 ----
 +
 . Verify that the `Pipeline` has been added to the application as follows:
 +
 ----
 $ tkn pipeline ls
+
 NAME             AGE             LAST RUN   STARTED   DURATION   STATUS
-build-pipeline   8 seconds ago   ---        ---       ---        ---
+deploy-pipeline   8 seconds ago   ---        ---       ---        ---
 ----
 
 ////

@@ -1,4 +1,4 @@
-// Ths module is included in the following assembly:
+// This module is included in the following assembly:
 //
 // assembly_using-openshift-pipelines.adoc
 
@@ -6,47 +6,34 @@
 [id="triggering-and-running-a-pipeline_{context}"]
 = Triggering and running a pipeline
 
-`PipelineRuns` are used to manually trigger a `Pipeline` and tie it to the Git and image resources that should be used for the specific invocation.
+A `PipelineRun` starts a `Pipeline` and ties it to the Git and image resources that should be used for the specific invocation.
 
 [discrete]
 === Procedure
 
-. Copy the contents of the following sample `PipelineRun` YAML file and save it.
+. Start the `Pipeline` as follows:
 +
 ----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineRun
-metadata:
-  generateName: petclinic-deploy-pipelinerun-
-spec:
-  pipelineRef:
-    name: deploy-pipeline
-  trigger:
-    type: manual
-  serviceAccount: 'pipeline'
-  resources:
-  - name: app-git
-    resourceRef:
-      name: petclinic-git
-  - name: app-image
-    resourceRef:
-      name: petclinic-image
-----
+$ tkn pipeline start petclinic-deploy-pipeline \
+        -r app-git=petclinic-git \
+        -r app-image=petclinic-image \
+        -s pipeline
 
-. Create the `PipelineRun` by using the following command:
-+
-----
-oc create -f petclinic-deploy-pipelinerun-.yaml
+Pipelinerun started: petclinic-deploy-pipeline-run-q62p8
 ----
 +
-Creating a `PipelineRun` automatically creates and triggers the `TaskRuns` for each `Task` in your `Pipeline`. It instantiates the `Pipeline` and creates a number of pods to execute the tasks that are defined in the `Pipeline`.
+* The `-r` flag specifies the `PipelineResource` s that should be provided to the pipeline
+* The `-s` flag specifies the service account to be used for running the pipeline
++
+Starting a pipeline instantiates the `PipelineRun` and creates a number of pods to execute the tasks that are defined in the pipeline. The `PipelineRun` automatically creates and triggers the `TaskRuns` for each `Task` in the pipeline.
 
 . After a few minutes, verify that the `Pipeline` ran successfully by listing all the `PipelineRuns` as follows:
 +
 ----
-$ tkn pr ls
-NAME                                 STARTED         DURATION    STATUS
-petclinic-deploy-pipelinerun-lkq7d   7 minutes ago   3 minutes   Succeeded
+$ tkn pipeline list
+ 
+NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
+petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-q62p8   5 minutes ago   4 minutes   Succeeded
 ----
 
 ////
