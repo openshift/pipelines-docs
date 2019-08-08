@@ -12,7 +12,7 @@ OpenShift Pipelines can be installed by using the operator indexed in the OpenSh
 * An OpenShift 4 cluster is required for installation. Visit link:https://try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
 
 === Procedure
-. In the OpenShift OperatorHub, navigate to *Operators* -> *OperatorHub*.
+. In the Web Console, navigate to *Catalog* -> *OperatorHub*.
 
 . Use the *Filter by keyword* box to search for OpenShift Pipelines Operator in the catalog. Click on the *OpenShift Pipelines Operator* tile.
 +
