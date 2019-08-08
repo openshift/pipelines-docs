@@ -7,5 +7,3 @@ OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator i
 // Installing the OpenShift Pipelines Operator
 include::proc_installing-pipelines-operator.adoc[leveloffset=+1]
 
-// Creating Custom Resources for the OpenShift Pipelines Operator
-include::proc_creating-custom-resources-for-pipelines-operator.adoc[leveloffset=+1]
