@@ -10,7 +10,7 @@
 * An OpenShift 4 cluster is required for installation. Visit link:try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
 
 === Procedure
-. Navigate to *Operators* -> *OperatorHub*.
+. In the OpenShift OperatorHub, navigate to *Operators* -> *OperatorHub*.
 
 . Use the *Filter by keyword* box to search for OpenShift Pipelines Operator in the catalog. Click on the *OpenShift Pipelines Operator* tile.
 +
@@ -21,7 +21,7 @@ image::openshift_pipelines_operator_tiles.png[]
 image::openshift_pipelines_install_subscription.png[]
 
 . On the *Create Operator Subscription* screen, ensure the installation mode selected is *All namespaces on the cluster (default)*, then click *Subscribe*.
-
++
 NOTE: The operator is installed automatically into the `openshift-operators` namespace. The option to install in *A specific namespace on the cluster* should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
 
 . In the *Subscription Overview* screen, verify the installation of the operator by confirming that the *UPGRADE STATUS* is `1 installed`.
