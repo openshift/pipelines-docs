@@ -1,9 +1,0 @@
-
-[id="installing-pipelines_{contex}"]
-= Installing Pipelines
-
-OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub. To install the OpenShift Pipelines Operator you need to create a subscription and then create the relevant Custom Resources and Custom Resource Definitions (CRDs).
-
-// Installing the OpenShift Pipelines Operator
-include::proc_installing-pipelines-operator.adoc[leveloffset=+1]
-
