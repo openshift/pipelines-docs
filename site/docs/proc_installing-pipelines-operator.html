@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Installing the Pipelines Operator :: OpenShift Pipelines</title>
     <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_installing-pipelines-operator.html">
     <meta name="generator" content="Antora 1.0.3">
@@ -14,54 +14,14 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
       <button class="navbar-burger" data-target="topbar-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-<!--
-    <div id="topbar-nav" class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Resources</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Resource A</a>
-            <a class="navbar-item" href="#">Resource B</a>
-            <a class="navbar-item" href="#">Resource C</a>
-          </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
-        </div>
-      </div>
--->
-    </div>
+   </div>
   </nav>
 </header>
-<div class="main-wrapper">
-  <div class="navigation-container" data-component="docs" data-version="master">
-  <aside class="navigation">
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
     <div class="panels">
-<div class="navigation-menu is-active" data-panel="menu">
+<div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
 <ul class="nav-list">
@@ -70,21 +30,12 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installation</a>
-<ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing the Pipelines Operator</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_creating-custom-resources-for-pipelines-operator.html">2.2 Creating Custom Resources</a>
-  </li>
-</ul>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-toggle"></button>
-    <a class="nav-link" href="assembly_using-pipelines.html">3. Using pipelines</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
@@ -111,7 +62,7 @@
 </ul>
   </nav>
 </div>
-<div class="navigation-explore" data-panel="explore">
+<div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
     <span class="version"></span>
@@ -130,31 +81,32 @@
     </div>
   </aside>
 </div>
-  <div class="main-view-and-toolbar">
-    <div class="toolbar" role="navigation">
-  <button class="navigation-toggle"></button>
+<main role="main">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
   <a href="index.html" class="home-link"></a>
-<nav class="crumbs" aria-label="breadcrumbs">
+<nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li class="crumb"><a href="index.html">OpenShift Pipelines</a></li>
-    <li class="crumb"><a href="assembly_installing-pipelines.html">2. Installation</a></li>
-    <li class="crumb"><a href="proc_installing-pipelines-operator.html">2.1 Installing the Pipelines Operator</a></li>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a></li>
   </ul>
 </nav>
-  <!--
-  <div class="edit-this-page"><a href="file:///home/joaedwar/pipelines-docs/modules/ROOT/pages/proc_installing-pipelines-operator.adoc">Edit this Page</a></div>
-  -->
 </div>
-    <div class="main-view-and-toc">
-        <main class="main">
-          <article class="doc">
-<h1>Installing the Pipelines Operator</h1>
+<article class="doc">
+<h1 class="page">Installing the Pipelines Operator</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift Pipelines can be installed by using the operator indexed in the OpenShift OperatorHub.</p>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>An OpenShift 4 cluster is required for installation. Visit <a href="try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
+<p>An OpenShift 4 cluster is required for installation. Visit <a href="https://try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
 </li>
 </ul>
 </div>
@@ -164,18 +116,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In the OpenShift Web Console, navigate to <strong>Home</strong> &#8594; <strong>Projects</strong>. Click <strong>Create Project</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Create Project</strong> dialog box, type <code>pipelines</code> as the name of the project and click <strong>Create</strong>.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/openshift_pipelines_create_name_project.png" alt="openshift pipelines create name project">
-</div>
-</div>
-</li>
-<li>
-<p>Navigate to <strong>Operators</strong> &#8594; <strong>OperatorHub</strong>.</p>
+<p>In the Web Console, navigate to <strong>Catalog</strong> &#8594; <strong>OperatorHub</strong>.</p>
 </li>
 <li>
 <p>Use the <strong>Filter by keyword</strong> box to search for OpenShift Pipelines Operator in the catalog. Click on the <strong>OpenShift Pipelines Operator</strong> tile.</p>
@@ -194,7 +135,19 @@
 </div>
 </li>
 <li>
-<p>On the <strong>Create Operator Subscription</strong> screen, retain the default entries, and click <strong>Subscribe</strong>.</p>
+<p>On the <strong>Create Operator Subscription</strong> screen, ensure the installation mode selected is <strong>All namespaces on the cluster (default)</strong>, then click <strong>Subscribe</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The operator is installed automatically into the <code>openshift-operators</code> namespace. The option to install in <strong>A specific namespace on the cluster</strong> should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>In the <strong>Subscription Overview</strong> screen, verify the installation of the operator by confirming that the <strong>UPGRADE STATUS</strong> is <code>1 installed</code>.</p>
@@ -203,14 +156,13 @@
 </div>
 </div>
 </article>
-        </main>
-            </div>
-  </div>
-</div><footer class="footer">
-  <p>Adapted from Antora default UI, (c) 2019</p>
+</main>
+</div>
+<footer class="footer">
+  <p>The Pipelines Documentation page is built using Antora</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
 <script src="../_/js/site.js"></script>
-<script src="../_/js/vendor/highlight.js"></script>
-<script>hljs.initHighlighting()</script>
+<script async src="../_/js/vendor/highlight.js"></script>
   </body>
 </html>
