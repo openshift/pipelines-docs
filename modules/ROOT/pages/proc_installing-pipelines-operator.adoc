@@ -5,6 +5,8 @@
 [id="installing-the-pipelines-operator_{context}"]
 = Installing the Pipelines Operator
 
+OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub.
+
 === Prerequisites
 
 * An OpenShift 4 cluster is required for installation. Visit link:try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
