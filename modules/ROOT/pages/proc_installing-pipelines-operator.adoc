@@ -5,7 +5,7 @@
 [id="installing-the-pipelines-operator_{context}"]
 = Installing the Pipelines Operator
 
-OpenShift Pipelines can be installed by using the OpenShift Pipelines Operator indexed in the OpenShift OperatorHub.
+OpenShift Pipelines can be installed by using the operator indexed in the OpenShift OperatorHub.
 
 === Prerequisites
 
