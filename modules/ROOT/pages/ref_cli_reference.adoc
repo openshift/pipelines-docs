@@ -1,50 +1,76 @@
-= Basic Teknon CLI commands
+= Basic Teknon CLI commands'
+This sections lists basic Tekton CLI commands. For a more detailed desciption, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].
 
-== Utility commands 
+== Syntax
+`tkn [command or options] [arguments...]`
+
+== Global Options
+`--help, -h`
+
+== Utility commands
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn.md
+Parent command for Tekton CLI.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_completion.md[tkn completion]
 Prints shell completion scipts.
+
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_version.md[tkn version]
 Prints version information.
 
 == Managing and running pipelines
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline.md[tkn pipeline]
 Manages pipelines.
+
 === tkn pipeline describe [short description]
 Describes a pipeline in a namespace.
-=== tkn pipeline list
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline_list.mdp[tkn pipeline list]
 Lists pipelines in a namespace.
-=== tkn pipeline logs
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline_logs.md[tkn pipeline logs]
 Shows pipeline logs.
-=== tkn pipeline start
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline_start.md[tkn pipeline start]
 Starts pipelines.
-=== tkn pipelinerun
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipelinerun.md[tkn pipelinerun]
 Manages pipelineruns.
-=== tkn pipelinerun describe
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipelinerun_describe.md[tkn pipelinerun describe]
 Describes a pipelinerun in a namespace.
-=== tkn pipelinerun list
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipelinerun_list.md[tkn pipelinerun list]
 Lists pipelineruns in a namespace.
-=== tkn pipelinerun logs
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipelinerun_logs.md[tkn pipelinerun logs]
 Shows pipelinerun logs.
 
 == Managing pipeline resources
 
-=== tkn resource
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_resource.md[tkn resource]
 Manages pipeline resources.
-=== tkn resource describe
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_resource_describe.md[tkn resource describe]
 Describes a pipeline resource in a namespace.
-=== tkn resource list
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_resource_list.md[tkn resource list]
 Lists pipeline resources in a namespace.
 
 == Managing and running tasks
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_task.md[tkn task]
 Manages tasks.
-=== tkn task list
+
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_task_list.md[tkn task list]
+Lists tasks in a namespace.
+
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_taskrun.md[tkn taskrun]
 Manages taskruns.
+
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_taskrun_list.md[tkn taskrun list]
 Lists taskruns in a namespace.
+
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_taskrun_logs.md[tkn taskrun logs]
 Shows taskruns logs.
 
@@ -52,5 +78,6 @@ Shows taskruns logs.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_clustertask.md[tkn clustertask]
 Manages clustertasks.
+
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_clustertask_list.md[tkn clustertask list]
 Lists clusrertasks in a namespace.
