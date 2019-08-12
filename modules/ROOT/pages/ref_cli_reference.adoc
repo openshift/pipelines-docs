@@ -1,4 +1,5 @@
-= Basic Teknon CLI commands'
+= Basic Teknon CLI commands
+
 This sections lists basic Tekton CLI commands. For a more detailed desciption, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].
 
 == Syntax
@@ -9,7 +10,7 @@ This sections lists basic Tekton CLI commands. For a more detailed desciption, s
 
 == Utility commands
 
-=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn.md
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn.md[tkn]
 Parent command for Tekton CLI.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_completion.md[tkn completion]
@@ -22,7 +23,7 @@ Prints version information.
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline.md[tkn pipeline]
 Manages pipelines.
 
-=== tkn pipeline describe [short description]
+=== link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline_describe.md[tkn pipeline describe]
 Describes a pipeline in a namespace.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_pipeline_list.mdp[tkn pipeline list]
