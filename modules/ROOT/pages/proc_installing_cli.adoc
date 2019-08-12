@@ -1,31 +1,48 @@
 = Installing the CLI
-In order to interact with Tekton from a terminal, you need to install the Tekton (tkn) CLI first.
+In order to interact with Tekton from a terminal, you need to install the Tekton CLI first.
 
 == Installing from binary
 
 === For Mac OS X
 
-Get the `tar.xz`:
-`curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Darwin_x86_64.tar.gz`
-Extract tkn to your PATH:
-`sudo tar xvzf tkn_0.2.0_Darwin_x86_64.tar.gz -C /usr/local/bin tkn`
+.Get the `tar.xz`:
+----
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Darwin_x86_64.tar.gz
+----
+
+.Extract tkn to your PATH:
+----
+sudo tar xvzf tkn_0.2.0_Darwin_x86_64.tar.gz -C /usr/local/bin tkn
+----
 
 === For Linux AMD 64
 
-Get the `tar.xz`:
-`curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Linux_x86_64.tar.gz`
-Extract tkn to your PATH:
-`sudo tar xvzf tkn_0.2.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn`
+.Get the `tar.xz`:
+----
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Linux_x86_64.tar.gz
+----
+
+.Extract tkn to your PATH:
+----
+sudo tar xvzf tkn_0.2.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
+----
 
 === For Linux ARM 64
 
-Get the `tar.xz`:
-`curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Linux_arm64.tar.gz`
-Extract tkn to your PATH:
-`sudo tar xvzf tkn_0.2.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn`
+.Get the `tar.xz`:
+----
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.0/tkn_0.2.0_Linux_arm64.tar.gz
+----
+
+.Extract tkn to your PATH:
+----
+sudo tar xvzf tkn_0.2.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
+----
 
 == Installing with Go
 You should have link:https://golang.org/doc/install[Go] installed and set up your go environment correctly. 
 
-To install Tekton CLI with Go, run:
-`GO111MODULE="on" go get github.com/tektoncd/cli@v0.2.0`
+.To install Tekton CLI with Go, run:
+----
+GO111MODULE="on" go get github.com/tektoncd/cli@v0.2.0
+----
