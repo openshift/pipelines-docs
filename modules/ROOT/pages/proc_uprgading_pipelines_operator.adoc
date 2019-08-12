@@ -1,5 +1,5 @@
 [id="installing-the-pipelines-operator_{context}"]
-= Upgrading the Pipelines Operator
+= Upgrading the Pipelines Operator to the newer version
 
 OpenShift Pipelines upgrades are handled automatically via Operator Subscription. New updates will be installed as soon as they become available.
 
@@ -7,4 +7,5 @@ OpenShift Pipelines upgrades are handled automatically via Operator Subscription
 ====
 OpenShift Pipelines 0.5.2 has introduced changes incompatable with older versions. If the installed version is 0.5.0 or below, the operator *will not be automatically upgraded.*
 
-To upgrade from the 0.5.0 or below  uninstall the operator and then install it again.====
+To upgrade from the 0.5.0 or below  uninstall the operator and then install it again.
+====
