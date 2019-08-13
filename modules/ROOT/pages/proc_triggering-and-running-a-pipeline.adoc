@@ -31,9 +31,9 @@ Starting a pipeline instantiates the `PipelineRun` and creates a number of pods 
 +
 ----
 $ tkn pipeline list
- 
+
 NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
-petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-q62p8   5 minutes ago   4 minutes   Succeeded
+petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92   5 minutes ago   4 minutes   Succeeded
 ----
 
 ////

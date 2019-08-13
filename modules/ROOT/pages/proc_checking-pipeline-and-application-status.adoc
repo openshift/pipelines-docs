@@ -10,11 +10,12 @@ You can examine the logs for `PipelineRuns` to verify its status.
 [discrete]
 === Procedure
 
-. Check the `PipelineRun` logs as it runs using the following command:
+. Check the `PipelineRun` logs as it runs using the `tkn pipeline logs` command, which interactively allows you to chose the required pipelinerun and inspect the logs:
 +
 ----
-$ tkn pr logs petclinic-deploy-pipelinerun-q62p8 -f
-
+$ tkn pipeline logs-f
+? Select pipeline : petclinic-deploy-pipeline
+? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
 
 ...
 [build : nop] Build successful
@@ -25,6 +26,12 @@ $ tkn pr logs petclinic-deploy-pipelinerun-q62p8 -f
 . Check the *Project Status* in the OpenShift Web Console to verify that the PetClinic image is successfully built and deployed.
 +
 image::deployment_complete.png[Application deployed on OpenShift]
+
+. To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:
++
+----
+tkn pipeline start petclinic-deploy-pipeline --last
+----
 
 ////
 
