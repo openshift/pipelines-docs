@@ -1,4 +1,4 @@
-[id="cli-reference_{context}"]
+[id="basic-tekton-cli-commands_{context}"]
 = Basic Tekton CLI commands
 
 This section lists basic Tekton CLI commands. For a more detailed desciption, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].

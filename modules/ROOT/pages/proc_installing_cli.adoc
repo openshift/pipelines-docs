@@ -1,4 +1,4 @@
-[id='cli-reference_{context}']
+[id='installing-cli_{context}']
 = Installing the CLI
 
 In order to interact with Tekton from a terminal, you need to install the Tekton CLI (`tkn`).

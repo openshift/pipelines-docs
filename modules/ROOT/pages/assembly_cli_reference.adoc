@@ -1,4 +1,4 @@
-:parent-context-cli-reference: {context}
+:parent-context-of-cli-reference: {context}
 
 [id='cli-reference_{context}']
 = About Tekton CLI
@@ -18,4 +18,4 @@ include::ref_cli_reference.adoc[leveloffset=+1]
 
 
 
-:context: {parent-context-cli-reference}
+:context: {parent-context-of-cli-reference}
