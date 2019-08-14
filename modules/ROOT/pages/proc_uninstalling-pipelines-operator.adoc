@@ -1,3 +1,4 @@
+[id='deleting-the-projects-and-uninstalling-the-pipelines-operator_{context}']
 = Deleting the project and uninstalling the pipelines operator
 
 == Deleting the Project
@@ -36,6 +37,6 @@ NOTE: The operator tile will indicate it is installed.
 
 . Once, the **OpenShift Pipelines Operator** descriptor screen appears, click **Uninstall**.
 
-. Select **Also completely remove the Operator from the selected namespace**, in the **Remove Operator Subscription** dialog box
+. Select **Also completely remove the Operator from the selected namespace**, in the **Remove Operator Subscription** dialog box.
 
 .Click **Remove**.

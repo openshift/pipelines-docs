@@ -1,0 +1,16 @@
+:parent-context-of-installing-the-pipelines-operator: {context}
+
+[id='installing-the-pipelines-operator_{context}']
+= Installing Pipelines
+
+:context: installing-the-pipelines-operator
+
+The following section describes how to install and uninstall OpenShift Pipelines.
+
+include::proc_installing-pipelines-operator.adoc[leveloffset=+1]
+
+include::proc_uninstalling-pipelines-operator.adoc[leveloffset=+1]
+
+
+
+:context: {parent-context-of-installing-the-pipelines-operator}

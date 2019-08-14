@@ -26,6 +26,11 @@ image::openshift_pipelines_install_subscription.png[]
 
 . On the *Create Operator Subscription* screen, ensure the installation mode selected is *All namespaces on the cluster (default)*, then click *Subscribe*.
 +
-NOTE: The operator is installed automatically into the `openshift-operators` namespace. The option to install in *A specific namespace on the cluster* should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
+[NOTE]
+====
+* The operator is installed automatically into the `openshift-operators` namespace. The option to install in *A specific namespace on the cluster* should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
+* OpenShift Pipelines upgrades are handled automatically through Operator Subscription. New updates will be installed as soon as they become available.
+** OpenShift Pipelines 0.5.2 has introduced changes incompatible with older versions. If the installed version is 0.5.0 or below, the operator will not be automatically upgraded. To upgrade from the 0.5.0 or below, link:proc_uninstalling-pipelines-operator.adoc[uninstall the operator] and then install it again.
+====
 
 . In the *Subscription Overview* screen, verify the installation of the operator by confirming that the *UPGRADE STATUS* is `1 installed`.
