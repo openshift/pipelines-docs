@@ -22,7 +22,7 @@ image::openshift_pipelines_operator_tiles.png[]
 +
 image::openshift_pipelines_install_subscription.png[]
 
-. On the *Create Operator Subscription* screen, ensure the installation mode selebullected is *All namespaces on the cluster (default)*, then click *Subscribe*.
+. On the *Create Operator Subscription* screen, ensure the installation mode selected is *All namespaces on the cluster (default)*, then click *Subscribe*.
 +
 [NOTE]
 ====
