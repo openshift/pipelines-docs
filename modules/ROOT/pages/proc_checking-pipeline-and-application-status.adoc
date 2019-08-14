@@ -1,4 +1,4 @@
-// Ths module is included in the following assembly:
+// This module is included in the following assembly:
 //
 // assembly_using-openshift-pipelines.adoc
 
@@ -10,22 +10,28 @@ You can examine the logs for `PipelineRuns` to verify its status.
 [discrete]
 === Procedure
 
-. Check the `PipelineRun` logs as follows:
+. Check the `PipelineRun` logs as it runs using the `tkn pipeline logs` command, which interactively allows you to chose the required pipelinerun and inspect the logs:
 +
 ----
-$ tkn pr logs petclinic-deploy-pipelinerun-lkq7d
+$ tkn pipeline logs-f
+? Select pipeline : petclinic-deploy-pipeline
+? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
+
 ...
-
-[s2i-java-8 : nop] Build successful
-
-[openshift-client : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
-
-[openshift-client : nop] Build successful
+[build : nop] Build successful
+[deploy : build-step-oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
+[deploy : nop] Build successful
 ----
 
 . Check the *Project Status* in the OpenShift Web Console to verify that the PetClinic image is successfully built and deployed.
 +
 image::deployment_complete.png[Application deployed on OpenShift]
+
+. To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:
++
+----
+tkn pipeline start petclinic-deploy-pipeline --last
+----
 
 ////
 

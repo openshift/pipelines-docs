@@ -49,7 +49,7 @@ Only the requirement for a git repository is declared on the `Task` and not a sp
 oc create -f maven-build-task.yaml
 ----
 
-. Install the `s2i` and `openshift-cli` reusable `Tasks` from the link:https://github.com/tektoncd/catalog[catalog repository], which contains a list of reusable `Tasks` for `Pipeline` s:
+. Install the `s2i-java` and `openshift-client` reusable `Tasks` from the link:https://github.com/tektoncd/catalog[catalog repository], which contains a list of reusable `Tasks` for `Pipeline` s:
 +
 ----
 $ oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/openshift-client/openshift-client-task.yaml

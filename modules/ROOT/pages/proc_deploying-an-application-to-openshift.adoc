@@ -17,21 +17,21 @@
 . Create a project for the sample application:
 +
 ----
-oc new-project pipelines-tutorial
+$ oc new-project pipelines-tutorial
 ----
 
 . Building container images using build tools such as S2I, Buildah, or Kaniko, require privileged containers to access the cluster. The default security settings in OpenShift do not allow privileged containers. Create a service account for running `Pipeline` s and enable it to run privileged pods for building container images:
 +
 ----
-oc create serviceaccount pipeline
-oc adm policy add-scc-to-user privileged -z pipeline
-oc adm policy add-role-to-user edit -z pipeline
+$ oc create serviceaccount pipeline
+$ oc adm policy add-scc-to-user privileged -z pipeline
+$ oc adm policy add-role-to-user edit -z pipeline
 ----
 
 . Create the Kubernetes objects for deploying the PetClinic application on OpenShift:
 +
 ----
-oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml
 ----
 
 . Navigate to *Home* -> *Projects* -> *Status* in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the container images for the PetClinic application and completes the deployment.

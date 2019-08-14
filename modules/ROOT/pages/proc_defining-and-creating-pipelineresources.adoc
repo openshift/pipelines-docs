@@ -12,7 +12,7 @@
 
 After you create `Task` s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
 
-. Copy the content of the following sample `PipelineResource` YAML file that defines the Git repository and reference for the PetClinic application and save it.
+. Create a `PipelineResource` YAML file with a `PipelineResource` that defines the Git repository and reference for the PetClinic application as follows:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
@@ -26,13 +26,7 @@ spec:
     value: https://github.com/spring-projects/spring-petclinic
 ----
 
-. Create the petclininc-git `PipelineResource`:
-+
-----
-oc create -f petclininc-git.yaml
-----
-
-. Copy the content of the following sample `PipelineResource` YAML file that defines the OpenShift internal registry to which you want to push the PetClinic image and save it.
+. To the above `PipelineResource` YAML file, add another `PipelineResource`  that defines the OpenShift internal registry to which you want to push the PetClinic image, as shown below, and save it.
 +
 ----
 apiVersion: tekton.dev/v1alpha1
@@ -44,15 +38,25 @@ spec:
   params:
   - name: url
     value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
-Create the petclinic-image pipelineresource:
-oc create -f petclininc-git.yaml
 ----
 
-. Create the petclininc-image `PipelineResource`:
+. Create the above pipeline resources as follows:
 +
 ----
-oc create -f petclininc-image.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-resources.yaml
 ----
+
+. Verify the resources created as follows:
++
+----
+$ tkn resource ls
+
+NAME              TYPE    DETAILS
+petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
+petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+----
+
+
 
 ////
 [discrete]
