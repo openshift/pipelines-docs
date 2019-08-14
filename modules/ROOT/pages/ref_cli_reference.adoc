@@ -1,6 +1,7 @@
-= Basic Teknon CLI commands
+[id="cli-reference_{context}"]
+= Basic Tekton CLI commands
 
-This sections lists basic Tekton CLI commands. For a more detailed desciption, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].
+This section lists basic Tekton CLI commands. For a more detailed desciption, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].
 
 == Syntax
 `tkn [command or options] [arguments...]`
@@ -14,7 +15,7 @@ This sections lists basic Tekton CLI commands. For a more detailed desciption, s
 Parent command for Tekton CLI.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_completion.md[tkn completion]
-Prints shell completion scipts.
+Prints shell completion scripts.
 
 === link:https://github.com/tektoncd/cli/blob/master/docs/cmd/tkn_version.md[tkn version]
 Prints version information.
