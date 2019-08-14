@@ -1,3 +1,4 @@
+[id='deleting-the-projects-and-uninstalling-the-pipelines-operator_{context}']
 = Deleting the project and uninstalling the pipelines operator
 
 == Deleting the Project
