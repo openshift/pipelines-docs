@@ -7,5 +7,8 @@
 ** xref:proc_assembling-a-pipeline.adoc[3.4 Assembling a pipeline]
 ** xref:proc_triggering-and-running-a-pipeline.adoc[3.5 Triggering and running a pipeline]
 ** xref:proc_checking-pipeline-and-application-status.adoc[3.6 Checking pipeline and application status]
+* xref:assembly_cli_reference.adoc[CLI Reference]
+** xref:proc_installing_cli.adoc[Installing CLI]
+** xref:ref_cli_reference.adoc[Basic Commands]
 
 
