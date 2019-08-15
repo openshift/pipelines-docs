@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deleting the project and uninstalling the pipelines operator :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_uninstalling-pipelines-operator.html">
+    <title>Installing Pipelines :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_installing-pipelines.html">
     <meta name="generator" content="Antora 1.0.3">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -100,15 +100,105 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="proc_uninstalling-pipelines-operator.html">Deleting the project and uninstalling the pipelines operator</a></li>
+    <li><a href="assembly_installing-pipelines.html">Installing Pipelines</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Deleting the project and uninstalling the pipelines operator</h1>
-<div class="sect1">
-<h2 id="_deleting_the_project"><a class="anchor" href="#_deleting_the_project"></a>Deleting the Project</h2>
+<h1 class="page">Installing Pipelines</h1>
+<div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following section describes how to install and uninstall OpenShift Pipelines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-the-pipelines-operator_installing-the-pipelines-operator"><a class="anchor" href="#installing-the-pipelines-operator_installing-the-pipelines-operator"></a>Installing the Pipelines Operator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift Pipelines can be installed by using the operator indexed in the OpenShift OperatorHub.</p>
+</div>
+<div class="sect3">
+<h4 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>An OpenShift 4 cluster is required for installation. Visit <a href="try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
+</li>
+<li>
+<p>Download the Tekton CLI - <code>tkn</code>, and add it&#8217;s location to your <code>PATH</code> environment variable.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Web Console, navigate to <strong>Catalog</strong> &#8594; <strong>OperatorHub</strong>.</p>
+</li>
+<li>
+<p>Use the <strong>Filter by keyword</strong> box to search for OpenShift Pipelines Operator in the catalog. Click on the <strong>OpenShift Pipelines Operator</strong> tile.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift_pipelines_operator_tiles.png" alt="openshift pipelines operator tiles">
+</div>
+</div>
+</li>
+<li>
+<p>The <strong>OpenShift Pipelines Operator</strong> screen providing a brief description of the operator is displayed. Click <strong>Install</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/openshift_pipelines_install_subscription.png" alt="openshift pipelines install subscription">
+</div>
+</div>
+</li>
+<li>
+<p>On the <strong>Create Operator Subscription</strong> screen, ensure the installation mode selected is <strong>All namespaces on the cluster (default)</strong>, then click <strong>Subscribe</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The operator is installed automatically into the <code>openshift-operators</code> namespace. The option to install in <strong>A specific namespace on the cluster</strong> should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.</p>
+</li>
+<li>
+<p>OpenShift Pipelines upgrades are handled automatically through Operator Subscription. New updates will be installed as soon as they become available.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenShift Pipelines 0.5.2 has introduced changes incompatible with older versions. If the installed version is 0.5.0 or below, the operator will not be automatically upgraded. To upgrade from the 0.5.0 or below, <a href="proc_uninstalling-pipelines-operator.adoc">uninstall the operator</a> and then install it again.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>In the <strong>Subscription Overview</strong> screen, verify the installation of the operator by confirming that the <strong>UPGRADE STATUS</strong> is <code>1 installed</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-the-projects-and-uninstalling-the-pipelines-operator_installing-the-pipelines-operator"><a class="anchor" href="#deleting-the-projects-and-uninstalling-the-pipelines-operator_installing-the-pipelines-operator"></a>Deleting the project and uninstalling the pipelines operator</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_deleting_the_project"><a class="anchor" href="#_deleting_the_project"></a>Deleting the Project</h3>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -136,10 +226,8 @@
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h3>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -171,6 +259,7 @@ The operator tile will indicate it is installed.
 <p>Select <strong>Also completely remove the Operator from the selected namespace</strong>, in the <strong>Remove Operator Subscription</strong> dialog box.</p>
 </li>
 </ol>
+</div>
 </div>
 </div>
 </div>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Defining and creating pipeline tasks :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_defining-and-creating-pipeline-tasks.html">
+    <title>Installing the CLI :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_installing_cli.html">
     <meta name="generator" content="Antora 1.0.3">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -40,7 +40,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -61,7 +61,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -100,101 +100,83 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
-    <li><a href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a></li>
+    <li><a href="assembly_cli_reference.html">4. CLI Reference</a></li>
+    <li><a href="proc_installing_cli.html">4.1 Installing CLI</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Defining and creating pipeline tasks</h1>
+<h1 class="page">Installing the CLI</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for instance, build an image.</p>
+<p>In order to interact with Tekton from a terminal, you need to install the Tekton CLI (<code>tkn</code>).</p>
 </div>
-<div class="paragraph">
-<p>Every <code>Task</code> runs as a pod and each <code>step</code> runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use <code>inputs</code> parameters, for example, a git , and <code>outputs</code> parameters, for example, an image in a registry, to interact with other tasks.</p>
 </div>
-<div class="paragraph">
-<p><code>Tasks</code> are reusable and can be used in multiple <code>Pipeline</code> s. For this tutorial, you create a Maven <code>Task</code> with a single step to build a Maven based application, and then add two reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog</a> repository.</p>
 </div>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To create the Maven <code>Task</code>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Copy the contents of the following sample <code>Task</code> YAML file and save it:</p>
+<div class="sect1">
+<h2 id="_installing_from_binary"><a class="anchor" href="#_installing_from_binary"></a>Installing from binary</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_for_macos_x"><a class="anchor" href="#_for_macos_x"></a>For macOS X</h3>
 <div class="listingblock">
+<div class="title">Get the <code>tar.xz</code>:</div>
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: Task
-metadata:
-  name: maven-build
-spec:
-  inputs:
-    resources:
-    - name: workspace-git
-      targetPath: /
-      type: git
-  steps:
-  - name: build
-    image: maven:3.6.0-jdk-8-slim
-    command:
-    - /usr/bin/mvn
-    args:
-    - install</pre>
+<pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Darwin_x86_64.tar.gz</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Extract <code>tkn</code> to your PATH:</div>
+<div class="content">
+<pre>sudo tar xvzf tkn_0.2.2_Darwin_x86_64.tar.gz -C /usr/local/bin tkn</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_for_linux_amd64"><a class="anchor" href="#_for_linux_amd64"></a>For Linux AMD64</h3>
+<div class="listingblock">
+<div class="title">Get the <code>tar.xz</code>:</div>
+<div class="content">
+<pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Linux_x86_64.tar.gz</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Extract <code>tkn</code> to your PATH:</div>
+<div class="content">
+<pre>sudo tar xvzf tkn_0.2.2_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_for_linux_arm64"><a class="anchor" href="#_for_linux_arm64"></a>For Linux ARM64</h3>
+<div class="listingblock">
+<div class="title">Get the <code>tar.xz</code>:</div>
+<div class="content">
+<pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Linux_arm64.tar.gz</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Extract <code>tkn</code> to your PATH:</div>
+<div class="content">
+<pre>sudo tar xvzf tkn_0.2.2_Linux_arm64.tar.gz -C /usr/local/bin/ tkn</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_with_go_language"><a class="anchor" href="#_installing_with_go_language"></a>Installing with Go language</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This <code>Task</code> starts a pod and runs a container inside that pod using the <code>maven:3.6.0-jdk-8-slim</code> image to run the specified commands. It receives an input directory called <code>workspace-git</code> which contains the source code of the application.</p>
+<p>You should have <a href="https://golang.org/doc/install">Go language</a> installed and set up your go environment correctly.</p>
 </div>
-<div class="paragraph">
-<p>Only the requirement for a git repository is declared on the <code>Task</code> and not a specific git repository to be used. This allows <code>Tasks</code> to be reusable for multiple <code>Pipeline</code> s and purposes.</p>
-</div>
-</li>
-<li>
-<p>Create the <code>Task</code> within your project:</p>
 <div class="listingblock">
+<div class="title">To install Tekton CLI with Go, run:</div>
 <div class="content">
-<pre>oc create -f maven-build-task.yaml</pre>
+<pre>GO111MODULE="on" go get github.com/tektoncd/cli@v0.2.2</pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
-</li>
-<li>
-<p>Install the <code>s2i-java</code> and <code>openshift-client</code> reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog repository</a>, which contains a list of reusable <code>Tasks</code> for <code>Pipeline</code> s:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/openshift-client/openshift-client-task.yaml
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/master/s2i-java8/s2i-java-8-task.yaml</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Verify the <code>Tasks</code> added to the <code>Pipeline</code> as follows:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ tkn task ls
-
-NAME              AGE
-maven-build       23 secs ago
-openshift-client  10 secs ago
-s2i-java          11 secs ago</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<h2 id="_additional_resources" class="discrete">Additional resources</h2>
-<div class="ulist">
-<ul>
-<li>
-<p>For more examples of reusable <code>Tasks</code> see the <a href="https://github.com/tektoncd/catalog">Tekton Catalog</a> and <a href="https://github.com/openshift/pipelines-catalog">OpenShift Catalog</a> repositories.</p>
-</li>
-</ul>
 </div>
 </article>
 </main>

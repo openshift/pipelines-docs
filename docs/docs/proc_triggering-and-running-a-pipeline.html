@@ -57,6 +57,18 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -96,53 +108,45 @@
 <article class="doc">
 <h1 class="page">Triggering and running a pipeline</h1>
 <div class="paragraph">
-<p><code>PipelineRuns</code> are used to manually trigger a <code>Pipeline</code> and tie it to the Git and image resources that should be used for the specific invocation.</p>
+<p>A <code>PipelineRun</code> starts a <code>Pipeline</code> and ties it to the Git and image resources that should be used for the specific invocation.</p>
 </div>
 <h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Copy the contents of the following sample <code>PipelineRun</code> YAML file and save it.</p>
+<p>Start the <code>Pipeline</code> as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineRun
-metadata:
-  generateName: petclinic-deploy-pipelinerun-
-spec:
-  pipelineRef:
-    name: deploy-pipeline
-  trigger:
-    type: manual
-  serviceAccount: 'pipeline'
-  resources:
-  - name: app-git
-    resourceRef:
-      name: petclinic-git
-  - name: app-image
-    resourceRef:
-      name: petclinic-image</pre>
+<pre>$ tkn pipeline start petclinic-deploy-pipeline \
+        -r app-git=petclinic-git \
+        -r app-image=petclinic-image \
+        -s pipeline
+
+Pipelinerun started: petclinic-deploy-pipeline-run-q62p8</pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>-r</code> flag specifies the <code>PipelineResource</code> s that should be provided to the pipeline</p>
 </li>
 <li>
-<p>Create the <code>PipelineRun</code> by using the following command:</p>
-<div class="listingblock">
-<div class="content">
-<pre>oc create -f petclinic-deploy-pipelinerun-.yaml</pre>
-</div>
-</div>
+<p>The <code>-s</code> flag specifies the service account to be used for running the pipeline</p>
 <div class="paragraph">
-<p>Creating a <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in your <code>Pipeline</code>. It instantiates the <code>Pipeline</code> and creates a number of pods to execute the tasks that are defined in the <code>Pipeline</code>.</p>
+<p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
+</div>
+</li>
+</ul>
 </div>
 </li>
 <li>
 <p>After a few minutes, verify that the <code>Pipeline</code> ran successfully by listing all the <code>PipelineRuns</code> as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pr ls
-NAME                                 STARTED         DURATION    STATUS
-petclinic-deploy-pipelinerun-lkq7d   7 minutes ago   3 minutes   Succeeded</pre>
+<pre>$ tkn pipeline list
+
+NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
+petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92   5 minutes ago   4 minutes   Succeeded</pre>
 </div>
 </div>
 </li>

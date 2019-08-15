@@ -57,6 +57,18 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -99,7 +111,7 @@
 <p>A <code>Pipeline</code> represents a CI/CD flow and is defined by the <code>Tasks</code> to be executed.  It specifies how the <code>Tasks</code> interact with each other and their order of execution using the <code>inputs</code> , <code>outputs</code>, and the <code>run-After</code> parameters. It is designed to be generic and reusable in multiple applications and environments.</p>
 </div>
 <div class="paragraph">
-<p>For this tutorial, create a <code>Pipeline</code> that takes the source code of the Spring PetClinic application from GitHub, builds the application, and deploys it on OpenShift as outlined below:</p>
+<p>For this tutorial, we create a <code>Pipeline</code> that takes the source code of the Spring PetClinic application from GitHub, builds the application, and deploys it on OpenShift as outlined below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -116,7 +128,7 @@
 <pre>apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: deploy-pipeline
+  name: petclinic-deploy-pipeline
 spec:
   resources:
   - name: app-git
@@ -170,7 +182,7 @@ spec:
 <p><code>Pipeline</code> s in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
 </div>
 <div class="paragraph">
-<p>The tasks execution order is determined based on the dependencies that are defined between the tasks using the  <code>inputs</code> and <code>outputs</code> parameters, and the explicit orders that are defined using <code>runAfter</code>.</p>
+<p>The execution order of the tasks is determined by the dependencies defined between the tasks using the  <code>inputs</code> and <code>outputs</code> parameters, and the explicit orders that are defined using <code>runAfter</code>.</p>
 </div>
 </li>
 </ul>
@@ -180,7 +192,7 @@ spec:
 <p>Create the <code>Pipeline</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre>oc create -f deploy-pipeline.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-deploy-pipeline.yaml</pre>
 </div>
 </div>
 </li>
@@ -189,8 +201,9 @@ spec:
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn pipeline ls
+
 NAME             AGE             LAST RUN   STARTED   DURATION   STATUS
-build-pipeline   8 seconds ago   ---        ---       ---        ---</pre>
+deploy-pipeline   8 seconds ago   ---        ---       ---        ---</pre>
 </div>
 </div>
 </li>

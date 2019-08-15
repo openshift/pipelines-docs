@@ -57,6 +57,18 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -102,17 +114,17 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Check the <code>PipelineRun</code> logs as follows:</p>
+<p>Check the <code>PipelineRun</code> logs as it runs using the <code>tkn pipeline logs</code> command, which interactively allows you to chose the required pipelinerun and inspect the logs:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pr logs petclinic-deploy-pipelinerun-lkq7d
+<pre>$ tkn pipeline logs-f
+? Select pipeline : petclinic-deploy-pipeline
+? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
+
 ...
-
-[s2i-java-8 : nop] Build successful
-
-[openshift-client : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
-
-[openshift-client : nop] Build successful</pre>
+[build : nop] Build successful
+[deploy : build-step-oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
+[deploy : nop] Build successful</pre>
 </div>
 </div>
 </li>
@@ -121,6 +133,14 @@
 <div class="imageblock">
 <div class="content">
 <img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
+</div>
+</div>
+</li>
+<li>
+<p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
+<div class="listingblock">
+<div class="content">
+<pre>tkn pipeline start petclinic-deploy-pipeline --last</pre>
 </div>
 </div>
 </li>

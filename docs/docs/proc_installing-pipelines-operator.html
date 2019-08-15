@@ -57,6 +57,18 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -106,7 +118,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>An OpenShift 4 cluster is required for installation. Visit <a href="https://try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
+<p>An OpenShift 4 cluster is required for installation. Visit <a href="try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
+</li>
+<li>
+<p>Download the Tekton CLI - <code>tkn</code>, and add it&#8217;s location to your <code>PATH</code> environment variable.</p>
 </li>
 </ul>
 </div>
@@ -143,7 +158,23 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The operator is installed automatically into the <code>openshift-operators</code> namespace. The option to install in <strong>A specific namespace on the cluster</strong> should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.
+<div class="ulist">
+<ul>
+<li>
+<p>The operator is installed automatically into the <code>openshift-operators</code> namespace. The option to install in <strong>A specific namespace on the cluster</strong> should be disabled.  The OpenShift Pipelines operator should watch for Tekton Custom Resources across all namespaces.</p>
+</li>
+<li>
+<p>OpenShift Pipelines upgrades are handled automatically through Operator Subscription. New updates will be installed as soon as they become available.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenShift Pipelines 0.5.2 has introduced changes incompatible with older versions. If the installed version is 0.5.0 or below, the operator will not be automatically upgraded. To upgrade from the 0.5.0 or below, <a href="proc_uninstalling-pipelines-operator.adoc">uninstall the operator</a> and then install it again.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>

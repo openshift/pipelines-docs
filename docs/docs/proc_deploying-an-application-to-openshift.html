@@ -57,6 +57,18 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -113,7 +125,7 @@
 <p>Create a project for the sample application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>oc new-project pipelines-tutorial</pre>
+<pre>$ oc new-project pipelines-tutorial</pre>
 </div>
 </div>
 </li>
@@ -121,9 +133,9 @@
 <p>Building container images using build tools such as S2I, Buildah, or Kaniko, require privileged containers to access the cluster. The default security settings in OpenShift do not allow privileged containers. Create a service account for running <code>Pipeline</code> s and enable it to run privileged pods for building container images:</p>
 <div class="listingblock">
 <div class="content">
-<pre>oc create serviceaccount pipeline
-oc adm policy add-scc-to-user privileged -z pipeline
-oc adm policy add-role-to-user edit -z pipeline</pre>
+<pre>$ oc create serviceaccount pipeline
+$ oc adm policy add-scc-to-user privileged -z pipeline
+$ oc adm policy add-role-to-user edit -z pipeline</pre>
 </div>
 </div>
 </li>
@@ -131,7 +143,7 @@ oc adm policy add-role-to-user edit -z pipeline</pre>
 <p>Create the Kubernetes objects for deploying the PetClinic application on OpenShift:</p>
 <div class="listingblock">
 <div class="content">
-<pre>oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml</pre>
 </div>
 </div>
 </li>
