@@ -27,16 +27,12 @@
 
 . Go to **Catalog > OperatorHub** in the Web Console.
 
-. Click on the **OpenShift Pipelines Operator** tile.
+. Click on the **OpenShift Pipelines Operator** tile. The operator tile will indicate it is installed.
 
-+
-====
-NOTE: The operator tile will indicate it is installed.
-====
 . The **Show Community Operator**` dialog box will appear. Click **Continue** to proceed.
 
 . Once, the **OpenShift Pipelines Operator** descriptor screen appears, click **Uninstall**.
 
 . Select **Also completely remove the Operator from the selected namespace**, in the **Remove Operator Subscription** dialog box.
 
-.Click **Remove**.
+. Click **Remove**.
