@@ -31,7 +31,16 @@
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -100,7 +109,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="proc_uninstalling-pipelines-operator.html">Deleting the project and uninstalling the pipelines operator</a></li>
+    <li><a href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a></li>
+    <li><a href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a></li>
   </ul>
 </nav>
 </div>
@@ -109,8 +119,9 @@
 <div class="sect1">
 <h2 id="_deleting_the_project"><a class="anchor" href="#_deleting_the_project"></a>Deleting the Project</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h3>
 <div class="olist arabic">
-<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>In the OpenShift Web Console, navigate to <strong>Home &gt; Projects</strong> .</p>
@@ -137,17 +148,21 @@
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_procedure_2"><a class="anchor" href="#_procedure_2"></a>Procedure</h3>
 <div class="olist arabic">
-<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Go to <strong>Catalog &gt; OperatorHub</strong> in the Web Console.</p>
 </li>
 <li>
 <p>Click on the <strong>OpenShift Pipelines Operator</strong> tile.</p>
+<div class="exampleblock">
+<div class="content">
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -160,6 +175,8 @@ The operator tile will indicate it is installed.
 </tr>
 </table>
 </div>
+</div>
+</div>
 </li>
 <li>
 <p>The <strong>Show Community Operator</strong>` dialog box will appear. Click <strong>Continue</strong> to proceed.</p>
@@ -171,6 +188,7 @@ The operator tile will indicate it is installed.
 <p>Select <strong>Also completely remove the Operator from the selected namespace</strong>, in the <strong>Remove Operator Subscription</strong> dialog box.</p>
 </li>
 </ol>
+</div>
 </div>
 </div>
 </div>

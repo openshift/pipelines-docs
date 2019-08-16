@@ -31,7 +31,16 @@
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -117,7 +126,7 @@
 <p>Check the <code>PipelineRun</code> logs as it runs using the <code>tkn pipeline logs</code> command, which interactively allows you to chose the required pipelinerun and inspect the logs:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pipeline logs-f
+<pre>$ tkn pipeline logs -f
 ? Select pipeline : petclinic-deploy-pipeline
 ? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
 

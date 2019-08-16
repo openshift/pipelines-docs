@@ -31,7 +31,16 @@
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -123,57 +132,83 @@
 <h3 id="_installing_from_binary"><a class="anchor" href="#_installing_from_binary"></a>Installing from binary</h3>
 <div class="sect3">
 <h4 id="_for_macos_x"><a class="anchor" href="#_for_macos_x"></a>For macOS X</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get the <code>tar.xz</code>:</p>
 <div class="listingblock">
-<div class="title">Get the <code>tar.xz</code>:</div>
 <div class="content">
 <pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Darwin_x86_64.tar.gz</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Extract <code>tkn</code> to your PATH:</p>
 <div class="listingblock">
-<div class="title">Extract <code>tkn</code> to your PATH:</div>
 <div class="content">
 <pre>sudo tar xvzf tkn_0.2.2_Darwin_x86_64.tar.gz -C /usr/local/bin tkn</pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_for_linux_amd64"><a class="anchor" href="#_for_linux_amd64"></a>For Linux AMD64</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get the <code>tar.xz</code>:</p>
 <div class="listingblock">
-<div class="title">Get the <code>tar.xz</code>:</div>
 <div class="content">
 <pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Linux_x86_64.tar.gz</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Extract <code>tkn</code> to your PATH:</p>
 <div class="listingblock">
-<div class="title">Extract <code>tkn</code> to your PATH:</div>
 <div class="content">
 <pre>sudo tar xvzf tkn_0.2.2_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn</pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_for_linux_arm64"><a class="anchor" href="#_for_linux_arm64"></a>For Linux ARM64</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get the <code>tar.xz</code>:</p>
 <div class="listingblock">
-<div class="title">Get the <code>tar.xz</code>:</div>
 <div class="content">
 <pre>curl -LO https://github.com/tektoncd/cli/releases/download/v0.2.2/tkn_0.2.2_Linux_arm64.tar.gz</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Extract <code>tkn</code> to your PATH:</p>
 <div class="listingblock">
-<div class="title">Extract <code>tkn</code> to your PATH:</div>
 <div class="content">
 <pre>sudo tar xvzf tkn_0.2.2_Linux_arm64.tar.gz -C /usr/local/bin/ tkn</pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_installing_with_go_language"><a class="anchor" href="#_installing_with_go_language"></a>Installing with Go language</h3>
 <div class="paragraph">
-<p>You should have <a href="https://golang.org/doc/install">Go language</a> installed and set up your go environment correctly.</p>
+<p>You should have <a href="https://golang.org/doc/install">Go language</a> installed and the go environment set up correctly.</p>
+</div>
+<div class="paragraph">
+<p>To install Tekton CLI with Go, run:</p>
 </div>
 <div class="listingblock">
-<div class="title">To install Tekton CLI with Go, run:</div>
 <div class="content">
 <pre>GO111MODULE="on" go get github.com/tektoncd/cli@v0.2.2</pre>
 </div>

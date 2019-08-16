@@ -30,8 +30,17 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -100,7 +109,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="proc_installing-pipelines-operator.html">2. Installing the Pipelines Operator</a></li>
+    <li><a href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a></li>
+    <li><a href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a></li>
   </ul>
 </nav>
 </div>
@@ -121,7 +131,7 @@
 <p>An OpenShift 4 cluster is required for installation. Visit <a href="try.openshift.com">try.openshift.com</a> for information on setting up an OpenShift 4 cluster.</p>
 </li>
 <li>
-<p>Download the Tekton CLI - <code>tkn</code>, and add it&#8217;s location to your <code>PATH</code> environment variable.</p>
+<p>Download the Tekton CLI <code>tkn</code>, and add it&#8217;s location to your <code>PATH</code> environment variable.</p>
 </li>
 </ul>
 </div>
@@ -168,7 +178,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift Pipelines 0.5.2 has introduced changes incompatible with older versions. If the installed version is 0.5.0 or below, the operator will not be automatically upgraded. To upgrade from the 0.5.0 or below, <a href="proc_uninstalling-pipelines-operator.adoc">uninstall the operator</a> and then install it again.</p>
+<p>OpenShift Pipelines 0.5.2 has introduced changes incompatible with older versions. If the installed version is 0.5.0 or below, the operator will not be automatically upgraded. To upgrade from the 0.5.0 or below, <a href="https://openshift.github.io/pipelines-docs/docs/proc_uninstalling-pipelines-operator.html">uninstall the operator</a> and then install it again.</p>
 </li>
 </ul>
 </div>
