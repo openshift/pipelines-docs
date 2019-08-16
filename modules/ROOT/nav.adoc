@@ -1,4 +1,4 @@
-[loweralpha]
+[arabic]
 . xref:con_pipelines-concepts.adoc[Pipelines concepts]
 . xref:assembly_installing-pipelines.adoc[Installing the Pipelines Operator]
 . xref:assembly_using-pipelines.adoc[Using Pipelines]
