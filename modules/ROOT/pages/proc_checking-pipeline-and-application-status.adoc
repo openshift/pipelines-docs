@@ -13,7 +13,7 @@ You can examine the logs for `PipelineRuns` to verify its status.
 . Check the `PipelineRun` logs as it runs using the `tkn pipeline logs` command, which interactively allows you to chose the required pipelinerun and inspect the logs:
 +
 ----
-$ tkn pipeline logs-f
+$ tkn pipeline logs -f
 ? Select pipeline : petclinic-deploy-pipeline
 ? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
 

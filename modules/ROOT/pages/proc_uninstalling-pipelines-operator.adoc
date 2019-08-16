@@ -3,7 +3,7 @@
 
 == Deleting the Project
 
-.Procedure
+=== Procedure
 
 . In the OpenShift Web Console, navigate to **Home > Projects** .
 
@@ -21,18 +21,18 @@
 
 
 
-
 == Uninstalling the pipelines operator
 
-.Procedure
+=== Procedure
 
 . Go to **Catalog > OperatorHub** in the Web Console.
 
 . Click on the **OpenShift Pipelines Operator** tile.
 
 +
+====
 NOTE: The operator tile will indicate it is installed.
-
+====
 . The **Show Community Operator**` dialog box will appear. Click **Continue** to proceed.
 
 . Once, the **OpenShift Pipelines Operator** descriptor screen appears, click **Uninstall**.
