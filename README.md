@@ -22,6 +22,11 @@ For questions and feedback please join the pipelines-interest@redhat.com mailing
 submt an issue or pull request.
 
 
+## How can you contribute
+
+Please see our [contributor guidelines](contributing/con_contributing-documentation.md) for information on how you can help.
+
+
 ## Resources
 
 For more information on OpenShift Pipelines, please check out the following links: 
@@ -33,3 +38,4 @@ For more information on OpenShift Pipelines, please check out the following link
 * [Tekton Documentation](https://github.com/tektoncd/pipeline/tree/master/docs)
 
 * [Tekton CLI Download](https://github.com/tektoncd/cli/tree/v0.1.2)
+
