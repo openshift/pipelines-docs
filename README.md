@@ -18,13 +18,7 @@ View Pipelines documentation and walk-through tutorials on our documentation
 
 ## Questions and Feedback
 
-For questions and feedback please join the pipelines-interest@redhat.com mailing list. If you would like to contribute a fix or add new content to the documentation, you can
-submt an issue or pull request.
-
-
-## How can you contribute
-
-Please see our [contributor guidelines](contributing/con_contributing-documentation.md) for information on how you can help.
+For questions and feedback please join the pipelines-interest@redhat.com mailing list. If you would like to contribute a fix or add new content to the documentation, you can submit an issue or pull request. Please see our [contributor guidelines](contributing/con_contributing-documentation.md) for information on how you can help.
 
 
 ## Resources
