@@ -1,8 +1,8 @@
 # Using Git
 
-Knative on OpenShift uses Git to manage repositories.  This guide explains how to set up your system to connect to the proper git repositories.
+This guide explains how to set up your system to connect to the proper git repositories.
 
-`openshift-knative/docs`is a public GitHub repository that hosts the Knative on OpenShift documentation.
+`openshift/pipelines-docs` is a public GitHub repository that hosts the OpenShift Pipelines documentation.
 
 * [Installing Git](#Installing-Git)
 * [Configuring Git](#Configuring-Git)
@@ -60,10 +60,10 @@ $ git config --global push.default simple
 -----------------------------------------
 ### Fork the upstream (GitHub) repository
 
-Fork the `openshift-knative/docs` upstream repository to create a copy under your own GitHub ID. Clone your forked repository to bring your GitHub repository files to your local machine. Your forked repository is now the `origin` repository for your local files.
+Fork the `openshift/pipelines-docs` upstream repository to create a copy under your own GitHub ID. Clone your forked repository to bring your GitHub repository files to your local machine. Your forked repository is now the `origin` repository for your local files.
 
 #### Procedure
-1. Open a browser and navigate to the upstream repository located at https://github.com/openshift-knative/docs.git
+1. Open a browser and navigate to the upstream repository located at https://github.com/openshift/pipelines-docs.git
 2. Click **Fork** located in the upper right under your profile icon.
 3. Select your user account for the location of the forked repository. This creates your own copy of the repository under your own GitHub ID.
 
@@ -75,7 +75,7 @@ Fork the `openshift-knative/docs` upstream repository to create a copy under you
 If you choose to use the SSH address for your clones, you will need to add an SSH Key to GitHub first.
 
 #### Procedure
-1. Open *Terminal*.
+1. Open the *Terminal*.
 2. Check to see if you have a public SSH key:
 
 ````
