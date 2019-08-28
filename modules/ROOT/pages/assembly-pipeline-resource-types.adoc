@@ -1,0 +1,30 @@
+[]
+= PipelineResources
+
+
+`PipelinesResources` in a pipeline are the set of objects that are going to be
+used as inputs to a `Task` and can be output by a `Task`.
+
+A `Task` can have multiple inputs and outputs.
+
+To define a configuration file for a `PipelineResource`, you must specify the
+following fields:
+
+*   Required:
+    **  `apiVersion`- Specifies the API version
+    **   `kind` - Specify the `PipelineResource` resource object.
+    **   `metadata` - Specifies data to uniquely identifythe `PipelineResource`      object, for example a `name`.
+    **   `spec`- Specifies the configuration information
+        for your `PipelineResource` resource object.
+    **   `type` - Specifies the `type` of the `PipelineResource`
+*   _Optional_:
+    **   `params` - Parameters which are specific to each type
+        of `PipelineResource`
+
+The following `PipelineResources` types are currently supported:
+
+*   Git Resource
+*   Pull Request Resource
+*   Image Resource
+*   Cluster Resource
+

@@ -1,0 +1,15 @@
+[]
+= Tasks
+
+
+A `Task` or a `ClusterTask` is a collection of sequential steps you would want to run as part of your continuous integration flow. A task will run inside a pod on your cluster.
+
+A `Task` declares:
+
+* I*puts
+* Outputs
+* Steps
+
+A `Task` is available within a namespace, and `ClusterTask` is available across
+the cluster.
+

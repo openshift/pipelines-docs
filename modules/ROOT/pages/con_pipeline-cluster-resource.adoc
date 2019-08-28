@@ -1,0 +1,48 @@
+[]
+= Cluster Resource
+
+
+A Cluster Resource represents a Kubernetes cluster other than the current cluster Pipelines is running on. A common use case for this resource is to deploy your application or function on different clusters.
+
+The resource will use the provided parameters to create a
+[kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+file that can be used by other steps in the pipeline task to access the target
+cluster. The kubeconfig will be placed in `/workspace/<your-cluster-name>/kubeconfig` on your Task container
+
+The Cluster resource has the following parameters:
+
+* Required:
+*  `name` (required): The name to be given to the target cluster, will be used
+    in the kubeconfig and also as part of the path to the kubeconfig file
+*   `url` (required): Host url of the master node
+*   `username` (required): the user with access to the cluster
+*   `password`: to be used for clusters with basic auth
+*   `token`: to be used for authentication, if present will be used ahead of the
+    password
+*   `insecure`: to indicate server should be accessed without verifying the TLS
+    certificate.
+*   `cadata` (required): holds PEM-encoded bytes. This is typically read from       a root certificates bundle).
+
+[NOTE]
+====
+Since only one authentication technique is allowed per user, either a `token` or a `password` should be provided, if both are provided, the `password` will be ignored.
+====
+
+The following example shows the syntax and structure of a Cluster Resource:
+
+[source]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: test-cluster
+spec:
+  type: cluster
+  params:
+    - name: url
+      value: https://10.10.10.10 # url to the cluster master node
+    - name: cadata
+      value: LS0tLS1CRUdJTiBDRVJ.....
+    - name: token
+      value: ZXlKaGJHY2lPaU....
+----

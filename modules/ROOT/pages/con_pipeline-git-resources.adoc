@@ -1,0 +1,84 @@
+[]
+= Git Resource
+
+Git resource represents a [git](https://git-scm.com/) repository, that contains
+the source code to be built by the pipeline. Adding the git resource as an input
+to a Task will clone this repository and allow the Task to perform the required
+actions on the contents of the repo.
+
+To create a git resource using the `PipelineResource` CRD:
+
+[source]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: wizzbang-git
+  namespace: default
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/wizzbangcorp/wizzbang.git
+    - name: revision
+      value: master
+----
+
+The following resources can be added:
+
+* `url`: represents the location of the git repository, you can use this to
+    change the repo
+
+* `revision`: Git
+    [revision](https://git-scm.com/docs/gitrevisions#_specifying_revisions)
+    (branch, tag, commit SHA or ref) to clone. You can use this to control what
+    commit or branch is used. If a revision is not specified,
+    the resource will default to `latest` from `master`.
+
+
+== Using a fork
+
+The `Url` parameter can be used to point at any git repository, for example to
+use a GitHub fork at master:
+
+[source]
+----
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/bobcatfish/wizzbang.git
+----
+
+
+== Using a branch
+
+The `revision` can be any
+[git commit-ish (revision)](https://git-scm.com/docs/gitrevisions#_specifying_revisions).
+You can use this to create a git `PipelineResource` that points at a branch, for
+example:
+
+[source]
+----
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/wizzbangcorp/wizzbang.git
+    - name: revision
+      value: some_awesome_feature
+----
+
+To point at a pull request, you can use
+[the pull requests's branch](https://help.github.com/articles/checking-out-pull-requests-locally/):
+
+[source]
+----
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/wizzbangcorp/wizzbang.git
+    - name: revision
+      value: refs/pull/52525/head
+----
