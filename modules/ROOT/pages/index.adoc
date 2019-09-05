@@ -1,4 +1,13 @@
 [id="openshift-pipelines_{context}"]
+[IMPORTANT]
+====
+OpenShift{nbsp}Pipelines is based on the upstream project link:https://github.com/tektoncd[Tekton] and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red{nbsp}Hat does not commit to fixing any reported issues and the provided features may not be available in future releases. 
+
+Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.
+
+If you need assistance with OpenShift{nbsp}Pipelines, please reach out on the following mailing list where a member of the Red{nbsp}Hat Development Team will be happy to assist you based on availability and work schedules: pipelines-interest@redhat.com
+====
+
 = OpenShift Pipelines
 
 OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses link:https://tekton.dev[Tekton] Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard Custom Resource Definitions (CRDs) for defining pipelines that are portable across Kubernetes distributions.
@@ -8,7 +17,6 @@ OpenShift Pipelines are cloud-native, continuous integration and delivery soluti
 * You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform
 * You can deploy applications to multiple platforms such as Kubernetes, Serverless, and Virtual Machines (VMs) and are portable across any Kubernetes platform
 * You can use the OpenShift Developer Console to see your Pipelines and integrate with them.
-
 
 [discrete]
 == Additional resources
