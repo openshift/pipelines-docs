@@ -11,27 +11,21 @@
 * You have installed link:proc_installing-pipelines-operator.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
 * You have installed the link:https://github.com/tektoncd/cli[Tekton CLI]
 * You have installed the link:https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC[CodeReady Containers (CRC)] - a recommended solution for quick deployment of OpenShift clusters.
-// Go to link:[CRC official documentation] to learn more.
+
 
 [discrete]
 === Procedure
 
 . Create a local CRC virtual machine:
-
-** For native hypervisors:
 +
 ----
 $ crc start
 ----
-
-** For VirtualBox, a bundle file downloaded separately and the `--vm-driver virtualbox` and `--bundle` flags are required:
 +
-----
-$ crc start --vm-driver virtualbox --bundle _path_to_system_bundle_
-----
+NOTE: If you use a hosted hypervisor, see the link:https://code-ready.github.io/crc/#starting-the-virtual-machine_gsg[CRC documentation].
 +
-NOTE: `crc start` output contains user login and password needed for logging into the cluster. 
-
+`crc start` output contains user login and password needed for logging into the cluster. 
++
 . Add the cached `oc` binary to your PATH:
 
 .. Run the crc oc-env command to print the command needed to add the cached oc binary to your PATH:
