@@ -1,23 +1,9 @@
-[]
-= Image Resource
+[id='pipeline-image-resource_{context}']
+= Image resource
 
-An Image resource represents an image that lives in a remote repository. It is
-usually used as [a `Task` `output`] for `Tasks` that build
-images. This allows the same `Tasks` to be used to generically push to any
+An Image resource represents an image in a remote repository. It is
+usually used as an output for `Tasks` that build images. This allows the `Tasks` to push to any
 registry.
-
-Params that can be added are the following:
-
-* `url`: The complete path to the image, including the registry and the image
-    tag
-* `digest`: The
-    [image digest](https://success.docker.com/article/images-tagging-vs-digests)
-    which uniquely identifies a particular build of an image with a particular
-    tag. _While this can be provided as a parameter, there is not yet a way to
-    update this value after an image is built, but this is planned in
-    [#216](https://github.com/tektoncd/pipeline/issues/216)._
-
-For example:
 
 [source]
 ----
@@ -29,23 +15,22 @@ metadata:
 spec:
   type: image
   params:
-    - name: url
+    - name: URL
       value: gcr.io/staging-images/kritis
 ----
+
+The parameters that can be added are the following:
+
+* `URL`: The complete path to the image, including the registry and the image tag.
+* `digest`: The link:https://success.docker.com/article/images-tagging-vs-digests[image digest] uniquely identifies a particular build of an image with a tag.
 
 
 == Surfacing the image digest built in a task
 
-To surface the image digest in the output of the `taskRun` the builder tool
-should produce this information in a
-[OCI Image Spec](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
-`index.json` file. This file should be placed on a location as specified in the
-task definition under the resource `outputImageDir`. Annotations in `index.json`
-will be ignored, and if there are multiple versions of the image, the latest
-will be used.
+To surface the image digest in the output of the `TaskRun` the builder tool should produce this information in an link:https://github.com/opencontainers/image-spec/blob/master/image-layout.md[OCI Image specification] `index.json` file. This file should be placed on a location as specified in the task definition under the resource `outputImageDir`. Annotations in `index.json`
+are ignored, and if there are multiple versions of the image, the latest isused.
 
-For example this build-push task defines the `outputImageDir` for the
-`builtImage` resource in `/workspace/buildImage`
+The build-push task defines the `outputImageDir` for the `builtImage` resource in `/workspace/buildImage`:
 
 [source]
 ----
@@ -66,16 +51,12 @@ spec:
   steps: ...
 ----
 
-If no value is specified for `outputImageDir`, it will default to
-`/builder/home/image-outputs/{resource-name}`.
+[NOTE]
+====
+If no value is specified for `outputImageDir`, it defaults to `/builder/home/image-outputs/{resource-name}`.
+====
 
-_Please check the builder tool used on how to pass this path to create the
-output file._
-
-The `taskRun` will include the image digest in the `resourcesResult` field that
-is part of the `taskRun.Status`
-
-for example:
+`TaskRun` includes the image digest in the `resourcesResult` field and is part of the `TaskRun.Status`. For example:
 
 [source]
 ----
@@ -87,5 +68,4 @@ status:
     ...
 ----
 
-If the `index.json` file is not produced, the image digest will not be included
-in the `taskRun` output.
+If the `index.json` file is not produced, the image digest will not be included in the `TaskRun` output.

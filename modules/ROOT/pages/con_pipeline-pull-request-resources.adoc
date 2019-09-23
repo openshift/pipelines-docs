@@ -1,22 +1,11 @@
-[]
-= Pull Request Resource
+[id='pipeline-pull-request-resource_{context}']
+= Pull Request resource
 
-Pull Request resource represents a pull request event from a source control
-system.
+A Pull Request resource represents a pull request event from a source control system. Adding the Pull Request resource as an input to a `Task` populates the workspace with a set of files containing generic pull request related metadata such as base/head commit, comments, and labels.
 
-Adding the Pull Request resource as an input to a Task will populate the
-workspace with a set of files containing generic pull request related metadata
-such as base/head commit, comments, and labels.
+Adding the Pull Request resource as an output of a `Task` updates the source control system.
 
-The payloads will also contain
-links to raw service-specific payloads where appropriate.
-
-Adding the Pull Request resource as an output of a Task will update the source
-control system with any changes made to the pull request resource during the
-pipeline.
-
-Example file structure:
-
+.Example file structure:
 [source]
 ----
 /workspace/
@@ -30,96 +19,3 @@ Example file structure:
 /workspace/<resource>/head
 /workspace/<resource>/base
 ----
-
-More details:
-
-Labels are empty files, named after the desired label string.
-
-Status is represented as a set of json files, structured like this:
-
-```json
-{
-  "ID": "foobar",
-  "Description": "description",
-  "URL": "https://www.example.com",
-  "Code": "success" 
-}
-```
-
-References (head and base) are a set of json files, structured like this:
-
-```json
-{
-  "Repo": "https://gitlab.com/foo/bar",
-  "Branch": "master",
-  "SHA": "b813c8fcb1e6245dcbe5ab3c14259fac2e75a799"
-}
-```
-
-Comments are a set of json files, structured like this:
-```json
-{
-  "Text": "comment body",
-  "Author": "author",
-  "ID": 202131633
-}
-```
-
-See [types.go](/cmd/pullrequest-init/types.go) for the full payload spec.
-
-To create a pull request resource using the `PipelineResource` CRD:
-
-```yaml
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: wizzbang-pr
-  namespace: default
-spec:
-  type: pullRequest
-  params:
-    - name: url
-      value: https://github.com/wizzbangcorp/wizzbang/pulls/1
-  secrets:
-    - fieldName: githubToken
-      secretName: github-secrets
-      secretKey: token
-```
-
-Params that can be added are the following:
-
-* `url`: represents the location of the pull request to fetch.
-
-== Statuses
-
-The following status codes are available to use for the Pull Request resource:
-
-// Will be a table
-// Status          
-// success         
-// neutral         
-// queued          
-// in_progress     
-// failure         
-// unknown         
-// error           
-// timeout         
-// canceled       
-// action_required
-
-
-[NOTE]
-====
-Status codes are currently **case sensitive**.
-====
-
-For more information on how Tekton Pull Request status codes convert to SCM
-provider statuses, see
-[pullrequest-init/README.md](/cmd/pullrequest-init/README.md).
-
-== GitHub
-
-The Pull Request resource will look for GitHub OAuth authentication tokens in
-spec secrets with a field name called `authToken`.
-
-URLs should be of the form: https://github.com/tektoncd/pipelines/pulls/1
