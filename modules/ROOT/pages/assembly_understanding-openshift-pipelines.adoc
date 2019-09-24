@@ -5,7 +5,7 @@
 
 :context: understanding-openshift-pipelines
 
-// Pipelines Introductoion (used for index.adoc)
+// Pipelines Introduction (used for index.adoc)
 include::con_openshift-pipelines.adoc[leveloffset=+1]
 
 

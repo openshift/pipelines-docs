@@ -1,0 +1,13 @@
+[id='pipeline-task_{context}']
+= Task
+
+A `Task` (or a `ClusterTask`) is a collection of sequential steps that run as part of a continuous integration flow. A `Task` runs in the pod on your cluster.
+
+A `Task` declares:
+
+* Inputs
+* Outputs
+* Steps
+
+A `Task` is available in a namespace and a `ClusterTask` is available across the cluster.
+
