@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Understanding OpenShift Pipelines :: OpenShift Pipelines</title>
     <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_understanding-openshift-pipelines.html">
-    <meta name="generator" content="Antora 1.0.3">
+    <meta name="generator" content="Antora 2.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -28,7 +28,37 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#">con_pipeline-tasks-syntax.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-git-resources.html">1.2.1 Git resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -86,14 +116,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version"></span>
+    <span class="version">master</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html"></a>
+          <a href="index.html">master</a>
         </li>
       </ul>
     </li>
@@ -157,7 +187,7 @@
 <h2 id="pipelines-concepts_understanding-openshift-pipelines"><a class="anchor" href="#pipelines-concepts_understanding-openshift-pipelines"></a>Pipelines concepts</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Custom Resource Definitions (CRDs) provided by OpenShift Pipelines include: <code>Task</code>,<code>Pipeline</code>,<code>PipelineRun</code>, <code>TaskRun</code>, and <code>PipelineResources</code>.</p>
+<p>The Custom Resource Definitions (CRDs) provided by OpenShift Pipelines include: <code>Task</code>,<code>Pipeline</code>,<code>PipelineRun</code>, <code>TaskRun</code>, and <code>PipelineResource</code>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -174,7 +204,7 @@
 <p><code>TaskRun</code> is auto-created by a <code>PipelineRun</code> for each <code>Task</code> in a <code>Pipeline</code> and  results from running an instance of a <code>Task</code>. It can also be manually created if a <code>Task</code> runs outside of a <code>Pipeline</code>.</p>
 </li>
 <li>
-<p><code>PipelineResources</code> are objects that are used as inputs and outputs for pipeline <code>Tasks</code>. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as <code>PipelineResources</code>. <code>PipelineResources</code> currently support Git Resources, Image Resources, Cluster Resources, and Storage Resources.</p>
+<p>A <code>PipelineResource</code> is an object that is used as an input and output for pipeline <code>Tasks</code>. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as <code>PipelineResources</code>. <code>PipelineResources</code> currently support Git Resources, Image Resources, Cluster Resources, and Storage Resources.</p>
 </li>
 </ul>
 </div>
