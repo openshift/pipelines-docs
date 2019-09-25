@@ -3,7 +3,7 @@
 
 A `Task` (or a `ClusterTask`) is a collection of sequential steps that run as part of a continuous integration flow. A `Task` runs in the pod on your cluster.
 
-image:task_image.png[]
+image:task_image.png[Tasks, scaledwidth="25%"]
 
 
 A `Task` declares:

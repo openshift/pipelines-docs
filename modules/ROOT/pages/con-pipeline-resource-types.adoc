@@ -4,7 +4,7 @@
 `PipelineResources` are a set of objects that are used as inputs to a `Task` and can be output by a `Task`. A `Task` can have multiple inputs and outputs. 
 
 
-image:pipeline_resources.png[]
+image:pipeline_resources.png[Resources, scaledwidth="25%"]
 
 
 To define a configuration file for `PipelineResources`, you must specify the following fields:
