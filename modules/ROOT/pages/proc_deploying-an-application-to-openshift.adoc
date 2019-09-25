@@ -66,11 +66,3 @@ $ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/ma
 +
 image::initiate_deployment.png[Initiate deployment]
 
-////
-[discrete]
-== Additional resources
-
-*
-*
-*
-////
