@@ -3,11 +3,19 @@
 
 A `Task` (or a `ClusterTask`) is a collection of sequential steps that run as part of a continuous integration flow. A `Task` runs in the pod on your cluster.
 
+image:task_image.png[]
+
+
 A `Task` declares:
 
 * Inputs
 * Outputs
 * Steps
 
-A `Task` is available in a namespace and a `ClusterTask` is available across the cluster.
+A `Task` is available in a namespace and a `ClusterTask` is available across the cluster. The sequential execution of `Tasks` defines a `Pipeline`. Creating a `Pipeline` is defining the order of the `Tasks` that you want to run.
+
+image:pipeline_image[]
+
+
+
 
