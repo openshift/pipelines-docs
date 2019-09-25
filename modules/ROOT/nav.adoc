@@ -1,6 +1,6 @@
 * xref:con_pipelines-concepts.adoc[1. Pipelines concepts]
 ** xref:con_pipeline-task.adoc[1.1 Task]
-*** xref:con_pipeline-tasks-syntax.adoc[1.1.1 Task syntax]
+*** xref:con_pipeline-task-syntax.adoc[1.1.1 Task syntax]
 ** xref:con-pipeline-resource-types.adoc[1.2 Pipeline Resource types]
 *** xref:con_pipeline-git-resources.adoc[1.2.1 Git resources]
 *** xref:con_pipeline-pull-request-resources.adoc[1.2.2 Pull Request resources]
