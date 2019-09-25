@@ -14,7 +14,7 @@ A `Task` declares:
 
 A `Task` is available in a namespace and a `ClusterTask` is available across the cluster. The sequential execution of `Tasks` defines a `Pipeline`. Creating a `Pipeline` is defining the order of the `Tasks` that you want to run.
 
-image:pipeline_image[]
+image:pipeline_image.png[Image, scaledwidth="25%"]
 
 
 

@@ -17,7 +17,7 @@ To define a configuration file for `PipelineResources`, you must specify the fol
 * `spec`- Specifies the configuration information for the `PipelineResource` object.
 * `type` - Specifies the `type` of `PipelineResource`.
 
-_Optional_:
+*_Optional_*:
 
 * `params` - Parameters which are specific to each type of `PipelineResource`.
 

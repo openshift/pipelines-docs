@@ -7,6 +7,7 @@
 
 OpenShift Pipelines can be installed by using the operator indexed in the OpenShift OperatorHub.
 
+[discrete]
 === Prerequisites
 
 * An OpenShift 4 cluster is required for installation. Visit link:try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
@@ -15,7 +16,7 @@ OpenShift Pipelines can be installed by using the operator indexed in the OpenSh
 
 * Download the Tekton CLI `tkn`, and add it's location to your `PATH` environment variable.
 
-
+[discrete]
 === Procedure
 
 . In the Web Console, navigate to *Catalog* -> *OperatorHub*.

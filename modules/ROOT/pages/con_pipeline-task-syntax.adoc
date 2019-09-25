@@ -13,7 +13,7 @@ To define a configuration file for a `Task` resource, specify the following fiel
 ** link:https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#steps[`steps`] - Specifies one or more container images that run in your `Task`.
 
 
-_Optional_:
+*_Optional_*:
 
 * link:https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#inputs[`inputs`] - Specifies parameters and `PipelineResources` needed by your `Task`. A `Task` can declare the inputs it needs, which can be either or both:
 
