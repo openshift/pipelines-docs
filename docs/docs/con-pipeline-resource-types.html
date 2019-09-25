@@ -32,13 +32,7 @@
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="con_pipeline-task-syntax.html">1.1.1 Task syntax</a>
-  </li>
-</ul>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -150,7 +144,26 @@
 <p><code>PipelineResources</code> are a set of objects that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>. A <code>Task</code> can have multiple inputs and outputs.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="_images/pipeline_resources.png" alt="Resources"></span></p>
+<p>The following <code>PipelineResources</code> are currently supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Git Resource</p>
+</li>
+<li>
+<p>Pull Request Resource</p>
+</li>
+<li>
+<p>Image Resource</p>
+</li>
+<li>
+<p>Cluster Resource</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/pipeline_resources_tasks.png" alt="pipeline resources tasks"></span></p>
 </div>
 <div class="paragraph">
 <p>To define a configuration file for <code>PipelineResources</code>, you must specify the following fields:</p>
@@ -184,25 +197,6 @@
 <ul>
 <li>
 <p><code>params</code> - Parameters which are specific to each type of <code>PipelineResource</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following <code>PipelineResources</code> are currently supported:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Git Resource</p>
-</li>
-<li>
-<p>Pull Request Resource</p>
-</li>
-<li>
-<p>Image Resource</p>
-</li>
-<li>
-<p>Cluster Resource</p>
 </li>
 </ul>
 </div>
