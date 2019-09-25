@@ -15,7 +15,7 @@ The Cluster resource has the following parameters:
 * `username`: The user with access to the cluster.
 * `cadata`: Holds PEM-encoded bytes and is typically read from a root certificate bundle.
 
-_Optional_:
+*_Optional_*:
 * `password`: To be used for clusters with basic auth
 * `token`: Used for authentication. If present it is used ahead of the password.
 * `insecure`: Indicates whether the server should be accessed without verifying the TLS certificate.

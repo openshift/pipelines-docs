@@ -17,7 +17,7 @@ OpenShift Pipelines are cloud-native, continuous integration and delivery soluti
 * You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.
 * You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.
 
-[discrete]
+
 == Additional resources
 
 * For more details on defining pipelines, see the link:https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html[Using Pipelines documentation].

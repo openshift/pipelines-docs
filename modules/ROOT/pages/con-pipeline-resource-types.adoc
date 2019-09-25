@@ -3,8 +3,15 @@
 
 `PipelineResources` are a set of objects that are used as inputs to a `Task` and can be output by a `Task`. A `Task` can have multiple inputs and outputs. 
 
+The following `PipelineResources` are currently supported:
 
-image:pipeline_resources.png[Resources, scaledwidth="25%"]
+* Git Resource
+* Pull Request Resource
+* Image Resource
+* Cluster Resource
+
+
+image:pipeline_resources_tasks.png[]
 
 
 To define a configuration file for `PipelineResources`, you must specify the following fields:
@@ -22,10 +29,4 @@ To define a configuration file for `PipelineResources`, you must specify the fol
 * `params` - Parameters which are specific to each type of `PipelineResource`.
 
 
-The following `PipelineResources` are currently supported:
-
-* Git Resource
-* Pull Request Resource
-* Image Resource
-* Cluster Resource
 

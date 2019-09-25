@@ -64,7 +64,7 @@ status:
     ...
     resourcesResult:
     - digest: sha256:eed29cd0b6feeb1a92bc3c4f977fd203c63b376a638731c88cacefe3adb1c660
-      name: skaffold-image-leeroy-web
+      name: example-image-web
     ...
 ----
 
