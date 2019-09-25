@@ -145,21 +145,20 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>An Image resource represents an image in a remote repository. It is
-usually used as an output for <code>Tasks</code> that build images. This allows the <code>Tasks</code> to push to any
-registry.</p>
+usually used as an output for <code>Tasks</code> that build images. This allows the <code>Tasks</code> to push to any registry.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: kritis-resources-image
+  name: example-resources-image
   namespace: default
 spec:
   type: image
   params:
     - name: URL
-      value: gcr.io/staging-images/kritis</code></pre>
+      value: gcr.io/staging-images/example</code></pre>
 </div>
 </div>
 <div class="paragraph">

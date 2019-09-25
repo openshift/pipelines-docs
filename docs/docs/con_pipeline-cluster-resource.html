@@ -145,25 +145,46 @@
 <p>A Cluster resource represents a cluster other than the one Pipelines is currently running on. This resource allows users to deploy applications or functions on different clusters.</p>
 </div>
 <div class="paragraph">
-<p>The resource uses the provided parameters to create a link:(<a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)">kubeconfig</a>
-file that can be used by other steps in the pipeline task to access the target
-cluster. The kubeconfig file is placed in <code>/workspace/&lt;your-cluster-name&gt;/kubeconfig</code> on your <code>Task</code> container.</p>
+<p>The resource uses the provided parameters to create a link:(<a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">kubeconfig</a>
+file that can be used by other steps in the pipeline task to access the target cluster. The kubeconfig file is placed in <code>/workspace/&lt;your-cluster-name&gt;/kubeconfig</code> on your <code>Task</code> container.</p>
 </div>
 <div class="paragraph">
 <p>The Cluster resource has the following parameters:</p>
 </div>
 <div class="paragraph">
-<p><strong>Required</strong>:
-* <code>name</code>: The name to be given to the target cluster, will be used in the kubeconfig file and also as part of the path to the kubeconfig file.
-* <code>URL</code>: Host URL of the master node.
-* <code>username</code>: The user with access to the cluster.
-* <code>cadata</code>: Holds PEM-encoded bytes and is typically read from a root certificate bundle.</p>
+<p><strong>Required</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: The name to be given to the target cluster, will be used in the kubeconfig file and also as part of the path to the kubeconfig file.</p>
+</li>
+<li>
+<p><code>URL</code>: Host URL of the master node.</p>
+</li>
+<li>
+<p><code>username</code>: The user with access to the cluster.</p>
+</li>
+<li>
+<p><code>cadata</code>: Holds PEM-encoded bytes and is typically read from a root certificate bundle.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong><em>Optional</em></strong>:
-* <code>password</code>: To be used for clusters with basic auth
-* <code>token</code>: Used for authentication. If present it is used ahead of the password.
-* <code>insecure</code>: Indicates whether the server should be accessed without verifying the TLS certificate.</p>
+<p><strong><em>Optional</em></strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>password</code>: To be used for clusters with basic auth</p>
+</li>
+<li>
+<p><code>token</code>: Used for authentication. If present it is used ahead of the password.</p>
+</li>
+<li>
+<p><code>insecure</code>: Indicates whether the server should be accessed without verifying the TLS certificate.</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
