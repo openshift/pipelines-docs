@@ -3,7 +3,7 @@
 
 A Cluster resource represents a cluster other than the one Pipelines is currently running on. This resource allows users to deploy applications or functions on different clusters.
 
-The resource uses the provided parameters to create a link:https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/[kubeconfig]
+The resource uses the provided parameters to create a link:(https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/[kubeconfig]
 file that can be used by other steps in the pipeline task to access the target cluster. The kubeconfig file is placed in `/workspace/<your-cluster-name>/kubeconfig` on your `Task` container.
 
 The Cluster resource has the following parameters:
