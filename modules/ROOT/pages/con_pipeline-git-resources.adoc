@@ -1,7 +1,7 @@
 [id='pipeline-git-resource_{context}']
 = Git resource
 
-A Git resource represents a link:https://git-scm.com/)[Git] repository, that contains
+A Git resource represents a link:https://git-scm.com/[Git] repository, that contains
 the source code to be built by the pipeline. Adding the Git resource as an input
 to a `Task` clones the repository and allows the `Task` to perform the required
 actions.
