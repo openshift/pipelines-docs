@@ -10,7 +10,7 @@
 
 * You have installed link:proc_installing-pipelines-operator.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
 * You have installed the link:https://github.com/tektoncd/cli[Tekton CLI]
-* You have installed the link:https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC[CodeReady Containers (CRC)] - a recommended solution for quick deployment of OpenShift clusters.
+* You have installed link:https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC[CodeReady Containers (CRC)] - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg[documentation for CRC].
 
 
 [discrete]
@@ -22,9 +22,9 @@
 $ crc start
 ----
 +
-NOTE: If you use a hosted hypervisor, see the link:https://code-ready.github.io/crc/#starting-the-virtual-machine_gsg[CRC documentation].
+NOTE: If you use a hosted hypervisor, see the link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg#starting-the-virtual-machine_gsg[CRC documentation].
 +
-`crc start` output contains user login and password needed for logging into the cluster. 
+`crc start` output contains user login and password needed for logging into the cluster.
 +
 . Add the cached `oc` binary to your PATH:
 
@@ -48,14 +48,6 @@ $ oc login -u <login> -p <password> https://api.crc.testing:6443
 $ oc new-project pipelines-tutorial
 ----
 
-. Building container images using build tools such as S2I, Buildah, or Kaniko, require privileged containers to access the cluster. The default security settings in OpenShift do not allow privileged containers. Create a service account for running `Pipeline` s and enable it to run privileged pods for building container images:
-+
-----
-$ oc create serviceaccount pipeline
-$ oc adm policy add-scc-to-user privileged -z pipeline
-$ oc adm policy add-role-to-user edit -z pipeline
-----
-
 . Create the Kubernetes objects for deploying the PetClinic application on OpenShift:
 +
 ----
@@ -65,4 +57,3 @@ $ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/ma
 . Navigate to *Home* -> *Projects* -> *Status* in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the container images for the PetClinic application and completes the deployment.
 +
 image::initiate_deployment.png[Initiate deployment]
-
