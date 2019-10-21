@@ -3,16 +3,17 @@
 :context: openshift-pipelines-release-notes-0.7
 
 
-OpenShift Pipelines is a cloud-native CI/CD experience based on the Tekton project which provides:
+OpenShift Pipelines is a cloud-native CI/CD experience based on the Tekton project, which provides:
 
 * Standard Kubernetes-native pipeline definitions (CRDs)
-Serverless pipelines with no CI server management overhead
-* Extensibility to build images using any k8s tool, such as S2I, buildah, JIB, Kaniko, etc.
+* Serverless pipelines with no CI server management overhead
+* Extensibility to build images using any Kubernetes tool, such as S2I, buildah, JIB, and Kaniko.
 * Portability across any Kubernetes distribution
-Powerful CLI for interacting with pipelines
+* Powerful CLI for interacting with pipelines
 * Integrated user experience with the OpenShift Console developer perspective
 
 To work with OpenShift Pipelines, access an OpenShift 4.2 cluster using cloud.openshift.com or rhpds.redhat.com or download CodeReady Containers. Download Tekton CLI, and run the following commands to create a sample pipeline that uses S2I for building and deploying a Java application:
+
 ----
 $ oc create -f http://bit.ly/pipelines-demo
 $ tkn pipeline start petclinic-pipeline -n pipelines-demo
@@ -24,12 +25,9 @@ For an in-depth walk-through of OpenShift Pipelines, follow this link:https://gi
 == Notable Features
 In addition to the fixes and stability improvements, here is a highlight of what is new in OpenShift Pipelines 0.7:
 
-
 *Side-cars in Tasks:* Run side-cars alongside the steps in a task to provide auxiliary functions, for example, a mock API for testing an application.
 
-
 *Third-party notifications:* Notify third-party systems on completion of a task using CloudEvents that contain the complete details of the task execution as the payload.
-
 
 *Pipelines in OpenShift Console:* Pipelines are now available in the OpenShift 4.2 web console in the Developer perspective to start pipelines, visually interact with them and inspect logs.
 
@@ -38,12 +36,12 @@ In addition to the fixes and stability improvements, here is a highlight of what
 == Getting support
 
 .Product:
-If you find an error, encounter a bug or have suggestions for improving the functionality of OpenShift Pipelines, file an issue in:
+If you find an error, encounter a bug or have suggestions for improving the functionality of OpenShift Pipelines, file an issue in the link:https://github.com/openshift/tektoncd-pipeline-operator[Tektoncd Pipeline Operator] repository.
 
 Provide as many details in the description of the issue as possible.
 
 .Documentation:
-If you find an error or have suggestions for improving the documentation, file an issue in:  https://github.com/openshift/pipelines-docs
+If you find an error or have suggestions for improving the documentation, file an issue in link:https://github.com/openshift/pipelines-docs[pipelines documentation] repository.
 
 .Getting in touch with the product team:
 For questions and feedback subscribe to the link:mailto:pipelines-interest@redhat.com[pipelines-interest@redhat.com]  mailing list or join the link:https://coreos.slack.com/messages/CG5GV6CJD[#tektoncd-pipelines] channel on CoreOS Slack.
