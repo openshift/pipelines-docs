@@ -1,10 +1,7 @@
 [id="openshift-pipelines-release-notes"]
 = Openshift Pipelines 0.7 Developer Preview Release Notes
-include::modules/common-attributes.adoc[]
-include::modules/serverless-document-attributes.adoc[]
 :context: openshift-pipelines-release-notes-0.7
 
-toc::[]
 
 OpenShift Pipelines is a cloud-native CI/CD experience based on the Tekton project which provides:
 
@@ -60,4 +57,4 @@ For questions and feedback subscribe to the link:mailto:pipelines-interest@redha
 == Fixed Issues
 
 * link:https://jira.coreos.com/browse/SRVKP-283[SRVKP-283] - CLI: Sort pipelineruns in descending start time in interactive log.
-* link:https://jira.coreos.com/browse/SRVKP-302[label] [SRVKP-302] - CLI: Pipeline logs command should sort on time started
+* link:https://jira.coreos.com/browse/SRVKP-302[SRVKP-302] - CLI: Pipeline logs command should sort on time started
