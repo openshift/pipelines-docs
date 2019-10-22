@@ -1,8 +1,6 @@
 name: docs
 title: OpenShift Pipelines
 version: master
+start_ROOT: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
-
-start_ROOT: ROOT:index.adoc
-
