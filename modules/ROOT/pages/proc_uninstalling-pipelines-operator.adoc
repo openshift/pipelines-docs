@@ -1,4 +1,4 @@
-[id='deleting-the-projects-and-uninstalling-the-pipelines-operator_{context}']
+[id='uninstalling-the-pipelines-operator_{context}']
 = Uninstalling the OpenShift Pipelines operator and the OpenShift Pipelines
 
 ////
@@ -28,7 +28,7 @@ To uninstall pipelines you need to first delete the custom resource (added by de
 == Uninstalling the OpenShift Pipeline components and custom resource
 
 [discrete]
-.Procedure
+=== Procedure
 
 Uninstall the custom resource, created by default when you install the Pipelines Operator, as follows:
 
@@ -37,14 +37,18 @@ Uninstall the custom resource, created by default when you install the Pipelines
 . Click on the *OpenShift Pipelines Operator* to see the overview of the operator.
 . Click on the *OpenShift Pipelines config* tab to see the *Configs* screen.
 . Click the *Options* menu {kebab} adjacent to the *cluster* config listed in the *Configs* screen, and select *Delete Config*.
++
+[NOTE]
+====
+Deleting the *cluster* (instance of config) custom resource, will delete the openshift-pipelines components and all the Tasks and Pipelines on the cluster will be lost.
+====
 . Click *Delete* to confirm the deletion of the custom resource.
 
-Deleting the *cluster* (instance of config) will delete the openshift-pipelines components and all the Tasks and Pipelines on the cluster will be lost.
 
 == Uninstalling the pipelines operator
 
 [discrete]
-.Procedure
+=== Procedure
 
 To uninstall the Pipelines operator, follow these steps:
 

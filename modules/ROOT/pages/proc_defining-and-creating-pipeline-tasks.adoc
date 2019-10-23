@@ -5,7 +5,7 @@
 [id="defining-and-creating-pipeline-tasks_{context}"]
 = Defining and creating pipeline tasks
 
-`Tasks` are the building blocks of a `Pipeline` and consist of sequentially executed steps. `steps` are a series of commands that achieve a specific goal, for instance, build an image.
+`Tasks` are the building blocks of a `Pipeline` and consist of sequentially executed steps. `steps` are a series of commands that achieve a specific goal, for example, build an image.
 
 Every `Task` runs as a pod and each `step` runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use `inputs` parameters, for example, a git , and `outputs` parameters, for example, an image in a registry, to interact with other tasks.
 
