@@ -156,8 +156,8 @@
 <div class="sect1">
 <h2 id="_uninstalling_the_openshift_pipeline_components_and_custom_resource"><a class="anchor" href="#_uninstalling_the_openshift_pipeline_components_and_custom_resource"></a>Uninstalling the OpenShift Pipeline components and custom resource</h2>
 <div class="sectionbody">
+<h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="paragraph">
-<div class="title">Procedure</div>
 <p>Uninstall the custom resource, created by default when you install the Pipelines Operator, as follows:</p>
 </div>
 <div class="olist arabic">
@@ -176,22 +176,33 @@
 </li>
 <li>
 <p>Click the <strong>Options</strong> menu {kebab} adjacent to the <strong>cluster</strong> config listed in the <strong>Configs</strong> screen, and select <strong>Delete Config</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Deleting the <strong>cluster</strong> (instance of config) custom resource, will delete the openshift-pipelines components and all the Tasks and Pipelines on the cluster will be lost.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Click <strong>Delete</strong> to confirm the deletion of the custom resource.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Deleting the <strong>cluster</strong> (instance of config) will delete the openshift-pipelines components and all the Tasks and Pipelines on the cluster will be lost.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h2>
 <div class="sectionbody">
+<h3 id="_procedure_2" class="discrete">Procedure</h3>
 <div class="paragraph">
-<div class="title">Procedure</div>
 <p>To uninstall the Pipelines operator, follow these steps:</p>
 </div>
 <div class="olist arabic">
