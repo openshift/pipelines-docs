@@ -253,7 +253,7 @@ If you use a hosted hypervisor, see the <a href="https://access.redhat.com/docum
 <h2 id="defining-and-creating-pipeline-tasks_using-openshift-pipelines"><a class="anchor" href="#defining-and-creating-pipeline-tasks_using-openshift-pipelines"></a>Defining and creating pipeline tasks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for instance, build an image.</p>
+<p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for example, build an image.</p>
 </div>
 <div class="paragraph">
 <p>Every <code>Task</code> runs as a pod and each <code>step</code> runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use <code>inputs</code> parameters, for example, a git , and <code>outputs</code> parameters, for example, an image in a registry, to interact with other tasks.</p>
@@ -372,7 +372,7 @@ spec:
 </div>
 </li>
 <li>
-<p>To the above <code>PipelineResource</code> YAML file, add another <code>PipelineResource</code>  that defines the OpenShift internal registry to which you want to push the PetClinic image, as shown below, and save it.</p>
+<p>Add another <code>PipelineResource</code>, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.</p>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
