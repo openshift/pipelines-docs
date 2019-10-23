@@ -82,4 +82,4 @@ Shows taskruns logs.
 Manages clustertasks.
 
 === link:https://github.com/tektoncd/cli/blob/release-v0.4.0/docs/cmd/tkn_clustertask_list.md[tkn clustertask list]
-Lists clusrertasks in a namespace.
+Lists clustertasks in a namespace.
