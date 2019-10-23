@@ -26,7 +26,7 @@ spec:
     value: https://github.com/spring-projects/spring-petclinic
 ----
 
-. To the above `PipelineResource` YAML file, add another `PipelineResource`  that defines the OpenShift internal registry to which you want to push the PetClinic image, as shown below, and save it.
+. Add another `PipelineResource`, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.
 +
 ----
 apiVersion: tekton.dev/v1alpha1
