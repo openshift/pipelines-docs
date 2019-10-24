@@ -43,7 +43,7 @@ spec:
 . Create the above pipeline resources as follows:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-resources.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml
 ----
 
 . Verify the resources created as follows:

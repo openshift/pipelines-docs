@@ -68,7 +68,7 @@ The execution order of the tasks is determined by the dependencies defined betwe
 . Create the `Pipeline`:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-deploy-pipeline.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/01-build-deploy.yaml
 ----
 +
 . Verify that the `Pipeline` has been added to the application as follows:
