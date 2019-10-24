@@ -29,7 +29,6 @@ Pipelinerun started: petclinic-deploy-pipeline-run-q62p8
 ====
 Note: OpenShift Pipelines 0.7 does not automatically use the pipeline service account for running pipelineruns. This has been fixed in the OpenShift Pipelines 0.8 release. If you want to use the OpenShift Console developer perspective to start the pipeline with OpenShift Pipelines 0.7, run the following commands to elevate the permissions of the default service account used for running pipelineruns that are started by the OpenShift Console, as follows:
 ----
-$ oc adm policy add-scc-to-user privileged -z default
 $ oc adm policy add-role-to-user edit -z default
 ----
 ====

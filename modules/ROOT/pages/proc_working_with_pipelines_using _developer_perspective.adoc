@@ -1,0 +1,52 @@
+// Ths module is included in the following assembly:
+//
+// assembly_using-openshift-pipelines.adoc
+
+[id="working-with-pipelines_using_developer_perspective_{context}"]
+= Working with Pipelines using the OpenShift  Developer Perspective
+
+After you create Pipelines using the `tkn` CLI or YAML files. You can visually interact with your deployed Pipelines on the link:https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html[Developer Perspective] of the Openshift web console.
+
+The *Pipelines* view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.
+
+[Discrete]
+=== Prerequisites
+
+To view your pipelines in the *Pipelines* view and interact with them, ensure that:
+
+* You have access to an OpenShift Cluster and have logged in to the web console and are in the link:https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html[Developer perspective].
+* You have cluster administrator privileges to install operators and have link:https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html[installed the OpenShift Pipelines Operator].
+* You have created a project, link:https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html[deployed an application, and created a pipeline] for the application.
+
+[Discrete]
+=== Procedure
+
+To visually interact  with the pipelines in your project:
+
+. In the *Pipelines* view of the Developer Perspective, select the project you created from the *Project* drop-down to see the pipelines listed in the *Pipelines* page.
++
+image::pipeine_list.png[Pipelines in the Developer perspective]
+
+. Click on the required pipeline to see the *Pipeline Details* page. The pipelines *Overview* provides a visual representation of all the serial and parallel tasks in the pipeline.
++
+image::pipeline_overview.png[Pipeline overview]
+
+. Click:
+.. *Pipeline Runs* tab to see the completed, running, or failed runs for the pipeline.
+.. *Parameters* tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.
+.. *Resources* tab to see the resources defined in the Pipeline and add or edit additional resources as required.
+
+. Click *Actions* on the top-right corner and select *Start* to see the *Start Pipeline* dialog box. The resources populated in the *Start Pipeline* dialog box are based on the pipeline definition.
+. Use the drop-downs in the *Start Pipeline* dialog box to select or create the required resources to customize them as required, and click *Start* to start the pipeline run.
+. The *Pipeline Run Details* page displays the pipeline being executed. You can:
+
+* Hover over the tasks to see the time taken for each task execution.
+* Click on a task to see logs for that particular task.
+* Click the *Logs* tab to see the logs as per the execution sequence of the tasks.
++
+image::pipeline_run.png[Pipeline run]
+
+. Click *Pipelines Runs* in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the *Pipeline Runs* page.
+
+* Use the filters to see the complete, running, or failed pipeline runs.
+* Use the *Options* menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.
