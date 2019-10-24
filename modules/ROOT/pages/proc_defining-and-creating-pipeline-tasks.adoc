@@ -52,8 +52,8 @@ oc create -f maven-build-task.yaml
 . Install the `s2i-java` and `openshift-client` reusable `Tasks` from the link:https://github.com/tektoncd/catalog[catalog repository], which contains a list of reusable `Tasks` for `Pipeline` s:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/openshift-client/openshift-client-task.yaml
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/master/s2i-java8/s2i-java-8-task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/tektoncd-catalog/release-v0.7/openshift-client/openshift-client-task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/release-v0.7/s2i-java-8/s2i-java-8-task.yaml
 ----
 
 . Verify the `Tasks` added to the `Pipeline` as follows:

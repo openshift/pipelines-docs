@@ -35,15 +35,18 @@ In addition to the fixes and stability improvements, here is a highlight of what
 
 == Getting support
 
-.Product:
+[discrete]
+=== Product
 If you find an error, encounter a bug or have suggestions for improving the functionality of OpenShift Pipelines, file an issue in the link:https://github.com/openshift/tektoncd-pipeline-operator[Tektoncd Pipeline Operator] repository.
 
 Provide as many details in the description of the issue as possible.
 
-.Documentation:
+[discrete]
+=== Documentation
 If you find an error or have suggestions for improving the documentation, file an issue in link:https://github.com/openshift/pipelines-docs[pipelines documentation] repository.
 
-.Getting in touch with the product team:
+[discrete]
+=== Getting in touch with the product team
 For questions and feedback subscribe to the link:mailto:pipelines-interest@redhat.com[pipelines-interest@redhat.com]  mailing list or join the link:https://coreos.slack.com/messages/CG5GV6CJD[#tektoncd-pipelines] channel on CoreOS Slack.
 
 == Known Issues
