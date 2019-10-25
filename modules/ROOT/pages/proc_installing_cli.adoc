@@ -47,6 +47,16 @@ curl -LO https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Linu
 sudo tar xvzf tkn_0.4.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
 ----
 
+=== For Windows
+
+. Get the `tar.xz`:
++
+----
+PS C:\Users\Admin\Downloads> curl -Uri https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Windows_i386.tar.gz -OutFile tkn_0.4.0_Windows_i386.tar.gz
+----
+
+. Right click *tkn_0.4.0_Windows_i386.tar.gz* to extract `tkn`.
+
 ////
 == Installing with Go language
 You should have link:https://golang.org/doc/install[Go language] installed and the go environment set up correctly.
