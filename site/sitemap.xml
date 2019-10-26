@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+bld_exp
 <loc>https://openshift.github.io/pipelines-docs/docs/0.7/assembly_cli_reference.html</loc>
 <lastmod>2019-10-26T15:31:44.733Z</lastmod>
 </url>
@@ -191,5 +192,6 @@
 <url>
 <loc>https://openshift.github.io/pipelines-docs/docs/0.5/ref_cli_reference.html</loc>
 <lastmod>2019-10-26T15:31:44.733Z</lastmod>
+
 </url>
 </urlset>
