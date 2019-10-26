@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OpenShift Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/index.html">
+    <title>Deploying an application to OpenShift :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_deploying-an-application-to-openshift.html">
     <meta name="generator" content="Antora 2.1.2">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -70,7 +70,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -135,75 +135,108 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">OpenShift Pipelines</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="admonitionblock important">
+<h1 class="page">Deploying an application to OpenShift</h1>
+<h3 id="_prerequisites" class="discrete">Prerequisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You have installed <a href="proc_installing-pipelines-operator.html">OpenShift Pipelines</a> using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.</p>
+</li>
+<li>
+<p>You have installed the <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/proc_installing_cli.html">Tekton CLI</a></p>
+</li>
+<li>
+<p>You have installed <a href="https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC">CodeReady Containers (CRC)</a> - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg">documentation for CRC</a>.</p>
+</li>
+</ul>
+</div>
+<h3 id="_procedure" class="discrete">Procedure</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a local CRC virtual machine:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ crc start</pre>
+</div>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
-</div>
-<div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
-</div>
-<div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, please reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
-</div>
+If you use a hosted hypervisor, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg#starting-the-virtual-machine_gsg">CRC documentation</a>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
+<p><code>crc start</code> output contains user login and password needed for logging into the cluster.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
-</li>
+<p>Add the cached <code>oc</code> binary to your PATH:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
-</li>
-<li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
-</li>
-</ul>
+<p>Run the crc oc-env command to print the command needed to add the cached oc binary to your PATH:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ crc oc-env</pre>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional resources</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>For more details on defining pipelines, see the <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html">Using Pipelines documentation</a>.</p>
 </li>
 <li>
-<p>For more information on Tekton see the <a href="https://github.com/tektoncd">Tekton Pipelines documentation</a>.</p>
+<p>Run the printed command.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>Visit our <a href="https://github.com/openshift/pipelines-docs">GitHub</a> repository for more information or to contribute.</p>
+<p>Log into the OpenShift cluster with the provided login and password:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://api.crc.testing:6443</pre>
+</div>
+</div>
 </li>
-</ul>
+<li>
+<p>Create a project for the sample application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-project pipelines-tutorial</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Create the Kubernetes objects for deploying the PetClinic application on OpenShift:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to <strong>Home</strong> &#8594; <strong>Projects</strong> &#8594; <strong>Status</strong> in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the container images for the PetClinic application and completes the deployment.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/initiate_deployment.png" alt="Initiate deployment">
+</div>
+</div>
+</li>
+</ol>
 </div>
 </article>
 </main>

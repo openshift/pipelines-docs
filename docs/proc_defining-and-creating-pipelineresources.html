@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OpenShift Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/index.html">
+    <title>Defining and creating pipeline resources :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_defining-and-creating-pipelineresources.html">
     <meta name="generator" content="Antora 2.1.2">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -76,7 +76,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -135,75 +135,79 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">OpenShift Pipelines</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
+<h1 class="page">Defining and creating pipeline resources</h1>
 <div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
+<p><code>PipelineResources</code> are artifacts that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>.</p>
 </div>
+<h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
+<p>After you create <code>Task</code> s, create <code>PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
 </div>
-<div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, please reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
+<p>Create a <code>PipelineResource</code> YAML file with a <code>PipelineResource</code> that defines the Git repository and reference for the PetClinic application as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-git
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/spring-projects/spring-petclinic</pre>
+</div>
+</div>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
-</li>
-<li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
-</li>
-<li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
-</li>
-</ul>
+<p>Add another <code>PipelineResource</code>, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-image
+spec:
+  type: image
+  params:
+  - name: url
+    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional resources</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>For more details on defining pipelines, see the <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html">Using Pipelines documentation</a>.</p>
 </li>
 <li>
-<p>For more information on Tekton see the <a href="https://github.com/tektoncd">Tekton Pipelines documentation</a>.</p>
+<p>Create the above pipeline resources as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Visit our <a href="https://github.com/openshift/pipelines-docs">GitHub</a> repository for more information or to contribute.</p>
+<p>Verify the resources created as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn resource ls
+
+NAME              TYPE    DETAILS
+petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
+petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
+</div>
+</div>
 </li>
-</ul>
-</div>
-</div>
+</ol>
 </div>
 </article>
 </main>
