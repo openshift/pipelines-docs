@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OpenShift Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/index.html">
+    <title>Task :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/con_pipeline-task.html">
     <meta name="generator" content="Antora 2.1.2">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -31,7 +31,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -135,55 +135,143 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
+    <li><a href="con_pipeline-task.html">1.1 Task</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">OpenShift Pipelines</h1>
+<h1 class="page">Task</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
+<p>A <code>Task</code> (or a <code>ClusterTask</code>) is a collection of sequential steps that run as part of a continuous integration flow. A <code>Task</code> runs in the pod on your cluster.</p>
 </div>
 <div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
-</div>
-<div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, please reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
+<p>A <code>Task</code> declares:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
+<p>Inputs</p>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
+<p>Outputs</p>
 </li>
 <li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
-</li>
-<li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
+<p>Steps</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>A <code>Task</code> is available in a namespace and a <code>ClusterTask</code> is available across the cluster. The sequential execution of <code>Tasks</code> defines a <code>Pipeline</code>. When you create a <code>Pipeline</code> you define the order of the <code>Tasks</code> that you want to run.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/steps_tasks_pipeline.png" alt="steps tasks pipeline"></span></p>
+</div>
+<div class="paragraph">
+<p>To define a configuration file for a <code>Task</code> resource, specify the following fields:</p>
+</div>
+<div class="paragraph">
+<p><strong>Required</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>apiVersion</code> - Specifies the API version.</p>
+</li>
+<li>
+<p><code>kind</code> - Specify the <code>Task</code> resource object</p>
+</li>
+<li>
+<p><code>metadata</code> - Specifies data to uniquely identify the <code>Task</code> resource object, for example a <code>name</code>.</p>
+</li>
+<li>
+<p><code>spec</code> - Specifies the configuration information for the <code>Task</code> resource object. <code>Task</code> steps must be defined.
+the following fields:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#steps"><code>steps</code></a> - Specifies one or more container images that run in your <code>Task</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><em>Optional</em></strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#inputs"><code>inputs</code></a> - Specifies parameters and <code>PipelineResources</code> needed by your <code>Task</code>. A <code>Task</code> can declare the inputs it needs, which can be either or both:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#parameters"><code>parameters</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#input-resources"><code>input resources</code></a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#steps"><code>outputs</code></a> - Specifies <code>PipelineResources</code> created by your <code>Task</code></p>
+</li>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#volumes"><code>volumes</code></a> - Specifies one or more volumes that you want to make available to your <code>Task</code> steps.</p>
+</li>
+<li>
+<p><a href="https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#step-template"><code>stepTemplate</code></a> - Specifies a <code>Container</code> step definition to use as the basis for all steps in a <code>Task</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following example shows a configured YAML file where the fields are completed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: example-task-name
+spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+    params:
+      - name: pathToDockerFile
+        type: string
+        description: The path to the dockerfile to build
+        default: /workspace/workspace/Dockerfile
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+  steps:
+    - name: openshift-example
+      image: openshift
+      args: ["openshift-build-example", "SECRETS-example.md"]
+    - image: gcr.io/example-builders/build-example
+      command: ["echo"]
+      args: ["$(inputs.params.pathToDockerFile)"]
+    - name: dockerfile-pushexample
+      image: gcr.io/example-builders/push-example
+      args: ["push", "$(outputs.resources.builtImage.url)"]
+      volumeMounts:
+        - name: docker-socket-example
+          mountPath: /var/run/docker.sock
+  volumes:
+    - name: example-volume
+      emptyDir: {}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -193,13 +281,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>For more details on defining pipelines, see the <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html">Using Pipelines documentation</a>.</p>
-</li>
-<li>
-<p>For more information on Tekton see the <a href="https://github.com/tektoncd">Tekton Pipelines documentation</a>.</p>
-</li>
-<li>
-<p>Visit our <a href="https://github.com/openshift/pipelines-docs">GitHub</a> repository for more information or to contribute.</p>
+<p>To learn more about configuring files for a <code>Task</code> resource, read about <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields">Required Fields</a>.</p>
 </li>
 </ul>
 </div>

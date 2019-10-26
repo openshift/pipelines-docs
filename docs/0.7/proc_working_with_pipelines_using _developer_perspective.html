@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OpenShift Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/index.html">
+    <title>Working with Pipelines using the OpenShift  Developer Perspective :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/proc_working_with_pipelines_using%20_developer_perspective.html">
     <meta name="generator" content="Antora 2.1.2">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -116,14 +116,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
+        </li>
+        <li class="version">
+          <a href="../0.5/index.html">0.5</a>
         </li>
       </ul>
     </li>
@@ -135,74 +138,125 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="proc_working_with_pipelines_using%20_developer_perspective.html">Working with Pipelines using the OpenShift  Developer Perspective</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">OpenShift Pipelines</h1>
+<h1 class="page">Working with Pipelines using the OpenShift  Developer Perspective</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
+<p>After you create Pipelines using the <code>tkn</code> CLI or YAML files. You can visually interact with your deployed Pipelines on the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer Perspective</a> of the Openshift web console.</p>
 </div>
 <div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
+<p>The <strong>Pipelines</strong> view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
 <div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, please reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
+<p>To view your pipelines in the <strong>Pipelines</strong> view and interact with them, ensure that:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
+<p>You have access to an OpenShift Cluster and have logged in to the web console and are in the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer perspective</a>.</p>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
+<p>You have cluster administrator privileges to install operators and have <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html">installed the OpenShift Pipelines Operator</a>.</p>
 </li>
 <li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
-</li>
-<li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
+<p>You have created a project, <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html">deployed an application, and created a pipeline</a> for the application.</p>
 </li>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h3>
+<div class="paragraph">
+<p>To visually interact  with the pipelines in your project:</p>
 </div>
-<div class="sect1">
-<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional resources</h2>
-<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Pipelines</strong> view of the Developer Perspective, select the project you created from the <strong>Project</strong> drop-down to see the pipelines listed in the <strong>Pipelines</strong> page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeine_list.png" alt="Pipelines in the Developer perspective">
+</div>
+</div>
+</li>
+<li>
+<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. The pipelines <strong>Overview</strong> provides a visual representation of all the serial and parallel tasks in the pipeline.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_overview.png" alt="Pipeline overview">
+</div>
+</div>
+</li>
+<li>
+<p>Click:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.</p>
+</li>
+<li>
+<p><strong>Resources</strong> tab to see the resources defined in the Pipeline and add or edit additional resources as required.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> on the top-right corner and select <strong>Start</strong> to see the <strong>Start Pipeline</strong> dialog box. The resources populated in the <strong>Start Pipeline</strong> dialog box are based on the pipeline definition.</p>
+</li>
+<li>
+<p>Use the drop-downs in the <strong>Start Pipeline</strong> dialog box to select or create the required resources to customize them as required, and click <strong>Start</strong> to start the pipeline run.</p>
+</li>
+<li>
+<p>The <strong>Pipeline Run Details</strong> page displays the pipeline being executed. You can:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For more details on defining pipelines, see the <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html">Using Pipelines documentation</a>.</p>
+<p>Hover over the tasks to see the time taken for each task execution.</p>
 </li>
 <li>
-<p>For more information on Tekton see the <a href="https://github.com/tektoncd">Tekton Pipelines documentation</a>.</p>
+<p>Click on a task to see logs for that particular task.</p>
 </li>
 <li>
-<p>Visit our <a href="https://github.com/openshift/pipelines-docs">GitHub</a> repository for more information or to contribute.</p>
+<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_run.png" alt="Pipeline run">
+</div>
+</div>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Click <strong>Pipelines Runs</strong> in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the <strong>Pipeline Runs</strong> page.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the filters to see the complete, running, or failed pipeline runs.</p>
+</li>
+<li>
+<p>Use the <strong>Options</strong> menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </article>
@@ -212,7 +266,7 @@
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

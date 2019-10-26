@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OpenShift Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/index.html">
+    <title>Image resource :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/con_pipeline-image-resources.html">
     <meta name="generator" content="Antora 2.1.2">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -44,7 +44,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -116,14 +116,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
+        </li>
+        <li class="version">
+          <a href="../0.5/index.html">0.5</a>
         </li>
       </ul>
     </li>
@@ -135,73 +138,111 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
+    <li><a href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a></li>
+    <li><a href="con_pipeline-image-resources.html">1.2.3 Image resources</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">OpenShift Pipelines</h1>
+<h1 class="page">Image resource</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
+<p>An Image resource represents an image in a remote repository. It is
+usually used as an output for <code>Tasks</code> that build images. This allows the <code>Tasks</code> to push to any registry.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: example-resources-image
+  namespace: default
+spec:
+  type: image
+  params:
+    - name: URL
+      value: gcr.io/staging-images/example</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
-</div>
-<div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, please reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and delivery solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
+<p>The parameters that can be added are the following:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
+<p><code>URL</code>: The complete path to the image, including the registry and the image tag.</p>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
-</li>
-<li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
-</li>
-<li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
+<p><code>digest</code>: The <a href="https://success.docker.com/article/images-tagging-vs-digests">image digest</a> uniquely identifies a particular build of an image with a tag.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional resources</h2>
+<h2 id="_surfacing_the_image_digest_built_in_a_task"><a class="anchor" href="#_surfacing_the_image_digest_built_in_a_task"></a>Surfacing the image digest built in a task</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>For more details on defining pipelines, see the <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_using-pipelines.html">Using Pipelines documentation</a>.</p>
-</li>
-<li>
-<p>For more information on Tekton see the <a href="https://github.com/tektoncd">Tekton Pipelines documentation</a>.</p>
-</li>
-<li>
-<p>Visit our <a href="https://github.com/openshift/pipelines-docs">GitHub</a> repository for more information or to contribute.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>To surface the image digest in the output of the <code>TaskRun</code> the builder tool should produce this information in an <a href="https://github.com/opencontainers/image-spec/blob/master/image-layout.md">OCI Image specification</a> <code>index.json</code> file. This file should be placed on a location as specified in the task definition under the resource <code>outputImageDir</code>. Annotations in <code>index.json</code>
+are ignored, and if there are multiple versions of the image, the latest isused.</p>
+</div>
+<div class="paragraph">
+<p>The build-push task defines the <code>outputImageDir</code> for the <code>builtImage</code> resource in <code>/workspace/buildImage</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build-push
+spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+        outputImageDir: /workspace/builtImage
+  steps: ...</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If no value is specified for <code>outputImageDir</code>, it defaults to <code>/builder/home/image-outputs/{resource-name}</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>TaskRun</code> includes the image digest in the <code>resourcesResult</code> field and is part of the <code>TaskRun.Status</code>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>status:
+    ...
+    resourcesResult:
+    - digest: sha256:eed29cd0b6feeb1a92bc3c4f977fd203c63b376a638731c88cacefe3adb1c660
+      name: example-image-web
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>index.json</code> file is not produced, the image digest will not be included in the <code>TaskRun</code> output.</p>
 </div>
 </div>
 </div>
@@ -212,7 +253,7 @@
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
