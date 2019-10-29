@@ -8,5 +8,5 @@ content:
       branches: op-0.5-master, op-0.7-master    
 ui:
   bundle:
-    url: ./ui-bundle.zip
+    url: https://github.com/aerogear/antora-ui/raw/master/build/ui-bundle.zip
     snapshot: true
