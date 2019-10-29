@@ -5,8 +5,8 @@ site:
 content:
   sources:
     - url: https://github.com/openshift/pipelines-docs.git
-      branches: [op-0.5-master, op-0.7-master]   
+      branches: op-0.5-master, op-0.7-master
 ui:
   bundle:
-    url: https://github.com/openshift/pipelines-docs/blob/master/ui-bundle.zip?raw=true
+    url: ./ui-bundle.zip
     snapshot: true
