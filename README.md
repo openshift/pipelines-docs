@@ -6,7 +6,7 @@ OpenShift Pipelines is a cloud-native CI/CD solution built for Kubernetes and is
 It complements the Jenkins images that are shipped with OpenShift (OCP).
 
 The operator for OpenShift Pipelines is available in the OpenShift OperatorHub.
-To try out OpenShift Pipelines, obtain an OCP cluster by visiting [cloud.redhat.com](cloud.redhat.com) or [rhpds.redhat.com](rhpds.redhat.com).
+To try out OpenShift Pipelines, obtain an OCP cluster by visiting [https://cloud.redhat.com](cloud.redhat.com) or [https://rhpds.redhat.com](rhpds.redhat.com).
 
 ----------------------------------------
 
