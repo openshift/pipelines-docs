@@ -8,5 +8,5 @@ content:
       branches: op-0.5-master, op-0.7-master    
 ui:
   bundle:
-    url: https://github.com/openshift/pipelines-docs/raw/master/ui-bundle.zip
+    url: ./ui-bundle.zip
     snapshot: true

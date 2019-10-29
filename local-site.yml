@@ -4,8 +4,8 @@ site:
   start_page: docs::index
 content:
   sources:
-    - url: .
-      branches: HEAD     
+    - url:
+      branches: HEAD       
 ui:
   bundle:
     url: ./ui-bundle.zip
