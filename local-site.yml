@@ -4,7 +4,7 @@ site:
   start_page: docs::index
 content:
   sources:
-    - url:
+    - url: .
       branches: HEAD       
 ui:
   bundle:

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git resource :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/con_pipeline-git-resources.html">
+    <meta name="generator" content="Antora 1.0.3">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+   </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="con_pipeline-git-resources.html">1.2.1 Git resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#">proc_working_with_pipelines_using_developer_perspective.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.7.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OpenShift Pipelines</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">OpenShift Pipelines</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html"></a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main role="main">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
+    <li><a href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a></li>
+    <li><a href="con_pipeline-git-resources.html">1.2.1 Git resources</a></li>
+  </ul>
+</nav>
+</div>
+<article class="doc">
+<h1 class="page">Git resource</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Git resource represents a <a href="https://git-scm.com/">Git</a> repository, that contains
+the source code to be built by the pipeline. Adding the Git resource as an input
+to a <code>Task</code> clones the repository and allows the <code>Task</code> to perform the required
+actions.</p>
+</div>
+<div class="paragraph">
+<p>To create a Git resource using the <code>PipelineResource</code> CRD, use the following as an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: sample_name
+  namespace: default
+spec:
+  type: git
+  params:
+    - name: URL
+      value: https://github.com/URL_address.git
+    - name: revision
+      value: master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following resources can be added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>URL</code>: represents the location of the Git repository. You can use this to change the repository.</p>
+</li>
+<li>
+<p><code>revision</code>: You can use Git <a href="https://git-scm.com/docs/gitrevisions#_specifying_revisions">revision</a> to control which commit or branch is used. If a revision is not specified, the resource will default to <code>latest</code> from <code>master</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_a_fork"><a class="anchor" href="#_using_a_fork"></a>Using a fork</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>URL</code> parameter can be used to point to any Git repository. The following example uses a GitHub fork at <code>master</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>spec:
+  type: git
+  params:
+    - name: URL
+      value: https://github.com/URL_address.git</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_a_branch"><a class="anchor" href="#_using_a_branch"></a>Using a branch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use a <code>revision</code> to create a Git <code>PipelineResource</code> that points to a branch. The following is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>spec:
+  type: git
+  params:
+    - name: URL
+      value: https://github.com/URL_address.git
+    - name: revision
+      value: branch_name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To point to a pull request, you can use
+<a href="https://help.github.com/articles/checking-out-pull-requests-locally/">the pull requests&#8217;s branch</a> and reference number:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>spec:
+  type: git
+  params:
+    - name: URL
+      value: https://github.com/URL_address.git
+    - name: revision
+      value: refs/pull/1111/head</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>The Pipelines Documentation page is built using Antora</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
