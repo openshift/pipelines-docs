@@ -1,0 +1,13 @@
+ 
+site:
+  title: OpenShift Pipelines
+  url: https://openshift.github.io/pipelines-docs/
+  start_page: docs::index
+content:
+  sources:
+    - url: https://github.com/openshift/pipelines-docs.git
+      branches: op-0.5-master, op-0.7-master    
+ui:
+  bundle:
+    url: https://github.com/openshift/pipelines-docs/raw/master/ui-bundle.zip
+    snapshot: true
