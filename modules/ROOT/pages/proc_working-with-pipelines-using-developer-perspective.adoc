@@ -3,7 +3,7 @@
 // assembly_using-openshift-pipelines.adoc
 
 [id="working-with-pipelines_using_developer_perspective_{context}"]
-= Working with Pipelines using the OpenShift  Developer Perspective
+= Working with Pipelines using the OpenShift Developer Perspective
 
 After you create Pipelines using the `tkn` CLI or YAML files. You can visually interact with your deployed Pipelines on the link:https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html[Developer Perspective] of the Openshift web console.
 
