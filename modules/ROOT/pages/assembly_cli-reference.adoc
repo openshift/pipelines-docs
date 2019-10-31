@@ -9,11 +9,11 @@ With the Tekton Pipelines command-line interface (CLI) you can interact with Tek
 
 
 // CLI Installation Guide
-include::proc_installing_cli.adoc[leveloffset=+1]
+include::proc_installing-cli.adoc[leveloffset=+1]
 
 
 // CLI Reference
-include::ref_cli_reference.adoc[leveloffset=+1]
+include::ref_cli-reference.adoc[leveloffset=+1]
 
 
 
