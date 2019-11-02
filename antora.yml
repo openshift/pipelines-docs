@@ -1,6 +1,6 @@
 name: docs
 title: OpenShift Pipelines
-version: 0.7
+version: master
 nav:
   - modules/ROOT/nav.adoc
 

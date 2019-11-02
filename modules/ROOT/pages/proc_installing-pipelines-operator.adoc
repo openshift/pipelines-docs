@@ -10,7 +10,7 @@ OpenShift Pipelines can be installed by using the operator listed in the OpenShi
 [discrete]
 === Prerequisites
 
-* An OpenShift 4 cluster is required for installation. Visit link:https://try.openshift.com[try.openshift.com] for information on setting up an OpenShift 4 cluster.
+* An OpenShift 4 cluster is required for installation. Visit link:https://try.openshift.com/[try.openshift.com] for information on setting up an OpenShift 4 cluster.
 
 * You must have cluster administrator privileges to install and use the Pipelines Operator.
 
