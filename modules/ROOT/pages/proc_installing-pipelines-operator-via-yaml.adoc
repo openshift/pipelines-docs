@@ -1,11 +1,11 @@
 // Module included in the following assemblies:
 //
-// * 
+// * assembly_installing_pipelines.adoc
 
 [id="proc_installing-pipelines-operator-via-yaml.adoc_{context}"]
 = Installing OpenShift Pipelines from the OperatorHub using the CLI
 
-You can install an OpenShift Pipelines from the OperatorHub using the CLI.
+You can install OpenShift Pipelines from the OperatorHub using the CLI.
 
 .Prerequisites
 
@@ -55,3 +55,5 @@ spec:
 ----
 $ oc apply -f sub.yaml
 ----
++
+Openshift Pipelines are now installed in the target namespace.
