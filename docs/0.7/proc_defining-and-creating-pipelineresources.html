@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Triggering and running a pipeline :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_triggering-and-running-a-pipeline.html">
-    <meta name="generator" content="Antora 2.0.0">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <title>Defining and creating pipeline resources :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/proc_defining-and-creating-pipelineresources.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -76,31 +76,37 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+    <a class="nav-link" href="#assembly_cli_reference.adoc">4. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+    <a class="nav-link" href="#proc_installing_cli.adoc">4.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+    <a class="nav-link" href="#ref_cli_reference.adoc">4.2 Basic Commands</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.7.html">Release Notes</a>
   </li>
 </ul>
   </li>
@@ -110,14 +116,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
         </li>
       </ul>
     </li>
@@ -134,52 +140,70 @@
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
     <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
-    <li><a href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a></li>
+    <li><a href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Triggering and running a pipeline</h1>
+<h1 class="page">Defining and creating pipeline resources</h1>
 <div class="paragraph">
-<p>A <code>PipelineRun</code> starts a <code>Pipeline</code> and ties it to the Git and image resources that should be used for the specific invocation.</p>
+<p><code>PipelineResources</code> are artifacts that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>.</p>
 </div>
 <h3 id="_procedure" class="discrete">Procedure</h3>
+<div class="paragraph">
+<p>After you create <code>Task</code> s, create <code>PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start the <code>Pipeline</code> as follows:</p>
+<p>Create a <code>PipelineResource</code> YAML file with a <code>PipelineResource</code> that defines the Git repository and reference for the PetClinic application as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pipeline start petclinic-deploy-pipeline \
-        -r app-git=petclinic-git \
-        -r app-image=petclinic-image \
-        -s pipeline
-
-Pipelinerun started: petclinic-deploy-pipeline-run-q62p8</pre>
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-git
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/spring-projects/spring-petclinic</pre>
 </div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>-r</code> flag specifies the <code>PipelineResource</code> s that should be provided to the pipeline</p>
-</li>
-<li>
-<p>The <code>-s</code> flag specifies the service account to be used for running the pipeline</p>
-<div class="paragraph">
-<p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
-</div>
-</li>
-</ul>
 </div>
 </li>
 <li>
-<p>After a few minutes, verify that the <code>Pipeline</code> ran successfully by listing all the <code>PipelineRuns</code> as follows:</p>
+<p>Add another <code>PipelineResource</code>, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pipeline list
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-image
+spec:
+  type: image
+  params:
+  - name: url
+    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the above pipeline resources as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify the resources created as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn resource ls
 
-NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
-petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92   5 minutes ago   4 minutes   Succeeded</pre>
+NAME              TYPE    DETAILS
+petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
+petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
 </div>
 </div>
 </li>
@@ -192,7 +216,7 @@ petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92 
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

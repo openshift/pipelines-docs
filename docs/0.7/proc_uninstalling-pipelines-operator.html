@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Cluster resource :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/con_pipeline-cluster-resource.html">
-    <meta name="generator" content="Antora 2.0.0">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <title>Uninstalling the OpenShift Pipelines operator and the OpenShift Pipelines :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/proc_uninstalling-pipelines-operator.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -47,7 +47,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
   </li>
 </ul>
@@ -61,7 +61,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
   </li>
 </ul>
@@ -88,19 +88,25 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+    <a class="nav-link" href="#assembly_cli_reference.adoc">4. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+    <a class="nav-link" href="#proc_installing_cli.adoc">4.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+    <a class="nav-link" href="#ref_cli_reference.adoc">4.2 Basic Commands</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.7.html">Release Notes</a>
   </li>
 </ul>
   </li>
@@ -110,14 +116,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
         </li>
       </ul>
     </li>
@@ -133,59 +139,43 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
-    <li><a href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a></li>
-    <li><a href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a></li>
+    <li><a href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a></li>
+    <li><a href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Cluster resource</h1>
+<h1 class="page">Uninstalling the OpenShift Pipelines operator and the OpenShift Pipelines</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>A Cluster resource represents a cluster other than the one Pipelines is currently running on. This resource allows users to deploy applications or functions on different clusters.</p>
+<p>To uninstall pipelines you need to first delete the custom resource (added by default when you install the operator), and then uninstall the pipeline operator. Uninstalling the Pipelines operator will not remove the OpenShift Pipelines components created by default when the operator is installed.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uninstalling_the_openshift_pipeline_components_and_custom_resource"><a class="anchor" href="#_uninstalling_the_openshift_pipeline_components_and_custom_resource"></a>Uninstalling the OpenShift Pipeline components and custom resource</h2>
+<div class="sectionbody">
+<h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="paragraph">
-<p>The resource uses the provided parameters to create a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">kubeconfig</a>
-file that can be used by other steps in the pipeline task to access the target cluster. The kubeconfig file is placed in <code>/workspace/&lt;your-cluster-name&gt;/kubeconfig</code> on your <code>Task</code> container.</p>
+<p>Uninstall the custom resource, created by default when you install the Pipelines Operator, as follows:</p>
 </div>
-<div class="paragraph">
-<p>The Cluster resource has the following parameters:</p>
-</div>
-<div class="paragraph">
-<p><strong>Required</strong>:</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>name</code>: The name to be given to the target cluster, will be used in the kubeconfig file and also as part of the path to the kubeconfig file.</p>
+<p>In the <strong>Administrator</strong> perspective of the Web Console, navigate to <strong>Operators &gt; Installed Operators</strong>.</p>
 </li>
 <li>
-<p><code>URL</code>: Host URL of the master node.</p>
+<p>In the <strong>Project</strong> drop-down select the <strong>OpenShift- Operators</strong> project.</p>
 </li>
 <li>
-<p><code>username</code>: The user with access to the cluster.</p>
+<p>Click on the <strong>OpenShift Pipelines Operator</strong> to see the overview of the operator.</p>
 </li>
 <li>
-<p><code>cadata</code>: Holds PEM-encoded bytes and is typically read from a root certificate bundle.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong><em>Optional</em></strong>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>password</code>: To be used for clusters with basic auth</p>
+<p>Click on the <strong>OpenShift Pipelines config</strong> tab to see the <strong>Configs</strong> screen.</p>
 </li>
 <li>
-<p><code>token</code>: Used for authentication. If present it is used ahead of the password.</p>
-</li>
-<li>
-<p><code>insecure</code>: Indicates whether the server should be accessed without verifying the TLS certificate.</p>
-</li>
-</ul>
-</div>
+<p>Click the <strong>Options</strong> menu {kebab} adjacent to the <strong>cluster</strong> config listed in the <strong>Configs</strong> screen, and select <strong>Delete Config</strong>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -194,30 +184,43 @@ file that can be used by other steps in the pipeline task to access the target c
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Only one authentication technique is allowed per user; either a <code>token</code> or a <code>password</code> should be provided. If both are provided, the <code>password</code> will be ignored.</p>
+<p>Deleting the <strong>cluster</strong> (instance of config) custom resource, will delete the openshift-pipelines components and all the Tasks and Pipelines on the cluster will be lost.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>The following example displays the syntax and structure of a Cluster resource:</p>
+</li>
+<li>
+<p>Click <strong>Delete</strong> to confirm the deletion of the custom resource.</p>
+</li>
+</ol>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: test-cluster
-spec:
-  type: cluster
-  params:
-    - name: URL
-      value: https://10.10.10.10 # url to the cluster master node
-    - name: cadata
-      value: LS0tLS1CRUdJTiBDRVJ.....
-    - name: token
-      value: ZXlKaGJHY2lPaU....</code></pre>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h2>
+<div class="sectionbody">
+<h3 id="_procedure_2" class="discrete">Procedure</h3>
+<div class="paragraph">
+<p>To uninstall the Pipelines operator, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From the <strong>Operators &gt; OperatorHub</strong> page, use the <strong>Filter by keyword</strong> box to search for OpenShift Pipelines Operator.</p>
+</li>
+<li>
+<p>Click on the <strong>OpenShift Pipelines Operator</strong> tile. The operator tile indicates it is installed.</p>
+</li>
+<li>
+<p>In the <strong>OpenShift Pipelines Operator</strong> descriptor screen, click <strong>Uninstall</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Remove Operator Subscription</strong> dialog box, ensure that the <strong>Also completely remove the Operator from the selected namespace</strong> is selected, and click <strong>Remove</strong>.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </article>
@@ -227,7 +230,7 @@ spec:
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>

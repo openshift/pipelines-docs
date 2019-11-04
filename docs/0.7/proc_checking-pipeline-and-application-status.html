@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deleting the project and uninstalling the pipelines operator :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/proc_uninstalling-pipelines-operator.html">
-    <meta name="generator" content="Antora 2.0.0">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <title>Checking pipeline and application status :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/proc_checking-pipeline-and-application-status.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -61,7 +61,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
   </li>
 </ul>
@@ -85,22 +85,28 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+    <a class="nav-link" href="#assembly_cli_reference.adoc">4. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+    <a class="nav-link" href="#proc_installing_cli.adoc">4.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+    <a class="nav-link" href="#ref_cli_reference.adoc">4.2 Basic Commands</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.7.html">Release Notes</a>
   </li>
 </ul>
   </li>
@@ -110,14 +116,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
         </li>
       </ul>
     </li>
@@ -133,71 +139,51 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a></li>
-    <li><a href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a></li>
+    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Deleting the project and uninstalling the pipelines operator</h1>
-<div class="sect1">
-<h2 id="_deleting_the_project"><a class="anchor" href="#_deleting_the_project"></a>Deleting the Project</h2>
-<div class="sectionbody">
+<h1 class="page">Checking pipeline and application status</h1>
+<div class="paragraph">
+<p>You can examine the logs for <code>PipelineRuns</code> to verify its status.</p>
+</div>
 <h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In the OpenShift Web Console, navigate to <strong>Home &gt; Projects</strong> .</p>
+<p>Check the <code>PipelineRun</code> logs as it runs using the <code>tkn pipeline logs</code> command, which interactively allows you to chose the required pipelinerun and inspect the logs:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipeline logs -f
+? Select pipeline : petclinic-deploy-pipeline
+? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
+
+...
+[build : nop] Build successful
+[deploy : build-step-oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
+[deploy : nop] Build successful</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Select the <code>pipelines</code> project, on the listed page.</p>
+<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the PetClinic image is successfully built and deployed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
+</div>
+</div>
 </li>
 <li>
-<p>Right click the menu icon on the <code>pipelines</code> row.</p>
-</li>
-<li>
-<p>Select <strong>Delete Project</strong>.</p>
-</li>
-<li>
-<p>Confirm deletion by typing <strong>pipelines</strong> in the field that appears.</p>
-</li>
-<li>
-<p>Click <strong>Delete</strong>.</p>
-</li>
-<li>
-<p>The project is now deleted from the <strong>Projects</strong> list and cluster.</p>
+<p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
+<div class="listingblock">
+<div class="content">
+<pre>tkn pipeline start petclinic-deploy-pipeline --last</pre>
+</div>
+</div>
 </li>
 </ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_uninstalling_the_pipelines_operator"><a class="anchor" href="#_uninstalling_the_pipelines_operator"></a>Uninstalling the pipelines operator</h2>
-<div class="sectionbody">
-<h3 id="_procedure_2" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to <strong>Catalog &gt; OperatorHub</strong> in the Web Console.</p>
-</li>
-<li>
-<p>Click on the <strong>OpenShift Pipelines Operator</strong> tile. The operator tile will indicate it is installed.</p>
-</li>
-<li>
-<p>The <strong>Show Community Operator</strong>` dialog box will appear. Click <strong>Continue</strong> to proceed.</p>
-</li>
-<li>
-<p>Once, the <strong>OpenShift Pipelines Operator</strong> descriptor screen appears, click <strong>Uninstall</strong>.</p>
-</li>
-<li>
-<p>Select <strong>Also completely remove the Operator from the selected namespace</strong>, in the <strong>Remove Operator Subscription</strong> dialog box.</p>
-</li>
-<li>
-<p>Click <strong>Remove</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </article>
 </main>
@@ -206,7 +192,7 @@
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
