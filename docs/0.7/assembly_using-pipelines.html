@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Using Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/assembly_using-pipelines.html">
-    <meta name="generator" content="Antora 2.0.0">
-    <link rel="stylesheet" href="../_/css/site.css">
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/assembly_using-pipelines.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -18,7 +18,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="master">
+<div class="nav-container" data-component="docs" data-version="0.7">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -88,19 +88,25 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_cli_reference.html">4. CLI Reference</a>
+    <a class="nav-link" href="#assembly_cli_reference.adoc">4. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing_cli.html">4.1 Installing CLI</a>
+    <a class="nav-link" href="#proc_installing_cli.adoc">4.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli_reference.html">4.2 Basic Commands</a>
+    <a class="nav-link" href="#ref_cli_reference.adoc">4.2 Basic Commands</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.7.html">Release Notes</a>
   </li>
 </ul>
   </li>
@@ -110,14 +116,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">OpenShift Pipelines</span>
-    <span class="version">master</span>
+    <span class="version">0.7</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="index.html">0.7</a>
         </li>
       </ul>
     </li>
@@ -156,10 +162,10 @@
 <p>You have installed <a href="proc_installing-pipelines-operator.html">OpenShift Pipelines</a> using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.</p>
 </li>
 <li>
-<p>You have installed the <a href="https://github.com/tektoncd/cli">Tekton CLI</a></p>
+<p>You have installed the <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/proc_installing_cli.html">Tekton CLI</a></p>
 </li>
 <li>
-<p>You have installed the <a href="https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC">CodeReady Containers (CRC)</a> - a recommended solution for quick deployment of OpenShift clusters.</p>
+<p>You have installed <a href="https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC">CodeReady Containers (CRC)</a> - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg">documentation for CRC</a>.</p>
 </li>
 </ul>
 </div>
@@ -180,7 +186,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you use a hosted hypervisor, see the <a href="https://code-ready.github.io/crc/#starting-the-virtual-machine_gsg">CRC documentation</a>.
+If you use a hosted hypervisor, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg#starting-the-virtual-machine_gsg">CRC documentation</a>.
 </td>
 </tr>
 </table>
@@ -224,20 +230,10 @@ If you use a hosted hypervisor, see the <a href="https://code-ready.github.io/cr
 </div>
 </li>
 <li>
-<p>Building container images using build tools such as S2I, Buildah, or Kaniko, require privileged containers to access the cluster. The default security settings in OpenShift do not allow privileged containers. Create a service account for running <code>Pipeline</code> s and enable it to run privileged pods for building container images:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc create serviceaccount pipeline
-$ oc adm policy add-scc-to-user privileged -z pipeline
-$ oc adm policy add-role-to-user edit -z pipeline</pre>
-</div>
-</div>
-</li>
-<li>
 <p>Create the Kubernetes objects for deploying the PetClinic application on OpenShift:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml</pre>
 </div>
 </div>
 </li>
@@ -257,7 +253,7 @@ $ oc adm policy add-role-to-user edit -z pipeline</pre>
 <h2 id="defining-and-creating-pipeline-tasks_using-openshift-pipelines"><a class="anchor" href="#defining-and-creating-pipeline-tasks_using-openshift-pipelines"></a>Defining and creating pipeline tasks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for instance, build an image.</p>
+<p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for example, build an image.</p>
 </div>
 <div class="paragraph">
 <p>Every <code>Task</code> runs as a pod and each <code>step</code> runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use <code>inputs</code> parameters, for example, a git , and <code>outputs</code> parameters, for example, an image in a registry, to interact with other tasks.</p>
@@ -317,8 +313,8 @@ spec:
 <p>Install the <code>s2i-java</code> and <code>openshift-client</code> reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog repository</a>, which contains a list of reusable <code>Tasks</code> for <code>Pipeline</code> s:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/openshift-client/openshift-client-task.yaml
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/master/s2i-java8/s2i-java-8-task.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/tektoncd-catalog/release-v0.7/openshift-client/openshift-client-task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/release-v0.7/s2i-java-8/s2i-java-8-task.yaml</pre>
 </div>
 </div>
 </li>
@@ -376,7 +372,7 @@ spec:
 </div>
 </li>
 <li>
-<p>To the above <code>PipelineResource</code> YAML file, add another <code>PipelineResource</code>  that defines the OpenShift internal registry to which you want to push the PetClinic image, as shown below, and save it.</p>
+<p>Add another <code>PipelineResource</code>, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.</p>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
@@ -395,7 +391,7 @@ spec:
 <p>Create the above pipeline resources as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-resources.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml</pre>
 </div>
 </div>
 </li>
@@ -503,7 +499,7 @@ spec:
 <p>Create the <code>Pipeline</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-deploy-pipeline.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/01-build-deploy.yaml</pre>
 </div>
 </div>
 </li>
@@ -550,6 +546,25 @@ Pipelinerun started: petclinic-deploy-pipeline-run-q62p8</pre>
 </li>
 <li>
 <p>The <code>-s</code> flag specifies the service account to be used for running the pipeline</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note: OpenShift Pipelines 0.7 does not automatically use the pipeline service account for running pipelineruns. This has been fixed in the OpenShift Pipelines 0.8 release. If you want to use the OpenShift Console developer perspective to start the pipeline with OpenShift Pipelines 0.7, run the following commands to elevate the permissions of the default service account used for running pipelineruns that are started by the OpenShift Console, as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc adm policy add-role-to-user edit -z default</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
 </div>
@@ -616,6 +631,118 @@ petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="working-with-pipelines_using_developer_perspective_using-openshift-pipelines"><a class="anchor" href="#working-with-pipelines_using_developer_perspective_using-openshift-pipelines"></a>Working with Pipelines using the OpenShift  Developer Perspective</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you create Pipelines using the <code>tkn</code> CLI or YAML files. You can visually interact with your deployed Pipelines on the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer Perspective</a> of the Openshift web console.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Pipelines</strong> view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.</p>
+</div>
+<div class="sect3">
+<h4 id="_prerequisites_2"><a class="anchor" href="#_prerequisites_2"></a>Prerequisites</h4>
+<div class="paragraph">
+<p>To view your pipelines in the <strong>Pipelines</strong> view and interact with them, ensure that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You have access to an OpenShift Cluster and have logged in to the web console and are in the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer perspective</a>.</p>
+</li>
+<li>
+<p>You have cluster administrator privileges to install operators and have <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html">installed the OpenShift Pipelines Operator</a>.</p>
+</li>
+<li>
+<p>You have created a project, <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html">deployed an application, and created a pipeline</a> for the application.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_procedure_7"><a class="anchor" href="#_procedure_7"></a>Procedure</h4>
+<div class="paragraph">
+<p>To visually interact  with the pipelines in your project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Pipelines</strong> view of the Developer Perspective, select the project you created from the <strong>Project</strong> drop-down to see the pipelines listed in the <strong>Pipelines</strong> page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeine_list.png" alt="Pipelines in the Developer perspective">
+</div>
+</div>
+</li>
+<li>
+<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. The pipelines <strong>Overview</strong> provides a visual representation of all the serial and parallel tasks in the pipeline.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_overview.png" alt="Pipeline overview">
+</div>
+</div>
+</li>
+<li>
+<p>Click:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.</p>
+</li>
+<li>
+<p><strong>Resources</strong> tab to see the resources defined in the Pipeline and add or edit additional resources as required.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> on the top-right corner and select <strong>Start</strong> to see the <strong>Start Pipeline</strong> dialog box. The resources populated in the <strong>Start Pipeline</strong> dialog box are based on the pipeline definition.</p>
+</li>
+<li>
+<p>Use the drop-downs in the <strong>Start Pipeline</strong> dialog box to select or create the required resources to customize them as required, and click <strong>Start</strong> to start the pipeline run.</p>
+</li>
+<li>
+<p>The <strong>Pipeline Run Details</strong> page displays the pipeline being executed. You can:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hover over the tasks to see the time taken for each task execution.</p>
+</li>
+<li>
+<p>Click on a task to see logs for that particular task.</p>
+</li>
+<li>
+<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_run.png" alt="Pipeline run">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Pipelines Runs</strong> in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the <strong>Pipeline Runs</strong> page.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the filters to see the complete, running, or failed pipeline runs.</p>
+</li>
+<li>
+<p>Use the <strong>Options</strong> menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 </article>
 </main>
 </div>
@@ -623,7 +750,7 @@ petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92 
   <p>The Pipelines Documentation page is built using Antora</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script src="../_/js/site.js"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
