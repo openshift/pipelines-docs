@@ -25,7 +25,7 @@ To visually interact  with the pipelines in your project:
 
 . In the *Pipelines* view of the Developer Perspective, select the project you created from the *Project* drop-down to see the pipelines listed in the *Pipelines* page.
 +
-image::pipeine_list.png[Pipelines in the Developer perspective]
+image::pipeline_list.png[Pipelines in the Developer perspective]
 
 . Click on the required pipeline to see the *Pipeline Details* page. The pipelines *Overview* provides a visual representation of all the serial and parallel tasks in the pipeline.
 +
