@@ -15,26 +15,7 @@ You can install OpenShift Pipelines from the OperatorHub using the CLI.
 
 .Procedure
 
-. Create an OperatorGroup object YAML file - `operatorgroup.yaml`:
-+
-----
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: openshift-pipelines-operator	
-  namespace: openshift-marketplace
-spec:
-  targetNamespaces:
-  - openshift-marketplace
-----
-
-.. Create the OperatorGroup object:
-+
-----
-$ oc apply -f operatorgroup.yaml
-----
-
-. Create a Subscription object YAML file to subscribe a namespace to an Operator,
+. Create a Subscription object YAML file to subscribe a namespace to the OpenShift Pipelines Operator,
 for example `sub.yaml`:
 +
 ----
