@@ -37,4 +37,4 @@ spec:
 $ oc apply -f sub.yaml
 ----
 +
-Openshift Pipelines are now installed in the target namespace.
+Openshift Pipelines are now installed in the default target namespace `openshift-pipelines`.
