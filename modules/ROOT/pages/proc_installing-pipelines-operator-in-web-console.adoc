@@ -2,8 +2,8 @@
 // assembly_installing-pipelines.adoc
 
 
-[id="installing-the-pipelines-operator_{context}"]
-= Installing the Pipelines Operator
+[id="installing-the-pipelines-operator-in-web-console_{context}"]
+= Installing the Pipelines Operator in Web Console
 
 OpenShift Pipelines can be installed by using the operator listed in the OpenShift OperatorHub. When you install the pipelines operator, the custom resources required for the pipeline configuration are automatically installed along with the operator.
 
