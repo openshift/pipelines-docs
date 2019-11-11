@@ -3,9 +3,9 @@
 // * assembly_installing_pipelines.adoc
 
 [id="proc_installing-pipelines-operator-via-yaml.adoc_{context}"]
-= Installing OpenShift Pipelines from the OperatorHub using the CLI
+= Installing the OpenShift Pipelines operator using the CLI
 
-You can install OpenShift Pipelines from the OperatorHub using the CLI.
+You can install OpenShift Pipelines operator from the OperatorHub using the CLI.
 
 .Prerequisites
 
@@ -16,7 +16,7 @@ You can install OpenShift Pipelines from the OperatorHub using the CLI.
 .Procedure
 
 . Create a Subscription object YAML file to subscribe a namespace to the OpenShift Pipelines Operator,
-for example `sub.yaml`:
+for example, `sub.yaml`:
 +
 ----
 apiVersion: operators.coreos.com/v1alpha1
@@ -37,4 +37,4 @@ spec:
 $ oc apply -f sub.yaml
 ----
 +
-Openshift Pipelines are now installed in the default target namespace `openshift-pipelines`.
+The OpenShift Pipelines operator is now installed in the default target namespace `openshift-pipelines`.
