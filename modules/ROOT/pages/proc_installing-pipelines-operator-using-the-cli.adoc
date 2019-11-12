@@ -2,7 +2,7 @@
 //
 // * assembly_installing_pipelines.adoc
 
-[id="proc_installing-pipelines-operator-via-yaml.adoc_{context}"]
+[id="proc_installing-pipelines-operator-using-the-cli_{context}"]
 = Installing the OpenShift Pipelines operator using the CLI
 
 You can install OpenShift Pipelines operator from the OperatorHub using the CLI.
