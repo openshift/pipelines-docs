@@ -48,6 +48,12 @@ $ oc login -u <login> -p <password> https://api.crc.testing:6443
 $ oc new-project pipelines-tutorial
 ----
 
+. Run the following command to see the `pipeline` service account:
++
+----
+$ oc get serviceaccount pipeline
+----
+
 . Create the Kubernetes objects for deploying the PetClinic application on OpenShift:
 +
 ----
