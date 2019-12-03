@@ -7,7 +7,9 @@
 
 The following section describes how to install and uninstall OpenShift Pipelines.
 
-include::proc_installing-pipelines-operator.adoc[leveloffset=+1]
+include::proc_installing-pipelines-operator-in-web-console.adoc[leveloffset=+1]
+
+include::proc_installing-pipelines-operator-using-the-cli.adoc[leveloffset=+1]
 
 include::proc_uninstalling-pipelines-operator.adoc[leveloffset=+1]
 

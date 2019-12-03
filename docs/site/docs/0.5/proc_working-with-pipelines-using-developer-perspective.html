@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with Pipelines using the OpenShift Developer Perspective :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.5/proc_working-with-pipelines-using-developer-perspective.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+   </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="0.5">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-git-resources.html">1.2.1 Git resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli-reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli-reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OpenShift Pipelines</span>
+    <span class="version">0.5</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">OpenShift Pipelines</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../0.7/index.html">0.7</a>
+        </li>
+        <li class="version is-current">
+          <a href="index.html">0.5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main role="main">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../0.7/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="proc_working-with-pipelines-using-developer-perspective.html">Working with Pipelines using the OpenShift Developer Perspective</a></li>
+  </ul>
+</nav>
+</div>
+<article class="doc">
+<h1 class="page">Working with Pipelines using the OpenShift Developer Perspective</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you create Pipelines using the <code>tkn</code> CLI or YAML files. You can visually interact with your deployed Pipelines on the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer Perspective</a> of the Openshift web console.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Pipelines</strong> view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
+<div class="paragraph">
+<p>To view your pipelines in the <strong>Pipelines</strong> view and interact with them, ensure that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You have access to an OpenShift Cluster and have logged in to the web console and are in the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer perspective</a>.</p>
+</li>
+<li>
+<p>You have cluster administrator privileges to install operators and have <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html">installed the OpenShift Pipelines Operator</a>.</p>
+</li>
+<li>
+<p>You have created a project, <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html">deployed an application, and created a pipeline</a> for the application.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h3>
+<div class="paragraph">
+<p>To visually interact  with the pipelines in your project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Pipelines</strong> view of the Developer Perspective, select the project you created from the <strong>Project</strong> drop-down to see the pipelines listed in the <strong>Pipelines</strong> page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeine_list.png" alt="Pipelines in the Developer perspective">
+</div>
+</div>
+</li>
+<li>
+<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. The pipelines <strong>Overview</strong> provides a visual representation of all the serial and parallel tasks in the pipeline.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_overview.png" alt="Pipeline overview">
+</div>
+</div>
+</li>
+<li>
+<p>Click:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.</p>
+</li>
+<li>
+<p><strong>Resources</strong> tab to see the resources defined in the Pipeline and add or edit additional resources as required.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> on the top-right corner and select <strong>Start</strong> to see the <strong>Start Pipeline</strong> dialog box. The resources populated in the <strong>Start Pipeline</strong> dialog box are based on the pipeline definition.</p>
+</li>
+<li>
+<p>Use the drop-downs in the <strong>Start Pipeline</strong> dialog box to select or create the required resources to customize them as required, and click <strong>Start</strong> to start the pipeline run.</p>
+</li>
+<li>
+<p>The <strong>Pipeline Run Details</strong> page displays the pipeline being executed. You can:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hover over the tasks to see the time taken for each task execution.</p>
+</li>
+<li>
+<p>Click on a task to see logs for that particular task.</p>
+</li>
+<li>
+<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_run.png" alt="Pipeline run">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Pipelines Runs</strong> in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the <strong>Pipeline Runs</strong> page.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the filters to see the complete, running, or failed pipeline runs.</p>
+</li>
+<li>
+<p>Use the <strong>Options</strong> menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>The Pipelines Documentation page is built using Antora</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

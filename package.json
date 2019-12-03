@@ -35,7 +35,7 @@
     "gulp-stylelint": "~9.0",
     "gulp-uglify": "~3.0",
     "gulp-vinyl-zip": "~2.1 >=2.1.2",
-    "handlebars": "~4.1",
+    "handlebars": "^4.5.1",
     "highlight.js": "~9.15",
     "js-yaml": "~3.13",
     "merge-stream": "~2.0",
@@ -55,6 +55,7 @@
     "vinyl-fs": "~3.0"
   },
   "dependencies": {
-    "@antora/cli": "^2.1.2"
+    "@antora/cli": "^2.1.2",
+    "@antora/site-generator-default": "^2.1.2"
   }
 }

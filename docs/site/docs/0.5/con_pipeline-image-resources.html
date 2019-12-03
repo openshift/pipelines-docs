@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Image resource :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.7/con_pipeline-image-resources.html">
+    <meta name="generator" content="Antora 2.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+   </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="0.5">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-git-resources.html">1.2.1 Git resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator.html">2.1 Installing and updating the Pipelines Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.2 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli-reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli-reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OpenShift Pipelines</span>
+    <span class="version">0.5</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">OpenShift Pipelines</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../0.7/index.html">0.7</a>
+        </li>
+        <li class="version is-current">
+          <a href="index.html">0.5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main role="main">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../0.7/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
+    <li><a href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a></li>
+    <li><a href="con_pipeline-image-resources.html">1.2.3 Image resources</a></li>
+  </ul>
+</nav>
+</div>
+<article class="doc">
+<h1 class="page">Image resource</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Image resource represents an image in a remote repository. It is
+usually used as an output for <code>Tasks</code> that build images. This allows the <code>Tasks</code> to push to any registry.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: example-resources-image
+  namespace: default
+spec:
+  type: image
+  params:
+    - name: URL
+      value: gcr.io/staging-images/example</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The parameters that can be added are the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>URL</code>: The complete path to the image, including the registry and the image tag.</p>
+</li>
+<li>
+<p><code>digest</code>: The <a href="https://success.docker.com/article/images-tagging-vs-digests">image digest</a> uniquely identifies a particular build of an image with a tag.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_surfacing_the_image_digest_built_in_a_task"><a class="anchor" href="#_surfacing_the_image_digest_built_in_a_task"></a>Surfacing the image digest built in a task</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To surface the image digest in the output of the <code>TaskRun</code> the builder tool should produce this information in an <a href="https://github.com/opencontainers/image-spec/blob/master/image-layout.md">OCI Image specification</a> <code>index.json</code> file. This file should be placed on a location as specified in the task definition under the resource <code>outputImageDir</code>. Annotations in <code>index.json</code>
+are ignored, and if there are multiple versions of the image, the latest isused.</p>
+</div>
+<div class="paragraph">
+<p>The build-push task defines the <code>outputImageDir</code> for the <code>builtImage</code> resource in <code>/workspace/buildImage</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build-push
+spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+        outputImageDir: /workspace/builtImage
+  steps: ...</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If no value is specified for <code>outputImageDir</code>, it defaults to <code>/builder/home/image-outputs/{resource-name}</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>TaskRun</code> includes the image digest in the <code>resourcesResult</code> field and is part of the <code>TaskRun.Status</code>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>status:
+    ...
+    resourcesResult:
+    - digest: sha256:eed29cd0b6feeb1a92bc3c4f977fd203c63b376a638731c88cacefe3adb1c660
+      name: example-image-web
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>index.json</code> file is not produced, the image digest will not be included in the <code>TaskRun</code> output.</p>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>The Pipelines Documentation page is built using Antora</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
