@@ -1,6 +1,6 @@
 [id="openshift-pipelines-release-notes"]
-= Openshift Pipelines 0.7 Developer Preview Release Notes
-:context: openshift-pipelines-release-notes-0.7
+= OpenShift Pipelines 0.8 Developer Preview Release Notes
+:context: openshift-pipelines-release-notes-0.8
 
 
 OpenShift Pipelines is a cloud-native CI/CD experience based on the Tekton project, which provides:
