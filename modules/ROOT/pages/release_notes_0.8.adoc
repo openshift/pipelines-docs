@@ -1,5 +1,5 @@
 [id="openshift-pipelines-release-notes"]
-= Release Notes for Openshift Pipelines 0.8 Developer Preview 
+= Release Notes for OpenShift Pipelines 0.8 Developer Preview 
 :context: openshift-pipelines-release-notes-0.8
 
 
