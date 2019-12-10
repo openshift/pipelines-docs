@@ -10,53 +10,83 @@
 [discrete]
 === Procedure
 
-After you create `Task` s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
+After you create `Task`s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
 
-. Create a `PipelineResource` YAML file with a `PipelineResource` that defines the Git repository and reference for the PetClinic application as follows:
+. Create a `resources.yaml` file and inside of it create `PipelineResource`s which contain the specifics of the git repository and image registry to be used in the pipeline during execution.
+
+.. Create a `PipelineResource` that defines the git repository for the frontend application:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-git
+  name: ui-repo
 spec:
   type: git
   params:
-  - name: url
-    value: https://github.com/spring-projects/spring-petclinic
+    - name: url
+      value: http://github.com/openshift-pipelines/vote-ui.git
 ----
 
-. Add another `PipelineResource`, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.
+.. Create a `PipelineResource` that defines the OpenShift internal image registry for the frontend image to be pushed to:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-image
+  name: ui-image
 spec:
   type: image
   params:
-  - name: url
-    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
 ----
 
-. Create the above pipeline resources as follows:
+.. Create a `PipelineResource` that defines the git repository for the backend application:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic-resources.yaml
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: api-repo
+spec:
+  type: git
+  params:
+    - name: url
+      value: http://github.com/openshift-pipelines/vote-api.git
 ----
 
-. Verify the resources created as follows:
+.. Create a `PipelineResource` that defines the OpenShift internal image registry for the backend image to be pushed to:
++
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: api-image
+spec:
+  type: image
+  params:
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+----
+
+. Create the Pipeline Resources:
++
+----
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/resources.yaml
+----
+
+. See the list of resources:
 +
 ----
 $ tkn resource ls
 
-NAME              TYPE    DETAILS
-petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
-petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+NAME        TYPE    DETAILS
+api-repo    git     url: http://github.com/openshift-pipelines/vote-api.git
+ui-repo     git     url: http://github.com/openshift-pipelines/vote-ui.git
+api-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+ui-image    image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
 ----
-
-
 
 ////
 [discrete]
