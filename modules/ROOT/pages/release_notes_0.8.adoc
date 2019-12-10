@@ -1,5 +1,5 @@
 [id="openshift-pipelines-release-notes"]
-= OpenShift Pipelines 0.8 Developer Preview Release Notes
+= Release Notes for OpenShift Pipelines 0.8 Developer Preview
 :context: openshift-pipelines-release-notes-0.8
 
 
@@ -12,26 +12,20 @@ OpenShift Pipelines is a cloud-native CI/CD experience based on the Tekton proje
 * Powerful CLI for interacting with pipelines
 * Integrated user experience with the OpenShift Console developer perspective
 
-To work with OpenShift Pipelines, access an OpenShift 4.2 cluster using cloud.openshift.com or rhpds.redhat.com or download CodeReady Containers. Download Tekton CLI, and run the following commands to create a sample pipeline that uses S2I for building and deploying a Java application:
-
-----
-$ oc create -f http://bit.ly/pipelines-demo
-$ tkn pipeline start petclinic-pipeline -n pipelines-demo
-$ tkn pipeline logs -f
-----
-
 For an in-depth walk-through of OpenShift Pipelines, follow this link:https://github.com/openshift/pipelines-tutorial/[tutorial] to build your first cloud-native pipeline. See the link:https://openshift.github.io/pipelines-docs/docs/docs/index.html[OpenShift Pipelines documentation] to learn the details.
 
 == Notable Features
-In addition to the fixes and stability improvements, here is a highlight of what is new in OpenShift Pipelines 0.7:
+In addition to the fixes and stability improvements, here is a highlight of what is new in OpenShift Pipelines 0.8:
 
-*Side-cars in Tasks:* Run side-cars alongside the steps in a task to provide auxiliary functions, for example, a mock API for testing an application.
+* Support for specifying "0" as no-timeout for PipelineRuns.
+* Support to enable `pipelineSpec` and `resourceSpec` in the `PipelineRun` spec
+* Auto configures a service account (pipeline) for running pipelines that is able to build and push images into the OpenShift internal image registry
+* Supports multiple SSH keys for the same host
+* Ships most commonly used ClusterTasks for S2I, Buildah and OpenShift-Client
+* Ships Tetkon-Triggers v0.1.0 for running pipelines based on Git webhooks
+* PipelineRun and TaskRun metrics in the OpenShift monitoring stack (Prometheus)
+* CLI commands for interacting directly with Tasks and TaskRuns
 
-*Third-party notifications:* Notify third-party systems on completion of a task using CloudEvents that contain the complete details of the task execution as the payload.
-
-*Pipelines in OpenShift Console:* Pipelines are now available in the OpenShift 4.2 web console in the Developer perspective to start pipelines, visually interact with them and inspect logs.
-
-*New Tekton CLI commands:* Explore new commands for various features, such as brew installation, interactive mode for starting pipelines, providing inputs to the pipeline, canceling and deleting commands.
 
 == Getting support
 
@@ -49,13 +43,18 @@ If you find an error or have suggestions for improving the documentation, file a
 === Getting in touch with the product team
 For questions and feedback subscribe to the link:mailto:pipelines-interest@redhat.com[pipelines-interest@redhat.com]  mailing list or join the link:https://coreos.slack.com/messages/CG5GV6CJD[#tektoncd-pipelines] channel on CoreOS Slack.
 
+== Deprecated features
+
+The following items are deprecated in 0.8.0, and will be removed in the next release (0.9.0):
+
+* The *Name* and *Digest* fields on `TaskRunStatus.ResourcesResult` are deprecated.
+* `ServiceAccountName(s)` replaces `ServiceAccount(s)`, `ServiceAccount` and `ServiceAccounts` fields (on TaskRun and PipelineRun) are deprecated.
+
 == Known Issues
 
-* link:https://jira.coreos.com/browse/ODC-2064[ODC-2064]: Starting a pipeline using the OpenShift Console Developer perspective generates a deprecated field in the resulting PipelineRun which prevents the pipeline from starting.
-
-* link:https://jira.coreos.com/browse/ODC-1847[ODC-1847]: Starting a pipeline using the OpenShift Console Developer perspective uses the `default` service account for starting the pipeline and hence requires the user to give sufficient privileges to the `default` service account. The fix is already applied upstream by running pipelines with a preconfigured `pipeline` service account which has sufficient privileges.
+* https://jira.coreos.com/browse/ODC-2464[ODC-2464]: The pipeline graph displays tasks out of order which doesn't match the execution.
 
 == Fixed Issues
 
-* link:https://jira.coreos.com/browse/SRVKP-283[SRVKP-283] - CLI: Sort pipelineruns in descending start time in interactive log.
-* link:https://jira.coreos.com/browse/SRVKP-302[SRVKP-302] - CLI: Pipeline logs command should sort on time started
+* link:https://jira.coreos.com/browse/ODC-2064[ODC-2064]: Starting a pipeline using the OpenShift Console Developer perspective generates a deprecated field in the resulting PipelineRun which prevents the pipeline from starting.
+* https://jira.coreos.com/browse/ODC-1847[ODC-1847]: OpenShift Pipelines can now be started using the OpenShift Console Developer perspective.
