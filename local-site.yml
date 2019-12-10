@@ -5,7 +5,7 @@ site:
 content:
   sources:
     - url: .
-      branches: HEAD     
+      branches: HEAD       
 ui:
   bundle:
     url: ./ui-bundle.zip

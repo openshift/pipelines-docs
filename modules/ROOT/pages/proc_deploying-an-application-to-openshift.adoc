@@ -9,7 +9,7 @@
 === Prerequisites
 
 * You have installed link:proc_installing-pipelines-operator.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
-* You have installed the link:https://github.com/tektoncd/cli[Tekton CLI]
+* You have installed the link:https://openshift.github.io/pipelines-docs/docs/docs/0.7/proc_installing_cli.html[Tekton CLI]
 * You have installed link:https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC[CodeReady Containers (CRC)] - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg[documentation for CRC].
 
 
@@ -57,7 +57,7 @@ $ oc get serviceaccount pipeline
 . Create the Kubernetes objects for deploying the PetClinic application on OpenShift:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/resources/petclinic.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml
 ----
 
 . Navigate to *Home* -> *Projects* -> *Status* in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the container images for the PetClinic application and completes the deployment.
