@@ -12,9 +12,9 @@
 
 After you create `Task`s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
 
-. Create a `resources.yaml` file and inside of it create `PipelineResource`s which contain the specifics of the git repository and image registry to be used in the pipeline during execution.
+. Create a `resources.yaml` file and with the `PipelineResource`s that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution.
 
-.. Create a `PipelineResource` that defines the git repository for the frontend application:
+.. Create a `PipelineResource` that defines the Git repository for the frontend application:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
@@ -28,7 +28,7 @@ spec:
       value: http://github.com/openshift-pipelines/vote-ui.git
 ----
 
-.. Create a `PipelineResource` that defines the OpenShift internal image registry for the frontend image to be pushed to:
+.. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the frontend image:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
@@ -42,7 +42,7 @@ spec:
       value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
 ----
 
-.. Create a `PipelineResource` that defines the git repository for the backend application:
+.. Create a `PipelineResource` that defines the Git repository for the backend application:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
@@ -56,7 +56,7 @@ spec:
       value: http://github.com/openshift-pipelines/vote-api.git
 ----
 
-.. Create a `PipelineResource` that defines the OpenShift internal image registry for the backend image to be pushed to:
+.. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the backend image:
 +
 ----
 apiVersion: tekton.dev/v1alpha1
