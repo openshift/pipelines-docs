@@ -154,59 +154,100 @@
 </div>
 <h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="paragraph">
-<p>After you create <code>Task</code> s, create <code>PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
+<p>After you create <code>Task`s, create `PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a <code>PipelineResource</code> YAML file with a <code>PipelineResource</code> that defines the Git repository and reference for the PetClinic application as follows:</p>
+<p>Create a <code>resources.yaml</code> file and with the `PipelineResource`s that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the frontend application:</p>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-git
+  name: ui-repo
 spec:
   type: git
   params:
-  - name: url
-    value: https://github.com/spring-projects/spring-petclinic</pre>
+    - name: url
+      value: http://github.com/openshift-pipelines/vote-ui.git</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Add another <code>PipelineResource</code>, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the frontend image:</p>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-image
+  name: ui-image
 spec:
   type: image
   params:
-  - name: url
-    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create the above pipeline resources as follows:</p>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the backend application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml</pre>
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: api-repo
+spec:
+  type: git
+  params:
+    - name: url
+      value: http://github.com/openshift-pipelines/vote-api.git</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Verify the resources created as follows:</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the backend image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: api-image
+spec:
+  type: image
+  params:
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create the Pipeline Resources:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/resources.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>See the list of resources:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn resource ls
 
-NAME              TYPE    DETAILS
-petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
-petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic</pre>
+NAME        TYPE    DETAILS
+api-repo    git     url: http://github.com/openshift-pipelines/vote-api.git
+ui-repo     git     url: http://github.com/openshift-pipelines/vote-ui.git
+api-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+ui-image    image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest</pre>
 </div>
 </div>
 </li>
