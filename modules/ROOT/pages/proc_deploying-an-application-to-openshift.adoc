@@ -54,12 +54,8 @@ $ oc new-project pipelines-tutorial
 $ oc get serviceaccount pipeline
 ----
 
-. Create the Kubernetes objects for deploying the PetClinic application on OpenShift:
-+
-----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml
-----
+. In the OpenShift Web Console switch to the *Developer* perspective of the OpenShift Web Console.
 
-. Navigate to *Home* -> *Projects* -> *Status* in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the container images for the PetClinic application and completes the deployment.
+. Select the `pipelines-tutorial` project from the *Project* drop-down menu. On the *Topology* view of the *Developer* perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the simple application which has a frontend and a backend and completes the deployment.
 +
-image::initiate_deployment.png[Initiate deployment]
+image::../assets/images/application-deployed.png[Application Deployed]

@@ -14,16 +14,14 @@ A `PipelineRun` starts a `Pipeline` and ties it to the Git and image resources t
 . Start the `Pipeline` as follows:
 +
 ----
-$ tkn pipeline start petclinic-deploy-pipeline \
-        -r app-git=petclinic-git \
-        -r app-image=petclinic-image \
-        -s pipeline
-
-Pipelinerun started: petclinic-deploy-pipeline-run-q62p8
+$ tkn pipeline start build-and-deploy
+? Choose the git resource to use for api-repo: api-repo (http://github.com/openshift-pipelines/vote-api.git)
+? Choose the image resource to use for api-image: api-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest)
+? Choose the git resource to use for ui-repo: ui-repo (http://github.com/openshift-pipelines/vote-ui.git)
+? Choose the image resource to use for ui-image: ui-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest)
+Pipelinerun started: build-and-deploy-run-z2rz8
+Showing logs...
 ----
-+
-* The `-r` flag specifies the `PipelineResource` s that should be provided to the pipeline
-* The `-s` flag specifies the service account to be used for running the pipeline
 +
 [NOTE]
 ====
@@ -41,8 +39,10 @@ Starting a pipeline instantiates the `PipelineRun` and creates a number of pods 
 ----
 $ tkn pipeline list
 
-NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
-petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92   5 minutes ago   4 minutes   Succeeded
+ tkn pipeline list
+
+NAME               AGE              LAST RUN                     STARTED         DURATION    STATUS
+build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago   5 minutes   Succeeded
 ----
 
 ////

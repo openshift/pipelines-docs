@@ -49,11 +49,11 @@ Only the requirement for a git repository is declared on the `Task` and not a sp
 oc create -f maven-build-task.yaml
 ----
 
-. Install the `s2i-java` and `openshift-client` reusable `Tasks` from the link:https://github.com/tektoncd/catalog[catalog repository], which contains a list of reusable `Tasks` for `Pipeline` s:
+. Install the `apply-manifests` and `update-deployment` tasks from the repositories, which contain a list of reusable `Tasks` for `Pipeline`s:
 +
 ----
-$ oc create -f https://raw.githubusercontent.com/openshift/tektoncd-catalog/release-v0.7/openshift-client/openshift-client-task.yaml
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/release-v0.7/s2i-java-8/s2i-java-8-task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/update_deployment_task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/apply_manifest_task.yaml
 ----
 
 . Verify the `Tasks` added to the `Pipeline` as follows:
@@ -62,9 +62,31 @@ $ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/rel
 $ tkn task ls
 
 NAME              AGE
-maven-build       23 secs ago
-openshift-client  10 secs ago
-s2i-java          11 secs ago
+apply-manifests     10 seconds ago
+update-deployment   4 seconds ago
+----
+
+. Verify Operator installed additional tasks -`buildah` and `s2i-python-3`:
++
+----
+$ tkn clustertask ls
+NAME                      AGE
+buildah                   9 hours ago
+buildah-v0-8-0            9 hours ago
+openshift-client          9 hours ago
+openshift-client-v0-8-0   9 hours ago
+s2i                       9 hours ago
+s2i-go                    9 hours ago
+s2i-go-v0-8-0             9 hours ago
+s2i-java-11               9 hours ago
+s2i-java-11-v0-8-0        9 hours ago
+s2i-java-8                9 hours ago
+s2i-java-8-v0-8-0         9 hours ago
+s2i-nodejs                9 hours ago
+s2i-nodejs-v0-8-0         9 hours ago
+s2i-python-3              9 hours ago
+s2i-python-3-v0-8-0       9 hours ago
+s2i-v0-8-0                9 hours ago
 ----
 
 
