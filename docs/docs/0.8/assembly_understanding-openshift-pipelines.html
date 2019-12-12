@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pipeline Resource types :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/con-pipeline-resource-types.html">
+    <title>Understanding OpenShift Pipelines :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/assembly_understanding-openshift-pipelines.html">
     <meta name="generator" content="Antora 2.1.2">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -34,7 +34,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
 <ul class="nav-list">
@@ -142,72 +142,58 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="con_pipelines-concepts.html">1. Pipelines concepts</a></li>
-    <li><a href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a></li>
+    <li><a href="assembly_understanding-openshift-pipelines.html">Understanding OpenShift Pipelines</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Pipeline Resource types</h1>
+<h1 class="page">Understanding OpenShift Pipelines</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p><code>PipelineResources</code> are a set of objects that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>. A <code>Task</code> can have multiple inputs and outputs.</p>
+<p>Unresolved include directive in modules/ROOT/pages/assembly_understanding-openshift-pipelines.adoc - include::con_openshift-pipelines.adoc[]</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipelines-concepts_understanding-openshift-pipelines"><a class="anchor" href="#pipelines-concepts_understanding-openshift-pipelines"></a>Pipelines concepts</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The following <code>PipelineResources</code> are currently supported:</p>
+<p>The Custom Resource Definitions (CRDs) provided by OpenShift Pipelines include: <code>Task</code>,<code>Pipeline</code>,<code>PipelineRun</code>, <code>TaskRun</code>, and <code>PipelineResource</code>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Git Resource</p>
+<p>A <code>Task</code> is the smallest configurable unit in a <code>Pipeline</code> and is essentially a function of inputs and outputs that inform the <code>Pipeline</code> build. It can run individually or as a part of a <code>Pipeline</code>. A <code>Pipeline</code> includes one or more <code>Tasks</code>, with a <code>Task</code> consisting of one or more steps. Steps are a series of commands that are sequentially executed by the <code>Task</code>.</p>
 </li>
 <li>
-<p>Pull Request Resource</p>
+<p>A <code>Pipeline</code> is a series of <code>Tasks</code> that are executed to build complex workflows that automate the build, deployment and delivery of applications. It is a collection of <code>PipelineResources</code>,<code>Parameters</code>, and one or more <code>Tasks</code>. A <code>Pipeline</code> interacts with the outside world, by using <code>PipelineResources</code>, which are given to <code>Tasks</code> as inputs and outputs.</p>
 </li>
 <li>
-<p>Image Resource</p>
+<p>A <code>PipelineRun</code> is used to run and manage the execution of the <code>Pipeline</code>. <code>PipelineRun</code> initiates the creation of a <code>TaskRun</code> for each <code>Task</code> being executed in the <code>Pipeline</code>.</p>
 </li>
 <li>
-<p>Cluster Resource</p>
+<p><code>TaskRun</code> is auto-created by a <code>PipelineRun</code> for each <code>Task</code> in a <code>Pipeline</code> and  results from running an instance of a <code>Task</code>. It can also be manually created if a <code>Task</code> runs outside of a <code>Pipeline</code>.</p>
+</li>
+<li>
+<p>A <code>PipelineResource</code> is an object that is used as an input and output for pipeline <code>Tasks</code>. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as <code>PipelineResources</code>. <code>PipelineResources</code> currently support Git Resources, Image Resources, Cluster Resources, and Storage Resources.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="_images/pipeline_resources_tasks.png" alt="pipeline resources tasks"></span></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tekton_architecture.png" alt="tekton architecture">
 </div>
-<div class="paragraph">
-<p>To define a configuration file for <code>PipelineResources</code>, you must specify the following fields:</p>
 </div>
-<div class="paragraph">
-<p><strong>Required</strong>:</p>
-</div>
+<h3 id="_additional_resources" class="discrete">Additional resources</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><code>apiVersion</code>- Specifies the API version.</p>
-</li>
-<li>
-<p><code>kind</code> - Specifies the <code>PipelineResource</code> resource object.</p>
-</li>
-<li>
-<p><code>metadata</code> - Specifies data to uniquely identify the <code>PipelineResource</code> object, for example a <code>name</code>.</p>
-</li>
-<li>
-<p><code>spec</code>- Specifies the configuration information for the <code>PipelineResource</code> object.</p>
-</li>
-<li>
-<p><code>type</code> - Specifies the <code>type</code> of <code>PipelineResource</code>.</p>
+<p>For more information on pipeline concepts, see the <a href="https://github.com/tektoncd/pipeline/tree/master/docs#learn-more">Tekton documentation</a>.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong><em>Optional</em></strong>:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>params</code> - Parameters which are specific to each type of <code>PipelineResource</code>.</p>
-</li>
-</ul>
 </div>
 </article>
 </main>

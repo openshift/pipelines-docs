@@ -128,12 +128,6 @@
         <li class="version is-current is-latest">
           <a href="index.html">0.8</a>
         </li>
-        <li class="version">
-          <a href="../0.7/index.html">0.7</a>
-        </li>
-        <li class="version">
-          <a href="../0.5/index.html">0.5</a>
-        </li>
       </ul>
     </li>
   </ul>
@@ -238,18 +232,13 @@ If you use a hosted hypervisor, see the <a href="https://access.redhat.com/docum
 </div>
 </li>
 <li>
-<p>Create the Kubernetes objects for deploying the PetClinic application on OpenShift:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml</pre>
-</div>
-</div>
+<p>In the OpenShift Web Console switch to the <strong>Developer</strong> perspective of the OpenShift Web Console.</p>
 </li>
 <li>
-<p>Navigate to <strong>Home</strong> &#8594; <strong>Projects</strong> &#8594; <strong>Status</strong> in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the container images for the PetClinic application and completes the deployment.</p>
+<p>Select the <code>pipelines-tutorial</code> project from the <strong>Project</strong> drop-down menu. On the <strong>Topology</strong> view of the <strong>Developer</strong> perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the simple application which has a frontend and a backend and completes the deployment.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/initiate_deployment.png" alt="Initiate deployment">
+<img src="assets/images/application-deployed.png" alt="Application Deployed">
 </div>
 </div>
 </li>
