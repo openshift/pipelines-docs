@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Deploying an application to OpenShift :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/proc_deploying-an-application-to-openshift.html">
+    <meta name="generator" content="Antora 2.2.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openshift.github.io/pipelines-docs">OpenShift Pipelines</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+   </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="0.8">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">OpenShift Pipelines</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con_pipelines-concepts.html">1. Pipelines concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="con_pipeline-task.html">1.1 Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="con-pipeline-resource-types.html">1.2 Pipeline Resource types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-git-resources.html">1.2.1 Git resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-pull-request-resources.html">1.2.2 Pull Request resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-image-resources.html">1.2.3 Image resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="con_pipeline-cluster-resource.html">1.2.4 Cluster resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_installing-pipelines.html">2. Installing the Pipelines Operator</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator-in-web-console.html">2.1 Installing the Pipelines Operator in the Web Console</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-pipelines-operator-using-the-cli.html">2.2 Installing the Pipelines Operator using the CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_uninstalling-pipelines-operator.html">2.3 Uninstalling the Pipelines Operator</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_defining-and-creating-pipelineresources.html">3.3 Defining and creating pipeline resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_assembling-a-pipeline.html">3.4 Assembling a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_triggering-and-running-a-pipeline.html">3.5 Triggering and running a pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_cli-reference.html">4. CLI Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_installing-cli.html">4.1 Installing CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ref_cli-reference.html">4.2 Basic Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_notes_0.8.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OpenShift Pipelines</span>
+    <span class="version">0.8</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">OpenShift Pipelines</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.8</a>
+        </li>
+        <li class="version">
+          <a href="../0.7/index.html">0.7</a>
+        </li>
+        <li class="version">
+          <a href="../0.5/index.html">0.5</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main role="main">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">OpenShift Pipelines</a></li>
+    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a></li>
+  </ul>
+</nav>
+</div>
+<article class="doc">
+<h1 class="page">Deploying an application to OpenShift</h1>
+<h3 id="_prerequisites" class="discrete">Prerequisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You have installed <a href="proc_installing-pipelines-operator.html">OpenShift Pipelines</a> using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.</p>
+</li>
+<li>
+<p>You have installed the <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/proc_installing_cli.html">Tekton CLI</a></p>
+</li>
+<li>
+<p>You have installed <a href="https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC">CodeReady Containers (CRC)</a> - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg">documentation for CRC</a>.</p>
+</li>
+</ul>
+</div>
+<h3 id="_procedure" class="discrete">Procedure</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a local CRC virtual machine:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ crc start</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you use a hosted hypervisor, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg#starting-the-virtual-machine_gsg">CRC documentation</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>crc start</code> output contains user login and password needed for logging into the cluster.</p>
+</div>
+</li>
+<li>
+<p>Add the cached <code>oc</code> binary to your PATH:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the crc oc-env command to print the command needed to add the cached oc binary to your PATH:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ crc oc-env</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the printed command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Log into the OpenShift cluster with the provided login and password:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://api.crc.testing:6443</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a project for the sample application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-project pipelines-tutorial</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the following command to see the <code>pipeline</code> service account:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get serviceaccount pipeline</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the Kubernetes objects for deploying the PetClinic application on OpenShift:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/petclinic/manifests.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to <strong>Home</strong> &#8594; <strong>Projects</strong> &#8594; <strong>Status</strong> in the OpenShift Web Console to verify the deployment. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the container images for the PetClinic application and completes the deployment.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/initiate_deployment.png" alt="Initiate deployment">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</article>
+</main>
+</div>
+<footer class="footer">
+  <p>The Pipelines Documentation page is built using Antora</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
