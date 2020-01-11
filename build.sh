@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "${0%/*}" # cd to folder with script
-ntora site.yml # build the docs with antora
+antora site.yml # build the docs with antora
 RESULT=($?)
 if [ $RESULT -eq 127 ]; then #if antora is not found in $PATH (probably not installed) 
     echo "Command not found in \$PATH, Install Antora from https://docs.antora.org/antora/2.2/install/install-antora/"
