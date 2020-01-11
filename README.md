@@ -34,3 +34,16 @@ For more information on OpenShift Pipelines, please check out the following link
 * [Tekton Documentation](https://github.com/tektoncd/pipeline/tree/master/docs)
 
 * [Tekton CLI Download](https://github.com/tektoncd/cli/tree/v0.1.2)
+
+## Building Pipelines Documentation with Antora
+1. Clone this repository.
+2. Install [Antora](https://docs.antora.org/antora/2.2/install/install-antora/)
+3. Run **./docs-build.sh**
+
+### Publishing new Versions
+1. Checkout to last existing working documentation branch e.g. **op-0.8-master**).
+> git fetch --all && git checkout -b 
+2. Sync the branch with **openshift/pipelines-docs**
+> git reset
+> git fetch --all && git checkout -b 
+2. Create a new branch 
