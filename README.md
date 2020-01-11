@@ -37,7 +37,7 @@ For more information on OpenShift Pipelines, please check out the following link
 
 ## Building Pipelines Documentation with Antora
 1. Clone this repository.
-2. Install [Antora](https://docs.antora.org/antora/2.2/install/install-antora/)
+2. Install [Antora](https://docs.antora.org)
 3. Run **./docs-build.sh**
 
 ### Publishing new Versions
