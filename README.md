@@ -34,3 +34,23 @@ For more information on OpenShift Pipelines, please check out the following link
 * [Tekton Documentation](https://github.com/tektoncd/pipeline/tree/master/docs)
 
 * [Tekton CLI Download](https://github.com/tektoncd/cli/tree/v0.1.2)
+
+## Building Pipelines Documentation with Antora
+1. [Setup Git with the correct configuration.](/contributing/proc_git-setup.md)
+2. Clone this repository
+3. Install [Antora](https://docs.antora.org)
+4. Run **./docs-build.sh**
+
+## Publishing New Documentation Version
+1. Checkout to the last existing working documentation branch, for example **op-0.8-master**).
+> git fetch --all && git checkout -B \<branch-name\>
+2. Reset the branch to be in sync with **openshift/pipelines-docs**
+> git reset --hard \<openshift-remote\> \<branch-name\>
+3. Create a branch with a new version of the documentation, naming the branch **op-<version\>-master**
+4. Edit the version on the line `version: <version>` in the `antora.yml` file.
+5. Push the changes to your fork.
+6. Checkout to **master** branch
+7. Add the name of the branch with new version of the documentation in the `site.yml`, line `branches: [<branches>]`
+8. Run `docs_build.sh`
+9. Review the generated content in `./index.html`.
+10. Submit a PR against **openshift/pipelines-docs** repository.
