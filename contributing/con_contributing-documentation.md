@@ -4,6 +4,7 @@
 * [General Information](#General-Information)
 * [Raising an Issue](#Raising-an-Issue)
 * [Put in a Pull Request](#Put-in-a-Pull-Request)
+* [Updating Documentation](#Updating-Documentation)
 * [Code of Conduct](#Code-of-Conduct)
 
 -----------------------------
@@ -86,17 +87,17 @@ You must:
 To update existing documentation:
 
 1. Checkout the product version branch you want to update, for example:
-```
-git checkout op-<version>-master
-```
+  ```
+  git checkout op-<version>-master
+  ```
 1. Ensure that your forked repository is in sync with the **openshift/pipelines-docs** repository:
-```
-git fetch <openshift/pipelines-docs-remote> && git reset --hard <openshift/pipelines-docs-remote>/op-<version>-master
-```
+  ```
+  git fetch <openshift/pipelines-docs-remote> && git reset --hard <openshift/pipelines-docs-remote>/op-<version>-master
+  ```
 1. Checkout a new feature branch with a name relevant to the update you want to make, for example
-```
-git checkout -b update_links
-```
+  ```
+  git checkout -b update_links
+  ```
 1. Make changes to the documentation.
 
 1. To add a new module to the repository, add the module to the `/modules/ROOT/nav.adoc` file in the following format:
@@ -111,17 +112,17 @@ git checkout -b update_links
 ## <a name="preview_on_branch"></a> Previewing the rendered documentation.
 1. Checkout to a branch with source files for the documentation you want to preview, for example,`op-<version>-master`.
 1. Change to the repository's root directory and run:
-```
-antora local_site.yml && <your_favourite_browser> index.html
-```
+  ```
+  antora local_site.yml && <your_favourite_browser> index.html
+  ```
 
 ##  <a name="full_render"></a> Rendering and publishing the OpenShift Pipelines documentation set
 
 1. Checkout to the **master** branch
 
-  :warning: If you created documentation for an unpublished version, in the `site.yml` file:
-  1. On the line `branches: [<branches>]`, add the name of the branch containing the new version of the documentation.
-  1. Edit the `<version>` in the `start_page: <version>@docs::index.adoc` to the latest version number.
+    :warning: If you created documentation for an unpublished version, in the `site.yml` file:
+    1. On the line `branches: [<branches>]`, add the name of the branch containing the new version of the documentation.
+    1. Edit the `<version>` in the `start_page: <version>@docs::index.adoc` to the latest version number.
 
 1. Run the `docs_build.sh` script.
 1. Review the generated content in `./index.html`.
@@ -134,17 +135,17 @@ antora local_site.yml && <your_favourite_browser> index.html
 To create a new Version branch and publish it with updated documentation using the CLI:
 
 1. In the fork, checkout to the branch with the documentation for the last version of OpenShift Pipelines, for example, for `op-0.8-master`, run:
-```
-git fetch --all && git checkout op-0.8-master
-```
+  ```
+  git fetch --all && git checkout op-0.8-master
+  ```
 1. Reset the branch to be in sync with the `openshift/pipelines-docs` repository.
-```
-git reset --hard <openshift/pipelines-docs-remote>/op-<version>-master
-```
+  ```
+  git reset --hard <openshift/pipelines-docs-remote>/op-<version>-master
+  ```
 1. Create a new Version branch for the new version of the documentation, naming the branch in the following format: `op-<version\>-master`.
-```
-git checkout -B op-<version>-master
-```
+  ```
+  git checkout -B op-<version>-master
+  ```
 1. In the new version branch, edit the `version` in `antora.yml` file. This file is specific to each branch and is not present in the Master.
 1. Push the changes to your fork and submit a PR to create an equivalent branch in the `openshift/pipelines-docs` repository.
 1. To [verify that the new version of the documentation renders properly and publish](#full_render). Ensure that you update the `site.yml` in the `master` branch as described in the steps.
