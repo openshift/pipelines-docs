@@ -16,7 +16,8 @@ To try out OpenShift Pipelines, obtain an OCP cluster by visiting [cloud.redhat.
 
 ## Questions and Feedback
 
-For questions and feedback please join the pipelines-interest@redhat.com mailing list. If you would like to contribute a fix or add new content to the documentation, you can submit an issue or pull request. Please see our [contributor guidelines](contributing/con_contributing-documentation.md) for information on how you can help.
+* For questions and feedback please join the pipelines-interest@redhat.com mailing list.
+* If you would like to contribute a fix or add new content to the documentation, you can submit an issue or pull request. Please see our [contributor guidelines](contributing/con_contributing-documentation.md) for information on how you can help.
 
 
 ## Resources

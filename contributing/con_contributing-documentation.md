@@ -19,7 +19,7 @@ All bugs, tasks or enhancements are tracked as [GitHub issues](https://github.co
 ## Before You Begin
 
 * [Get started](/contributing/proc_git-setup.md) by installing and getting familiar with [Git](https://git-scm.com/doc).
-* Use [markdown](https://www.markdownguide.org/) to contribute documentation to the repository and add a link to the **README.md**, if applicable.
+* Use [AsciiDoc](https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/) to contribute documentation to the repository. For details see the Updating Documentation section below.
 * Refer to our [style guide](/contributing/ref_documentation-styling.md) for guidance on formatting your documentation contributions.
 
 ## General Information
