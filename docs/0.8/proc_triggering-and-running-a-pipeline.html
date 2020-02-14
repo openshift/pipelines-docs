@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Triggering and running a pipeline :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/proc_triggering-and-running-a-pipeline.html">
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_triggering-and-running-a-pipeline.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -125,7 +125,10 @@
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../0.10.5/index.html">0.10.5</a>
+        </li>
+        <li class="version is-current">
           <a href="index.html">0.8</a>
         </li>
         <li class="version">
@@ -144,7 +147,7 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link"></a>
+  <a href="../0.10.5/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
@@ -165,21 +168,15 @@
 <p>Start the <code>Pipeline</code> as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ tkn pipeline start petclinic-deploy-pipeline \
-        -r app-git=petclinic-git \
-        -r app-image=petclinic-image \
-        -s pipeline
-
-Pipelinerun started: petclinic-deploy-pipeline-run-q62p8</pre>
+<pre>$ tkn pipeline start build-and-deploy
+? Choose the git resource to use for api-repo: api-repo (http://github.com/openshift-pipelines/vote-api.git)
+? Choose the image resource to use for api-image: api-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest)
+? Choose the git resource to use for ui-repo: ui-repo (http://github.com/openshift-pipelines/vote-ui.git)
+? Choose the image resource to use for ui-image: ui-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest)
+Pipelinerun started: build-and-deploy-run-z2rz8
+Showing logs...</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>-r</code> flag specifies the <code>PipelineResource</code> s that should be provided to the pipeline</p>
-</li>
-<li>
-<p>The <code>-s</code> flag specifies the service account to be used for running the pipeline</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -204,17 +201,16 @@ $ oc adm policy add-role-to-user edit -z default</pre>
 <p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
 </div>
 </li>
-</ul>
-</div>
-</li>
 <li>
 <p>After a few minutes, verify that the <code>Pipeline</code> ran successfully by listing all the <code>PipelineRuns</code> as follows:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn pipeline list
 
-NAME                        AGE             LAST RUN                              STARTED         DURATION    STATUS
-petclinic-deploy-pipeline   7 minutes ago   petclinic-deploy-pipeline-run-tsv92   5 minutes ago   4 minutes   Succeeded</pre>
+ tkn pipeline list
+
+NAME               AGE              LAST RUN                     STARTED         DURATION    STATUS
+build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago   5 minutes   Succeeded</pre>
 </div>
 </div>
 </li>

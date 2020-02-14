@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Assembling a pipeline :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/proc_assembling-a-pipeline.html">
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_assembling-a-pipeline.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -125,7 +125,10 @@
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../0.10.5/index.html">0.10.5</a>
+        </li>
+        <li class="version is-current">
           <a href="index.html">0.8</a>
         </li>
         <li class="version">
@@ -144,7 +147,7 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link"></a>
+  <a href="../0.10.5/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
@@ -159,7 +162,7 @@
 <p>A <code>Pipeline</code> represents a CI/CD flow and is defined by the <code>Tasks</code> to be executed.  It specifies how the <code>Tasks</code> interact with each other and their order of execution using the <code>inputs</code> , <code>outputs</code>, and the <code>run-After</code> parameters. It is designed to be generic and reusable in multiple applications and environments.</p>
 </div>
 <div class="paragraph">
-<p>For this tutorial, we create a <code>Pipeline</code> that takes the source code of the Spring PetClinic application from GitHub, builds the application, and deploys it on OpenShift as outlined below:</p>
+<p>In this section you will create a Pipeline that takes the source code of the application from GitHub and then builds and deploys it on OpenShift:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -176,35 +179,95 @@
 <pre>apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: petclinic-deploy-pipeline
+  name: build-and-deploy
 spec:
   resources:
-  - name: app-git
-    type: git
-  - name: app-image
-    type: image
+    - name: api-repo
+      type: git
+    - name: api-image
+      type: image
+    - name: ui-repo
+      type: git
+    - name: ui-image
+      type: image
+
   tasks:
-  - name: build
-    taskRef:
-      name: s2i-java-8
-    params:
-      - name: TLSVERIFY
-        value: "false"
-    resources:
-      inputs:
-      - name: source
-        resource: app-git
-      outputs:
-      - name: image
-        resource: app-image
-  - name: deploy
-    taskRef:
-      name: openshift-client
-    runAfter:
-      - build
-    params:
-    - name: ARGS
-      value: "rollout latest spring-petclinic"</pre>
+    - name: build-api
+      taskRef:
+        name: buildah
+        kind: ClusterTask
+      resources:
+        inputs:
+          - name: source
+            resource: api-repo
+        outputs:
+          - name: image
+            resource: api-image
+      params:
+        - name: TLSVERIFY
+          value: "false"
+
+    - name: apply-api-manifests
+      taskRef:
+        name: apply-manifests
+      resources:
+        inputs:
+          - name: source
+            resource: api-repo
+      runAfter:
+        - build-api
+
+    - name: update-api-image
+      taskRef:
+        name: update-deployment
+      resources:
+        inputs:
+          - name: image
+            resource: api-image
+      params:
+        - name: deployment
+          value: "api"
+      runAfter:
+        - apply-api-manifests
+
+    - name: build-ui
+      taskRef:
+        name: s2i-python-3
+        kind: ClusterTask
+      resources:
+        inputs:
+          - name: source
+            resource: ui-repo
+        outputs:
+          - name: image
+            resource: ui-image
+      params:
+        - name: TLSVERIFY
+          value: "false"
+
+    - name: apply-ui-manifests
+      taskRef:
+        name: apply-manifests
+      resources:
+        inputs:
+          - name: source
+            resource: ui-repo
+      runAfter:
+        - build-ui
+        - update-api-image
+
+    - name: update-ui-image
+      taskRef:
+        name: update-deployment
+      resources:
+        inputs:
+          - name: image
+            resource: ui-image
+      params:
+        - name: deployment
+          value: "ui"
+      runAfter:
+        - apply-ui-manifests</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -213,19 +276,19 @@ spec:
 <div class="ulist">
 <ul>
 <li>
-<p>Clones the source code of the application from a Git repository (app-git resource).</p>
+<p>Clones the source code of the frontend application from the <code>api-repo</code> Git repository and the backend application from the <code>ui-reporesource</code> Git repository.</p>
 </li>
 <li>
-<p>Builds the container image using the S2I task which generates a Dockerfile for the application and uses Buildah to build an image.</p>
+<p>Builds the container image for the frontend using the <code>s2i-python-3</code> task that generates a Dockerfile for the application using Source-to-Image (S2I).</p>
 </li>
 <li>
-<p>The application image is then pushed to an image registry (app-image resource).</p>
+<p>Builds the container image for the backend using the <code>buildah</code> task that uses <code>Buildah</code> to build the image.</p>
 </li>
 <li>
-<p>The new application image is deployed on OpenShift using the OpenShift-CLI.</p>
-<div class="paragraph">
-<p>Note that, the <code>Pipeline</code> YAML file contains no references to the PetClinic Git repository and its image in the registry. These are defined in the <code>PipelineResources</code>.</p>
-</div>
+<p>The application image is pushed to an image registry.</p>
+</li>
+<li>
+<p>The new application image is deployed on OpenShift using the <code>apply-manifests</code> and <code>update-deployment</code> tasks.</p>
 <div class="paragraph">
 <p><code>Pipeline</code> s in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
 </div>
@@ -240,7 +303,7 @@ spec:
 <p>Create the <code>Pipeline</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/01-build-deploy.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/pipeline.yaml</pre>
 </div>
 </div>
 </li>
@@ -249,13 +312,26 @@ spec:
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn pipeline ls
-
-NAME             AGE             LAST RUN   STARTED   DURATION   STATUS
-deploy-pipeline   8 seconds ago   ---        ---       ---        ---</pre>
+NAME               AGE            LAST RUN   STARTED   DURATION   STATUS
+build-and-deploy   1 minute ago   ---        ---       ---        ---</pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+<h2 id="_additional_resources" class="discrete">Additional resources</h2>
+<div class="ulist">
+<ul>
+<li>
+<p>A bulleted list of links to other material closely related to the contents of the procedure module.</p>
+</li>
+<li>
+<p>For more details on writing procedure modules, see the <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+</li>
+<li>
+<p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+</li>
+</ul>
 </div>
 </article>
 </main>

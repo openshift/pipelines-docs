@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Defining and creating pipeline tasks :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.8/proc_defining-and-creating-pipeline-tasks.html">
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_defining-and-creating-pipeline-tasks.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -125,7 +125,10 @@
     <li class="component is-current">
       <span class="title">OpenShift Pipelines</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../0.10.5/index.html">0.10.5</a>
+        </li>
+        <li class="version is-current">
           <a href="index.html">0.8</a>
         </li>
         <li class="version">
@@ -144,7 +147,7 @@
 <main role="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link"></a>
+  <a href="../0.10.5/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
@@ -213,11 +216,11 @@ spec:
 </div>
 </li>
 <li>
-<p>Install the <code>s2i-java</code> and <code>openshift-client</code> reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog repository</a>, which contains a list of reusable <code>Tasks</code> for <code>Pipeline</code> s:</p>
+<p>Install the <code>apply-manifests</code> and <code>update-deployment</code> tasks from the repositories, which contain a list of reusable <code>Tasks</code> for `Pipeline`s:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/tektoncd-catalog/release-v0.7/openshift-client/openshift-client-task.yaml
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/release-v0.7/s2i-java-8/s2i-java-8-task.yaml</pre>
+<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/update_deployment_task.yaml
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/apply_manifest_task.yaml</pre>
 </div>
 </div>
 </li>
@@ -228,9 +231,33 @@ $ oc create -f https://raw.githubusercontent.com/openshift/pipelines-catalog/rel
 <pre>$ tkn task ls
 
 NAME              AGE
-maven-build       23 secs ago
-openshift-client  10 secs ago
-s2i-java          11 secs ago</pre>
+apply-manifests     10 seconds ago
+update-deployment   4 seconds ago</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify Operator installed additional tasks -<code>buildah</code> and <code>s2i-python-3</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn clustertask ls
+NAME                      AGE
+buildah                   9 hours ago
+buildah-v0-8-0            9 hours ago
+openshift-client          9 hours ago
+openshift-client-v0-8-0   9 hours ago
+s2i                       9 hours ago
+s2i-go                    9 hours ago
+s2i-go-v0-8-0             9 hours ago
+s2i-java-11               9 hours ago
+s2i-java-11-v0-8-0        9 hours ago
+s2i-java-8                9 hours ago
+s2i-java-8-v0-8-0         9 hours ago
+s2i-nodejs                9 hours ago
+s2i-nodejs-v0-8-0         9 hours ago
+s2i-python-3              9 hours ago
+s2i-python-3-v0-8-0       9 hours ago
+s2i-v0-8-0                9 hours ago</pre>
 </div>
 </div>
 </li>
