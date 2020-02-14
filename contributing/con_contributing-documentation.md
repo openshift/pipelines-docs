@@ -128,8 +128,8 @@ To update existing documentation:
     1. On the line `branches: [<branches>]`, add the name of the branch containing the new version of the documentation.
     1. Edit the `<version>` in the `start_page: <version>@docs::index.adoc` to the latest version number.
 
-1. Run the `docs_build.sh` script.
-1. Review the generated content in `./index.html`.
+1. Run the `./docs_build.sh` script.
+1. Run `$<browser> index.html` to review the generated content.
 1. Submit a PR against **openshift/pipelines-docs** repository.
 
 
