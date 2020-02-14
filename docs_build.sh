@@ -6,6 +6,7 @@ if [ $RESULT -eq 127 ]; then #if antora is not found in $PATH (probably not inst
     echo -e '>> \e[31mFAIL\e[0m Antora not found in \$PATH, Install Antora from https://docs.antora.org/antora/2.2/install/install-antora/'
     exit 1
 elif [ -f site.yml ]; then
+    rm -rf build/ docs/ #remove the existing docs. Just in case there are docs that should not be there. 
     echo -e '>> \e[34mINFO\e[0m Building docs with Antora'
     antora --fetch site.yml # build the docs with antora
     echo -e '>> \e[34mINFO\e[0m Copying generated docs to the root folder.'
