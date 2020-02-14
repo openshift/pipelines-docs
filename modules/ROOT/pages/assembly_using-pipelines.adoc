@@ -5,7 +5,7 @@
 
 :context: using-openshift-pipelines
 
-The following section demonstrates how to trigger and run pipelines as well as to check on the application status.
+The following section demonstrates how to trigger pipelines, run them, and check on the application status using the pipeline-tutorial example.
 
 include::proc_deploying-an-application-to-openshift.adoc[leveloffset=+1]
 

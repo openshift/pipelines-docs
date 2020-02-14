@@ -8,38 +8,18 @@
 [discrete]
 === Prerequisites
 
-* You have installed link:proc_installing-pipelines-operator.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
-* You have installed the link:https://openshift.github.io/pipelines-docs/docs/docs/0.7/proc_installing_cli.html[Tekton CLI]
-* You have installed link:https://cloud.redhat.com/openshift/install/crc/installer-provisioned?intcmp=7013a000002CtetAAC[CodeReady Containers (CRC)] - a recommended solution for quick deployment of OpenShift clusters locally. For more information read the link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg[documentation for CRC].
+* You have access to OpenShift Container Platform cluster. Developers can use link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/index[CodeReady Containers (CRC)] to deploy a local OpenShift Container Platform cluster quickly.
+* You have installed link:https://openshift.github.io/pipelines-docs/docs/0.10/assembly_installing-pipelines.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
+* You have installed the https://openshift.github.io/pipelines-docs/docs/0.10/proc_installing-cli.html[Tekton CLI].
 
 
 [discrete]
 === Procedure
 
-. Create a local CRC virtual machine:
+. Login to your OpenShift Container Platform cluster with your login and password:
 +
 ----
-$ crc start
-----
-+
-NOTE: If you use a hosted hypervisor, see the link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg#starting-the-virtual-machine_gsg[CRC documentation].
-+
-`crc start` output contains user login and password needed for logging into the cluster.
-+
-. Add the cached `oc` binary to your PATH:
-
-.. Run the crc oc-env command to print the command needed to add the cached oc binary to your PATH:
-+
-----
-$ crc oc-env
-----
-
-.. Run the printed command.
-
-. Log into the OpenShift cluster with the provided login and password:
-+
-----
-$ oc login -u <login> -p <password> https://api.crc.testing:6443
+$ oc login -u <login> -p <password> https://openshift.example.com:6443
 ----
 
 . Create a project for the sample application:
@@ -56,6 +36,6 @@ $ oc get serviceaccount pipeline
 
 . In the OpenShift Web Console switch to the *Developer* perspective of the OpenShift Web Console.
 
-. Select the `pipelines-tutorial` project from the *Project* drop-down menu. On the *Topology* view of the *Developer* perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the simple application which has a frontend and a backend and completes the deployment.
+. Select the *pipelines-tutorial* project from the *Project* drop-down menu. On the *Topology* view of the *Developer* perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the simple application which has a front-end and a back-end and completes the deployment.
 +
 image::../assets/images/application-deployed.png[Application Deployed]

@@ -5,78 +5,60 @@
 [id="defining-and-creating-pipelineresources_{context}"]
 = Defining and creating pipeline resources
 
-`PipelineResources` are artifacts that are used as inputs to a `Task` and can be output by a `Task`.
+Pipeline resources are artifacts that are used as inputs to a task and can be output by a task.
 
 [discrete]
 === Procedure
 
-After you create `Task`s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
+After you create tasks, create pipeline resources that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution as follows:
 
-. Create a `resources.yaml` file and with the `PipelineResource`s that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution.
-
-.. Create a `PipelineResource` that defines the Git repository for the frontend application:
+. Create a `PipelineResource` that defines the Git repository for the front-end application:
 +
 ----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-ui.git
+
+ $ tkn resource create
+ ? Enter a name for a pipeline resource : ui-repo
+ ? Select a resource type to create : git
+ ? Enter a value for url : http://github.com/openshift-pipelines/vote-ui.git
+ ? Enter a value for revision :
+ New git resource "ui-repo" has been created
 ----
 
-.. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the frontend image:
+. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the front-end image:
 +
 ----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
+$ tkn resource create
+? Enter a name for a pipeline resource : ui-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
+? Enter a value for revision :
+New git resource "ui-image" has been created
+
 ----
 
-.. Create a `PipelineResource` that defines the Git repository for the backend application:
+. Create a `PipelineResource` that defines the Git repository for the back-end application:
 +
 ----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-api.git
+$ tkn resource create
+? Enter a name for a pipeline resource : api-repo
+? Select a resource type to create : git
+? Enter a value for url : http://github.com/openshift-pipelines/vote-api.git
+? Enter a value for revision :
+New git resource "api-repo" has been created
 ----
 
-.. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the backend image:
+. Create a `PipelineResource` that defines the OpenShift internal image registry to which you want to push the back-end image:
 +
 ----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+$ tkn resource create
+? Enter a name for a pipeline resource : api-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+? Enter a value for revision :
+New git resource "api-image" has been created
 ----
 
-. Create the Pipeline Resources:
-+
-----
-$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/resources.yaml
-----
-
-. See the list of resources:
+. View the list of resources created:
 +
 ----
 $ tkn resource ls
