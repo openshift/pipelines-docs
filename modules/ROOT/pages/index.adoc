@@ -20,6 +20,6 @@ OpenShift Pipelines are cloud-native, continuous integration and continuous deli
 
 == Additional resources
 
-* For more details on defining pipelines, see the link:https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html[Using Pipelines documentation].
+* For more details on defining pipelines, see the link:https://openshift.github.io/pipelines-docs/docs/0.8/assembly_using-pipelines.html[Using Pipelines documentation].
 * For more information on Tekton see the link:https://github.com/tektoncd[Tekton Pipelines documentation].
 * Visit our link:https://github.com/openshift/pipelines-docs[GitHub] repository for more information or to contribute.

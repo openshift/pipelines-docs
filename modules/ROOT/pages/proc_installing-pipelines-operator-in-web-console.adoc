@@ -10,11 +10,10 @@ OpenShift Pipelines can be installed by using the operator listed in the OpenShi
 [discrete]
 === Prerequisites
 
-* An OpenShift 4 cluster is required for installation. Visit link:https://try.openshift.com/[try.openshift.com] for information on setting up an OpenShift 4 cluster.
+* Access a running link:https://try.openshift.com/[OpenShift Container Platform 4] cluster with administrative privileges. Developers can use link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/index[CodeReady Containers(CRC)] to deploy a local OpenShift Container Platform cluster quickly.
 
-* You must have cluster administrator privileges to install and use the Pipelines Operator.
 
-* Download the Tekton CLI `tkn` and add it's location to your `PATH` environment variable.
+* Install link:https://openshift.github.io/pipelines-docs/docs/0.8/proc_installing-cli.html[Tekton CLI] `tkn` on your local system and add it's location to your `PATH` environment variable.
 
 [discrete]
 === Procedure
