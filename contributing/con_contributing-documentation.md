@@ -117,7 +117,7 @@ To update existing documentation:
 1.   Change to the repository's root directory and run:
 
        ```
-       antora local_site.yml && <your_favourite_browser> index.html
+       antora local_site.yml && <your_favourite_browser> build/site/index.html
        ```
 
 ##  <a name="full_render"></a> Rendering and publishing the OpenShift Pipelines documentation set
