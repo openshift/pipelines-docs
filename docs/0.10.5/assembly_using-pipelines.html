@@ -160,7 +160,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following section demonstrates how to trigger and run pipelines as well as to check on the application status.</p>
+<p>The following section demonstrates how to trigger pipelines, run them, and check on the application status using the pipeline-tutorial example.</p>
 </div>
 </div>
 </div>
@@ -212,10 +212,10 @@
 <p>In the OpenShift Web Console switch to the <strong>Developer</strong> perspective of the OpenShift Web Console.</p>
 </li>
 <li>
-<p>Select the <code>pipelines-tutorial</code> project from the <strong>Project</strong> drop-down menu. On the <strong>Topology</strong> view of the <strong>Developer</strong> perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the simple application which has a frontend and a backend and completes the deployment.</p>
+<p>Select the <strong>pipelines-tutorial</strong> project from the <strong>Project</strong> drop-down menu. On the <strong>Topology</strong> view of the <strong>Developer</strong> perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the simple application which has a front-end and a back-end and completes the deployment.</p>
 <div class="imageblock">
 <div class="content">
-<img src="assets/images/application-deployed.png" alt="Application Deployed">
+<img src="_images/application-deployed.png" alt="Application Deployed">
 </div>
 </div>
 </li>
@@ -233,17 +233,11 @@
 <p>Every <code>Task</code> runs as a pod and each <code>step</code> runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use <code>inputs</code> parameters, for example, a git , and <code>outputs</code> parameters, for example, an image in a registry, to interact with other tasks.</p>
 </div>
 <div class="paragraph">
-<p><code>Tasks</code> are reusable and can be used in multiple <code>Pipeline</code> s. For this tutorial, you create a Maven <code>Task</code> with a single step to build a Maven based application, and then add two reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog</a> repository.</p>
+<p><code>Tasks</code> are reusable and can be used in multiple <code>Pipelines</code>.</p>
 </div>
-<h4 id="_procedure_2" class="discrete">Procedure</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To create the Maven <code>Task</code>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Copy the contents of the following sample <code>Task</code> YAML file and save it:</p>
+<div class="paragraph">
+<p>Here is an example of a Maven <code>Task</code> with a single step to build a Maven-based Java application.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
@@ -269,22 +263,13 @@ spec:
 <p>This <code>Task</code> starts a pod and runs a container inside that pod using the <code>maven:3.6.0-jdk-8-slim</code> image to run the specified commands. It receives an input directory called <code>workspace-git</code> which contains the source code of the application.</p>
 </div>
 <div class="paragraph">
-<p>Only the requirement for a git repository is declared on the <code>Task</code> and not a specific git repository to be used. This allows <code>Tasks</code> to be reusable for multiple <code>Pipeline</code> s and purposes.</p>
+<p>Only the requirement for a git repository is declared on the <code>Task</code> and not a specific git repository to be used. This allows <code>Tasks</code> to be reusable for multiple <code>Pipelines</code> and purposes.</p>
 </div>
-</li>
+<h3 id="_procedure_2" class="discrete">Procedure</h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Create the <code>Task</code> within your project:</p>
-<div class="listingblock">
-<div class="content">
-<pre>oc create -f maven-build-task.yaml</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Install the <code>apply-manifests</code> and <code>update-deployment</code> tasks from the repositories, which contain a list of reusable <code>Tasks</code> for `Pipeline`s:</p>
+<p>Install the <code>apply-manifests</code> and <code>update-deployment</code> tasks from the repositories, which contain a list of reusable <code>Tasks</code> for <code>Pipelines</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/update_deployment_task.yaml
@@ -309,23 +294,29 @@ update-deployment   4 seconds ago</pre>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn clustertask ls
-NAME                      AGE
-buildah                   9 hours ago
-buildah-v0-8-0            9 hours ago
-openshift-client          9 hours ago
-openshift-client-v0-8-0   9 hours ago
-s2i                       9 hours ago
-s2i-go                    9 hours ago
-s2i-go-v0-8-0             9 hours ago
-s2i-java-11               9 hours ago
-s2i-java-11-v0-8-0        9 hours ago
-s2i-java-8                9 hours ago
-s2i-java-8-v0-8-0         9 hours ago
-s2i-nodejs                9 hours ago
-s2i-nodejs-v0-8-0         9 hours ago
-s2i-python-3              9 hours ago
-s2i-python-3-v0-8-0       9 hours ago
-s2i-v0-8-0                9 hours ago</pre>
+NAME                       AGE
+buildah                    4 minutes ago
+buildah-v0-10-0            4 minutes ago
+openshift-client           4 minutes ago
+openshift-client-v0-10-0   4 minutes ago
+s2i                        4 minutes ago
+s2i-go                     4 minutes ago
+s2i-go-v0-10-0             4 minutes ago
+s2i-java-11                4 minutes ago
+s2i-java-11-v0-10-0        4 minutes ago
+s2i-java-8                 4 minutes ago
+s2i-java-8-v0-10-0         4 minutes ago
+s2i-nodejs                 4 minutes ago
+s2i-nodejs-v0-10-0         4 minutes ago
+s2i-perl                   4 minutes ago
+s2i-perl-v0-10-0           4 minutes ago
+s2i-php                    4 minutes ago
+s2i-php-v0-10-0            4 minutes ago
+s2i-python-3               4 minutes ago
+s2i-python-3-v0-10-0       4 minutes ago
+s2i-ruby                   4 minutes ago
+s2i-ruby-v0-10-0           4 minutes ago
+s2i-v0-10-0                4 minutes ago</pre>
 </div>
 </div>
 </li>
@@ -345,95 +336,68 @@ s2i-v0-8-0                9 hours ago</pre>
 <h2 id="defining-and-creating-pipelineresources_using-openshift-pipelines"><a class="anchor" href="#defining-and-creating-pipelineresources_using-openshift-pipelines"></a>Defining and creating pipeline resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>PipelineResources</code> are artifacts that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>.</p>
+<p>Pipeline resources are artifacts that are used as inputs to a task and can be output by a task.</p>
 </div>
 <h4 id="_procedure_3" class="discrete">Procedure</h4>
 <div class="paragraph">
-<p>After you create <code>Task`s, create `PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
+<p>After you create tasks, create pipeline resources that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a <code>resources.yaml</code> file and with the `PipelineResource`s that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Create a <code>PipelineResource</code> that defines the Git repository for the frontend application:</p>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the front-end application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-ui.git</pre>
+<pre> $ tkn resource create
+ ? Enter a name for a pipeline resource : ui-repo
+ ? Select a resource type to create : git
+ ? Enter a value for url : http://github.com/openshift-pipelines/vote-ui.git
+ ? Enter a value for revision :
+ New git resource "ui-repo" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the frontend image:</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the front-end image:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : ui-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
+? Enter a value for revision :
+New git resource "ui-image" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the Git repository for the backend application:</p>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the back-end application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-api.git</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : api-repo
+? Select a resource type to create : git
+? Enter a value for url : http://github.com/openshift-pipelines/vote-api.git
+? Enter a value for revision :
+New git resource "api-repo" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the backend image:</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the back-end image:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Create the Pipeline Resources:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/resources.yaml</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : api-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+? Enter a value for revision :
+New git resource "api-image" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>See the list of resources:</p>
+<p>View the list of resources created:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn resource ls
@@ -571,13 +535,13 @@ spec:
 <div class="ulist">
 <ul>
 <li>
-<p>Clones the source code of the frontend application from the <code>api-repo</code> Git repository and the backend application from the <code>ui-reporesource</code> Git repository.</p>
+<p>Clones the source code of the back-end application from the <code>api-repo</code> Git repository and the front-end application from the <code>ui-repo resource</code> Git repository.</p>
 </li>
 <li>
-<p>Builds the container image for the frontend using the <code>s2i-python-3</code> task that generates a Dockerfile for the application using Source-to-Image (S2I).</p>
+<p>Builds the container image for the front-end using the <code>s2i-python-3</code> task that generates a Dockerfile for the application using Source-to-Image (S2I).</p>
 </li>
 <li>
-<p>Builds the container image for the backend using the <code>buildah</code> task that uses <code>Buildah</code> to build the image.</p>
+<p>Builds the container image for the back-end using the <code>buildah</code> task that uses <code>Buildah</code> to build the image.</p>
 </li>
 <li>
 <p>The application image is pushed to an image registry.</p>
@@ -585,7 +549,7 @@ spec:
 <li>
 <p>The new application image is deployed on OpenShift using the <code>apply-manifests</code> and <code>update-deployment</code> tasks.</p>
 <div class="paragraph">
-<p><code>Pipeline</code> s in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
+<p><code>Pipelines</code> in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
 </div>
 <div class="paragraph">
 <p>The execution order of the tasks is determined by the dependencies defined between the tasks using the  <code>inputs</code> and <code>outputs</code> parameters, and the explicit orders that are defined using <code>runAfter</code>.</p>
@@ -614,47 +578,210 @@ build-and-deploy   1 minute ago   ---        ---       ---        ---</pre>
 </li>
 </ol>
 </div>
-<h3 id="_additional_resources_2" class="discrete">Additional resources</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="triggering-and-running-a-pipeline_using-openshift-pipelines"><a class="anchor" href="#triggering-and-running-a-pipeline_using-openshift-pipelines"></a>Triggering and running a pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>PipelineRun</code> starts a <code>Pipeline</code> and ties it to the Git and image resources that should be used for the specific invocation.</p>
+</div>
+<h4 id="_procedure_5" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start the <code>Pipeline</code> as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipeline start build-and-deploy
+? Choose the git resource to use for api-repo: api-repo (http://github.com/openshift-pipelines/vote-api.git)
+? Choose the image resource to use for api-image: api-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest)
+? Choose the git resource to use for ui-repo: ui-repo (http://github.com/openshift-pipelines/vote-ui.git)
+? Choose the image resource to use for ui-image: ui-image (image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest)
+Pipelinerun started: build-and-deploy-run-z2rz8
+Showing logs...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Note the Pipelinerun ID returned in the command output above.</p>
+</div>
+</li>
+<li>
+<p>Track the pipelinerun progress as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipelinerun logs &lt;pipelinerun ID&gt; -f -n pipelines-tutorial</pre>
+</div>
+</div>
+</li>
+<li>
+<p>After a few minutes, verify that the <code>Pipeline</code> ran successfully by listing all the <code>PipelineRuns</code> as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipeline list
+
+ tkn pipeline list
+
+NAME               AGE              LAST RUN                     STARTED         DURATION    STATUS
+build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago   5 minutes   Succeeded</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="checking-pipeline-and-application-status_using-openshift-pipelines"><a class="anchor" href="#checking-pipeline-and-application-status_using-openshift-pipelines"></a>Checking pipeline and application status</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can examine the logs for <code>PipelineRuns</code> to verify its status.</p>
+</div>
+<h4 id="_procedure_6" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check the <code>PipelineRun</code> logs as it runs using the <code>tkn pipeline logs</code> command, which interactively allows you to chose the required pipelinerun and inspect the logs:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipeline logs -f
+? Select pipeline : build-and-deploy
+? Select pipelinerun : build-and-deploy-run-tsv92 started 39 seconds ago</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the images are successfully built and deployed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
+</div>
+</div>
+</li>
+<li>
+<p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
+<div class="listingblock">
+<div class="content">
+<pre>tkn pipeline start build-and-deploy --last</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="working-with-pipelines-using-developer-perspective_using-openshift-pipelines"><a class="anchor" href="#working-with-pipelines-using-developer-perspective_using-openshift-pipelines"></a>Working with Pipelines using the OpenShift Developer Perspective</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you create Pipelines using the <code>tkn</code> CLI or YAML files. You can visually interact with your deployed Pipelines on the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer Perspective</a> of the Openshift web console.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Pipelines</strong> view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.</p>
+</div>
+<div class="sect3">
+<h4 id="_prerequisites_2"><a class="anchor" href="#_prerequisites_2"></a>Prerequisites</h4>
+<div class="paragraph">
+<p>To view your pipelines in the <strong>Pipelines</strong> view and interact with them, ensure that:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>A bulleted list of links to other material closely related to the contents of the procedure module.</p>
+<p>You have access to an OpenShift Cluster and have logged in to the web console and are in the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer perspective</a>.</p>
 </li>
 <li>
-<p>For more details on writing procedure modules, see the <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+<p>You have cluster administrator privileges to install operators and have <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html">installed the OpenShift Pipelines Operator</a>.</p>
 </li>
 <li>
-<p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+<p>You have created a project, <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html">deployed an application, and created a pipeline</a> for the application.</p>
 </li>
 </ul>
 </div>
-<h3 id="_additional_resources_3" class="discrete">Additional resources</h3>
+</div>
+<div class="sect3">
+<h4 id="_procedure_7"><a class="anchor" href="#_procedure_7"></a>Procedure</h4>
+<div class="paragraph">
+<p>To visually interact  with the pipelines in your project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Pipelines</strong> view of the Developer Perspective, select the project you created from the <strong>Project</strong> drop-down to see the pipelines listed in the <strong>Pipelines</strong> page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_list.png" alt="Pipelines in the Developer perspective">
+</div>
+</div>
+</li>
+<li>
+<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. The pipelines <strong>Overview</strong> provides a visual representation of all the serial and parallel tasks in the pipeline.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_overview.png" alt="Pipeline overview">
+</div>
+</div>
+</li>
+<li>
+<p>Click:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.</p>
+</li>
+<li>
+<p><strong>Resources</strong> tab to see the resources defined in the Pipeline and add or edit additional resources as required.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> on the top-right corner and select <strong>Start</strong> to see the <strong>Start Pipeline</strong> dialog box. The resources populated in the <strong>Start Pipeline</strong> dialog box are based on the pipeline definition.</p>
+</li>
+<li>
+<p>Use the drop-downs in the <strong>Start Pipeline</strong> dialog box to select or create the required resources to customize them as required, and click <strong>Start</strong> to start the pipeline run.</p>
+</li>
+<li>
+<p>The <strong>Pipeline Run Details</strong> page displays the pipeline being executed. You can:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A bulleted list of links to other material closely related to the contents of the procedure module.</p>
+<p>Hover over the tasks to see the time taken for each task execution.</p>
 </li>
 <li>
-<p>For more details on writing procedure modules, see the <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+<p>Click on a task to see logs for that particular task.</p>
 </li>
 <li>
-<p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_run.png" alt="Pipeline run">
+</div>
+</div>
 </li>
 </ul>
 </div>
-<h3 id="_additional_resources_4" class="discrete">Additional resources</h3>
+</li>
+<li>
+<p>Click <strong>Pipelines Runs</strong> in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the <strong>Pipeline Runs</strong> page.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A bulleted list of links to other material closely related to the contents of the procedure module.</p>
+<p>Use the filters to see the complete, running, or failed pipeline runs.</p>
 </li>
 <li>
-<p>For more details on writing procedure modules, see the <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
-</li>
-<li>
-<p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
+<p>Use the <strong>Options</strong> menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>

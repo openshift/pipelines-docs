@@ -159,95 +159,68 @@
 <article class="doc">
 <h1 class="page">Defining and creating pipeline resources</h1>
 <div class="paragraph">
-<p><code>PipelineResources</code> are artifacts that are used as inputs to a <code>Task</code> and can be output by a <code>Task</code>.</p>
+<p>Pipeline resources are artifacts that are used as inputs to a task and can be output by a task.</p>
 </div>
 <h3 id="_procedure" class="discrete">Procedure</h3>
 <div class="paragraph">
-<p>After you create <code>Task`s, create `PipelineResources</code> that contain the specifics of the Git repository and the image registry to be used in the <code>Pipeline</code> during execution as follows:</p>
+<p>After you create tasks, create pipeline resources that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a <code>resources.yaml</code> file and with the `PipelineResource`s that contain the specifics of the Git repository and the image registry to be used in the pipeline during execution.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Create a <code>PipelineResource</code> that defines the Git repository for the frontend application:</p>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the front-end application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-ui.git</pre>
+<pre> $ tkn resource create
+ ? Enter a name for a pipeline resource : ui-repo
+ ? Select a resource type to create : git
+ ? Enter a value for url : http://github.com/openshift-pipelines/vote-ui.git
+ ? Enter a value for revision :
+ New git resource "ui-repo" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the frontend image:</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the front-end image:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: ui-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : ui-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/ui:latest
+? Enter a value for revision :
+New git resource "ui-image" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the Git repository for the backend application:</p>
+<p>Create a <code>PipelineResource</code> that defines the Git repository for the back-end application:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: http://github.com/openshift-pipelines/vote-api.git</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : api-repo
+? Select a resource type to create : git
+? Enter a value for url : http://github.com/openshift-pipelines/vote-api.git
+? Enter a value for revision :
+New git resource "api-repo" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the backend image:</p>
+<p>Create a <code>PipelineResource</code> that defines the OpenShift internal image registry to which you want to push the back-end image:</p>
 <div class="listingblock">
 <div class="content">
-<pre>apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: api-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Create the Pipeline Resources:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/resources.yaml</pre>
+<pre>$ tkn resource create
+? Enter a name for a pipeline resource : api-image
+? Select a resource type to create : image
+? Enter a value for url : image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/api:latest
+? Enter a value for revision :
+New git resource "api-image" has been created</pre>
 </div>
 </div>
 </li>
 <li>
-<p>See the list of resources:</p>
+<p>View the list of resources created:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn resource ls

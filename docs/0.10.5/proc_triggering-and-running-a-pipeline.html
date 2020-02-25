@@ -177,28 +177,19 @@ Pipelinerun started: build-and-deploy-run-z2rz8
 Showing logs...</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Note: OpenShift Pipelines 0.7 does not automatically use the pipeline service account for running pipelineruns. This has been fixed in the OpenShift Pipelines 0.8 release. If you want to use the OpenShift Console developer perspective to start the pipeline with OpenShift Pipelines 0.7, run the following commands to elevate the permissions of the default service account used for running pipelineruns that are started by the OpenShift Console, as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc adm policy add-scc-to-user privileged -z default
-$ oc adm policy add-role-to-user edit -z default</pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Starting a pipeline instantiates the <code>PipelineRun</code> and creates a number of pods to execute the tasks that are defined in the pipeline. The <code>PipelineRun</code> automatically creates and triggers the <code>TaskRuns</code> for each <code>Task</code> in the pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Note the Pipelinerun ID returned in the command output above.</p>
+</div>
+</li>
+<li>
+<p>Track the pipelinerun progress as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ tkn pipelinerun logs &lt;pipelinerun ID&gt; -f -n pipelines-tutorial</pre>
+</div>
 </div>
 </li>
 <li>
