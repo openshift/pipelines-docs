@@ -38,4 +38,4 @@ $ oc get serviceaccount pipeline
 
 . Select the *pipelines-tutorial* project from the *Project* drop-down menu. On the *Topology* view of the *Developer* perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The `Pipeline` you create in the next steps builds the simple application which has a front-end and a back-end and completes the deployment.
 +
-image::../assets/images/application-deployed.png[Application Deployed]
+image::application-deployed.png[Application Deployed]
