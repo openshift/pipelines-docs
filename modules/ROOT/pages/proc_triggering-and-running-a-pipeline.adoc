@@ -23,17 +23,15 @@ Pipelinerun started: build-and-deploy-run-z2rz8
 Showing logs...
 ----
 +
-[NOTE]
-====
-Note: OpenShift Pipelines 0.7 does not automatically use the pipeline service account for running pipelineruns. This has been fixed in the OpenShift Pipelines 0.8 release. If you want to use the OpenShift Console developer perspective to start the pipeline with OpenShift Pipelines 0.7, run the following commands to elevate the permissions of the default service account used for running pipelineruns that are started by the OpenShift Console, as follows:
-----
-$ oc adm policy add-scc-to-user privileged -z default
-$ oc adm policy add-role-to-user edit -z default
-----
-====
-+
 Starting a pipeline instantiates the `PipelineRun` and creates a number of pods to execute the tasks that are defined in the pipeline. The `PipelineRun` automatically creates and triggers the `TaskRuns` for each `Task` in the pipeline.
++
+Note the Pipelinerun ID returned in the command output above.
 
+. Track the pipelinerun progress as follows:
++
+----
+$ tkn pipelinerun logs <pipelinerun ID> -f -n pipelines-tutorial
+----
 . After a few minutes, verify that the `Pipeline` ran successfully by listing all the `PipelineRuns` as follows:
 +
 ----
@@ -44,6 +42,8 @@ $ tkn pipeline list
 NAME               AGE              LAST RUN                     STARTED         DURATION    STATUS
 build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago   5 minutes   Succeeded
 ----
+
+
 
 ////
 

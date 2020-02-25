@@ -14,23 +14,18 @@ You can examine the logs for `PipelineRuns` to verify its status.
 +
 ----
 $ tkn pipeline logs -f
-? Select pipeline : petclinic-deploy-pipeline
-? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
-
-...
-[build : nop] Build successful
-[deploy : build-step-oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
-[deploy : nop] Build successful
+? Select pipeline : build-and-deploy
+? Select pipelinerun : build-and-deploy-run-tsv92 started 39 seconds ago
 ----
 
-. Check the *Project Status* in the OpenShift Web Console to verify that the PetClinic image is successfully built and deployed.
+. Check the *Project Status* in the OpenShift Web Console to verify that the images are successfully built and deployed.
 +
 image::deployment_complete.png[Application deployed on OpenShift]
 
 . To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:
 +
 ----
-tkn pipeline start petclinic-deploy-pipeline --last
+tkn pipeline start build-and-deploy --last
 ----
 
 ////
