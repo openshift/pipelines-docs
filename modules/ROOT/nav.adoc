@@ -20,4 +20,4 @@
 * xref:assembly_cli-reference.adoc[4. CLI Reference]
 ** xref:proc_installing-cli.adoc[4.1 Installing CLI]
 ** xref:ref_cli-reference.adoc[4.2 Basic Commands]
-* xref:release_notes_0.8.adoc[Release Notes]
+* xref:release_notes.adoc[Release Notes]
