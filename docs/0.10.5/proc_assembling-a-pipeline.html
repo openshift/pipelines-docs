@@ -276,13 +276,13 @@ spec:
 <div class="ulist">
 <ul>
 <li>
-<p>Clones the source code of the frontend application from the <code>api-repo</code> Git repository and the backend application from the <code>ui-reporesource</code> Git repository.</p>
+<p>Clones the source code of the back-end application from the <code>api-repo</code> Git repository and the front-end application from the <code>ui-repo resource</code> Git repository.</p>
 </li>
 <li>
-<p>Builds the container image for the frontend using the <code>s2i-python-3</code> task that generates a Dockerfile for the application using Source-to-Image (S2I).</p>
+<p>Builds the container image for the front-end using the <code>s2i-python-3</code> task that generates a Dockerfile for the application using Source-to-Image (S2I).</p>
 </li>
 <li>
-<p>Builds the container image for the backend using the <code>buildah</code> task that uses <code>Buildah</code> to build the image.</p>
+<p>Builds the container image for the back-end using the <code>buildah</code> task that uses <code>Buildah</code> to build the image.</p>
 </li>
 <li>
 <p>The application image is pushed to an image registry.</p>
@@ -290,7 +290,7 @@ spec:
 <li>
 <p>The new application image is deployed on OpenShift using the <code>apply-manifests</code> and <code>update-deployment</code> tasks.</p>
 <div class="paragraph">
-<p><code>Pipeline</code> s in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
+<p><code>Pipelines</code> in Tekton are designed to be generic and re-usable across environments and stages through the applications lifecycle. They abstract away the specifics of the Git source repository and image registries to be used during <code>Pipeline</code> execution.</p>
 </div>
 <div class="paragraph">
 <p>The execution order of the tasks is determined by the dependencies defined between the tasks using the  <code>inputs</code> and <code>outputs</code> parameters, and the explicit orders that are defined using <code>runAfter</code>.</p>
@@ -318,20 +318,6 @@ build-and-deploy   1 minute ago   ---        ---       ---        ---</pre>
 </div>
 </li>
 </ol>
-</div>
-<h2 id="_additional_resources" class="discrete">Additional resources</h2>
-<div class="ulist">
-<ul>
-<li>
-<p>A bulleted list of links to other material closely related to the contents of the procedure module.</p>
-</li>
-<li>
-<p>For more details on writing procedure modules, see the <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
-</li>
-<li>
-<p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href="https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide">Modular Documentation Reference Guide</a>.</p>
-</li>
-</ul>
 </div>
 </article>
 </main>

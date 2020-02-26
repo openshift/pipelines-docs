@@ -169,18 +169,13 @@
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn pipeline logs -f
-? Select pipeline : petclinic-deploy-pipeline
-? Select pipelinerun : petclinic-deploy-pipeline-run-tsv92 started 39 seconds ago
-
-...
-[build : nop] Build successful
-[deploy : build-step-oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
-[deploy : nop] Build successful</pre>
+? Select pipeline : build-and-deploy
+? Select pipelinerun : build-and-deploy-run-tsv92 started 39 seconds ago</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the PetClinic image is successfully built and deployed.</p>
+<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the images are successfully built and deployed.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
@@ -191,7 +186,7 @@
 <p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
 <div class="listingblock">
 <div class="content">
-<pre>tkn pipeline start petclinic-deploy-pipeline --last</pre>
+<pre>tkn pipeline start build-and-deploy --last</pre>
 </div>
 </div>
 </li>

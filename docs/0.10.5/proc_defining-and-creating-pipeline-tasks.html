@@ -165,17 +165,11 @@
 <p>Every <code>Task</code> runs as a pod and each <code>step</code> runs in its own container within the same pod. Since they run within the same pod they have access to the same volumes to cache files, configmaps, and secrets. They use <code>inputs</code> parameters, for example, a git , and <code>outputs</code> parameters, for example, an image in a registry, to interact with other tasks.</p>
 </div>
 <div class="paragraph">
-<p><code>Tasks</code> are reusable and can be used in multiple <code>Pipeline</code> s. For this tutorial, you create a Maven <code>Task</code> with a single step to build a Maven based application, and then add two reusable <code>Tasks</code> from the <a href="https://github.com/tektoncd/catalog">catalog</a> repository.</p>
+<p><code>Tasks</code> are reusable and can be used in multiple <code>Pipelines</code>.</p>
 </div>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To create the Maven <code>Task</code>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Copy the contents of the following sample <code>Task</code> YAML file and save it:</p>
+<div class="paragraph">
+<p>Here is an example of a Maven <code>Task</code> with a single step to build a Maven-based Java application.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>apiVersion: tekton.dev/v1alpha1
@@ -201,22 +195,13 @@ spec:
 <p>This <code>Task</code> starts a pod and runs a container inside that pod using the <code>maven:3.6.0-jdk-8-slim</code> image to run the specified commands. It receives an input directory called <code>workspace-git</code> which contains the source code of the application.</p>
 </div>
 <div class="paragraph">
-<p>Only the requirement for a git repository is declared on the <code>Task</code> and not a specific git repository to be used. This allows <code>Tasks</code> to be reusable for multiple <code>Pipeline</code> s and purposes.</p>
+<p>Only the requirement for a git repository is declared on the <code>Task</code> and not a specific git repository to be used. This allows <code>Tasks</code> to be reusable for multiple <code>Pipelines</code> and purposes.</p>
 </div>
-</li>
+<h2 id="_procedure" class="discrete">Procedure</h2>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Create the <code>Task</code> within your project:</p>
-<div class="listingblock">
-<div class="content">
-<pre>oc create -f maven-build-task.yaml</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Install the <code>apply-manifests</code> and <code>update-deployment</code> tasks from the repositories, which contain a list of reusable <code>Tasks</code> for `Pipeline`s:</p>
+<p>Install the <code>apply-manifests</code> and <code>update-deployment</code> tasks from the repositories, which contain a list of reusable <code>Tasks</code> for <code>Pipelines</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/update_deployment_task.yaml
@@ -241,23 +226,29 @@ update-deployment   4 seconds ago</pre>
 <div class="listingblock">
 <div class="content">
 <pre>$ tkn clustertask ls
-NAME                      AGE
-buildah                   9 hours ago
-buildah-v0-8-0            9 hours ago
-openshift-client          9 hours ago
-openshift-client-v0-8-0   9 hours ago
-s2i                       9 hours ago
-s2i-go                    9 hours ago
-s2i-go-v0-8-0             9 hours ago
-s2i-java-11               9 hours ago
-s2i-java-11-v0-8-0        9 hours ago
-s2i-java-8                9 hours ago
-s2i-java-8-v0-8-0         9 hours ago
-s2i-nodejs                9 hours ago
-s2i-nodejs-v0-8-0         9 hours ago
-s2i-python-3              9 hours ago
-s2i-python-3-v0-8-0       9 hours ago
-s2i-v0-8-0                9 hours ago</pre>
+NAME                       AGE
+buildah                    4 minutes ago
+buildah-v0-10-0            4 minutes ago
+openshift-client           4 minutes ago
+openshift-client-v0-10-0   4 minutes ago
+s2i                        4 minutes ago
+s2i-go                     4 minutes ago
+s2i-go-v0-10-0             4 minutes ago
+s2i-java-11                4 minutes ago
+s2i-java-11-v0-10-0        4 minutes ago
+s2i-java-8                 4 minutes ago
+s2i-java-8-v0-10-0         4 minutes ago
+s2i-nodejs                 4 minutes ago
+s2i-nodejs-v0-10-0         4 minutes ago
+s2i-perl                   4 minutes ago
+s2i-perl-v0-10-0           4 minutes ago
+s2i-php                    4 minutes ago
+s2i-php-v0-10-0            4 minutes ago
+s2i-python-3               4 minutes ago
+s2i-python-3-v0-10-0       4 minutes ago
+s2i-ruby                   4 minutes ago
+s2i-ruby-v0-10-0           4 minutes ago
+s2i-v0-10-0                4 minutes ago</pre>
 </div>
 </div>
 </li>
