@@ -1,0 +1,54 @@
+// Ths module is included in the following assembly:
+//
+// assembly_working-with-pipelines-using-developer-perspective.adoc
+
+[id="interacting-with-pipelines-using-the-developer-perspective_{context}"]
+= Interacting with Pipelines using the Developer perspective
+
+After you create Pipelines, you can visually interact with your deployed Pipelines on the *Developer* perspective of the OpenShift web console.
+
+The *Pipelines* view in the *Developer* perspective lists all the pipelines in a project along with details, such as the namespace in which the pipeline was created, the last pipeline run, the status of the tasks in the pipeline run, the status of the pipeline run, and the time taken for the run.
+
+To visually interact with the pipelines in your project:
+[Discrete]
+=== Prerequisites
+Ensure that:
+
+* You have access to an OpenShift Cluster and have logged in to the web console and are in the *Developer* perspective.
+* You have cluster administrator privileges to install operators and have installed the OpenShift Pipelines Operator.
+* You have created a project, deployed an application, and created a pipeline for the application.
+
+[Discrete]
+=== Procedure
+. In the *Pipelines* view of the *Developer* perspective, select the project you created from the *Project* drop-down to see the pipelines in that project.
++
+image::pipeline_list.png[Pipelines in the Developer perspective]
++
+. Click on the required pipeline to see the *Pipeline Details* page. It provides a visual representation of all the serial and parallel tasks in the pipeline. The tasks are also listed to the bottom-right of the page. You can click the *Tasks* listed to view the details of the task.
++
+image::pipeline_details.png[Pipeline details]
++
+. In the *Pipeline Details* page :
+
+* Click *Pipeline Runs* tab to see the completed, running, or failed runs for the pipeline. You can use the Options menu (icon image)  to—stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.
+* Click *Parameters* tab to see the parameters defined in the Pipeline. You can also add or edit additional parameters as required.
+*Click *Resources* tab to see the resources defined in the Pipeline. You can also add or edit additional resources as required.
+
+. Click *Actions* on the upper right of the screen and select *Start* to start the pipeline. The *Start Pipeline* dialog box displays the *Git Resources*, and *Image Resources* based on the pipeline definition.
+.. In the *Parameters* section, enter a unique name in the `IMAGE_NAME` field.
+.. Use the drop-downs to select or create the required resources to customize the pipeline as required. For this example, retain their default values and click *Start* to start the pipeline run. After the pipeline starts, the tasks are executed sequentially in the Pipeline.
+//Specifically for this Pipeline `IMAGE_NAME` may end up as 'APP_NAME' to fulfil what they are looking for. Ticket: https://issues.redhat.com/browse/SRVKP-631 Update docs based on the bug resolution
+
+. The *Pipeline Run Details* page displays the pipeline being executed. You can:
+* Hover over the tasks to see the time taken for each step execution.
+* Click on a task to see logs for each of the steps in the task.
+* Click the *Logs* tab to see the logs as per the execution sequence of the tasks, and use the *Download* button to download the logs to a text file.
++
+image::pipeline_run.png[Pipeline run]
++
+. On the left navigation panel, click *Topology* and click on the application to see the pipeline runs listed in the right panel.
+. In the *Pipeline Runs* section, click *Start Last Run* to start a new pipeline run with the same parameters and resources as the previous ones. This option is disabled if a pipeline run has not been initiated.
++
+image::pipeline_topology.png[Pipeline topology]
++
+. In the *Topology* page, hover to the left of the application to see the status of the pipeline run for the application.

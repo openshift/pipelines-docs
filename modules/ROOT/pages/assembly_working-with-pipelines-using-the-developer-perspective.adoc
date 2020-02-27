@@ -1,0 +1,16 @@
+:parent-context-of-working-with-pipelines-using-developer-perspective: {context}
+
+[id='working-with-pipelines-using-developer-perspective_{context}']
+= Using Pipelines
+
+:context: working-with-pipelines-using-developer-perspective
+
+You can use the *Developer* perspective of the OpenShift web console to create CI/CD pipelines for your software delivery process while creating an application on OpenShift Container Platform.
+
+NOTE: The .NET Core runtime is not yet supported by the pipeline templates.
+
+include::proc_creating-applications-with-cicd-pipelines.adoc[leveloffset=+1]
+
+include::proc_interacting-with-pipelines-using-the-developer-perspective.adoc[leveloffset=+1]
+
+:context: {parent-context-of-working-with-pipelines-using-developer-perspective}
