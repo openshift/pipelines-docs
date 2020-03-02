@@ -13,6 +13,4 @@ include::proc_installing-pipelines-operator-using-the-cli.adoc[leveloffset=+1]
 
 include::proc_uninstalling-pipelines-operator.adoc[leveloffset=+1]
 
-
-
 :context: {parent-context-of-installing-the-pipelines-operator}
