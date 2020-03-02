@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Working with Pipelines using the OpenShift Developer Perspective :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_working-with-pipelines-using-developer-perspective.html">
+    <title>Interacting with Pipelines using the Developer perspective :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_interacting-with-pipelines-using-the-developer-perspective.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -91,25 +91,34 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a>
   </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="assembly_working-with-pipelines-using-the-developer-perspective.html">4. Working with pipelines using the Developer perspective</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_creating-applications-with-cicd-pipelines.html">4.1 Creating-applications with CI/CD pipelines</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a>
+    <a class="nav-link" href="proc_interacting-with-pipelines-using-the-developer-perspective.html">4.2 Interacting with pipelines using the Developer perspective</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_cli-reference.html">4. CLI Reference</a>
+    <a class="nav-link" href="assembly_cli-reference.html">5. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing-cli.html">4.1 Installing CLI</a>
+    <a class="nav-link" href="proc_installing-cli.html">5.1 Installing CLI</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli-reference.html">4.2 Basic Commands</a>
+    <a class="nav-link" href="ref_cli-reference.html">5.2 Basic Commands</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="release_notes_0.8.html">Release Notes</a>
+    <a class="nav-link" href="release_notes.html">Release Notes</a>
   </li>
 </ul>
   </li>
@@ -151,51 +160,26 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
-    <li><a href="proc_working-with-pipelines-using-developer-perspective.html">3.7 Working with pipelines using the developer console</a></li>
+    <li><a href="assembly_working-with-pipelines-using-the-developer-perspective.html">4. Working with pipelines using the Developer perspective</a></li>
+    <li><a href="proc_interacting-with-pipelines-using-the-developer-perspective.html">4.2 Interacting with pipelines using the Developer perspective</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Working with Pipelines using the OpenShift Developer Perspective</h1>
+<h1 class="page">Interacting with Pipelines using the Developer perspective</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>After you create Pipelines using the <code>tkn</code> CLI or YAML files. You can visually interact with your deployed Pipelines on the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer Perspective</a> of the Openshift web console.</p>
+<p>The <strong>Pipelines</strong> view in the <strong>Developer</strong> perspective lists all the pipelines in a project along with details, such as the namespace in which the pipeline was created, the last pipeline run, the status of the tasks in the pipeline run, the status of the pipeline run, and the time taken for the run.</p>
 </div>
-<div class="paragraph">
-<p>The <strong>Pipelines</strong> view in the Developer perspective lists all the pipelines in a project; the last run of the pipeline, it’s status, and the time taken for the run; and the status of the individual tasks in a pipeline run.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
-<div class="paragraph">
-<p>To view your pipelines in the <strong>Pipelines</strong> view and interact with them, ensure that:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>You have access to an OpenShift Cluster and have logged in to the web console and are in the <a href="https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html">Developer perspective</a>.</p>
-</li>
-<li>
-<p>You have cluster administrator privileges to install operators and have <a href="https://openshift.github.io/pipelines-docs/docs/docs/assembly_installing-pipelines.html">installed the OpenShift Pipelines Operator</a>.</p>
-</li>
-<li>
-<p>You have created a project, <a href="https://openshift.github.io/pipelines-docs/docs/docs/0.7/assembly_using-pipelines.html">deployed an application, and created a pipeline</a> for the application.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_procedure"><a class="anchor" href="#_procedure"></a>Procedure</h3>
-<div class="paragraph">
-<p>To visually interact  with the pipelines in your project:</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In the <strong>Pipelines</strong> view of the Developer Perspective, select the project you created from the <strong>Project</strong> drop-down to see the pipelines listed in the <strong>Pipelines</strong> page.</p>
+<p>In the <strong>Pipelines</strong> view of the <strong>Developer</strong> perspective, select a project from the <strong>Project</strong> drop-down to see the pipelines in that project.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/pipeline_list.png" alt="Pipelines in the Developer perspective">
@@ -203,47 +187,54 @@
 </div>
 </li>
 <li>
-<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. The pipelines <strong>Overview</strong> provides a visual representation of all the serial and parallel tasks in the pipeline.</p>
+<p>Click on the required pipeline to see the <strong>Pipeline Details</strong> page. It provides a visual representation of all the serial and parallel tasks in the pipeline. The tasks are also listed to the bottom-right of the page. You can click the listed <strong>Tasks</strong> to view the details of the task.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/pipeline_overview.png" alt="Pipeline overview">
+<img src="_images/pipeline_details.png" alt="Pipeline details">
 </div>
 </div>
 </li>
 <li>
-<p>Click:</p>
+<p>Optionally, in the <strong>Pipeline Details</strong> page :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Click <strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline. You can use the Options menu (icon image)  to: stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
+</li>
+<li>
+<p>Click <strong>Parameters</strong> tab to see the parameters defined in the Pipeline. You can also add or edit additional parameters as required.</p>
+</li>
+<li>
+<p>Click <strong>Resources</strong> tab to see the resources defined in the Pipeline. You can also add or edit additional resources as required.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> on the upper-right of the screen and select <strong>Start</strong> to start the pipeline. The <strong>Start Pipeline</strong> dialog box displays the <strong>Git Resources</strong> and the <strong>Image Resources</strong> based on the pipeline definition.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><strong>Pipeline Runs</strong> tab to see the completed, running, or failed runs for the pipeline.</p>
+<p>In the <strong>Parameters</strong> section, enter a unique name in the <code>IMAGE_NAME</code> field.</p>
 </li>
 <li>
-<p><strong>Parameters</strong> tab to see the parameters defined in the Pipeline and add or edit additional parameters as required.</p>
-</li>
-<li>
-<p><strong>Resources</strong> tab to see the resources defined in the Pipeline and add or edit additional resources as required.</p>
+<p>Use the drop-downs to select or create the required resources to customize the pipeline as required. For this example, retain their default values and click <strong>Start</strong> to start the pipeline run. After the pipeline starts, the tasks are executed sequentially in the Pipeline.</p>
 </li>
 </ol>
 </div>
-</li>
-<li>
-<p>Click <strong>Actions</strong> on the top-right corner and select <strong>Start</strong> to see the <strong>Start Pipeline</strong> dialog box. The resources populated in the <strong>Start Pipeline</strong> dialog box are based on the pipeline definition.</p>
-</li>
-<li>
-<p>Use the drop-downs in the <strong>Start Pipeline</strong> dialog box to select or create the required resources to customize them as required, and click <strong>Start</strong> to start the pipeline run.</p>
 </li>
 <li>
 <p>The <strong>Pipeline Run Details</strong> page displays the pipeline being executed. You can:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Hover over the tasks to see the time taken for each task execution.</p>
+<p>Hover over the tasks to see the time taken for the execution of each step.</p>
 </li>
 <li>
-<p>Click on a task to see logs for that particular task.</p>
+<p>Click on a task to see logs for each of the steps in the task.</p>
 </li>
 <li>
-<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks.</p>
+<p>Click the <strong>Logs</strong> tab to see the logs as per the execution sequence of the tasks and use the <strong>Download</strong> button to download the logs to a text file.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/pipeline_run.png" alt="Pipeline run">
@@ -254,17 +245,18 @@
 </div>
 </li>
 <li>
-<p>Click <strong>Pipelines Runs</strong> in the breadcrumb trail displayed at the top-left corner to see a list of pipeline runs for the pipeline in the <strong>Pipeline Runs</strong> page.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Use the filters to see the complete, running, or failed pipeline runs.</p>
+<p>On the left navigation panel, click <strong>Topology</strong> and click on the application to see the pipeline runs listed in the right panel.</p>
 </li>
 <li>
-<p>Use the <strong>Options</strong> menu adjacent to a pipeline run to stop a running pipeline, rerun a pipeline using the same parameters and resources as that of the previous pipeline execution, or delete a pipeline run.</p>
-</li>
-</ul>
+<p>In the <strong>Pipeline Runs</strong> section, click <strong>Start Last Run</strong> to start a new pipeline run with the same parameters and resources as the previous ones. This option is disabled if a pipeline run has not been initiated.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/pipeline_topology.png" alt="Pipeline topology">
 </div>
+</div>
+</li>
+<li>
+<p>In the <strong>Topology</strong> page, hover to the left of the application to see the status of the pipeline run for the application.</p>
 </li>
 </ol>
 </div>
