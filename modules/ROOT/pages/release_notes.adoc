@@ -62,21 +62,21 @@ For questions and feedback subscribe to the link:mailto:pipelines-interest@redha
 
 The following items are deprecated in 0.8.0, and will be removed in the next release:
 
-* `EventListenerTrigger.interceptor` is now deprecated. Use Interceptors instead.
+* `EventListenerTrigger.interceptor` is now deprecated. Use `interceptors` instead.
 * `EventListenerTrigger.binding` is now deprecated. Use `bindings` instead.
-* `status` field is now removed from `Pipeline` and `PipelineResource`. This field will stay in `v1alpha1`, however it will be removed in the next API version.
+* `status` field is now removed from `Pipeline` and `PipelineResource`. This field will stay in the `v1alpha1` version, however it will be removed in the next API version.
 * `.status.podName` field is now deprecated and should not be used for finding the pod associated with `TaskRun`. Use label selectors to identify Tekton owned pods.
 
 
 == Fixed Issues
 === Red Hat Fixed Issues
-* link:https://issues.redhat.com/browse/SRVKP-429[SRVKP-429]: Tekton Pipelines can now be deployed on an OpenShift cluster running in Google Cloud Platform (GCP).
+* link:https://issues.redhat.com/browse/SRVKP-429[SRVKP-429]: Tekton Pipelines can now be deployed in an OpenShift cluster running on Google Cloud Platform (GCP).
 * link:https://issues.redhat.com/browse/SRVKP-549[SRVKP-549]: Previously, the Pipelines section used to continuously load on the catalog/source-to-image page. This issue is now resolved by adding checks for permissions.
 
 
 === Tekton Fixed Issues
 * link:https://github.com/tektoncd/pipeline/pull/1756[#1756]: Previously, an error was observed when a pipeline was run on a service account with a long secret name. With this bug fix, the length of volumes generated from secret names is now restricted.
-* link:https://github.com/tektoncd/pipeline/pull/1675[#1675]: In the previous release, any resolved digests would get appended to the input image name, which resulted in invalid duplicate digests when the input was specified by digest. This change uses `ref.context()`, which omits the digest and appends the resolved digest to the end of the image name.
+* link:https://github.com/tektoncd/pipeline/pull/1675[#1675]: In the previous release, any resolved digests would get appended to the input image name, which resulted in invalid duplicate digests when the input was specified by the digest. This change uses `ref.context()`, which omits the digest and appends the resolved digest to the end of the image name.
 * link:https://github.com/tektoncd/pipeline/pull/1688[#1688]: Before this change, sidecars that are injected into the Pod by external Mutating Admission Controllers would not always be ready before the first step started, and would not stop when steps finish. With this fix, pipelines look for any non-step container which indicates the presence of a sidecar container, when waiting for or stopping sidecars.
 * link:https://github.com/tektoncd/pipeline/pull/1693[#1693]: Previously, PullRequest PipelineResource read the `scm.PR.Head.Sha` incorrectly, causing it to fail when adding a comment on the PR. This fix sets the  `scm.PR.Sha` to `scm.PR.Head.Sha` when loading from disk.
 * link:https://github.com/tektoncd/pipeline/pull/1812[#1812]: Previously, a task was marked as successful even when it was killed by the controller. With this fix, the task is marked as failed.
