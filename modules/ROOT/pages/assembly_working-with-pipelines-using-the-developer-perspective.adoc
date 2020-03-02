@@ -14,9 +14,10 @@ NOTE: The .NET Core runtime is not yet supported by the pipeline templates.
 [Discrete]
 === Prerequisites
 
-* You have access to an OpenShift Cluster and have logged in to the web console and are in the link:https://docs.openshift.com/container-platform/4.2/web-console/odc-about-developer-perspective.html[Developer perspective].
+* You have access to an OpenShift Cluster and have logged in to the link:https://docs.openshift.com/container-platform/latest/web_console/web-console.html#web-console[web console].
 * You have cluster administrator privileges to install operators and have link:https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_installing-pipelines.html[installed the OpenShift Pipelines Operator].
-* You have created a project, link:https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_using-pipelines.html[deployed an application, and created a pipeline] for the application.
+* You are in the link:https://docs.openshift.com/container-platform/latest/web-console/odc-about-developer-perspective.html[Developer perspective].
+* You have created a project.
 
 include::proc_creating-applications-with-cicd-pipelines.adoc[leveloffset=+1]
 
