@@ -19,8 +19,4 @@ include::proc_triggering-and-running-a-pipeline.adoc[leveloffset=+1]
 
 include::proc_checking-pipeline-and-application-status.adoc[leveloffset=+1]
 
-include::proc_working-with-pipelines-using-developer-perspective.adoc[leveloffset=+1]
-
-
-
 :context: {parent-context-of-using-pipelines}
