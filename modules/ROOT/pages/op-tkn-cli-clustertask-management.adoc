@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-cli-reference.adoc
+
+[id="cli-clustertask-management-commands_{context}"]
+= Clustertask Management Commands
+
+== tkn clustertask
+Manage clustertasks.
+
+.Example: Display help
+----
+$ tkn clustertask --help
+----
+
+== tkn clustertask delete
+Delete a clustertask resource in a cluster.
+
+.Example: Delete `mytask1` and `mytask2` clustertasks
+----
+$ tkn clustertask delete mytask1 mytask2
+----
+
+
+== tkn clustertask describe
+Describes a clustertask.
+
+.Example: Describe the `mytask` clustertask
+----
+$ tkn clustertask describe mytask1
+----
+
+== tkn clustertask list
+List clustertasks in a namespace.
+
+.Example: List clustertasks in a namespace
+----
+$ tkn clustertask list -n myspace
+----
+== tkn clustertask start
+Start clustertasks.
+
+.Example: Start the `mytask` clustertask in a namespace
+----
+$ tkn clustertask start mytask -n myspace
+----

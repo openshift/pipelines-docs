@@ -1,0 +1,62 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-cli-reference.adoc
+
+[id="cli-task-management-commands_{context}"]
+= Task Management Commands
+
+== tkn task
+Manage tasks.
+
+.Example: Display help
+----
+$ tkn task -h
+----
+
+== tkn task create
+Create a task in a namespace.
+
+.Example: Create a task defined by the `mytask.yaml` file in a namespace
+----
+$ tkn task create -f mytask.yaml -n myspace
+----
+
+== tkn task delete
+Delete task resources in a namespace.
+
+.Example: Delete tasks from a namespace
+----
+$ tkn task delete mytask1 mytask2 -n myspace
+----
+
+== tkn task describe
+Describe a task in a namespace.
+
+.Example: Describe the `mytask` task in a namespace
+----
+$ tkn task describe mytask -n myspace
+----
+
+== tkn task list
+List tasks in a namespace.
+
+.Example: List all the tasks in a namespace
+----
+$ tkn task list -n myspace
+----
+
+== tkn task logs
+Display task logs.
+
+.Example: Display logs for the `mytaskrun` taskrun of the `mytask` task
+----
+$ tkn task logs mytask mytaskrun -n myspace
+----
+
+== tkn task start
+Start a task.
+
+.Example: Start the `mytask` task in a namespace
+----
+$ tkn task start mytask -s <ServiceAccountName> -n myspace
+----

@@ -1,0 +1,63 @@
+// Module included in the following assemblies:
+//
+// * pipelines/op-tkn-cli-references.adoc
+
+[id="cli-pipeline-management-commands_{context}"]
+= Pipelines Management Commands
+
+== tkn pipeline
+Manage pipelines.
+
+.Example: Display help
+----
+$ pipeline --help
+----
+
+== tkn pipeline create
+Create a pipeline in a namespace.
+
+.Example: Create a pipeline defined by the `mypipeline.yaml` file in a namespace
+-----
+$ tkn pipeline create -f mypipeline.yaml -n myspace
+-----
+
+== tkn pipeline delete
+
+Delete a pipeline in a namespace.
+
+.Example: Delete the `mypipeline` pipeline from a namespace
+----
+$ tkn pipeline delete mypipeline -n myspace
+----
+
+== tkn pipeline describe
+Describe a pipeline in a namespace.
+
+.Example: Describe `mypipeline` pipeline
+----
+$ tkn pipeline describe mypipeline
+----
+
+== tkn pipeline list
+List pipelines in a namespace.
+
+.Example: Display a list of pipelines
+-----
+$ tkn pipeline list
+-----
+
+== tkn pipeline logs
+Display pipeline logs for a specific pipeline .
+
+.Example: Stream live logs for the `mypipeline` pipeline
+----
+$ tkn pipeline logs -f mypipeline
+----
+
+== tkn pipeline start
+Start a pipeline.
+
+.Example: Start a pipeline
+----
+$ tkn pipeline start mypipeline
+----

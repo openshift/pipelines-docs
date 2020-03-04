@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-cli-reference.adoc
+
+[id="cli-utility-commands_{context}"]
+= Utility Commands
+
+== tkn
+Parent command for Tekton CLI.
+
+.Example:Display all options
+-----
+$ tkn
+-----
+
+== tkn completion [shell]
+Print shell completion code which must be evaluated to provide interactive completion. Supported shells are `bash` and `zsh`.
+
+.Example: Completion code for `bash` shell
+----
+$ tkn completion bash
+----
+
+== tkn version
+Print version information of the Tekton CLI `tkn`.
+
+.Example: Check for the newer version availability
+-----
+$ tkn version -c
+-----

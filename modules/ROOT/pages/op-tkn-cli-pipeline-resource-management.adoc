@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-cli-reference.adoc
+
+[id="cli-pipeline-resources-management-commands_{context}"]
+= Pipeline Resource Management Commands
+
+== tkn resource
+Manage pipeline resources.
+
+.Example: Display help
+----
+$ tkn resource -h
+----
+
+== tkn resource create
+Create a pipeline resource in a namespace.
+
+.Example: Create pipeline resource defined by the `myresource.yaml` file in a namespace
+----
+$ tkn resource create -f myresource.yaml -n myspace
+----
+
+== tkn resource delete
+Delete a pipeline resource in a namespace.
+
+.Example: Delete the `myresource` pipeline resource from a namespace
+----
+$ tkn resource delete myresource -n myspace
+----
+
+== tkn resource describe
+Describes a pipeline resource in a namespace.
+
+.Example: Describe the `myresource` pipeline resource
+----
+$ tkn resource describe myresource -n `myspace`
+----
+== tkn resource list
+List pipeline resources in a namespace.
+
+.Example: List all pipeline resources in a namespace
+----
+$ tkn resource list -n `myspace`
+----
