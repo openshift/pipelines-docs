@@ -1,0 +1,34 @@
+:parent-context-of-creating-applications-with-cicd-pipelines: {context}
+
+[id='creating-applications-with-cicd-pipelines_{context}']
+= Creating applications with CI/CD Pipelines
+
+:context: creating-applications-with-cicd-pipelines
+
+The following section demonstrates how to create pipelines, trigger and run them, and check on the application status using the pipeline-tutorial example.
+
+[discrete]
+=== Prerequisites
+
+* You have access to OpenShift Container Platform cluster. Developers can use link:https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/[CodeReady Containers (CRC)] to deploy a local OpenShift Container Platform cluster quickly.
+* You have installed link:https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_installing-pipelines.html[OpenShift Pipelines] using the OpenShift Pipeline Operator listed in the OpenShift OperatorHub. Once installed, it is applicable to the entire cluster.
+* You have installed the https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_installing-cli.html[Tekton CLI].
+
+include::proc_creating-project-and-checking-pipeline-service-account.adoc[leveloffset=+1]
+
+include::proc_defining-and-creating-pipeline-tasks.adoc[leveloffset=+1]
+
+include::proc_defining-and-creating-pipelineresources.adoc[leveloffset=+1]
+
+include::proc_assembling-a-pipeline.adoc[leveloffset=+1]
+
+include::proc_triggering-and-running-a-pipeline.adoc[leveloffset=+1]
+
+include::proc_checking-pipeline-and-application-status.adoc[leveloffset=+1]
+
+[discrete]
+== Additional resources
+
+* For more details on pipelines in the *Developer* perspective, see the link:https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_working-with-pipelines-using-the-developer-perspective.html[working with pipelines in the *Developer* perspective].
+
+:context: {parent-context-of-creating-applications-with-cicd-pipelines}
