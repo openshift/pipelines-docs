@@ -29,6 +29,6 @@ include::proc_checking-pipeline-and-application-status.adoc[leveloffset=+1]
 [discrete]
 == Additional resources
 
-* For more details on pipelines in the *Developer* perspective, see the link:https://https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_working-with-pipelines-using-the-developer-perspective.html[working with pipelines in the *Developer* perspective].
+* For more details on pipelines in the *Developer* perspective, see the link:https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_working-with-pipelines-using-the-developer-perspective.html[working with pipelines in the *Developer* perspective].
 
 :context: {parent-context-of-creating-applications-with-cicd-pipelines}

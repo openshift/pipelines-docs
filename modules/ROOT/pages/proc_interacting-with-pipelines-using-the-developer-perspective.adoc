@@ -23,7 +23,7 @@ image::pipeline_details.png[Pipeline details]
 * Click *Parameters* tab to see the parameters defined in the Pipeline. You can also add or edit additional parameters as required.
 * Click *Resources* tab to see the resources defined in the Pipeline. You can also add or edit additional resources as required.
 
-. Click *Actions* on the upper-right of the screen and select *Start* to start the pipeline. The *Start Pipeline* dialog box displays the *Git Resources* and the *Image Resources* based on the pipeline definition.
+. Click *Actions* and select *Start* to start the pipeline. The *Start Pipeline* dialog box displays the *Git Resources* and the *Image Resources* based on the pipeline definition.
 .. In the *Parameters* section, enter a unique name in the `IMAGE_NAME` field.
 .. Use the drop-downs to select or create the required resources to customize the pipeline as required. For this example, retain their default values and click *Start* to start the pipeline run. After the pipeline starts, the tasks are executed sequentially in the Pipeline.
 //Specifically for this Pipeline `IMAGE_NAME` may end up as 'APP_NAME' to fulfil what they are looking for. Ticket: https://issues.redhat.com/browse/SRVKP-631 Update docs based on the bug resolution
