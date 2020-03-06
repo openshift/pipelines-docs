@@ -113,11 +113,11 @@ To update existing documentation:
 1. After the PR is merged, [render and publish the documentation set in the master branch](#full_render).
 
 ## <a name="preview_on_branch"></a> Previewing the rendered documentation.
-1.   Checkout to a branch with source files for the documentation you want to preview, for example,`op-<version>-master`.
-1.   Change to the repository's root directory and run:
+1.   Checkout to the branch from which you are raisng the PR or with the source files for the documentation you want to preview.
+1.   To build the docs run:
 
        ```
-       antora local_site.yml && <your_favourite_browser> build/site/index.html
+       antora local-site.yml && <your_favourite_browser> build/site/index.html
        ```
 
 ##  <a name="full_render"></a> Rendering and publishing the OpenShift Pipelines documentation set
