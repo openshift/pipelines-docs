@@ -24,7 +24,7 @@ $ tkn completion bash
 == tkn version
 Print version information of the Tekton CLI `tkn`.
 
-.Example: Check for the newer version availability
+.Example: Check for the availability of a newer version
 -----
 $ tkn version -c
 -----

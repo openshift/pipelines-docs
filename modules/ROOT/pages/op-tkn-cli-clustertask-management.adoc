@@ -23,7 +23,7 @@ $ tkn clustertask delete mytask1 mytask2
 
 
 == tkn clustertask describe
-Describes a clustertask.
+Describe a clustertask.
 
 .Example: Describe the `mytask` clustertask
 ----

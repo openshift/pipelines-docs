@@ -47,7 +47,7 @@ $ tkn pipeline list
 -----
 
 == tkn pipeline logs
-Display pipeline logs for a specific pipeline .
+Display pipeline logs for a specific pipeline.
 
 .Example: Stream live logs for the `mypipeline` pipeline
 ----
@@ -57,7 +57,7 @@ $ tkn pipeline logs -f mypipeline
 == tkn pipeline start
 Start a pipeline.
 
-.Example: Start a pipeline
+.Example: Start `mypipeline` pipeline
 ----
 $ tkn pipeline start mypipeline
 ----

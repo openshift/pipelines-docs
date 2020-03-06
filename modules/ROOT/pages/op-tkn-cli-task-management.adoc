@@ -24,7 +24,7 @@ $ tkn task create -f mytask.yaml -n myspace
 == tkn task delete
 Delete task resources in a namespace.
 
-.Example: Delete tasks from a namespace
+.Example: Delete `mytask1` and `mytask2` tasks from a namespace
 ----
 $ tkn task delete mytask1 mytask2 -n myspace
 ----
