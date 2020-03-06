@@ -71,10 +71,10 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+    <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+    <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
@@ -160,7 +160,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
     <li><a href="proc_checking-pipeline-and-application-status.html">3.6 Checking pipeline and application status</a></li>
   </ul>
 </nav>
@@ -184,18 +184,21 @@
 </div>
 </li>
 <li>
-<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the images are successfully built and deployed.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
-</div>
-</div>
-</li>
-<li>
 <p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
 <div class="listingblock">
 <div class="content">
 <pre>tkn pipeline start build-and-deploy --last</pre>
+</div>
+</div>
+</li>
+<li>
+<p>To verify the application deployment in  the OpenShift web console, switch to the <strong>Developer</strong> perspective.</p>
+</li>
+<li>
+<p>In the <strong>Topology</strong> view, select the <strong>pipelines-tutorial</strong> project from the <strong>Project</strong> drop-down menu to see the successfully built and deployed applications.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
 </div>
 </div>
 </li>
