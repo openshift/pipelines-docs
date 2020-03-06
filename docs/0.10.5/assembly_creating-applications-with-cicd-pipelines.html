@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using Pipelines :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_using-pipelines.html">
+    <title>Creating applications with CI/CD Pipelines :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_creating-applications-with-cicd-pipelines.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -71,10 +71,10 @@
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="assembly_using-pipelines.html">3. Using Pipelines</a>
+    <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_deploying-an-application-to-openshift.html">3.1 Deploying an application to OpenShift</a>
+    <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_defining-and-creating-pipeline-tasks.html">3.2 Defining and creating pipeline tasks</a>
@@ -160,23 +160,18 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_using-pipelines.html">3. Using Pipelines</a></li>
+    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Using Pipelines</h1>
+<h1 class="page">Creating applications with CI/CD Pipelines</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following section demonstrates how to trigger pipelines, run them, and check on the application status using the pipeline-tutorial example.</p>
+<p>The following section demonstrates how to create pipelines, trigger and run them, and check on the application status using the pipeline-tutorial example.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="deploying-an-application-to-openshift_using-openshift-pipelines"><a class="anchor" href="#deploying-an-application-to-openshift_using-openshift-pipelines"></a>Deploying an application to OpenShift</h2>
-<div class="sectionbody">
-<h4 id="_prerequisites" class="discrete">Prerequisites</h4>
+<h3 id="_prerequisites" class="discrete">Prerequisites</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -190,6 +185,11 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-project-and-checking-pipeline-service-account_creating-applications-with-cicd-pipelines"><a class="anchor" href="#creating-project-and-checking-pipeline-service-account_creating-applications-with-cicd-pipelines"></a>Creating a project and checking your Pipeline service account</h2>
+<div class="sectionbody">
 <h4 id="_procedure" class="discrete">Procedure</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -210,21 +210,10 @@
 </div>
 </li>
 <li>
-<p>Run the following command to see the <code>pipeline</code> service account:</p>
+<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ oc get serviceaccount pipeline</pre>
-</div>
-</div>
-</li>
-<li>
-<p>In the OpenShift Web Console switch to the <strong>Developer</strong> perspective of the OpenShift Web Console.</p>
-</li>
-<li>
-<p>Select the <strong>pipelines-tutorial</strong> project from the <strong>Project</strong> drop-down menu. On the <strong>Topology</strong> view of the <strong>Developer</strong> perspective, you will be able to see the resources of your Pipeline. The deployment at this stage is not complete. The <code>Pipeline</code> you create in the next steps builds the simple application which has a front-end and a back-end and completes the deployment.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/application-deployed.png" alt="Application Deployed">
 </div>
 </div>
 </li>
@@ -233,7 +222,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="defining-and-creating-pipeline-tasks_using-openshift-pipelines"><a class="anchor" href="#defining-and-creating-pipeline-tasks_using-openshift-pipelines"></a>Defining and creating pipeline tasks</h2>
+<h2 id="defining-and-creating-pipeline-tasks_creating-applications-with-cicd-pipelines"><a class="anchor" href="#defining-and-creating-pipeline-tasks_creating-applications-with-cicd-pipelines"></a>Defining and creating pipeline tasks</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>Tasks</code> are the building blocks of a <code>Pipeline</code> and consist of sequentially executed steps. <code>steps</code> are a series of commands that achieve a specific goal, for example, build an image.</p>
@@ -342,7 +331,7 @@ s2i-v0-10-0                4 minutes ago</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="defining-and-creating-pipelineresources_using-openshift-pipelines"><a class="anchor" href="#defining-and-creating-pipelineresources_using-openshift-pipelines"></a>Defining and creating pipeline resources</h2>
+<h2 id="defining-and-creating-pipelineresources_creating-applications-with-cicd-pipelines"><a class="anchor" href="#defining-and-creating-pipelineresources_creating-applications-with-cicd-pipelines"></a>Defining and creating pipeline resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Pipeline resources are artifacts that are used as inputs to a task and can be output by a task.</p>
@@ -424,7 +413,7 @@ ui-image    image   url: image-registry.openshift-image-registry.svc:5000/pipeli
 </div>
 </div>
 <div class="sect1">
-<h2 id="assembling-a-pipeline_using-openshift-pipelines"><a class="anchor" href="#assembling-a-pipeline_using-openshift-pipelines"></a>Assembling a pipeline</h2>
+<h2 id="assembling-a-pipeline_creating-applications-with-cicd-pipelines"><a class="anchor" href="#assembling-a-pipeline_creating-applications-with-cicd-pipelines"></a>Assembling a pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A <code>Pipeline</code> represents a CI/CD flow and is defined by the <code>Tasks</code> to be executed.  It specifies how the <code>Tasks</code> interact with each other and their order of execution using the <code>inputs</code> , <code>outputs</code>, and the <code>run-After</code> parameters. It is designed to be generic and reusable in multiple applications and environments.</p>
@@ -590,7 +579,7 @@ build-and-deploy   1 minute ago   ---        ---       ---        ---</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="triggering-and-running-a-pipeline_using-openshift-pipelines"><a class="anchor" href="#triggering-and-running-a-pipeline_using-openshift-pipelines"></a>Triggering and running a pipeline</h2>
+<h2 id="triggering-and-running-a-pipeline_creating-applications-with-cicd-pipelines"><a class="anchor" href="#triggering-and-running-a-pipeline_creating-applications-with-cicd-pipelines"></a>Triggering and running a pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A <code>PipelineRun</code> starts a <code>Pipeline</code> and ties it to the Git and image resources that should be used for the specific invocation.</p>
@@ -644,7 +633,7 @@ build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago  
 </div>
 </div>
 <div class="sect1">
-<h2 id="checking-pipeline-and-application-status_using-openshift-pipelines"><a class="anchor" href="#checking-pipeline-and-application-status_using-openshift-pipelines"></a>Checking pipeline and application status</h2>
+<h2 id="checking-pipeline-and-application-status_creating-applications-with-cicd-pipelines"><a class="anchor" href="#checking-pipeline-and-application-status_creating-applications-with-cicd-pipelines"></a>Checking pipeline and application status</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can examine the logs for <code>PipelineRuns</code> to verify its status.</p>
@@ -663,14 +652,6 @@ build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago  
 </div>
 </li>
 <li>
-<p>Check the <strong>Project Status</strong> in the OpenShift Web Console to verify that the images are successfully built and deployed.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
-</div>
-</div>
-</li>
-<li>
 <p>To rerun the last pipelinerun, using the same pipeline resources and service account used in the previous pipeline, use:</p>
 <div class="listingblock">
 <div class="content">
@@ -678,7 +659,26 @@ build-and-deploy   11 minutes ago   build-and-deploy-run-z2rz8   5 minutes ago  
 </div>
 </div>
 </li>
+<li>
+<p>To verify the application deployment in  the OpenShift web console, switch to the <strong>Developer</strong> perspective.</p>
+</li>
+<li>
+<p>In the <strong>Topology</strong> view, select the <strong>pipelines-tutorial</strong> project from the <strong>Project</strong> drop-down menu to see the successfully built and deployed applications.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/deployment_complete.png" alt="Application deployed on OpenShift">
+</div>
+</div>
+</li>
 </ol>
+</div>
+<h2 id="_additional_resources_2" class="discrete">Additional resources</h2>
+<div class="ulist">
+<ul>
+<li>
+<p>For more details on pipelines in the <strong>Developer</strong> perspective, see the <a href="https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_working-with-pipelines-using-the-developer-perspective.html">working with pipelines in the <strong>Developer</strong> perspective</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
