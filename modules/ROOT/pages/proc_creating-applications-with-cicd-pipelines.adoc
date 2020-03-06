@@ -12,9 +12,9 @@ You can use the *Import from git* option in the *Developer* perspective to creat
 
 . In the *Add* view, click *From Git* to see the *Import from git* form.
 +
-image::pipeline_run.png[Pipeline run]
+image::pipeline_import_flow.png[Import Pipeline]
 +
-. In the *Git* section, enter the following sample Git repository URL `https://github.com/spring-projects/spring-petclinic`  to create an application along with the required CI/CD pipelines. After the URL is validated, the recommended Java builder image for the codebase is automatically selected.
+. In the *Git* section, enter the following sample Git repository URL `https://github.com/spring-projects/spring-petclinic` to create an application along with the required CI/CD pipelines. After the URL is validated, the recommended Java builder image for the codebase is automatically selected.
 . In the *General* section:
 * In the *Application Name* field, enter a unique name for the application grouping.
 * The *Name* field is automatically populated based on the Git repository URL. This name is used to identify the resources created for this application.
