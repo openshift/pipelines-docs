@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-clustertask-management-commands_{context}"]
-= Clustertask Management Commands
+= Clustertask management commands
 
 == tkn clustertask
 Manage clustertasks.

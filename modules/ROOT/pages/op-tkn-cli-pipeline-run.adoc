@@ -3,7 +3,7 @@
 // * pipelines/op-tkn-cli-references.adoc
 
 [id="cli-pipeline-run-commands_{context}"]
-= PipelinesRun Commands
+= Pipelinerun commands
 
 
 == tkn pipelinerun

@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-pipeline-resources-management-commands_{context}"]
-= Pipeline Resource Management Commands
+= Pipeline resource management commands
 
 == tkn resource
 Manage pipeline resources.

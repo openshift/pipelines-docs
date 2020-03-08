@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-trigger-management-commands_{context}"]
-= Trigger Management Commands
+= Trigger management commands
 
 == tkn eventlistener
 Manage event listeners.

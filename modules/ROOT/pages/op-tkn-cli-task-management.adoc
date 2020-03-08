@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-task-management-commands_{context}"]
-= Task Management Commands
+= Task management commands
 
 == tkn task
 Manage tasks.

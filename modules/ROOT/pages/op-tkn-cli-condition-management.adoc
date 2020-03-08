@@ -3,7 +3,7 @@
 // * pipelines/op-tkn-cli-references.adoc
 
 [id="cli-condition-management-commands_{context}"]
-= Condition Management Commands
+= Condition management commands
 
 == tkn condition
 Manage conditions.

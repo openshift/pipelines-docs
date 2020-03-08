@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-utility-commands_{context}"]
-= Utility Commands
+= Utility commands
 
 == tkn
 Parent command for Tekton CLI.

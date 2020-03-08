@@ -3,7 +3,7 @@
 // *  pipelines/op-tkn-cli-reference.adoc
 
 [id="cli-task-run-commands_{context}"]
-= TaskRun Commands
+= Taskrun commands
 
 == tkn taskrun
 Manage taskruns.
