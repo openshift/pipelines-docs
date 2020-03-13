@@ -1,7 +1,7 @@
 [id='pipeline-resource_{context}']
 = Pipeline Resource types
 
-`PipelineResources` are a set of objects that are used as inputs to a `Task` and can be output by a `Task`. A `Task` can have multiple inputs and outputs. 
+`PipelineResources` are a set of objects that are used as inputs to a `Task` and can be output by a `Task`. A `Task` can have multiple inputs and outputs.
 
 The following `PipelineResources` are currently supported:
 
@@ -9,6 +9,8 @@ The following `PipelineResources` are currently supported:
 * Pull Request Resource
 * Image Resource
 * Cluster Resource
+* Storage Resource
+* Cloud Event Resource
 
 
 image:pipeline_resources_tasks.png[]
@@ -27,6 +29,3 @@ To define a configuration file for `PipelineResources`, you must specify the fol
 *_Optional_*:
 
 * `params` - Parameters which are specific to each type of `PipelineResource`.
-
-
-
