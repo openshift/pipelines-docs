@@ -1,8 +1,8 @@
 // Module included in the following assemblies:
 //
-// *  pipelines/op-tkn-cli-reference.adoc
+// *  pipelines/op-tkn-reference.adoc
 
-[id="cli-pipeline-resources-management-commands_{context}"]
+[id="tkn-pipeline-resources-management-commands_{context}"]
 = Pipeline resource management commands
 
 == tkn resource

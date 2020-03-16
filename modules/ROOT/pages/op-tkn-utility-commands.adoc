@@ -1,12 +1,12 @@
 // Module included in the following assemblies:
 //
-// *  pipelines/op-tkn-cli-reference.adoc
+// *  pipelines/op-tkn-reference.adoc
 
-[id="cli-utility-commands_{context}"]
+[id="tkn-utility-commands_{context}"]
 = Utility commands
 
 == tkn
-Parent command for Tekton CLI.
+Parent command for `tkn` CLI.
 
 .Example:Display all options
 -----
@@ -22,7 +22,7 @@ $ tkn completion bash
 ----
 
 == tkn version
-Print version information of the Tekton CLI `tkn`.
+Print version information of the `tkn` CLI.
 
 .Example: Check for the availability of a newer version
 -----

@@ -5,7 +5,7 @@
 
 :context: cli-reference
 
-With the Tekton Pipelines command-line interface (CLI) you can interact with Tekton from a terminal. This section describes how to install it and lists the basic commands.
+With the Tekton (tkn) Pipelines command-line interface (CLI) you can interact with Tekton from a terminal. This section describes how to install it and lists the basic commands.
 
 
 // CLI Installation Guide

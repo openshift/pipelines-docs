@@ -1,8 +1,8 @@
 // Module included in the following assemblies:
 //
-// *  pipelines/op-tkn-cli-reference.adoc
+// *  pipelines/op-tkn-reference.adoc
 
-[id="cli-trigger-management-commands_{context}"]
+[id="tkn-trigger-management-commands_{context}"]
 = Trigger management commands
 
 == tkn eventlistener
@@ -61,9 +61,9 @@ Manage trigger templates.
 $ tkn triggertemplate -h
 ----
 == tkn triggertemplate delete
-Delete trigger template in a namespace.
+Delete trigger templates in a namespace.
 
-.Example: Delete `mytemplate1` and `mytemplate2` trigger template in a namespace
+.Example: Delete `mytemplate1` and `mytemplate2` trigger templates in a namespace
 ----
 $ tkn triggertemplate delete mytemplate1 mytemplate2 -n `myspace`
 ----
