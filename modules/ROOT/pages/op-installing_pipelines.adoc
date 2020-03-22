@@ -10,16 +10,10 @@ toc::[]
 [id="installing-pipelines-operator_{context}"]
 == Installing the {op-title} Operator
 
-The {op-title} Operator can be installed using the {product-title} instructions for installing Operators.
-
-You can install the {op-title} Operator in the host cluster by following the {product-title} instructions on installing an Operator.
-
-For more details on installation instructions, see the {product-title} documentation on xref:../operators/olm-adding-operators-to-cluster.adoc#olm-adding-operators-to-a-cluster[adding Operators to a cluster].
+You can install the {op-title} Operator in the host cluster by following the {product-title} instructions specified in xref:../operators/olm-adding-operators-to-cluster.adoc#olm-adding-operators-to-a-cluster[adding Operators to a cluster].
 
 // Deleting Openshift Pipelines Operator
 [id="deleting-openshift-pipelines-operator_{context}"]
 == Deleting the {op-title} Operator
 
-You can remove the {op-title} Operator from the host cluster by following the {product-title} instructions on deleting an Operator.
-
-For details, see the {product-title} documentation on xref:../operators/olm-deleting-operators-from-cluster.adoc#olm-deleting-operators-from-a-cluster[deleting Operators from a cluster].
+You can remove the {op-title} Operator from the host cluster by following the {product-title} instructions in xref:../operators/olm-deleting-operators-from-cluster.adoc#olm-deleting-operators-from-a-cluster[deleting Operators from a cluster].
