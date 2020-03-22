@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-task-run-commands_{context}"]
+[id="op-tkn-task-run_{context}"]
 = Taskrun commands
 
 == tkn taskrun

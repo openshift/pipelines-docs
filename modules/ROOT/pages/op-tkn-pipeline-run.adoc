@@ -2,7 +2,7 @@
 //
 // * pipelines/op-tkn-references.adoc
 
-[id="tkn-pipeline-run-commands_{context}"]
+[id="op-tkn-pipeline-run_{context}"]
 = Pipelinerun commands
 
 

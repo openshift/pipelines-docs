@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-clustertask-management-commands_{context}"]
+[id="op-tkn-clustertask-management-commands_{context}"]
 = Clustertask management commands
 
 == tkn clustertask

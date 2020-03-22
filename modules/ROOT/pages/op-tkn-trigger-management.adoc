@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-trigger-management-commands_{context}"]
+[id="op-tkn-trigger-management_{context}"]
 = Trigger management commands
 
 == tkn eventlistener

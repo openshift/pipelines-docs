@@ -2,7 +2,7 @@
 //
 // * pipelines/op-tkn-references.adoc
 
-[id="tkn-condition-management-commands_{context}"]
+[id="op-tkn-condition-management_{context}"]
 = Condition management commands
 
 == tkn condition

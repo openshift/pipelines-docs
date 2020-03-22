@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-pipeline-resources-management-commands_{context}"]
+[id="op-tkn-pipeline-resource-management_{context}"]
 = Pipeline resource management commands
 
 == tkn resource

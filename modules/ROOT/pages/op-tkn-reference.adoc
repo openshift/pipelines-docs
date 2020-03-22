@@ -1,7 +1,7 @@
-[id='pipeline-tkn-reference']
+[id='op-tkn-reference']
 = Pipeline `tkn` reference
 //include::modules/common-attributes.adoc[]
-:context: pipeline-tkn-reference
+:context: op-tkn-reference
 toc::[]
 
 

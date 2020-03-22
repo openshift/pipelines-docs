@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-utility-commands_{context}"]
+[id="op-tkn-utility-commands_{context}"]
 = Utility commands
 
 == tkn

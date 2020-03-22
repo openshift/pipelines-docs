@@ -2,7 +2,7 @@
 //
 // *  pipelines/op-tkn-reference.adoc
 
-[id="tkn-task-management-commands_{context}"]
+[id="op-tkn-task-management_{context}"]
 = Task management commands
 
 == tkn task
