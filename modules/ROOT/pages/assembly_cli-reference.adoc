@@ -13,7 +13,7 @@ include::proc_installing-cli.adoc[leveloffset=+1]
 
 
 // CLI Reference
-include::op-tkn-cli-reference.adoc[leveloffset=+1]
+include::op-tkn-reference.adoc[leveloffset=+1]
 
 
 
