@@ -1,0 +1,77 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-reference.adoc
+
+[id="op-tkn-trigger-management_{context}"]
+= Trigger management commands
+
+== tkn eventlistener
+Manage event listeners.
+
+.Example: Display help
+----
+$ tkn eventlistener -h
+----
+
+== tkn eventlistener delete
+Delete event listeners in a namespace.
+
+.Example: Delete `mylistener1` and `mylistener2` event listeners in a namespace
+----
+$ tkn eventlistener delete mylistener1 mylistener2 -n myspace
+----
+
+== tkn eventlistener list
+Lists event listeners in a namespace.
+
+.Example: List all event listeners in a namespace
+----
+$ tkn eventlistener list -n myspace
+----
+
+== tkn triggerbinding
+Manage trigger bindings.
+
+.Example: Display trigger bindings help
+----
+$ tkn triggerbinding -h
+----
+
+== tkn triggerbinding delete
+Delete trigger bindings in a namespace.
+
+.Example: Delete `mybinding1` and `mybinding2` trigger bindings in a namespace
+----
+$ tkn triggerbinding delete mybinding1 mybinding2 -n myspace
+----
+
+== tkn triggerbinding list
+List trigger bindings in a namespace.
+
+.Example: List all trigger bindings in a namespace
+----
+$ tkn triggerbinding list -n myspace
+----
+
+== tkn triggertemplate
+Manage trigger templates.
+
+.Example: Display trigger template help
+----
+$ tkn triggertemplate -h
+----
+== tkn triggertemplate delete
+Delete trigger templates in a namespace.
+
+.Example: Delete `mytemplate1` and `mytemplate2` trigger templates in a namespace
+----
+$ tkn triggertemplate delete mytemplate1 mytemplate2 -n `myspace`
+----
+
+== tkn triggertemplate list
+Lists trigger templates in a namespace.
+
+.Example: List all trigger templates in a namespace
+----
+$ tkn triggertemplate list -n myspace
+----

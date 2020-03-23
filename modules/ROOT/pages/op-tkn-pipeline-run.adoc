@@ -1,0 +1,55 @@
+// Module included in the following assemblies:
+//
+// * pipelines/op-tkn-references.adoc
+
+[id="op-tkn-pipeline-run_{context}"]
+= Pipelinerun commands
+
+
+== tkn pipelinerun
+Manage pipelineruns.
+
+.Example: Display help
+----
+$ tkn pipelinerun -h
+----
+
+== tkn pipelinerun cancel
+Cancel a pipelinerun in a namespace.
+
+.Example: Cancel the `mypipelinerun` pipelinerun from a namespace
+----
+$ tkn pipeline cancel mypipelinerun -n myspace
+----
+
+== tkn pipelinerun delete
+Delete pipelinerun in a namespace.
+
+.Example: Delete pipelineruns from a namespace
+----
+$ tkn pipelinerun delete mypipelinerun1 mypipelinerun2 -n myspace
+----
+
+== tkn pipelinerun describe
+Describe a pipelinerun in a namespace.
+
+.Example: Describe the `mypipelinerun` pipelinerun in a namespace
+----
+tkn pipelinerun describe mypipelinerun -n myspace
+----
+
+== tkn pipelinerun list
+Display a list of pipelineruns in a namespace.
+
+.Example: Display a list of pipelineruns in a namespace
+----
+$ tkn pipelinerun list -n myspace
+----
+
+== tkn pipelinerun logs
+Show the logs of pipelinerun.
+
+.Example: Display the logs of the `mypipelinerun` pipelinerun with all tasks and steps in a namespace
+----
+$ tkn pipelinerun logs mypipeline -a -n myspace
+----

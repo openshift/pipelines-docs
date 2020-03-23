@@ -1,0 +1,24 @@
+[id='op-tkn-reference']
+= Pipeline `tkn` reference
+//include::modules/common-attributes.adoc[]
+:context: op-tkn-reference
+toc::[]
+
+
+This section lists basic `tkn` CLI commands. For a more detailed description, see link:https://github.com/tektoncd/cli[Tekton Pipelines CLI].
+
+== Basic Syntax
+`tkn [command or options] [arguments...]`
+
+== Global Options
+`--help, -h`
+
+include::op-tkn-utility-commands.adoc[leveloffset=+1]
+include::op-tkn-pipeline-management.adoc[leveloffset=+1]
+include::op-tkn-pipeline-run.adoc[leveloffset=+1]
+include::op-tkn-task-management.adoc[leveloffset=+1]
+include::op-tkn-task-run.adoc[leveloffset=+1]
+include::op-tkn-condition-management.adoc[leveloffset=+1]
+include::op-tkn-pipeline-resource-management.adoc[leveloffset=+1]
+include::op-tkn-clustertask-management.adoc[leveloffset=+1]
+include::op-tkn-trigger-management.adoc[leveloffset=+1]

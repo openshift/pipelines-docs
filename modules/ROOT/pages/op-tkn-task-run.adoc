@@ -1,0 +1,56 @@
+// Module included in the following assemblies:
+//
+// *  pipelines/op-tkn-reference.adoc
+
+[id="op-tkn-task-run_{context}"]
+= Taskrun commands
+
+== tkn taskrun
+Manage taskruns.
+
+.Example: Display help
+----
+$ tkn taskrun -h
+----
+
+== tkn taskrun cancel
+Cancel a taskrun in a namespace.
+
+.Example: Cancel the `mytaskrun` taskrun from a namespace
+----
+$ tkn taskrun cancel mytaskrun -n myspace
+----
+
+== tkn taskrun delete
+Delete taskruns in a namespace.
+
+.Example: Delete `mytaskrun1` and `mytaskrun2` taskruns from a namespace
+----
+$ tkn taskrun delete mytaskrun1 mytaskrun2 -n myspace
+----
+
+== tkn taskrun describe
+Describe a taskrun in a namespace.
+
+.Example: Describe the `mytaskrun` taskrun in a namespace
+----
+$ tkn taskrun describe mytaskrun -n myspace
+----
+
+== tkn taskrun list
+List taskruns in a namespace.
+
+.Example: List all taskruns in a namespace
+----
+$ tkn taskrun list -n myspace
+----
+
+
+== tkn taskrun logs
+Display taskruns logs.
+
+.Example: Display live logs for the `mytaskrun` taskrun in a namespace `
+
+----
+$ tkn taskrun logs -f mytaskrun -n myspace
+----
