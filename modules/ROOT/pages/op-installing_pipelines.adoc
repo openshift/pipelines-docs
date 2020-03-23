@@ -1,0 +1,19 @@
+[id="op-installing-openshift-pipelines"]
+= Installing OpenShift Pipelines
+include::modules/common-attributes.adoc[]
+include::modules/openshift-pipelines-attributes.adoc[]
+:context: installing-openshift-pipelines
+
+toc::[]
+
+// Installing Openshift Pipelines Operator
+[id="installing-pipelines-operator_{context}"]
+== Installing the {op-title} Operator
+
+You can install the {op-title} Operator in the host cluster by following the {product-title} instructions specified in xref:../operators/olm-adding-operators-to-cluster.adoc#olm-adding-operators-to-a-cluster[adding Operators to a cluster].
+
+// Deleting Openshift Pipelines Operator
+[id="deleting-openshift-pipelines-operator_{context}"]
+== Deleting the {op-title} Operator
+
+You can remove the {op-title} Operator from the host cluster by following the {product-title} instructions in xref:../operators/olm-deleting-operators-from-cluster.adoc#olm-deleting-operators-from-a-cluster[deleting Operators from a cluster].
