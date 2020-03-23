@@ -1,17 +1,17 @@
 [id='pipelines-concepts_{context}']
 = Pipelines concepts
 
-Openshift Pipelines provide the following set of standard CRDs that act as the building blocks from which you can assemble a CI/CD pipeline for your application:
+OpenShift Pipelines provide the following set of standard CRDs that act as the building blocks from which you can assemble a CI/CD pipeline for your application:
 
-* _Task_ is the smallest configurable unit in a Pipeline. It is essentially a function of inputs and outputs that form the Pipeline build. It can run individually or as a part of a Pipeline. A Pipeline includes one or more Tasks, where each Task consists of one or more steps. Steps are a series of commands that are sequentially executed by the Task.
+Task:: Task is the smallest configurable unit in a Pipeline. It is essentially a function of inputs and outputs that form the Pipeline build. It can run individually or as a part of a Pipeline. A Pipeline includes one or more Tasks, where each Task consists of one or more steps. Steps are a series of commands that are sequentially executed by the Task.
 
-* _Pipeline_ is a series of Tasks that are executed to construct complex workflows that automate the build, deployment and delivery of applications. It is a collection of PipelineResources, Parameters, and one or more Tasks. A Pipeline interacts with the outside world, by using PipelineResources, which are given to Tasks as inputs and outputs.
+Pipeline:: Pipeline consists of a series of Tasks that are executed to construct complex workflows that automate the build, deployment, and delivery of applications. It is a collection of PipelineResources, Parameters, and one or more Tasks. A Pipeline interacts with the outside world, by using PipelineResources, which are added to Tasks as inputs and outputs.
 
-* _PipelineRun_ is used to run and manage the execution of the Pipeline. PipelineRun initiates the creation of a _TaskRun_ for each Task being executed in the Pipeline.
+PipelineRun:: PipelineRun is the running instance of a Pipeline. PipelineRun initiates a Pipeline and manages the creation of a _TaskRun_ for each Task being executed in the Pipeline.
 
-* _TaskRun_ is auto-created by a PipelineRun for each Task in a Pipeline. It is a result of running an instance of a Task in a Pipeline. It can also be manually created if a Task runs outside of a Pipeline.
+TaskRun:: is auto-created by a PipelineRun for each Task in a Pipeline. It is a result of running an instance of a Task in a Pipeline. It can also be manually created if a Task runs outside of a Pipeline.
 
-* _PipelineResource_ is an object that is used as an input and output for pipeline Tasks. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as PipelineResources. PipelineResources currently support Git resources, Image resources, Cluster resources, Storage Resources and Cloud Event resources.
+PipelineResource:: is an object that is used as an input and output for pipeline Tasks. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as PipelineResources. PipelineResources currently support Git resources, Image resources, Cluster resources, Storage Resources and Cloud Event resources.
 
 
 image::tekton_architecture.png[]
@@ -20,4 +20,4 @@ image::tekton_architecture.png[]
 [discrete]
 == Additional resources
 
-* For more information how to define and create the CRDs, see the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation].
+* For more information on defining and creating the CRDs, see the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation].

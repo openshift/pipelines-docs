@@ -8,9 +8,9 @@ OpenShift Pipelines is a cloud-native, continuous integration and continuous del
 
 == Key features
 
-* OpenShift Pipelines are designed for decentralized teams which work on microservice based architecture.
+* OpenShift Pipelines are designed for decentralized teams that work on microservice based architecture.
 * OpenShift Pipelines use standard CI/CD pipeline definitions that are easy to extend and integrate with the existing Kubernetes tools, enabling you to scale on-demand.
-* You can use Openshift Pipelines to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.
+* You can use Openshift Pipelines to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko that are portable across any Kubernetes platform.
 * You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under your OpenShift project namespaces.
 
 
