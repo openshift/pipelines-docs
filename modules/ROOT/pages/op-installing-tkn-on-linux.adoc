@@ -1,0 +1,51 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/tkn_cli/installing-tkn.adoc
+
+[id="installing-tkn-on-linux"]
+
+= Installing {op-title} on Linux
+
+== Binary installation
+
+. Get the binary:
++
+----
+# curl -L https://mirror.openshift.com/pub/openshift-v4/clients/tkn/latest/tkn-linux-amd64 -o /usr/local/bin/tkn
+
+----
+. Set up the permissions:
++
+----
+# chmod +x /usr/local/bin/odo
+----
+
+== Tarball installation
+
+=== Linux AMD64
+
+. Get the `tar.gz`:
++
+----
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz
+----
+
+. Extract `tkn` to your PATH:
++
+----
+sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
+----
+
+=== Linux ARM64
+
+. Get the `tar.gz`:
++
+----
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz
+----
+
+. Extract `tkn` to your PATH:
++
+----
+sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
+----
