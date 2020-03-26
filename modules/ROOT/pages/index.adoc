@@ -1,21 +1,17 @@
 [id="openshift-pipelines_{context}"]
 = OpenShift Pipelines
 
-[IMPORTANT]
-====
-OpenShift Pipelines project is based on the upstream project link:https://github.com/tektoncd[Tekton] and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.
+//:FeatureName: OpenShift Pipelines
+//include::modules/technology-preview.adoc[leveloffset=+1]
 
-Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.
+OpenShift Pipelines is a cloud-native, continuous integration and continuous delivery (CI/CD) solution based on Kubernetes resources. It uses link:https://tekton.dev[Tekton] building blocks to automate deployments across multiple platforms by abstracting away the underlying implementation details. Tekton introduces a number of standard link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Custom Resource Definitions (CRDs)] for defining pipelines that are portable across Kubernetes distributions.
 
-If you need assistance with OpenShift Pipelines, reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: pipelines-interest@redhat.com
-====
+== Key features
 
-OpenShift Pipelines are cloud-native, continuous integration and continuous delivery (CI/CD) solutions based on Kubernetes resources. It uses link:https://tekton.dev[Tekton] Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Custom Resource Definitions (CRDs)] for defining pipelines that are portable across Kubernetes distributions.
-
-* OpenShift Pipelines are designed for microservices and decentralized teams.
-* OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.
-* You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.
-* You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.
+* OpenShift Pipelines are designed for decentralized teams that work on microservice based architecture.
+* OpenShift Pipelines use standard CI/CD pipeline definitions that are easy to extend and integrate with the existing Kubernetes tools, enabling you to scale on-demand.
+* You can use Openshift Pipelines to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko that are portable across any Kubernetes platform.
+* You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under your OpenShift project namespaces.
 
 
 == Additional resources
