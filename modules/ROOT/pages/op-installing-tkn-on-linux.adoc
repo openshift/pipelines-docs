@@ -8,13 +8,13 @@
 
 == Binary installation
 
-. Get the binary:
+. Download the binary:
 +
 ----
 # curl -L https://mirror.openshift.com/pub/openshift-v4/clients/tkn/latest/tkn-linux-amd64 -o /usr/local/bin/tkn
 
 ----
-. Set up the permissions:
+. Make the binary file executable:
 +
 ----
 # chmod +x /usr/local/bin/odo
@@ -24,28 +24,31 @@
 
 === Linux AMD64
 
-. Get the `tar.gz`:
+. Download the compressed file:
 +
 ----
-curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz
+$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz
 ----
 
-. Extract `tkn` to your PATH:
+. Extract the compressed file:
 +
 ----
-sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
+$ sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
 ----
+. Place it in a directory that is on your `PATH`.
 
 === Linux ARM64
 
-. Get the `tar.gz`:
+. Download the compressed file:
 +
 ----
-curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz
+$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz
 ----
 
-. Extract `tkn` to your PATH:
+. Extract the compressed file:
 +
 ----
-sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
+$ sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
 ----
+
+. Place it in a directory that is on your `PATH`.
