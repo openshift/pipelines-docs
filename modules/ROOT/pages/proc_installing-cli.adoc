@@ -3,63 +3,69 @@
 
 In order to interact with Tekton from a terminal, you need to install the Tekton CLI (`tkn`).
 
-== Installing from binary
+== Tarball Installation
 
 === For macOS X
 
-. Get the `tar.gz`:
+. Download the compressed file:
 +
 ----
-curl -LO https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Darwin_x86_64.tar.gz
+$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Darwin_x86_64.tar.gz
 ----
 
-. Extract `tkn` to your PATH:
+. Extract the compressed file:
 +
 ----
-sudo tar xvzf tkn_0.4.0_Darwin_x86_64.tar.gz -C /usr/local/bin tkn
+$ sudo tar xvzf tkn_0.8.0_Darwin_x86_64.tar.gz -C /usr/local/bin tkn
 ----
+. Place it in a directory that is on your `PATH`
 
 === For Linux AMD64
 
-. Get the `tar.gz`:
+. Download the compressed file:
 +
 ----
-curl -LO https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Linux_x86_64.tar.gz
+$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz
 ----
 
-. Extract `tkn` to your PATH:
+. Extract the compressed file:
 +
 ----
-sudo tar xvzf tkn_0.4.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
+$ sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn
 ----
+
+. Place it in a directory that is on your `PATH`
 
 === For Linux ARM64
 
-. Get the `tar.gz`:
+. Download the compressed file:
 +
 ----
-curl -LO https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Linux_arm64.tar.gz
+$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz
 ----
 
-. Extract `tkn` to your PATH:
+. Extract the compressed file:
 +
 ----
-sudo tar xvzf tkn_0.4.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
+$ sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn
 ----
+
+. Place it in a directory that is on your `PATH`
 
 === For Windows
 
-. Get the `.zip` file:
+. Download the zip file:
 +
 ----
-PS C:\Users\Admin\Downloads> curl -Uri https://github.com/tektoncd/cli/releases/download/v0.4.0/tkn_0.4.0_Windows_x86_64.zip
- -OutFile tkn_0.4.0_Windows_x86_64.zip
+C:\Users\Admin\Downloads> curl -Uri https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Windows_x86_64.zip
+ -OutFile tkn_0.8.0_Windows_x86_64.zip
 
 ----
 
-. Extract `tkn` to your path:
+. Extract the compressed file `tkn.exe` to your `PATH`:
++
 ----
-Expand-Archive -Path <sourcepath>/tkn_0.4.0_Windows_x86_64.zip -DestinationPath <destinationpath>
+Expand-Archive -Path <sourcepath>/tkn_0.8.0_Windows_x86_64.zip -DestinationPath <destinationpath>
 ----
 
 ////

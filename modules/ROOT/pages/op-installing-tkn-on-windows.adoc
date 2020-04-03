@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/tkn_cli/installing-tkn.adoc
+
+[id="installing-tkn-on-windows"]
+
+= Installing {op-title} on Windows
+
+== Binary installation
+
+. Download the latest link:https://mirror.openshift.com/pub/openshift-v4/clients/tkn/latest/tkn-windows-amd64.exe[`tkn.exe`] file.
+. Add the location of your `tkn.exe` file to the `PATH` environment variable.

@@ -1,0 +1,18 @@
+[id='installing-tkn']
+= Installing tkn
+include::modules/common-attributes.adoc[]
+include::modules/openshift-pipelines-attributes.adoc[]
+:context: installing-tkn
+
+toc::[]
+
+The following section describes how to install 'tkn' on different platforms.
+
+// Install tkn on Linux
+include::op-installing-tkn-on-linux.adoc[leveloffset=+1]
+
+//Install tkn on Windows
+include::op-installing-tkn-on-windows.adoc[leveloffset=+1]
+
+//Install tkn on macOS
+include::op-installing-tkn-on-macos.adoc[leveloffset=+1]
