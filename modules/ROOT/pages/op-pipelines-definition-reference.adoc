@@ -1,0 +1,205 @@
+// Ths module is included in the following assembly:
+//
+// *openshift_pipelines/op-creating-applications-with-cicd-pipelines.adoc
+
+[id="pipeline-definition-reference_{context}"]
+= Pipelines Definition Reference
+To define a Pipeline, you need to specify the various fields which form the Pipeline definition, such as Tasks, Workspaces, and Conditions. These fields define the work-flow of the your Pipeline by declaring and defining the various Kubernetes resources that form your Pipeline.
+
+Listed below are the supported fields in a Pipeline definition.
+
+== apiVersion
+Specifies the API version of the Kubernetes object. Currently two versions are supported:
+
+* tekton.dev/v1alpha1
+* tekton.dev/v1beta1
+
+.Example:
+----
+apiVersion: tekton.dev/v1beta1
+----
+== kind
+Type of Kubernetes object. For defining Pipelines, specify `pipeline`.
+.Example:
+----
+kind: Pipeline
+----
+== metadata
+Specifies the metadata that uniquely identifies the Pipeline object
+.Example:
+----
+metadata:
+    name: pipeline-with-parameters
+
+----
+== spec
+Specifies the configuration information for the Pipeline object.  Supported fields in the `spec` are:
+
+* `workspaces`
+* `tasks`
+* `resources`
+* `params`
+
+.Example:
+----
+spec:
+  workspaces:
+    - name: pipeline-ws1 # The name of the workspace in the Pipeline
+  tasks:
+    - name: use-ws-from-pipeline
+      taskRef:
+        name: gen-code # gen-code expects a workspace with name "output"
+      workspaces:
+        - name: output
+          workspace: pipeline-ws1
+
+----
+== tasks
+
+Specifies the Tasks that comprise the Pipeline and the details of their execution.
+
+.Example:
+----
+    tasks:
+      - name: build-the-image
+        taskRef:
+          name: build-push
+----
+=== (Optional) resources
+Specifies the Input and output resources for a *task*
+
+.Example
+----
+spec:
+  tasks:
+    - name: build-the-image
+      taskRef:
+        name: build-push
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo
+        outputs:
+          - name: image
+            resource: my-image
+----
+=== (Optional) from
+Indicates the data for a PipelineResource originates from the output of a previous Task.
+
+.Example:
+----
+    - name: build-app
+      taskRef:
+        name: build-push
+      resources:
+        outputs:
+          - name: image
+            resource: my-image
+    - name: deploy-app
+      taskRef:
+        name: deploy-kubectl
+      resources:
+        inputs:
+          - name: image
+            resource: my-image
+            from:
+              - build-app
+----
+=== (Optional) runAfter
+Indicates that a Task should execute after one or more other Tasks without output linking.
+
+.Example:
+----
+    - name: test-app
+      taskRef:
+        name: make-test
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo
+    - name: build-app
+      taskRef:
+        name: kaniko-build
+      runAfter:
+        - test-app
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo
+----
+=== (Optional) retries
+Specifies the number of times to retry the execution of a Task after a failure. Does not apply to execution cancellations.
+
+.Example:
+----
+    tasks:
+      - name: build-the-image
+        retries: 1
+        taskRef:
+          name: build-push
+----
+
+=== (Optional) conditions
+Specifies Conditions that only allow a Task to execute if they successfully evaluate.
+
+.Example:
+----
+tasks:
+  - name: deploy-if-branch-is-master
+    conditions:
+      - conditionRef: is-master-branch
+        params:
+          - name: branch-name
+            value: my-value
+    taskRef:
+      name: deploy
+----
+
+=== (Optional) timeout
+Specifies the timeout before a Task fails.
+
+.Example:
+----
+    spec:
+      tasks:
+        - name: build-the-image
+          taskRef:
+            name: build-push
+          Timeout: "0h1m30s"
+----
+
+== (Optional) resources
+Specifies Pipeline Resources required by the Tasks defined in the Pipeline.
+
+[NOTE]
+====
+Only `v1alpha1` resources are supported in this field.
+====
+
+.Example:
+----
+spec:
+  resources:
+    - name: my-repo
+      type: git
+    - name: my-image
+      type: image
+----
+== (Optional) description
+Provides an informative description of the Pipeline object
+
+.Example:
+----
+    description: Creates a CI/CD pipeline for the application
+----
+
+== (Optional) results
+Specifies the location to which the Pipeline emits its execution results.
+
+.Example:
+----
+    results:
+      - name: sum
+        description: the sum of all three operands
+        value: $(tasks.second-add.results.sum)
+----

@@ -1,0 +1,187 @@
+// Ths module is included in the following assembly:
+//
+// *openshift_pipelines/op-creating-applications-with-cicd-pipelines.adoc
+
+[id="about-pipelines_{context}"]
+= TaskRun Definition Reference
+To define a TaskRun, you must specify the various fields which form the TaskRun definition, such as Task reference, ServiceAccountName, and Pod Templates.
+
+== *spec*
+
+Specifies the configuration information for the TaskRun object. Supported fields in the `spec` are:
+
+* `taskRef`
+* `taskSpec`
+* `resources`
+* `params`
+* `serviceAccountName`
+* `podTemplate`
+* `workspaces`
+
+== taskRef
+Specifies the Task that the TaskRun will execute.
+
+.Example
+----
+spec:
+  taskRef:
+    name: my-task
+----
+
+== pipelineSpec
+Embeds the Task definition directly in the TaskRun.
+
+.Example:
+----
+spec:
+  taskSpec:
+    resources:
+      inputs:
+        - name: workspace
+          type: git
+    steps:
+      - name: build-and-push
+        image: <image-name>
+        command:
+          - <cmd>
+----
+
+== (Optional) resources
+Specifies the input and output Resources required to execute the Task. You can define resources either by reference using the `resourceRef` spec, or embed it directly using the `resourceSpec` field.
+
+.Example: Adding resources by reference to the TaskRun
+----
+spec:
+  resources:
+    inputs:
+      - name: workspace
+        resourceRef:
+          name: my-resource
+    outputs:
+      - name: image
+        resourceRef:
+          name: my-app-image
+----
+
+.Example: Embedding resources directly in the TaskRun
+----
+spec:
+  resources:
+    - name: source-repo
+      resourceSpec:
+        type: git
+        params:
+          - name: revision
+            value: v0.1.0
+          - name: url
+            value: <git-hub-url>
+    - name: web-image
+      resourceSpec:
+        type: image
+        params:
+          - name: url
+            value: <web-image-url>
+    - name: app-image
+      resourceSpec:
+        type: image
+        params:
+          - name: url
+            value: <app-image-url>
+----
+
+== (Optional) Params
+Specifies the execution parameters for the Pipeline.
+
+.Example:
+----
+spec:
+  params:
+  - name: param-1
+    value: "50"
+  - name: param-2
+    value: "100"
+----
+
+
+== (Optional) ServiceAccountName
+Specifies the Service Account credentials required for executing the Pipeline.
+
+.Example:
+----
+spec:
+  serviceAccountName: sa1
+----
+
+== (Optional) ServiceAccountNames
+Maps individual ServiceAccountNames with the Tasks in the Pipeline. This is useful in scenarios where multiple Tasks with different credentials needs to be executed.
+[Note]
+====
+ServiceAccountNames set for a specific Task overrides the global ServiceAccountName specified for the entire Pipeline
+====
+.Example:
+----
+spec:
+  serviceAccountName: sa-1
+  serviceAccountNames:
+    - taskName: build-task
+      serviceAccountName: sa-for-build
+----
+
+== (Optional) podTemplate
+Specifies the Pod configuration template which serves as the starting point of the Pod configuration where each Task is executed. Use `podTemplate` to customize Pod configuration for each TaskRun.
+
+.Example:
+----
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: mypipelinerun
+spec:
+  pipelineRef:
+    name: mypipeline
+  podTemplate:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: user1
+    volumes:
+    - name: my-cache
+      persistentVolumeClaim:
+        claimName: my-volume-claim
+----
+
+== (Optional) taskRunSpec
+A list of Task specifications for the Pipeline where ServiceAccountName and Pod template for each task is defined. This overrides the Pod template set for the entire Pipeline.
+
+.Example:
+----
+spec:
+   podTemplate:
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 2000
+      fsGroup: 3000
+  taskRunSpecs:
+    - pipelineTaskName: build-task
+      taskServiceAccountName: sa-for-build
+      taskPodTemplate:
+        nodeSelector:
+          disktype: ssd
+----
+
+== (Optional) Workspace
+Specifies the physical volumes for the Workspaces defined in the corresponding Pipeline.
+
+.Example:
+----
+workspaces:
+- name: myworkspace # must match workspace name in Task
+  persistentVolumeClaim:
+    claimName: mypvc # this PVC must already exist
+  subPath: my-subdir
+----
+== (Optional) timeout
+ Specifies the timeout before the PipelineRun fails.
+
+ If the `timeout` value is not specified in the PipelineRun, the global default timeout value is used. The global default timeout is set to 60 minutes when you first install Tekton. You can set a different global default timeout value using the `default-timeout-minutes` field in `config/config-defaults.yaml`.
+
+ If you set the timeout to 0, the PipelineRun fails immediately upon encountering an error.
