@@ -1,0 +1,30 @@
+= Openshift Pipelines Documentation
+
+WARNING: This documentation repo has been deprecated. Please visit this link:https://docs.openshift.com/container-platform/latest/pipelines/understanding-openshift-pipelines.html[OpenShift Pipelines documentation].
+
+Welcome to the source file repository for OpenShift Pipelines documentation.
+
+OpenShift Pipelines is a cloud-native CI/CD solution built for Kubernetes and is based on the upstream Tekton project (previously known as Knative Build).
+It complements the Jenkins images that are shipped with OpenShift (OCP).
+
+The operator for OpenShift Pipelines is available in the OpenShift OperatorHub.
+To try out OpenShift Pipelines, obtain an OCP cluster by visiting link:https://cloud.redhat.com[cloud.redhat.com] or link:https://rhpds.redhat.com[rhpds.redhat.com].
+
+---
+
+== Questions and Feedback
+
+- For questions and feedback please join the pipelines-interest@redhat.com mailing list.
+- If you would like to contribute a fix or add new content to the documentation, you can submit an issue or pull request. Please see our link:contributing/con_contributing-documentation.md[contributor guidelines] for information on how you can help.
+
+== Resources
+
+For more information on OpenShift Pipelines, please check out the following links:
+
+- link:https://docs.google.com/presentation/d/1E6FChdbIrMHlynF-yvEMrTiAnR8rwMdvebBxPgdcmrE/edit#slide=id.g547716335e_0_260[OpenShift Pipelines Overview Presentation]
+
+- link:https://github.com/openshift/pipelines-tutorial/[OpenShift Pipelines Tutorial]
+
+- link:https://github.com/tektoncd/pipeline/tree/master/docs[Tekton Documentation]
+
+- link:https://github.com/tektoncd/cli/tree/v0.1.2[Tekton CLI Download]
