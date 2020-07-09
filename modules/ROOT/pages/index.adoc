@@ -1,6 +1,11 @@
 [id="openshift-pipelines_{context}"]
 = OpenShift Pipelines
 
+[WARNING]
+====
+Documentation deprecation notice: Please visit the link:https://docs.openshift.com/container-platform/latest/pipelines/understanding-openshift-pipelines.html[OpenShift Pipelines documentation website] for the latest documentation.
+====
+
 [IMPORTANT]
 ====
 OpenShift Pipelines project is based on the upstream project link:https://github.com/tektoncd[Tekton] and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.
