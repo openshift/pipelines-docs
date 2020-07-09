@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>Installing OpenShift Pipelines :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-installing_pipelines.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -190,41 +190,32 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="op-installing_pipelines.html">Installing OpenShift Pipelines</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
+<h1 class="page">Installing OpenShift Pipelines</h1>
+<div id="preamble">
+<div class="sectionbody">
+<!-- toc disabled -->
 </div>
 </div>
-</li>
-<li>
-<p>Create a project for the sample application:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
+<div class="sect1">
+<h2 id="installing-pipelines-operator_installing-openshift-pipelines"><a class="anchor" href="#installing-pipelines-operator_installing-openshift-pipelines"></a>Installing the {op-title} Operator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can install the {op-title} Operator in the host cluster by following the {product-title} instructions specified in <a href="#../operators/olm-adding-operators-to-cluster.adoc#olm-adding-operators-to-a-cluster" class="page unresolved">adding Operators to a cluster</a>.</p>
 </div>
 </div>
-</li>
-<li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
+</div>
+<div class="sect1">
+<h2 id="deleting-openshift-pipelines-operator_installing-openshift-pipelines"><a class="anchor" href="#deleting-openshift-pipelines-operator_installing-openshift-pipelines"></a>Deleting the {op-title} Operator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can remove the {op-title} Operator from the host cluster by following the {product-title} instructions in <a href="#../operators/olm-deleting-operators-from-cluster.adoc#olm-deleting-operators-from-a-cluster" class="page unresolved">deleting Operators from a cluster</a>.</p>
 </div>
 </div>
-</li>
-</ol>
 </div>
 </article>
 </main>

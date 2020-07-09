@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>TaskRun Definition Reference :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-taskrun-definition-reference.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -190,41 +190,284 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="op-taskrun-definition-reference.html">TaskRun Definition Reference</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h1 class="page">TaskRun Definition Reference</h1>
+<div class="sect1">
+<h2 id="_spec"><a class="anchor" href="#_spec"></a><strong>spec</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the configuration information for the TaskRun object. Supported fields in the <code>spec</code> are:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
-</div>
-</div>
+<p><code>taskRef</code></p>
 </li>
 <li>
-<p>Create a project for the sample application:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
-</div>
-</div>
+<p><code>taskSpec</code></p>
 </li>
 <li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
-</div>
-</div>
+<p><code>resources</code></p>
 </li>
-</ol>
+<li>
+<p><code>params</code></p>
+</li>
+<li>
+<p><code>serviceAccountName</code></p>
+</li>
+<li>
+<p><code>podTemplate</code></p>
+</li>
+<li>
+<p><code>workspaces</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_taskref"><a class="anchor" href="#_taskref"></a>taskRef</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the Task that the TaskRun will execute.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre>spec:
+  taskRef:
+    name: my-task</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipelinespec"><a class="anchor" href="#_pipelinespec"></a>pipelineSpec</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Embeds the Task definition directly in the TaskRun.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  taskSpec:
+    resources:
+      inputs:
+        - name: workspace
+          type: git
+    steps:
+      - name: build-and-push
+        image: &lt;image-name&gt;
+        command:
+          - &lt;cmd&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_resources"><a class="anchor" href="#_optional_resources"></a>(Optional) resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the input and output Resources required to execute the Task. You can define resources either by reference using the <code>resourceRef</code> spec, or embed it directly using the <code>resourceSpec</code> field.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Adding resources by reference to the TaskRun</div>
+<div class="content">
+<pre>spec:
+  resources:
+    inputs:
+      - name: workspace
+        resourceRef:
+          name: my-resource
+    outputs:
+      - name: image
+        resourceRef:
+          name: my-app-image</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example: Embedding resources directly in the TaskRun</div>
+<div class="content">
+<pre>spec:
+  resources:
+    - name: source-repo
+      resourceSpec:
+        type: git
+        params:
+          - name: revision
+            value: v0.1.0
+          - name: url
+            value: &lt;git-hub-url&gt;
+    - name: web-image
+      resourceSpec:
+        type: image
+        params:
+          - name: url
+            value: &lt;web-image-url&gt;
+    - name: app-image
+      resourceSpec:
+        type: image
+        params:
+          - name: url
+            value: &lt;app-image-url&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_params"><a class="anchor" href="#_optional_params"></a>(Optional) Params</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the execution parameters for the Pipeline.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  params:
+  - name: param-1
+    value: "50"
+  - name: param-2
+    value: "100"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_serviceaccountname"><a class="anchor" href="#_optional_serviceaccountname"></a>(Optional) ServiceAccountName</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the Service Account credentials required for executing the Pipeline.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  serviceAccountName: sa1</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_serviceaccountnames"><a class="anchor" href="#_optional_serviceaccountnames"></a>(Optional) ServiceAccountNames</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maps individual ServiceAccountNames with the Tasks in the Pipeline. This is useful in scenarios where multiple Tasks with different credentials needs to be executed.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>ServiceAccountNames set for a specific Task overrides the global ServiceAccountName specified for the entire Pipeline</p>
+</div>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  serviceAccountName: sa-1
+  serviceAccountNames:
+    - taskName: build-task
+      serviceAccountName: sa-for-build</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_podtemplate"><a class="anchor" href="#_optional_podtemplate"></a>(Optional) podTemplate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the Pod configuration template which serves as the starting point of the Pod configuration where each Task is executed. Use <code>podTemplate</code> to customize Pod configuration for each TaskRun.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: mypipelinerun
+spec:
+  pipelineRef:
+    name: mypipeline
+  podTemplate:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: user1
+    volumes:
+    - name: my-cache
+      persistentVolumeClaim:
+        claimName: my-volume-claim</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_taskrunspec"><a class="anchor" href="#_optional_taskrunspec"></a>(Optional) taskRunSpec</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A list of Task specifications for the Pipeline where ServiceAccountName and Pod template for each task is defined. This overrides the Pod template set for the entire Pipeline.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+   podTemplate:
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 2000
+      fsGroup: 3000
+  taskRunSpecs:
+    - pipelineTaskName: build-task
+      taskServiceAccountName: sa-for-build
+      taskPodTemplate:
+        nodeSelector:
+          disktype: ssd</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_workspace"><a class="anchor" href="#_optional_workspace"></a>(Optional) Workspace</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the physical volumes for the Workspaces defined in the corresponding Pipeline.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>workspaces:
+- name: myworkspace # must match workspace name in Task
+  persistentVolumeClaim:
+    claimName: mypvc # this PVC must already exist
+  subPath: my-subdir</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_timeout"><a class="anchor" href="#_optional_timeout"></a>(Optional) timeout</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>Specifies the timeout before the PipelineRun fails.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>If the `timeout` value is not specified in the PipelineRun, the global default timeout value is used. The global default timeout is set to 60 minutes when you first install Tekton. You can set a different global default timeout value using the `default-timeout-minutes` field in `config/config-defaults.yaml`.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>If you set the timeout to 0, the PipelineRun fails immediately upon encountering an error.</pre>
+</div>
+</div>
+</div>
 </div>
 </article>
 </main>

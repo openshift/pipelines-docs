@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>About Tekton CLI :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/assembly_cli-reference.html">
+    <title>Pipeline tkn reference :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-tkn-reference.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -105,14 +105,14 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_cli-reference.html">5. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_installing-cli.html">5.1 Installing tkn</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="op-tkn-reference.html">5.2 Basic tkn commands</a>
 <ul class="nav-list">
@@ -191,154 +191,40 @@
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
     <li><a href="assembly_cli-reference.html">5. CLI Reference</a></li>
+    <li><a href="op-tkn-reference.html">5.2 Basic tkn commands</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">About Tekton CLI</h1>
+<h1 class="page">Pipeline <code>tkn</code> reference</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>With the Tekton (tkn) Pipelines command-line interface (CLI) you can interact with Tekton from a terminal. This section describes how to install it and lists the basic commands.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installing-cli_cli-reference"><a class="anchor" href="#installing-cli_cli-reference"></a>Installing the CLI</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In order to interact with Tekton from a terminal, you need to install the Tekton CLI (<code>tkn</code>).</p>
-</div>
-<div class="sect2">
-<h3 id="_tarball_installation"><a class="anchor" href="#_tarball_installation"></a>Tarball Installation</h3>
-<div class="sect3">
-<h4 id="_for_macos_x"><a class="anchor" href="#_for_macos_x"></a>For macOS X</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Darwin_x86_64.tar.gz</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Extract the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo tar xvzf tkn_0.8.0_Darwin_x86_64.tar.gz -C /usr/local/bin tkn</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Place it in a directory that is on your <code>PATH</code></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_for_linux_amd64"><a class="anchor" href="#_for_linux_amd64"></a>For Linux AMD64</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Extract the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Place it in a directory that is on your <code>PATH</code></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_for_linux_arm64"><a class="anchor" href="#_for_linux_arm64"></a>For Linux ARM64</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Extract the compressed file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Place it in a directory that is on your <code>PATH</code></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_for_windows"><a class="anchor" href="#_for_windows"></a>For Windows</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download the zip file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>C:\Users\Admin\Downloads&gt; curl -Uri https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Windows_x86_64.zip
- -OutFile tkn_0.8.0_Windows_x86_64.zip</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Extract the compressed file <code>tkn.exe</code> to your <code>PATH</code>:</p>
-<div class="listingblock">
-<div class="content">
-<pre>Expand-Archive -Path &lt;sourcepath&gt;/tkn_0.8.0_Windows_x86_64.zip -DestinationPath &lt;destinationpath&gt;</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="op-tkn-reference"><a class="anchor" href="#op-tkn-reference"></a>Pipeline <code>tkn</code> reference</h2>
-<div class="sectionbody">
-<!-- toc disabled -->
-<div class="paragraph">
 <p>This section lists basic <code>tkn</code> CLI commands. For a more detailed description, see <a href="https://github.com/tektoncd/cli">Tekton Pipelines CLI</a>.</p>
 </div>
-<div class="sect2">
-<h3 id="_basic_syntax"><a class="anchor" href="#_basic_syntax"></a>Basic Syntax</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_syntax"><a class="anchor" href="#_basic_syntax"></a>Basic Syntax</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>tkn [command or options] [arguments&#8230;&#8203;]</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_global_options"><a class="anchor" href="#_global_options"></a>Global Options</h3>
+</div>
+<div class="sect1">
+<h2 id="_global_options"><a class="anchor" href="#_global_options"></a>Global Options</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>--help, -h</code></p>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-utility-commands_op-tkn-reference"><a class="anchor" href="#op-tkn-utility-commands_op-tkn-reference"></a>Utility commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-utility-commands_op-tkn-reference"><a class="anchor" href="#op-tkn-utility-commands_op-tkn-reference"></a>Utility commands</h3>
-<div class="sect3">
-<h4 id="_tkn"><a class="anchor" href="#_tkn"></a>tkn</h4>
+<h3 id="_tkn"><a class="anchor" href="#_tkn"></a>tkn</h3>
 <div class="paragraph">
 <p>Parent command for <code>tkn</code> CLI.</p>
 </div>
@@ -349,8 +235,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_completion_shell"><a class="anchor" href="#_tkn_completion_shell"></a>tkn completion [shell]</h4>
+<div class="sect2">
+<h3 id="_tkn_completion_shell"><a class="anchor" href="#_tkn_completion_shell"></a>tkn completion [shell]</h3>
 <div class="paragraph">
 <p>Print shell completion code which must be evaluated to provide interactive completion. Supported shells are <code>bash</code> and <code>zsh</code>.</p>
 </div>
@@ -361,8 +247,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_version"><a class="anchor" href="#_tkn_version"></a>tkn version</h4>
+<div class="sect2">
+<h3 id="_tkn_version"><a class="anchor" href="#_tkn_version"></a>tkn version</h3>
 <div class="paragraph">
 <p>Print version information of the <code>tkn</code> CLI.</p>
 </div>
@@ -374,10 +260,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-pipeline-management_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-management_op-tkn-reference"></a>Pipelines management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-pipeline-management_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-management_op-tkn-reference"></a>Pipelines management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_pipeline"><a class="anchor" href="#_tkn_pipeline"></a>tkn pipeline</h4>
+<h3 id="_tkn_pipeline"><a class="anchor" href="#_tkn_pipeline"></a>tkn pipeline</h3>
 <div class="paragraph">
 <p>Manage pipelines.</p>
 </div>
@@ -388,8 +276,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_create"><a class="anchor" href="#_tkn_pipeline_create"></a>tkn pipeline create</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_create"><a class="anchor" href="#_tkn_pipeline_create"></a>tkn pipeline create</h3>
 <div class="paragraph">
 <p>Create a pipeline in a namespace.</p>
 </div>
@@ -400,8 +288,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_delete"><a class="anchor" href="#_tkn_pipeline_delete"></a>tkn pipeline delete</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_delete"><a class="anchor" href="#_tkn_pipeline_delete"></a>tkn pipeline delete</h3>
 <div class="paragraph">
 <p>Delete a pipeline in a namespace.</p>
 </div>
@@ -412,8 +300,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_describe"><a class="anchor" href="#_tkn_pipeline_describe"></a>tkn pipeline describe</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_describe"><a class="anchor" href="#_tkn_pipeline_describe"></a>tkn pipeline describe</h3>
 <div class="paragraph">
 <p>Describe a pipeline in a namespace.</p>
 </div>
@@ -424,8 +312,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_list"><a class="anchor" href="#_tkn_pipeline_list"></a>tkn pipeline list</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_list"><a class="anchor" href="#_tkn_pipeline_list"></a>tkn pipeline list</h3>
 <div class="paragraph">
 <p>List pipelines in a namespace.</p>
 </div>
@@ -436,8 +324,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_logs"><a class="anchor" href="#_tkn_pipeline_logs"></a>tkn pipeline logs</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_logs"><a class="anchor" href="#_tkn_pipeline_logs"></a>tkn pipeline logs</h3>
 <div class="paragraph">
 <p>Display pipeline logs for a specific pipeline.</p>
 </div>
@@ -448,8 +336,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipeline_start"><a class="anchor" href="#_tkn_pipeline_start"></a>tkn pipeline start</h4>
+<div class="sect2">
+<h3 id="_tkn_pipeline_start"><a class="anchor" href="#_tkn_pipeline_start"></a>tkn pipeline start</h3>
 <div class="paragraph">
 <p>Start a pipeline.</p>
 </div>
@@ -461,10 +349,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-pipeline-run_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-run_op-tkn-reference"></a>Pipelinerun commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-pipeline-run_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-run_op-tkn-reference"></a>Pipelinerun commands</h3>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun"><a class="anchor" href="#_tkn_pipelinerun"></a>tkn pipelinerun</h4>
+<h3 id="_tkn_pipelinerun"><a class="anchor" href="#_tkn_pipelinerun"></a>tkn pipelinerun</h3>
 <div class="paragraph">
 <p>Manage pipelineruns.</p>
 </div>
@@ -475,8 +365,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun_cancel"><a class="anchor" href="#_tkn_pipelinerun_cancel"></a>tkn pipelinerun cancel</h4>
+<div class="sect2">
+<h3 id="_tkn_pipelinerun_cancel"><a class="anchor" href="#_tkn_pipelinerun_cancel"></a>tkn pipelinerun cancel</h3>
 <div class="paragraph">
 <p>Cancel a pipelinerun in a namespace.</p>
 </div>
@@ -487,8 +377,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun_delete"><a class="anchor" href="#_tkn_pipelinerun_delete"></a>tkn pipelinerun delete</h4>
+<div class="sect2">
+<h3 id="_tkn_pipelinerun_delete"><a class="anchor" href="#_tkn_pipelinerun_delete"></a>tkn pipelinerun delete</h3>
 <div class="paragraph">
 <p>Delete pipelinerun in a namespace.</p>
 </div>
@@ -499,8 +389,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun_describe"><a class="anchor" href="#_tkn_pipelinerun_describe"></a>tkn pipelinerun describe</h4>
+<div class="sect2">
+<h3 id="_tkn_pipelinerun_describe"><a class="anchor" href="#_tkn_pipelinerun_describe"></a>tkn pipelinerun describe</h3>
 <div class="paragraph">
 <p>Describe a pipelinerun in a namespace.</p>
 </div>
@@ -511,8 +401,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun_list"><a class="anchor" href="#_tkn_pipelinerun_list"></a>tkn pipelinerun list</h4>
+<div class="sect2">
+<h3 id="_tkn_pipelinerun_list"><a class="anchor" href="#_tkn_pipelinerun_list"></a>tkn pipelinerun list</h3>
 <div class="paragraph">
 <p>Display a list of pipelineruns in a namespace.</p>
 </div>
@@ -523,8 +413,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_pipelinerun_logs"><a class="anchor" href="#_tkn_pipelinerun_logs"></a>tkn pipelinerun logs</h4>
+<div class="sect2">
+<h3 id="_tkn_pipelinerun_logs"><a class="anchor" href="#_tkn_pipelinerun_logs"></a>tkn pipelinerun logs</h3>
 <div class="paragraph">
 <p>Show the logs of pipelinerun.</p>
 </div>
@@ -536,10 +426,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-task-management_op-tkn-reference"><a class="anchor" href="#op-tkn-task-management_op-tkn-reference"></a>Task management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-task-management_op-tkn-reference"><a class="anchor" href="#op-tkn-task-management_op-tkn-reference"></a>Task management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_task"><a class="anchor" href="#_tkn_task"></a>tkn task</h4>
+<h3 id="_tkn_task"><a class="anchor" href="#_tkn_task"></a>tkn task</h3>
 <div class="paragraph">
 <p>Manage tasks.</p>
 </div>
@@ -550,8 +442,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_create"><a class="anchor" href="#_tkn_task_create"></a>tkn task create</h4>
+<div class="sect2">
+<h3 id="_tkn_task_create"><a class="anchor" href="#_tkn_task_create"></a>tkn task create</h3>
 <div class="paragraph">
 <p>Create a task in a namespace.</p>
 </div>
@@ -562,8 +454,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_delete"><a class="anchor" href="#_tkn_task_delete"></a>tkn task delete</h4>
+<div class="sect2">
+<h3 id="_tkn_task_delete"><a class="anchor" href="#_tkn_task_delete"></a>tkn task delete</h3>
 <div class="paragraph">
 <p>Delete task resources in a namespace.</p>
 </div>
@@ -574,8 +466,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_describe"><a class="anchor" href="#_tkn_task_describe"></a>tkn task describe</h4>
+<div class="sect2">
+<h3 id="_tkn_task_describe"><a class="anchor" href="#_tkn_task_describe"></a>tkn task describe</h3>
 <div class="paragraph">
 <p>Describe a task in a namespace.</p>
 </div>
@@ -586,8 +478,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_list"><a class="anchor" href="#_tkn_task_list"></a>tkn task list</h4>
+<div class="sect2">
+<h3 id="_tkn_task_list"><a class="anchor" href="#_tkn_task_list"></a>tkn task list</h3>
 <div class="paragraph">
 <p>List tasks in a namespace.</p>
 </div>
@@ -598,8 +490,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_logs"><a class="anchor" href="#_tkn_task_logs"></a>tkn task logs</h4>
+<div class="sect2">
+<h3 id="_tkn_task_logs"><a class="anchor" href="#_tkn_task_logs"></a>tkn task logs</h3>
 <div class="paragraph">
 <p>Display task logs.</p>
 </div>
@@ -610,8 +502,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_task_start"><a class="anchor" href="#_tkn_task_start"></a>tkn task start</h4>
+<div class="sect2">
+<h3 id="_tkn_task_start"><a class="anchor" href="#_tkn_task_start"></a>tkn task start</h3>
 <div class="paragraph">
 <p>Start a task.</p>
 </div>
@@ -623,10 +515,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-task-run_op-tkn-reference"><a class="anchor" href="#op-tkn-task-run_op-tkn-reference"></a>Taskrun commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-task-run_op-tkn-reference"><a class="anchor" href="#op-tkn-task-run_op-tkn-reference"></a>Taskrun commands</h3>
-<div class="sect3">
-<h4 id="_tkn_taskrun"><a class="anchor" href="#_tkn_taskrun"></a>tkn taskrun</h4>
+<h3 id="_tkn_taskrun"><a class="anchor" href="#_tkn_taskrun"></a>tkn taskrun</h3>
 <div class="paragraph">
 <p>Manage taskruns.</p>
 </div>
@@ -637,8 +531,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_taskrun_cancel"><a class="anchor" href="#_tkn_taskrun_cancel"></a>tkn taskrun cancel</h4>
+<div class="sect2">
+<h3 id="_tkn_taskrun_cancel"><a class="anchor" href="#_tkn_taskrun_cancel"></a>tkn taskrun cancel</h3>
 <div class="paragraph">
 <p>Cancel a taskrun in a namespace.</p>
 </div>
@@ -649,8 +543,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_taskrun_delete"><a class="anchor" href="#_tkn_taskrun_delete"></a>tkn taskrun delete</h4>
+<div class="sect2">
+<h3 id="_tkn_taskrun_delete"><a class="anchor" href="#_tkn_taskrun_delete"></a>tkn taskrun delete</h3>
 <div class="paragraph">
 <p>Delete taskruns in a namespace.</p>
 </div>
@@ -661,8 +555,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_taskrun_describe"><a class="anchor" href="#_tkn_taskrun_describe"></a>tkn taskrun describe</h4>
+<div class="sect2">
+<h3 id="_tkn_taskrun_describe"><a class="anchor" href="#_tkn_taskrun_describe"></a>tkn taskrun describe</h3>
 <div class="paragraph">
 <p>Describe a taskrun in a namespace.</p>
 </div>
@@ -673,8 +567,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_taskrun_list"><a class="anchor" href="#_tkn_taskrun_list"></a>tkn taskrun list</h4>
+<div class="sect2">
+<h3 id="_tkn_taskrun_list"><a class="anchor" href="#_tkn_taskrun_list"></a>tkn taskrun list</h3>
 <div class="paragraph">
 <p>List taskruns in a namespace.</p>
 </div>
@@ -685,8 +579,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_taskrun_logs"><a class="anchor" href="#_tkn_taskrun_logs"></a>tkn taskrun logs</h4>
+<div class="sect2">
+<h3 id="_tkn_taskrun_logs"><a class="anchor" href="#_tkn_taskrun_logs"></a>tkn taskrun logs</h3>
 <div class="paragraph">
 <p>Display taskruns logs.</p>
 </div>
@@ -698,10 +592,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-condition-management_op-tkn-reference"><a class="anchor" href="#op-tkn-condition-management_op-tkn-reference"></a>Condition management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-condition-management_op-tkn-reference"><a class="anchor" href="#op-tkn-condition-management_op-tkn-reference"></a>Condition management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_condition"><a class="anchor" href="#_tkn_condition"></a>tkn condition</h4>
+<h3 id="_tkn_condition"><a class="anchor" href="#_tkn_condition"></a>tkn condition</h3>
 <div class="paragraph">
 <p>Manage conditions.</p>
 </div>
@@ -712,8 +608,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_condition_delete"><a class="anchor" href="#_tkn_condition_delete"></a>tkn condition delete</h4>
+<div class="sect2">
+<h3 id="_tkn_condition_delete"><a class="anchor" href="#_tkn_condition_delete"></a>tkn condition delete</h3>
 <div class="paragraph">
 <p>Delete a condition in a namespace.</p>
 </div>
@@ -724,8 +620,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_condition_list"><a class="anchor" href="#_tkn_condition_list"></a>tkn condition list</h4>
+<div class="sect2">
+<h3 id="_tkn_condition_list"><a class="anchor" href="#_tkn_condition_list"></a>tkn condition list</h3>
 <div class="paragraph">
 <p>List conditions in a namespace.</p>
 </div>
@@ -737,10 +633,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-pipeline-resource-management_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-resource-management_op-tkn-reference"></a>Pipeline resource management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-pipeline-resource-management_op-tkn-reference"><a class="anchor" href="#op-tkn-pipeline-resource-management_op-tkn-reference"></a>Pipeline resource management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_resource"><a class="anchor" href="#_tkn_resource"></a>tkn resource</h4>
+<h3 id="_tkn_resource"><a class="anchor" href="#_tkn_resource"></a>tkn resource</h3>
 <div class="paragraph">
 <p>Manage pipeline resources.</p>
 </div>
@@ -751,8 +649,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_resource_create"><a class="anchor" href="#_tkn_resource_create"></a>tkn resource create</h4>
+<div class="sect2">
+<h3 id="_tkn_resource_create"><a class="anchor" href="#_tkn_resource_create"></a>tkn resource create</h3>
 <div class="paragraph">
 <p>Create a pipeline resource in a namespace.</p>
 </div>
@@ -763,8 +661,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_resource_delete"><a class="anchor" href="#_tkn_resource_delete"></a>tkn resource delete</h4>
+<div class="sect2">
+<h3 id="_tkn_resource_delete"><a class="anchor" href="#_tkn_resource_delete"></a>tkn resource delete</h3>
 <div class="paragraph">
 <p>Delete a pipeline resource in a namespace.</p>
 </div>
@@ -775,8 +673,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_resource_describe"><a class="anchor" href="#_tkn_resource_describe"></a>tkn resource describe</h4>
+<div class="sect2">
+<h3 id="_tkn_resource_describe"><a class="anchor" href="#_tkn_resource_describe"></a>tkn resource describe</h3>
 <div class="paragraph">
 <p>Describes a pipeline resource in a namespace.</p>
 </div>
@@ -787,8 +685,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_resource_list"><a class="anchor" href="#_tkn_resource_list"></a>tkn resource list</h4>
+<div class="sect2">
+<h3 id="_tkn_resource_list"><a class="anchor" href="#_tkn_resource_list"></a>tkn resource list</h3>
 <div class="paragraph">
 <p>List pipeline resources in a namespace.</p>
 </div>
@@ -800,10 +698,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-clustertask-management-commands_op-tkn-reference"><a class="anchor" href="#op-tkn-clustertask-management-commands_op-tkn-reference"></a>Clustertask management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-clustertask-management-commands_op-tkn-reference"><a class="anchor" href="#op-tkn-clustertask-management-commands_op-tkn-reference"></a>Clustertask management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_clustertask"><a class="anchor" href="#_tkn_clustertask"></a>tkn clustertask</h4>
+<h3 id="_tkn_clustertask"><a class="anchor" href="#_tkn_clustertask"></a>tkn clustertask</h3>
 <div class="paragraph">
 <p>Manage clustertasks.</p>
 </div>
@@ -814,8 +714,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_clustertask_delete"><a class="anchor" href="#_tkn_clustertask_delete"></a>tkn clustertask delete</h4>
+<div class="sect2">
+<h3 id="_tkn_clustertask_delete"><a class="anchor" href="#_tkn_clustertask_delete"></a>tkn clustertask delete</h3>
 <div class="paragraph">
 <p>Delete a clustertask resource in a cluster.</p>
 </div>
@@ -826,8 +726,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_clustertask_describe"><a class="anchor" href="#_tkn_clustertask_describe"></a>tkn clustertask describe</h4>
+<div class="sect2">
+<h3 id="_tkn_clustertask_describe"><a class="anchor" href="#_tkn_clustertask_describe"></a>tkn clustertask describe</h3>
 <div class="paragraph">
 <p>Describe a clustertask.</p>
 </div>
@@ -838,8 +738,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_clustertask_list"><a class="anchor" href="#_tkn_clustertask_list"></a>tkn clustertask list</h4>
+<div class="sect2">
+<h3 id="_tkn_clustertask_list"><a class="anchor" href="#_tkn_clustertask_list"></a>tkn clustertask list</h3>
 <div class="paragraph">
 <p>List clustertasks in a namespace.</p>
 </div>
@@ -850,8 +750,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_clustertask_start"><a class="anchor" href="#_tkn_clustertask_start"></a>tkn clustertask start</h4>
+<div class="sect2">
+<h3 id="_tkn_clustertask_start"><a class="anchor" href="#_tkn_clustertask_start"></a>tkn clustertask start</h3>
 <div class="paragraph">
 <p>Start clustertasks.</p>
 </div>
@@ -863,10 +763,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="op-tkn-trigger-management_op-tkn-reference"><a class="anchor" href="#op-tkn-trigger-management_op-tkn-reference"></a>Trigger management commands</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="op-tkn-trigger-management_op-tkn-reference"><a class="anchor" href="#op-tkn-trigger-management_op-tkn-reference"></a>Trigger management commands</h3>
-<div class="sect3">
-<h4 id="_tkn_eventlistener"><a class="anchor" href="#_tkn_eventlistener"></a>tkn eventlistener</h4>
+<h3 id="_tkn_eventlistener"><a class="anchor" href="#_tkn_eventlistener"></a>tkn eventlistener</h3>
 <div class="paragraph">
 <p>Manage event listeners.</p>
 </div>
@@ -877,8 +779,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_eventlistener_delete"><a class="anchor" href="#_tkn_eventlistener_delete"></a>tkn eventlistener delete</h4>
+<div class="sect2">
+<h3 id="_tkn_eventlistener_delete"><a class="anchor" href="#_tkn_eventlistener_delete"></a>tkn eventlistener delete</h3>
 <div class="paragraph">
 <p>Delete event listeners in a namespace.</p>
 </div>
@@ -889,8 +791,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_eventlistener_list"><a class="anchor" href="#_tkn_eventlistener_list"></a>tkn eventlistener list</h4>
+<div class="sect2">
+<h3 id="_tkn_eventlistener_list"><a class="anchor" href="#_tkn_eventlistener_list"></a>tkn eventlistener list</h3>
 <div class="paragraph">
 <p>Lists event listeners in a namespace.</p>
 </div>
@@ -901,8 +803,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggerbinding"><a class="anchor" href="#_tkn_triggerbinding"></a>tkn triggerbinding</h4>
+<div class="sect2">
+<h3 id="_tkn_triggerbinding"><a class="anchor" href="#_tkn_triggerbinding"></a>tkn triggerbinding</h3>
 <div class="paragraph">
 <p>Manage trigger bindings.</p>
 </div>
@@ -913,8 +815,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggerbinding_delete"><a class="anchor" href="#_tkn_triggerbinding_delete"></a>tkn triggerbinding delete</h4>
+<div class="sect2">
+<h3 id="_tkn_triggerbinding_delete"><a class="anchor" href="#_tkn_triggerbinding_delete"></a>tkn triggerbinding delete</h3>
 <div class="paragraph">
 <p>Delete trigger bindings in a namespace.</p>
 </div>
@@ -925,8 +827,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggerbinding_list"><a class="anchor" href="#_tkn_triggerbinding_list"></a>tkn triggerbinding list</h4>
+<div class="sect2">
+<h3 id="_tkn_triggerbinding_list"><a class="anchor" href="#_tkn_triggerbinding_list"></a>tkn triggerbinding list</h3>
 <div class="paragraph">
 <p>List trigger bindings in a namespace.</p>
 </div>
@@ -937,8 +839,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggertemplate"><a class="anchor" href="#_tkn_triggertemplate"></a>tkn triggertemplate</h4>
+<div class="sect2">
+<h3 id="_tkn_triggertemplate"><a class="anchor" href="#_tkn_triggertemplate"></a>tkn triggertemplate</h3>
 <div class="paragraph">
 <p>Manage trigger templates.</p>
 </div>
@@ -949,8 +851,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggertemplate_delete"><a class="anchor" href="#_tkn_triggertemplate_delete"></a>tkn triggertemplate delete</h4>
+<div class="sect2">
+<h3 id="_tkn_triggertemplate_delete"><a class="anchor" href="#_tkn_triggertemplate_delete"></a>tkn triggertemplate delete</h3>
 <div class="paragraph">
 <p>Delete trigger templates in a namespace.</p>
 </div>
@@ -961,8 +863,8 @@
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tkn_triggertemplate_list"><a class="anchor" href="#_tkn_triggertemplate_list"></a>tkn triggertemplate list</h4>
+<div class="sect2">
+<h3 id="_tkn_triggertemplate_list"><a class="anchor" href="#_tkn_triggertemplate_list"></a>tkn triggertemplate list</h3>
 <div class="paragraph">
 <p>Lists trigger templates in a namespace.</p>
 </div>
@@ -970,7 +872,6 @@
 <div class="title">Example: List all trigger templates in a namespace</div>
 <div class="content">
 <pre>$ tkn triggertemplate list -n myspace</pre>
-</div>
 </div>
 </div>
 </div>

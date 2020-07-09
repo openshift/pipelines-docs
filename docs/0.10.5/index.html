@@ -110,10 +110,40 @@
     <a class="nav-link" href="assembly_cli-reference.html">5. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing-cli.html">5.1 Installing CLI</a>
+    <a class="nav-link" href="proc_installing-cli.html">5.1 Installing tkn</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli-reference.html">5.2 Basic Commands</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="op-tkn-reference.html">5.2 Basic tkn commands</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-utility-commands.html">5.2.1 Utility commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-management.html">5.2.2 Pipeline management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-run.html">5.2.3 Pipelinerun commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-task-management.html">5.2.4 Task management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-task-run.html">5.2.5 Taskrun commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-condition-management.html">5.2.6 Condition management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-resource-management.html">5.2.7 Pipeline resource management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-clustertask-management.html">5.2.8 Clustertask management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-trigger-management.html">5.2.9 Trigger management commands</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -167,42 +197,41 @@
 <h1 class="page">OpenShift Pipelines</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock important">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>OpenShift Pipelines project is based on the upstream project <a href="https://github.com/tektoncd">Tekton</a> and is available as a Developer Preview release. Developer Preview releases have features and functionality that might not be fully tested. Customers are encouraged to use and provide feedback on Developer Preview releases. Red Hat does not commit to fixing any reported issues and the provided features may not be available in future releases.</p>
-</div>
-<div class="paragraph">
-<p>Developer Preview releases are not production ready and customers are advised to avoid running the software for production or business-critical workloads. Limited documentation is available for Developer Preview releases. Customers are NOT able to open support cases against the Developer Preview releases.</p>
-</div>
-<div class="paragraph">
-<p>If you need assistance with OpenShift Pipelines, reach out on the following mailing list where a member of the Red Hat Development Team will be happy to assist you based on availability and work schedules: <a href="mailto:pipelines-interest@redhat.com">pipelines-interest@redhat.com</a></p>
+<p>Documentation deprecation notice: Please visit the <a href="https://docs.openshift.com/container-platform/latest/pipelines/understanding-openshift-pipelines.html">OpenShift Pipelines documentation website</a> for the latest documentation.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>OpenShift Pipelines are cloud-native, continuous integration and continuous delivery (CI/CD) solutions based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> Pipelines to automate deployments across multiple platforms by abstracting away the underlying details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
+<p>OpenShift Pipelines is a cloud-native, continuous integration and continuous delivery (CI/CD) solution based on Kubernetes resources. It uses <a href="https://tekton.dev">Tekton</a> building blocks to automate deployments across multiple platforms by abstracting away the underlying implementation details. Tekton introduces a number of standard <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions (CRDs)</a> for defining pipelines that are portable across Kubernetes distributions.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_features"><a class="anchor" href="#_key_features"></a>Key features</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift Pipelines are designed for microservices and decentralized teams.</p>
+<p>OpenShift Pipelines are designed for decentralized teams that work on microservice based architecture.</p>
 </li>
 <li>
-<p>OpenShift Pipelines uses standard CI/CD pipeline definitions that are easy to extend and integrate with existing Kubernetes tools, enabling you to scale on-demand.</p>
+<p>OpenShift Pipelines use standard CI/CD pipeline definitions that are easy to extend and integrate with the existing Kubernetes tools, enabling you to scale on-demand.</p>
 </li>
 <li>
-<p>You can use them to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko and are portable across any Kubernetes platform.</p>
+<p>You can use Openshift Pipelines to build images with Kubernetes tools such as Source-to-Image (S2I), Buildah, Buildpacks, and Kaniko that are portable across any Kubernetes platform.</p>
 </li>
 <li>
-<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under OpenShift project namespaces.</p>
+<p>You can use the OpenShift Developer Console to create Tekton resources, view logs of pipeline runs, and manage pipelines under your OpenShift project namespaces.</p>
 </li>
 </ul>
 </div>

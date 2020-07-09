@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>Trigger management commands :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-tkn-trigger-management.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -140,7 +140,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="op-tkn-clustertask-management.html">5.2.8 Clustertask management commands</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="op-tkn-trigger-management.html">5.2.9 Trigger management commands</a>
   </li>
 </ul>
@@ -190,41 +190,139 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="assembly_cli-reference.html">5. CLI Reference</a></li>
+    <li><a href="op-tkn-reference.html">5.2 Basic tkn commands</a></li>
+    <li><a href="op-tkn-trigger-management.html">5.2.9 Trigger management commands</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
+<h1 class="page">Trigger management commands</h1>
+<div class="sect1">
+<h2 id="_tkn_eventlistener"><a class="anchor" href="#_tkn_eventlistener"></a>tkn eventlistener</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manage event listeners.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example: Display help</div>
 <div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
+<pre>$ tkn eventlistener -h</pre>
 </div>
 </div>
-</li>
-<li>
-<p>Create a project for the sample application:</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_eventlistener_delete"><a class="anchor" href="#_tkn_eventlistener_delete"></a>tkn eventlistener delete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Delete event listeners in a namespace.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example: Delete <code>mylistener1</code> and <code>mylistener2</code> event listeners in a namespace</div>
 <div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
+<pre>$ tkn eventlistener delete mylistener1 mylistener2 -n myspace</pre>
 </div>
 </div>
-</li>
-<li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_eventlistener_list"><a class="anchor" href="#_tkn_eventlistener_list"></a>tkn eventlistener list</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lists event listeners in a namespace.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example: List all event listeners in a namespace</div>
 <div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
+<pre>$ tkn eventlistener list -n myspace</pre>
 </div>
 </div>
-</li>
-</ol>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggerbinding"><a class="anchor" href="#_tkn_triggerbinding"></a>tkn triggerbinding</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manage trigger bindings.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Display trigger bindings help</div>
+<div class="content">
+<pre>$ tkn triggerbinding -h</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggerbinding_delete"><a class="anchor" href="#_tkn_triggerbinding_delete"></a>tkn triggerbinding delete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Delete trigger bindings in a namespace.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Delete <code>mybinding1</code> and <code>mybinding2</code> trigger bindings in a namespace</div>
+<div class="content">
+<pre>$ tkn triggerbinding delete mybinding1 mybinding2 -n myspace</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggerbinding_list"><a class="anchor" href="#_tkn_triggerbinding_list"></a>tkn triggerbinding list</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>List trigger bindings in a namespace.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: List all trigger bindings in a namespace</div>
+<div class="content">
+<pre>$ tkn triggerbinding list -n myspace</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggertemplate"><a class="anchor" href="#_tkn_triggertemplate"></a>tkn triggertemplate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manage trigger templates.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Display trigger template help</div>
+<div class="content">
+<pre>$ tkn triggertemplate -h</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggertemplate_delete"><a class="anchor" href="#_tkn_triggertemplate_delete"></a>tkn triggertemplate delete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Delete trigger templates in a namespace.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Delete <code>mytemplate1</code> and <code>mytemplate2</code> trigger templates in a namespace</div>
+<div class="content">
+<pre>$ tkn triggertemplate delete mytemplate1 mytemplate2 -n `myspace`</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_triggertemplate_list"><a class="anchor" href="#_tkn_triggertemplate_list"></a>tkn triggertemplate list</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lists trigger templates in a namespace.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: List all trigger templates in a namespace</div>
+<div class="content">
+<pre>$ tkn triggertemplate list -n myspace</pre>
+</div>
+</div>
+</div>
 </div>
 </article>
 </main>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>Utility commands :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-tkn-utility-commands.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -116,7 +116,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="op-tkn-reference.html">5.2 Basic tkn commands</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="op-tkn-utility-commands.html">5.2.1 Utility commands</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -190,41 +190,55 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="assembly_cli-reference.html">5. CLI Reference</a></li>
+    <li><a href="op-tkn-reference.html">5.2 Basic tkn commands</a></li>
+    <li><a href="op-tkn-utility-commands.html">5.2.1 Utility commands</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
+<h1 class="page">Utility commands</h1>
+<div class="sect1">
+<h2 id="_tkn"><a class="anchor" href="#_tkn"></a>tkn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Parent command for <code>tkn</code> CLI.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example:Display all options</div>
 <div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
+<pre>$ tkn</pre>
 </div>
 </div>
-</li>
-<li>
-<p>Create a project for the sample application:</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_completion_shell"><a class="anchor" href="#_tkn_completion_shell"></a>tkn completion [shell]</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Print shell completion code which must be evaluated to provide interactive completion. Supported shells are <code>bash</code> and <code>zsh</code>.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example: Completion code for <code>bash</code> shell</div>
 <div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
+<pre>$ tkn completion bash</pre>
 </div>
 </div>
-</li>
-<li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tkn_version"><a class="anchor" href="#_tkn_version"></a>tkn version</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Print version information of the <code>tkn</code> CLI.</p>
+</div>
 <div class="listingblock">
+<div class="title">Example: Check for the availability of a newer version</div>
 <div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
+<pre>$ tkn version -c</pre>
 </div>
 </div>
-</li>
-</ol>
+</div>
 </div>
 </article>
 </main>

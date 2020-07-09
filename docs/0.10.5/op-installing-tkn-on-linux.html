@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>Installing {op-title} on Linux :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-installing-tkn-on-linux.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -190,41 +190,93 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="op-installing-tkn-on-linux.html">Installing {op-title} on Linux</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
+<h1 class="page">Installing {op-title} on Linux</h1>
+<div class="sect1">
+<h2 id="_binary_installation"><a class="anchor" href="#_binary_installation"></a>Binary installation</h2>
+<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
+<p>Download the binary:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
+<pre># curl -L https://mirror.openshift.com/pub/openshift-v4/clients/tkn/latest/tkn-linux-amd64 -o /usr/local/bin/tkn</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Create a project for the sample application:</p>
+<p>Make the binary file executable:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
-</div>
-</div>
-</li>
-<li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
+<pre># chmod +x /usr/local/bin/odo</pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tarball_installation"><a class="anchor" href="#_tarball_installation"></a>Tarball installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_linux_amd64"><a class="anchor" href="#_linux_amd64"></a>Linux AMD64</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the compressed file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_x86_64.tar.gz</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Extract the compressed file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo tar xvzf tkn_0.8.0_Linux_x86_64.tar.gz -C /usr/local/bin/ tkn</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Place it in a directory that is on your <code>PATH</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_linux_arm64"><a class="anchor" href="#_linux_arm64"></a>Linux ARM64</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the compressed file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -LO https://github.com/tektoncd/cli/releases/download/v0.8.0/tkn_0.8.0_Linux_arm64.tar.gz</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Extract the compressed file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo tar xvzf tkn_0.8.0_Linux_arm64.tar.gz -C /usr/local/bin/ tkn</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Place it in a directory that is on your <code>PATH</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </article>
 </main>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Creating a project and checking your Pipeline service account :: OpenShift Pipelines</title>
-    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/proc_creating-project-and-checking-pipeline-service-account.html">
+    <title>Pipelines Definition Reference :: OpenShift Pipelines</title>
+    <link rel="canonical" href="https://openshift.github.io/pipelines-docs/docs/0.10.5/op-pipelines-definition-reference.html">
     <meta name="generator" content="Antora 2.2.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
@@ -73,7 +73,7 @@
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -190,41 +190,321 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OpenShift Pipelines</a></li>
-    <li><a href="assembly_creating-applications-with-cicd-pipelines.html">3. Creating applications with CI/CD Pipelines</a></li>
-    <li><a href="proc_creating-project-and-checking-pipeline-service-account.html">3.1 Creating a project and checking your Pipeline service account</a></li>
+    <li><a href="op-pipelines-definition-reference.html">Pipelines Definition Reference</a></li>
   </ul>
 </nav>
 </div>
 <article class="doc">
-<h1 class="page">Creating a project and checking your Pipeline service account</h1>
-<h3 id="_procedure" class="discrete">Procedure</h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h1 class="page">Pipelines Definition Reference</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Listed below are the supported fields in a Pipeline definition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apiversion"><a class="anchor" href="#_apiversion"></a>apiVersion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the API version of the Kubernetes object. Currently two versions are supported:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Login to your OpenShift Container Platform cluster with your login and password:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc login -u &lt;login&gt; -p &lt;password&gt; https://openshift.example.com:6443</pre>
-</div>
-</div>
+<p>tekton.dev/v1alpha1</p>
 </li>
 <li>
-<p>Create a project for the sample application:</p>
+<p>tekton.dev/v1beta1</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>apiVersion: tekton.dev/v1beta1</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kind"><a class="anchor" href="#_kind"></a>kind</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Type of Kubernetes object. For defining Pipelines, specify <code>pipeline</code>.
+.Example:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ oc new-project pipelines-tutorial</pre>
+<pre>kind: Pipeline</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metadata"><a class="anchor" href="#_metadata"></a>metadata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the metadata that uniquely identifies the Pipeline object
+.Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>metadata:
+    name: pipeline-with-parameters</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spec"><a class="anchor" href="#_spec"></a>spec</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the configuration information for the Pipeline object.  Supported fields in the <code>spec</code> are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>workspaces</code></p>
 </li>
 <li>
-<p>The OpenShift Pipelines Operator adds and configures a Serviceaccount named <code>pipeline</code> that has sufficient permissions to build and push an image. This ServiceAccount is used by pipelineruns. Run the following command to see the <code>pipeline</code> service account:</p>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc get serviceaccount pipeline</pre>
-</div>
-</div>
+<p><code>tasks</code></p>
 </li>
-</ol>
+<li>
+<p><code>resources</code></p>
+</li>
+<li>
+<p><code>params</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  workspaces:
+    - name: pipeline-ws1 # The name of the workspace in the Pipeline
+  tasks:
+    - name: use-ws-from-pipeline
+      taskRef:
+        name: gen-code # gen-code expects a workspace with name "output"
+      workspaces:
+        - name: output
+          workspace: pipeline-ws1</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tasks"><a class="anchor" href="#_tasks"></a>tasks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the Tasks that comprise the Pipeline and the details of their execution.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    tasks:
+      - name: build-the-image
+        taskRef:
+          name: build-push</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_resources"><a class="anchor" href="#_optional_resources"></a>(Optional) resources</h3>
+<div class="paragraph">
+<p>Specifies the Input and output resources for a <strong>task</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre>spec:
+  tasks:
+    - name: build-the-image
+      taskRef:
+        name: build-push
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo
+        outputs:
+          - name: image
+            resource: my-image</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_from"><a class="anchor" href="#_optional_from"></a>(Optional) from</h3>
+<div class="paragraph">
+<p>Indicates the data for a PipelineResource originates from the output of a previous Task.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    - name: build-app
+      taskRef:
+        name: build-push
+      resources:
+        outputs:
+          - name: image
+            resource: my-image
+    - name: deploy-app
+      taskRef:
+        name: deploy-kubectl
+      resources:
+        inputs:
+          - name: image
+            resource: my-image
+            from:
+              - build-app</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_runafter"><a class="anchor" href="#_optional_runafter"></a>(Optional) runAfter</h3>
+<div class="paragraph">
+<p>Indicates that a Task should execute after one or more other Tasks without output linking.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    - name: test-app
+      taskRef:
+        name: make-test
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo
+    - name: build-app
+      taskRef:
+        name: kaniko-build
+      runAfter:
+        - test-app
+      resources:
+        inputs:
+          - name: workspace
+            resource: my-repo</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_retries"><a class="anchor" href="#_optional_retries"></a>(Optional) retries</h3>
+<div class="paragraph">
+<p>Specifies the number of times to retry the execution of a Task after a failure. Does not apply to execution cancellations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    tasks:
+      - name: build-the-image
+        retries: 1
+        taskRef:
+          name: build-push</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_conditions"><a class="anchor" href="#_optional_conditions"></a>(Optional) conditions</h3>
+<div class="paragraph">
+<p>Specifies Conditions that only allow a Task to execute if they successfully evaluate.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>tasks:
+  - name: deploy-if-branch-is-master
+    conditions:
+      - conditionRef: is-master-branch
+        params:
+          - name: branch-name
+            value: my-value
+    taskRef:
+      name: deploy</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_timeout"><a class="anchor" href="#_optional_timeout"></a>(Optional) timeout</h3>
+<div class="paragraph">
+<p>Specifies the timeout before a Task fails.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    spec:
+      tasks:
+        - name: build-the-image
+          taskRef:
+            name: build-push
+          Timeout: "0h1m30s"</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_resources_2"><a class="anchor" href="#_optional_resources_2"></a>(Optional) resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies Pipeline Resources required by the Tasks defined in the Pipeline.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only <code>v1alpha1</code> resources are supported in this field.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>spec:
+  resources:
+    - name: my-repo
+      type: git
+    - name: my-image
+      type: image</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_description"><a class="anchor" href="#_optional_description"></a>(Optional) description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Provides an informative description of the Pipeline object</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    description: Creates a CI/CD pipeline for the application</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_results"><a class="anchor" href="#_optional_results"></a>(Optional) results</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specifies the location to which the Pipeline emits its execution results.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre>    results:
+      - name: sum
+        description: the sum of all three operands
+        value: $(tasks.second-add.results.sum)</pre>
+</div>
+</div>
+</div>
 </div>
 </article>
 </main>

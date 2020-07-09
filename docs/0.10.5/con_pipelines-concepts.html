@@ -110,10 +110,40 @@
     <a class="nav-link" href="assembly_cli-reference.html">5. CLI Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="proc_installing-cli.html">5.1 Installing CLI</a>
+    <a class="nav-link" href="proc_installing-cli.html">5.1 Installing tkn</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ref_cli-reference.html">5.2 Basic Commands</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="op-tkn-reference.html">5.2 Basic tkn commands</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-utility-commands.html">5.2.1 Utility commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-management.html">5.2.2 Pipeline management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-run.html">5.2.3 Pipelinerun commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-task-management.html">5.2.4 Task management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-task-run.html">5.2.5 Taskrun commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-condition-management.html">5.2.6 Condition management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-pipeline-resource-management.html">5.2.7 Pipeline resource management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-clustertask-management.html">5.2.8 Clustertask management commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="op-tkn-trigger-management.html">5.2.9 Trigger management commands</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -167,26 +197,31 @@
 <article class="doc">
 <h1 class="page">Pipelines concepts</h1>
 <div class="paragraph">
-<p>The Custom Resource Definitions (CRDs) provided by OpenShift Pipelines include: <code>Task</code>,<code>Pipeline</code>,<code>PipelineRun</code>, <code>TaskRun</code>, and <code>PipelineResource</code>.</p>
+<p>OpenShift Pipelines provide the following set of standard CRDs that act as the building blocks from which you can assemble a CI/CD pipeline for your application:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>A <code>Task</code> is the smallest configurable unit in a <code>Pipeline</code> and is essentially a function of inputs and outputs that inform the <code>Pipeline</code> build. It can run individually or as a part of a <code>Pipeline</code>. A <code>Pipeline</code> includes one or more <code>Tasks</code>, with a <code>Task</code> consisting of one or more steps. Steps are a series of commands that are sequentially executed by the <code>Task</code>.</p>
-</li>
-<li>
-<p>A <code>Pipeline</code> is a series of <code>Tasks</code> that are executed to build complex workflows that automate the build, deployment and delivery of applications. It is a collection of <code>PipelineResources</code>,<code>Parameters</code>, and one or more <code>Tasks</code>. A <code>Pipeline</code> interacts with the outside world, by using <code>PipelineResources</code>, which are given to <code>Tasks</code> as inputs and outputs.</p>
-</li>
-<li>
-<p>A <code>PipelineRun</code> is used to run and manage the execution of the <code>Pipeline</code>. <code>PipelineRun</code> initiates the creation of a <code>TaskRun</code> for each <code>Task</code> being executed in the <code>Pipeline</code>.</p>
-</li>
-<li>
-<p><code>TaskRun</code> is auto-created by a <code>PipelineRun</code> for each <code>Task</code> in a <code>Pipeline</code> and  results from running an instance of a <code>Task</code>. It can also be manually created if a <code>Task</code> runs outside of a <code>Pipeline</code>.</p>
-</li>
-<li>
-<p>A <code>PipelineResource</code> is an object that is used as an input and output for pipeline <code>Tasks</code>. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as <code>PipelineResources</code>. <code>PipelineResources</code> currently support Git Resources, Image Resources, Cluster Resources, and Storage Resources.</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Task</dt>
+<dd>
+<p>A Task is the smallest configurable unit in a Pipeline. It is essentially a function of inputs and outputs that form the Pipeline build. It can run individually or as a part of a Pipeline. A Pipeline includes one or more Tasks, where each Task consists of one or more steps. Steps are a series of commands that are sequentially executed by the Task.</p>
+</dd>
+<dt class="hdlist1">Pipeline</dt>
+<dd>
+<p>A Pipeline consists of a series of Tasks that are executed to construct complex workflows that automate the build, deployment, and delivery of applications. It is a collection of PipelineResources, Parameters, and one or more Tasks. A Pipeline interacts with the outside world by using PipelineResources, which are added to Tasks as inputs and outputs.</p>
+</dd>
+<dt class="hdlist1">PipelineRun</dt>
+<dd>
+<p>A PipelineRun is the running instance of a Pipeline. PipelineRun initiates a Pipeline and manages the creation of a <em>TaskRun</em> for each Task being executed in the Pipeline.</p>
+</dd>
+<dt class="hdlist1">TaskRun</dt>
+<dd>
+<p>A TaskRun is auto-created by a PipelineRun for each Task in a Pipeline. It is a result of running an instance of a Task in a Pipeline. It can also be manually created if a Task runs outside of a Pipeline.</p>
+</dd>
+<dt class="hdlist1">PipelineResource</dt>
+<dd>
+<p>A PipelineResource is an object that is used as an input and output for pipeline Tasks. For example, if an input is a Git repository and an output is a container image built from that Git repository, these are both classified as PipelineResources. PipelineResources currently support Git resources, Image resources, Cluster resources, Storage Resources and Cloud Event resources.</p>
+</dd>
+</dl>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -197,7 +232,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>For more information on pipeline concepts, see the <a href="https://github.com/tektoncd/pipeline/tree/master/docs#learn-more">Tekton documentation</a>.</p>
+<p>For more information on defining and creating the CRDs, see the <a href="https://github.com/tektoncd/pipeline/tree/master/docs#learn-more">Tekton documentation</a>.</p>
 </li>
 </ul>
 </div>
